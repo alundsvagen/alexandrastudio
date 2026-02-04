@@ -32,8 +32,13 @@
       <!-- HEADER -->
       <header class="px-6 md:px-10 pt-6 md:pt-7">
         <div class="flex items-center justify-between gap-4">
-          <!-- Brand -->
-          <a href="#home" class="group inline-flex items-center gap-3">
+          <!-- Brand (Alexandra logo -> Fintech PDF in new tab) -->
+          <a
+            href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center gap-3"
+          >
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#f2f2ee] border border-slate-200 transition group-hover:shadow-sm">
               <i class="bi bi-leaf-fill text-[#0b3d2e]"></i>
             </span>
@@ -50,14 +55,44 @@
 
           <!-- Desktop nav -->
           <nav class="hidden md:flex items-center gap-8 text-sm text-slate-600">
+            <!-- (kept label) -->
             <a href="#home" class="hover:text-slate-900 transition">Download</a>
-            <a href="#services" class="hover:text-slate-900 transition">Work Together</a>
-            <a href="#about" class="hover:text-slate-900 transition">About</a>
-            <a href="#insights" class="hover:text-slate-900 transition">Learn</a>
-            <a href="#contact" class="hover:text-slate-900 transition">Contact</a>
-            </a>
-          </nav>
 
+            <!-- Services -> Fintech PDF -->
+            <a
+              href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-slate-900 transition"
+            >
+              Services
+            </a>
+
+            <!-- Work Together -> Fintech PDF (extra clickability, consistent with "Services opens fintech") -->
+            <a
+              href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-slate-900 transition"
+            >
+              Work Together
+            </a>
+
+            <a href="#about" class="hover:text-slate-900 transition">About</a>
+
+            <!-- Learn -> Marketing PDF -->
+            <a
+              href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-slate-900 transition"
+            >
+              Learn
+            </a>
+
+            <a href="#contact" class="hover:text-slate-900 transition">Contact</a>
+          </nav>
+        </div>
 
         <!-- Mobile nav (animated) -->
         <div
@@ -67,11 +102,31 @@
           <div class="mt-4 rounded-2xl border border-slate-200 bg-[#fbfbf9] p-3 text-sm text-slate-700">
             <div class="grid grid-cols-2 gap-2">
               <a href="#home" class="px-4 py-3 rounded-xl hover:bg-white transition">Home</a>
-              <a href="#services" class="px-4 py-3 rounded-xl hover:bg-white transition">Services</a>
+
+              <!-- Services -> Fintech PDF -->
+              <a
+                href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-4 py-3 rounded-xl hover:bg-white transition"
+              >
+                Services
+              </a>
+
               <a href="#about" class="px-4 py-3 rounded-xl hover:bg-white transition">About</a>
-              <a href="#insights" class="px-4 py-3 rounded-xl hover:bg-white transition">Blog</a>
+
+              <!-- Resources/Insights -> Marketing PDF -->
+              <a
+                href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-4 py-3 rounded-xl hover:bg-white transition"
+              >
+                Insights
+              </a>
+
               <a href="#contact" class="px-4 py-3 rounded-xl hover:bg-white transition">Contact</a>
-              <a href="https://alundsvagen.github.io/alexandrastudio/Performance_Report_2026.pdf" class="px-4 py-3 rounded-xl hover:bg-white transition">Search</a>
+              <a href="https://google.com" class="px-4 py-3 rounded-xl hover:bg-white transition">Search</a>
             </div>
           </div>
         </div>
@@ -81,14 +136,17 @@
       <main id="home" class="px-6 md:px-10 pb-10 md:pb-14">
 
         <!-- HERO -->
-        <section
-          class="pt-12 md:pt-18 text-center"
-          data-reveal
-        >
-          <div class="inline-flex items-center gap-2 text-xs text-slate-600 bg-[#f4f4f1] border border-slate-200 px-4 py-2 rounded-full">
+        <section class="pt-12 md:pt-18 text-center" data-reveal>
+          <!-- Stockholm, Sweden -> Marketing PDF in new tab -->
+          <a
+            href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-xs text-slate-600 bg-[#f4f4f1] border border-slate-200 px-4 py-2 rounded-full hover:bg-white transition"
+          >
             <span class="w-2 h-2 rounded-full bg-[#0b3d2e]"></span>
             <span>Stockholm, Sweden</span>
-          </div>
+          </a>
 
           <h1 class="mt-7 md:mt-8 text-4xl md:text-6xl font-semibold leading-[1.05] tracking-tight">
             Design systems<br class="hidden md:block" />
@@ -100,7 +158,7 @@
           </p>
 
           <div class="mt-8 md:mt-10 flex justify-center">
-            <a href="https://alundsvagen.github.io/alexandrastudio/Performance_Report_2026.pdf"
+            <a href="https://google.com"
                class="inline-flex items-center gap-3 px-7 py-4 rounded-full bg-[#0b3d2e] text-white font-medium
                       shadow-[0_18px_45px_rgba(11,61,46,0.35)] hover:shadow-[0_24px_60px_rgba(11,61,46,0.35)]
                       transition transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-emerald-200">
@@ -149,104 +207,177 @@
           </div>
         </section>
 
-<!-- ✅ SEO SECTION 3: Design Support for Performance Agencies -->
-<section id="agency" class="mt-14 md:mt-20" data-reveal>
-  <div class="flex items-center justify-between gap-4">
-    <span class="inline-flex text-xs px-4 py-2 rounded-full border border-slate-200 bg-[#f4f4f1] text-slate-600">
-      Performance agencies
-    </span>
-    <span class="text-sm text-slate-500 whitespace-nowrap">
-      Fast output • consistent system
-    </span>
-  </div>
+        <!-- ✅ SEO SECTION 3: Design Support for Performance Agencies -->
+        <section id="agency" class="mt-14 md:mt-20" data-reveal>
+          <div class="flex items-center justify-between gap-4">
+            <!-- Performance agencies tag -> Marketing PDF -->
+            <a
+              href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex text-xs px-4 py-2 rounded-full border border-slate-200 bg-[#f4f4f1] text-slate-600 hover:bg-white transition"
+            >
+              Performance agencies
+            </a>
 
-  <article class="mt-7 md:mt-10 rounded-[28px] border border-slate-200 bg-white overflow-hidden transition hover:shadow-md">
-    <div class="grid md:grid-cols-12 gap-0">
-      <div class="md:col-span-5 p-6 md:p-8">
-        <div class="inline-flex items-center gap-2 text-xs text-slate-600">
-          <span class="px-3 py-1 rounded-full bg-[#f6f0f2] text-slate-800 border border-slate-200">
-            Design support
-          </span>
-          <span>Ads → LP → Product</span>
-        </div>
+            <span class="text-sm text-slate-500 whitespace-nowrap">
+              Fast output • consistent system
+            </span>
+          </div>
 
-        <h2 class="mt-4 text-2xl md:text-3xl font-semibold leading-tight">
-          Design support for fast-moving marketing & performance agencies
-        </h2>
+          <article class="mt-7 md:mt-10 rounded-[28px] border border-slate-200 bg-white overflow-hidden transition hover:shadow-md">
+            <div class="grid md:grid-cols-12 gap-0">
+              <div class="md:col-span-5 p-6 md:p-8">
+                <div class="inline-flex items-center gap-2 text-xs text-slate-600">
+                  <span class="px-3 py-1 rounded-full bg-[#f6f0f2] text-slate-800 border border-slate-200">
+                    Design support
+                  </span>
+                  <span>Ads → LP → Product</span>
+                </div>
 
-        <p class="mt-3 text-slate-600">
-          When campaigns move fast, you need reusable structure. I build creative systems that keep quality high:
-          landing page kits, Figma libraries, ad variations, and motion guidelines — so teams ship more, with less chaos.
-        </p>
+                <h2 class="mt-4 text-2xl md:text-3xl font-semibold leading-tight">
+                  Design support for fast-moving marketing & performance agencies
+                </h2>
 
-        <p class="mt-3 text-sm text-slate-500">
-          🇸🇪 Sökord: <span class="font-medium text-slate-700">frilans designer byrå</span>,
-          <span class="font-medium text-slate-700">designstöd marknadsföringsbyrå</span>,
-          <span class="font-medium text-slate-700">landing page designer</span>.
-        </p>
+                <p class="mt-3 text-slate-600">
+                  When campaigns move fast, you need reusable structure. I build creative systems that keep quality high:
+                  landing page kits, Figma libraries, ad variations, and motion guidelines — so teams ship more, with less chaos.
+                </p>
 
-        <ul class="mt-5 space-y-2 text-sm text-slate-700">
-          <li class="flex gap-2"><i class="bi bi-check2 text-[#0b3d2e]"></i> Landing pages for paid social & search</li>
-          <li class="flex gap-2"><i class="bi bi-check2 text-[#0b3d2e]"></i> Motion ad storyboards + creative guidelines</li>
-          <li class="flex gap-2"><i class="bi bi-check2 text-[#0b3d2e]"></i> Figma libraries for scale + consistency</li>
-        </ul>
+                <p class="mt-3 text-sm text-slate-500">
+                  🇸🇪 Sökord: <span class="font-medium text-slate-700">frilans designer byrå</span>,
+                  <span class="font-medium text-slate-700">designstöd marknadsföringsbyrå</span>,
+                  <span class="font-medium text-slate-700">landing page designer</span>.
+                </p>
 
-        <div class="mt-6 flex flex-wrap gap-2">
-          <span class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600">performance marketing</span>
-          <span class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600">creative system</span>
-          <span class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600">motion ads</span>
-          <span class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600">landing pages</span>
-        </div>
-      </div>
+                <ul class="mt-5 space-y-2 text-sm text-slate-700">
+                  <li class="flex gap-2"><i class="bi bi-check2 text-[#0b3d2e]"></i> Landing pages for paid social & search</li>
+                  <li class="flex gap-2"><i class="bi bi-check2 text-[#0b3d2e]"></i> Motion ad storyboards + creative guidelines</li>
+                  <li class="flex gap-2"><i class="bi bi-check2 text-[#0b3d2e]"></i> Figma libraries for scale + consistency</li>
+                </ul>
 
-      <div class="md:col-span-7 p-4 md:p-6 bg-[#fbfbf9]">
-        <div class="img-wrap rounded-[24px] overflow-hidden border border-slate-200 bg-slate-100">
-          <div class="img-skeleton"></div>
-          <img
-            src="apg1.png"
-            alt="Performance agency design system example"
-            class="w-full h-[260px] md:h-[420px] object-cover"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            data-smooth-img
-          />
-        </div>
-      </div>
-    </div>
-  </article>
-</section>
+                <!-- performance agency / creative system / motion ads / landing pages -> Marketing PDF -->
+                <div class="mt-6 flex flex-wrap gap-2">
+                  <a
+                    href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
+                  >
+                    performance agency
+                  </a>
+
+                  <a
+                    href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
+                  >
+                    creative system
+                  </a>
+
+                  <a
+                    href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
+                  >
+                    motion ads
+                  </a>
+
+                  <a
+                    href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
+                  >
+                    landing pages
+                  </a>
+                </div>
+              </div>
+
+              <div class="md:col-span-7 p-4 md:p-6 bg-[#fbfbf9]">
+                <div class="img-wrap rounded-[24px] overflow-hidden border border-slate-200 bg-slate-100">
+                  <div class="img-skeleton"></div>
+                  <img
+                    src="apg1.png"
+                    alt="Performance agency design system example"
+                    class="w-full h-[260px] md:h-[420px] object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    data-smooth-img
+                  />
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
 
         <!-- SERVICES -->
         <section id="services" class="mt-14 md:mt-20" data-reveal>
           <div class="flex items-center justify-between gap-4">
-            <span class="inline-flex text-xs px-4 py-2 rounded-full border border-slate-200 bg-[#f4f4f1] text-slate-600">
+            <!-- Services pill -> Fintech PDF -->
+            <a
+              href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex text-xs px-4 py-2 rounded-full border border-slate-200 bg-[#f4f4f1] text-slate-600 hover:bg-white transition"
+            >
               Services
-            </span>
-            <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" class="text-sm text-slate-600 hover:text-slate-900 transition whitespace-nowrap">
+            </a>
+
+            <!-- For Fintech -> Stockholm fintech Substack -->
+            <a
+              href="https://stockholmgrowthfintech.substack.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm text-slate-600 hover:text-slate-900 transition whitespace-nowrap"
+            >
               For Fintech <i class="bi bi-arrow-right"></i>
             </a>
           </div>
 
           <div class="mt-7 md:mt-8 grid md:grid-cols-3 gap-5">
-          <div class="rounded-[22px] border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-md">
-            <p class="text-sm font-medium text-slate-800">Fintech</p>
-            <p class="mt-2 text-slate-600">Trust patterns + publishing.</p>
-            <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
-               class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[#0b3d2e] hover:underline">
-              Sponsor / partner <i class="bi bi-arrow-right"></i>
-            </a>
-          </div>
+            <div class="rounded-[22px] border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-md">
+              <p class="text-sm font-medium text-slate-800">
+                <a
+                  href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:underline"
+                >
+                  Fintech
+                </a>
+              </p>
+              <p class="mt-2 text-slate-600">Trust patterns + publishing.</p>
+              <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[#0b3d2e] hover:underline">
+                Sponsor / partner <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
 
             <div class="rounded-[22px] border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-md">
-              <p class="text-sm font-medium text-slate-800">Performance Agencies</p>
+              <p class="text-sm font-medium text-slate-800">
+                <a
+                  href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:underline"
+                >
+                  Performance Agencies
+                </a>
+              </p>
               <p class="mt-2 text-slate-600">Ad systems, motion, fast output.</p>
               <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+                 target="_blank"
+                 rel="noopener noreferrer"
                  class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[#0b3d2e] hover:underline">
                 Download Services <i class="bi bi-arrow-right"></i>
               </a>
             </div>
-
 
             <div class="rounded-[22px] border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-md">
               <p class="text-sm font-medium text-slate-800">Swedish Kommuner</p>
@@ -261,10 +392,20 @@
         <!-- INSIGHTS -->
         <section id="insights" class="mt-14 md:mt-24" data-reveal>
           <div class="flex items-center justify-between gap-4">
-            <span class="inline-flex text-xs px-4 py-2 rounded-full border border-slate-200 bg-[#f4f4f1] text-slate-600">
+            <!-- Resources & insights -> Marketing PDF -->
+            <a
+              href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex text-xs px-4 py-2 rounded-full border border-slate-200 bg-[#f4f4f1] text-slate-600 hover:bg-white transition"
+            >
               Resources & insights
-            </span>
-            <a href="https://stockholmgrowthfintech.substack.com/" class="text-sm text-slate-600 hover:text-slate-900 transition whitespace-nowrap">
+            </a>
+
+            <a href="https://stockholmgrowthfintech.substack.com/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="text-sm text-slate-600 hover:text-slate-900 transition whitespace-nowrap">
               View all <i class="bi bi-arrow-right"></i>
             </a>
           </div>
@@ -278,8 +419,16 @@
                   <span>January 11, 2026</span>
                 </div>
 
+                <!-- How to design for trust -> Fintech PDF -->
                 <h3 class="mt-4 text-2xl md:text-3xl font-semibold leading-tight">
-                  How to design for trust (Brand Consistency)
+                  <a
+                    href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:underline"
+                  >
+                    How to design for trust (Brand Consistency)
+                  </a>
                 </h3>
 
                 <p class="mt-3 text-slate-600">
@@ -316,8 +465,16 @@
                   <span>January 4, 2026</span>
                 </div>
 
+                <!-- A Design Boost for Marketers -> Marketing PDF -->
                 <h3 class="mt-4 text-2xl font-semibold leading-tight">
-                  A Design Boost for Marketers
+                  <a
+                    href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:underline"
+                  >
+                    A Design Boost for Marketers
+                  </a>
                 </h3>
 
                 <p class="mt-3 text-slate-600">
@@ -329,87 +486,150 @@
         </section>
 
         <!-- ✅ SEO SECTION 4: Fintech Website & Brand -->
-<section id="website-brand" class="mt-14 md:mt-20" data-reveal>
-  <div class="flex items-center justify-between gap-4">
-    <span class="inline-flex text-xs px-4 py-2 rounded-full border border-slate-200 bg-[#f4f4f1] text-slate-600">
-      Website & brand
-    </span>
-    <span class="text-sm text-slate-500 whitespace-nowrap">
-      Calm conversion
-    </span>
-  </div>
+        <section id="website-brand" class="mt-14 md:mt-20" data-reveal>
+          <div class="flex items-center justify-between gap-4">
+            <!-- Website & brand -> Fintech PDF -->
+            <a
+              href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex text-xs px-4 py-2 rounded-full border border-slate-200 bg-[#f4f4f1] text-slate-600 hover:bg-white transition"
+            >
+              Website & brand
+            </a>
 
-  <article class="mt-7 md:mt-10 rounded-[28px] border border-slate-200 bg-white overflow-hidden transition hover:shadow-md">
-    <div class="grid md:grid-cols-12 gap-0">
-      <div class="md:col-span-7 order-2 md:order-1 p-4 md:p-6 bg-[#fbfbf9]">
-        <div class="img-wrap rounded-[24px] overflow-hidden border border-slate-200 bg-slate-100">
-          <div class="img-skeleton"></div>
-          <img
-            src="apg4.png"
-            alt="Fintech website and brand example"
-            class="w-full h-[260px] md:h-[620px] object-cover"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            data-smooth-img
-          />
-        </div>
-      </div>
+            <span class="text-sm text-slate-500 whitespace-nowrap">
+              Calm conversion
+            </span>
+          </div>
 
-      <div class="md:col-span-5 order-1 md:order-2 p-6 md:p-8">
-        <div class="inline-flex items-center gap-2 text-xs text-slate-600">
-          <span class="px-3 py-1 rounded-full bg-[#e9efe8] text-[#0b3d2e] border border-slate-200">
-            Fintech website design
-          </span>
-          <span>Positioning • UX writing</span>
-        </div>
+          <article class="mt-7 md:mt-10 rounded-[28px] border border-slate-200 bg-white overflow-hidden transition hover:shadow-md">
+            <div class="grid md:grid-cols-12 gap-0">
+              <div class="md:col-span-7 order-2 md:order-1 p-4 md:p-6 bg-[#fbfbf9]">
+                <div class="img-wrap rounded-[24px] overflow-hidden border border-slate-200 bg-slate-100">
+                  <div class="img-skeleton"></div>
+                  <img
+                    src="apg4.jpg"
+                    alt="Fintech website and brand example"
+                    class="w-full h-[260px] md:h-[620px] object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    data-smooth-img
+                  />
+                </div>
+              </div>
 
-        <h2 class="mt-4 text-2xl md:text-3xl font-semibold leading-tight">
-          Fintech website & branding that feels premium — and ranks
-        </h2>
+              <div class="md:col-span-5 order-1 md:order-2 p-6 md:p-8">
+                <div class="inline-flex items-center gap-2 text-xs text-slate-600">
+                  <span class="px-3 py-1 rounded-full bg-[#e9efe8] text-[#0b3d2e] border border-slate-200">
+                    Fintech website design
+                  </span>
+                  <span>Positioning • UX writing</span>
+                </div>
 
-        <p class="mt-3 text-slate-600">
-          A clear narrative makes fintech easier to understand. I design websites and brand systems that connect product and marketing:
-          homepage structure, pricing clarity, trust cues, and visual consistency — so the experience converts without shouting.
-        </p>
+                <h2 class="mt-4 text-2xl md:text-3xl font-semibold leading-tight">
+                  <a
+                    href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:underline"
+                  >
+                    Fintech website & branding that feels premium — and ranks
+                  </a>
+                </h2>
 
-        <p class="mt-3 text-sm text-slate-500">
-          🇸🇪 Sökord: <span class="font-medium text-slate-700">webbdesign fintech</span>,
-          <span class="font-medium text-slate-700">varumärke fintech</span>,
-          <span class="font-medium text-slate-700">designkonsult Stockholm</span>.
-        </p>
+                <p class="mt-3 text-slate-600">
+                  A clear narrative makes fintech easier to understand. I design websites and brand systems that connect product and marketing:
+                  homepage structure, pricing clarity, trust cues, and visual consistency — so the experience converts without shouting.
+                </p>
 
-        <div class="mt-5 rounded-2xl border border-slate-200 bg-white p-4">
-          <p class="text-sm font-medium text-slate-800">Typical scope</p>
-          <p class="mt-1 text-sm text-slate-600">
-            Homepage narrative • service pages • SEO sections • UI components • brand guidelines.
-          </p>
-        </div>
+                <p class="mt-3 text-sm text-slate-500">
+                  🇸🇪 Sökord: <span class="font-medium text-slate-700">webbdesign fintech</span>,
+                  <span class="font-medium text-slate-700">varumärke fintech</span>,
+                  <span class="font-medium text-slate-700">designkonsult Stockholm</span>.
+                </p>
 
-        <div class="mt-6 flex flex-wrap gap-2">
-          <span class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600">fintech branding</span>
-          <span class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600">website design</span>
-          <span class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600">positioning</span>
-          <span class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600">UX writing</span>
-        </div>
-      </div>
-    </div>
-  </article>
-</section>
+                <div class="mt-5 rounded-2xl border border-slate-200 bg-white p-4">
+                  <p class="text-sm font-medium text-slate-800">Typical scope</p>
+                  <p class="mt-1 text-sm text-slate-600">
+                    Homepage narrative • service pages • SEO sections • UI components • brand guidelines.
+                  </p>
+                </div>
+
+                <!-- fintech branding / UX writing / positioning / website design -> Fintech PDF -->
+                <div class="mt-6 flex flex-wrap gap-2">
+                  <a
+                    href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
+                  >
+                    fintech branding
+                  </a>
+
+                  <a
+                    href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
+                  >
+                    website design
+                  </a>
+
+                  <a
+                    href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
+                  >
+                    positioning
+                  </a>
+
+                  <a
+                    href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
+                  >
+                    UX writing
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
 
         <!-- ABOUT -->
         <section id="about" class="mt-14 md:mt-24 text-center" data-reveal>
-          <span class="inline-flex text-xs px-4 py-2 rounded-full border border-slate-200 bg-[#f4f4f1] text-slate-600">
+          <!-- For Performance Agencies top pill -> Marketing PDF -->
+          <a
+            href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex text-xs px-4 py-2 rounded-full border border-slate-200 bg-[#f4f4f1] text-slate-600 hover:bg-white transition"
+          >
             For Performance Agencies
-          </span>
+          </a>
 
-          <h2 class="mt-7 md:mt-8 text-3xl md:text-5xl font-semibold leading-[1.1] tracking-tight">
-            I’m a systems-first designer helping<br class="hidden md:block" />
-            Marketing Teams build speed and trust.
-          </h2>
+          <!-- Clicking on "me" -> LinkedIn (made headline a link) -->
+          <a
+            href="https://www.linkedin.com/in/alexandragrisanti/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block"
+            aria-label="Open Alexandra on LinkedIn"
+          >
+            <h2 class="mt-7 md:mt-8 text-3xl md:text-5xl font-semibold leading-[1.1] tracking-tight hover:underline">
+              I’m a systems-first designer helping<br class="hidden md:block" />
+              Marketing Teams build speed and trust.
+            </h2>
+          </a>
 
           <div class="mt-8 md:mt-10 flex justify-center">
             <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+               target="_blank"
+               rel="noopener noreferrer"
                class="inline-flex items-center gap-3 px-7 py-4 rounded-full bg-[#0b3d2e] text-white font-medium
                       shadow-[0_18px_45px_rgba(11,61,46,0.35)] hover:shadow-[0_24px_60px_rgba(11,61,46,0.35)]
                       transition transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-emerald-200">
@@ -429,6 +649,8 @@
 
             <div class="mt-7 md:mt-8 flex flex-col sm:flex-row justify-center gap-3">
               <a href="https://form.fillout.com/t/mza5qUGR9rus"
+                 target="_blank"
+                 rel="noopener noreferrer"
                  class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full bg-[#0b3d2e] text-white font-medium
                         shadow-[0_18px_45px_rgba(11,61,46,0.35)] transition transform hover:-translate-y-0.5
                         focus:outline-none focus:ring-4 focus:ring-emerald-200">
@@ -444,7 +666,6 @@
 
             <!-- Left block -->
             <div class="md:col-span-5">
-              <!-- ✅ Fixed: keep it left-aligned so it doesn't "float" awkwardly -->
               <p
                 class="bg-gradient-to-r from-[#519CFF] to-[#FFACC2] bg-clip-text text-transparent
                        font-semibold tracking-[-0.05em] leading-[0.86]
@@ -460,12 +681,14 @@
 
               <div class="mt-6 flex items-center gap-3">
                 <a href="https://www.linkedin.com/in/alexandragrisanti/"
+                   target="_blank"
+                   rel="noopener noreferrer"
                    class="inline-flex items-center justify-center w-11 h-11 rounded-full border border-slate-200 bg-white hover:bg-slate-50 transition
                           focus:outline-none focus:ring-4 focus:ring-slate-200"
                    aria-label="LinkedIn">
                   <i class="bi bi-linkedin text-slate-700"></i>
                 </a>
-                <a href="alexandrapgrisanti@gmail.com"
+                <a href="mailto:alexandrapgrisanti@gmail.com"
                    class="inline-flex items-center justify-center w-11 h-11 rounded-full border border-slate-200 bg-white hover:bg-slate-50 transition
                           focus:outline-none focus:ring-4 focus:ring-slate-200"
                    aria-label="Email">
@@ -480,27 +703,59 @@
                 <div>
                   <p class="text-sm font-medium text-slate-900">Work</p>
                   <div class="mt-3 space-y-2 text-sm text-slate-600">
-                    <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" class="block hover:text-slate-900 transition">Performance Agency design</a>
-                    <a href="https://stockholmgrowthfintech.substack.com/" class="block hover:text-slate-900 transition">Fintech advisory</a>
-                    <a href="https://platsivardagen.substack.com/" class="block hover:text-slate-900 transition">Kommun audits</a>
+                    <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="block hover:text-slate-900 transition">Performance Agency design</a>
+
+                    <a href="https://stockholmgrowthfintech.substack.com/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="block hover:text-slate-900 transition">Fintech advisory</a>
+
+                    <a href="https://platsivardagen.substack.com/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="block hover:text-slate-900 transition">Kommun audits</a>
                   </div>
                 </div>
 
                 <div>
                   <p class="text-sm font-medium text-slate-900">Resources</p>
                   <div class="mt-3 space-y-2 text-sm text-slate-600">
-                    <a href="https://stockholmgrowthfintech.substack.com/" class="block hover:text-slate-900 transition">Newsletter</a>
-                    <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" class="block hover:text-slate-900 transition">Media kit</a>
-                    <a href="https://alundsvagen.github.io/alexandrastudio/Performance_Report_2026.pdf" class="block hover:text-slate-900 transition">Downloadables</a>
+                    <a href="https://stockholmgrowthfintech.substack.com/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="block hover:text-slate-900 transition">Newsletter</a>
+
+                    <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="block hover:text-slate-900 transition">Media kit</a>
+
+                    <!-- Resources/Insights -> Marketing PDF -->
+                    <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="block hover:text-slate-900 transition">Downloadables</a>
                   </div>
                 </div>
 
                 <div>
                   <p class="text-sm font-medium text-slate-900">Contact</p>
                   <div class="mt-3 space-y-2 text-sm text-slate-600">
-                    <a href="https://calendly.com/alexandrapgrisanti/hello" class="block hover:text-slate-900 transition">Book a call</a>
-                    <a href="alexandrapgrisanti@gmail.com" class="block hover:text-slate-900 transition">Email</a>
-                    <a href="https://calendly.com/alexandrapgrisanti/hello" class="block hover:text-slate-900 transition">Speaking</a>
+                    <a href="https://calendly.com/alexandrapgrisanti/hello"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="block hover:text-slate-900 transition">Book a call</a>
+
+                    <a href="mailto:alexandrapgrisanti@gmail.com"
+                       class="block hover:text-slate-900 transition">Email</a>
+
+                    <a href="https://calendly.com/alexandrapgrisanti/hello"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="block hover:text-slate-900 transition">Speaking</a>
                   </div>
                 </div>
               </div>
@@ -508,14 +763,25 @@
           </div>
 
           <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-4 pb-8 text-xs text-slate-500">
-            <p>© 2026 Alexandra Grisanti. All rights reserved.</p>
+            <p>
+              © 2026
+              <a
+                href="https://www.linkedin.com/in/alexandragrisanti/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:underline"
+              >
+                Alexandra Grisanti
+              </a>.
+              All rights reserved.
+            </p>
           </div>
         </footer>
 
       </main>
     </div>
   </div>
-  
+
   <script>
     // Reveal animations
     const reveals = document.querySelectorAll('.reveal');
@@ -528,11 +794,12 @@
     const menuBtn = document.getElementById("menuBtn");
     const mobileNav = document.getElementById("mobileNav");
 
-    menuBtn.onclick = () => {
-      mobileNav.classList.toggle("hidden");
-      menuBtn.classList.toggle("open");
-    };
+    if (menuBtn && mobileNav) {
+      menuBtn.onclick = () => {
+        mobileNav.classList.toggle("hidden");
+        menuBtn.classList.toggle("open");
+      };
+    }
   </script>
 </body>
 </html>
-
