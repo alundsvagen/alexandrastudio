@@ -230,6 +230,193 @@
         </div>
       </section>
 
+      <!-- THREE COLUMN SECTION - BRAND STYLE -->
+<section class="py-16 md:py-24 px-6 bg-white">
+  <div class="mx-auto max-w-7xl">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      
+      <!-- Counter Column 1 - Products Designed -->
+      <div class="flex flex-col items-center justify-center p-8 md:p-12 bg-neutral-50 rounded-2xl scandi-border min-h-[300px] md:min-h-[400px]">
+        <div class="text-center">
+          <div id="productsCounter" class="text-5xl sm:text-6xl md:text-7xl font-light text-neutral-900 mb-4">+0</div>
+          <div class="text-lg md:text-xl font-light text-neutral-600">Products Designed</div>
+        </div>
+      </div>
+
+      <!-- Counter Column 2 - Brands -->
+      <div class="flex flex-col items-center justify-center p-8 md:p-12 bg-neutral-50 rounded-2xl scandi-border min-h-[300px] md:min-h-[400px]">
+        <div class="text-center">
+          <div id="brandsCounter" class="text-5xl sm:text-6xl md:text-7xl font-light text-neutral-900 mb-4">+0</div>
+          <div class="text-lg md:text-xl font-light text-neutral-600">Brands</div>
+        </div>
+      </div>
+
+      <!-- Scrolling Image Column 3 - Collaborations -->
+      <div class="relative rounded-2xl scandi-border overflow-hidden min-h-[300px] md:min-h-[400px] bg-white">
+        <!-- Title -->
+        <div class="absolute top-0 left-0 right-0 z-20 text-center pt-6 md:pt-8">
+          <h3 class="text-2xl md:text-3xl font-light text-neutral-900">Collaborations</h3>
+        </div>
+        
+        <!-- Image scroll container -->
+        <div class="collaboration-scroll-wrapper">
+          <div class="collaboration-scroll-track">
+            <img src="9.png" alt="Collaborations" class="collaboration-image" />
+          </div>
+        </div>
+        
+        <!-- Fade overlays -->
+        <div class="fade-left"></div>
+        <div class="fade-right"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Scandinavian border style */
+  .scandi-border {
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  /* Collaboration scroll container */
+  .collaboration-scroll-wrapper {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
+
+  .collaboration-scroll-track {
+    position: left;
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: scrollHorizontal 12s linear infinite;
+  }
+
+  .collaboration-image {
+    height: 30%;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    transform: scale(6);
+  }
+
+  /* Horizontal scrolling animation - right to left */
+  @keyframes scrollHorizontal {
+    0% {
+      transform: translateX(400%);
+    }
+    100% {
+      transform: translateX(-500%);
+    }
+  }
+
+  /* Fade overlays for horizontal scroll */
+  .fade-left {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .fade-right {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    bottom: 0;
+    width: 60px;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Pause animation on hover */
+  .collaboration-scroll-wrapper:hover .collaboration-scroll-track {
+    animation-play-state: paused;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .collaboration-scroll-wrapper {
+      top: 60px;
+    }
+
+    .fade-left,
+    .fade-right {
+      top: 60px;
+      width: 40px;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .collaboration-scroll-track {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  // Counter animation function (80% slower = 5x duration)
+  function animateCounter(id, start, end, duration) {
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    const range = end - start;
+    const increment = range / (duration / 16);
+    let current = start;
+
+    const step = () => {
+      current += increment;
+      if (current >= end) {
+        element.textContent = '+' + Math.round(end);
+      } else {
+        element.textContent = '+' + Math.round(current);
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
+  }
+
+  // Intersection Observer to trigger counters when section is visible
+  const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px'
+  };
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Animate counters - 80% slower (10000ms instead of 2000ms)
+        animateCounter("productsCounter", 0, 9, 10000);
+        animateCounter("brandsCounter", 0, 11, 10000);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const section = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-3');
+    if (section) {
+      counterObserver.observe(section);
+    }
+  });
+</script>
+
+
       <!-- PERFORMANCE AGENCIES -->
       <section id="agency" class="px-6 md:px-8 py-16 md:py-24 bg-neutral-50/50" data-reveal>
         <div class="mx-auto max-w-7xl">
