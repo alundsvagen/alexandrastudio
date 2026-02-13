@@ -9,7 +9,7 @@
   <link
     rel="icon"
     type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b3d2e'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial' font-size='34' font-weight='700' fill='white'%3EA%3C/text%3E%3C/svg%3E"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111111'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial' font-size='34' font-weight='700' fill='white'%3EA%3C/text%3E%3C/svg%3E"
   />
 
   <!-- Tailwind CDN -->
@@ -28,15 +28,23 @@
   </script>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
     html { scroll-behavior: smooth; }
 
-    /* --- Smooth rise-up reveal (NO blur) --- */
+    /* Subtle reveal */
     [data-reveal]{
       opacity: 0;
-      transform: translate3d(0, 16px, 0);
+      transform: translate3d(0, 20px, 0);
       transition:
-        opacity 650ms cubic-bezier(.2,.8,.2,1),
-        transform 650ms cubic-bezier(.2,.8,.2,1);
+        opacity 700ms cubic-bezier(.16,1,.3,1),
+        transform 700ms cubic-bezier(.16,1,.3,1);
       will-change: opacity, transform;
     }
     [data-reveal].is-visible{
@@ -45,14 +53,17 @@
     }
     [data-reveal] { transition-delay: var(--d, 0ms); }
 
-    /* Soft hover lift */
-    .soft-lift{
-      transition: transform 450ms cubic-bezier(.2,.8,.2,1), box-shadow 450ms cubic-bezier(.2,.8,.2,1);
+    /* Refined hover */
+    .refined-lift{
+      transition: transform 400ms cubic-bezier(.16,1,.3,1), box-shadow 400ms cubic-bezier(.16,1,.3,1);
       will-change: transform, box-shadow;
     }
-    .soft-lift:hover{ transform: translateY(-3px); }
+    .refined-lift:hover{ 
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
 
-    /* Mobile menu animation */
+    /* Mobile menu */
     #mobileNav.is-open{
       max-height: 520px;
       opacity: 1;
@@ -62,16 +73,25 @@
     /* Hamburger */
     .hamburger span{
       display:block;
-      width:22px;
+      width:20px;
       height:2px;
-      background:#0f172a;
-      border-radius:999px;
-      transition: transform 300ms ease, opacity 300ms ease;
+      background:#111;
+      border-radius:2px;
+      transition: transform 300ms cubic-bezier(.16,1,.3,1), opacity 300ms ease;
     }
-    .hamburger span + span{ margin-top:5px; }
-    #menuBtn.open .hamburger span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+    .hamburger span + span{ margin-top:4px; }
+    #menuBtn.open .hamburger span:nth-child(1){ transform: translateY(6px) rotate(45deg); }
     #menuBtn.open .hamburger span:nth-child(2){ opacity: 0; }
-    #menuBtn.open .hamburger span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+    #menuBtn.open .hamburger span:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+
+    /* Scandinavian minimal border */
+    .scandi-border {
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .scandi-border-thick {
+      border: 1.5px solid rgba(0,0,0,0.08);
+    }
 
     @media (prefers-reduced-motion: reduce){
       html { scroll-behavior: auto; }
@@ -80,79 +100,48 @@
         transform:none !important;
         transition:none !important;
       }
-      .soft-lift{ transition:none !important; }
+      .refined-lift{ transition:none !important; }
     }
   </style>
 </head>
 
-<body class="bg-[#f3f3ef] text-slate-900 antialiased overflow-x-hidden">
+<body class="bg-white text-neutral-900 antialiased overflow-x-hidden">
 
-  <div class="min-h-screen px-4 py-10 md:py-14">
-    <div class="mx-auto w-full max-w-6xl overflow-hidden rounded-[28px] bg-white border border-slate-200 shadow-[0_30px_90px_rgba(0,0,0,0.18)]">
-
-      <!-- HEADER -->
-      <header class="px-6 md:px-10 pt-6 md:pt-7">
+  <div class="min-h-screen">
+    
+    <!-- HEADER -->
+    <header class="px-6 md:px-8 py-6 md:py-7 border-b scandi-border sticky top-0 bg-white/80 backdrop-blur-xl z-50">
+      <div class="mx-auto max-w-7xl">
         <div class="flex items-center justify-between gap-4">
           <a
             href="https://alexandrastudio.se/Performance_Report_2026.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            class="group inline-flex items-center gap-3"
+            class="inline-flex items-center gap-3 group"
           >
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#f2f2ee] border border-slate-200 transition group-hover:shadow-sm">
-              <i class="bi bi-leaf-fill text-[#0b3d2e]"></i>
+            <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-neutral-900 transition-transform group-hover:scale-105">
+              <span class="text-white text-sm font-semibold">A</span>
             </span>
 
-            <span
-              class="bg-gradient-to-r from-[#519CFF] to-[#FFACC2] bg-clip-text text-transparent
-                     font-semibold tracking-[-0.05em] leading-[0.86] text-[18px] md:text-[20px]"
-              style="font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text',system-ui,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;"
-            >
+            <span class="text-neutral-900 font-medium tracking-tight text-lg">
               Alexandra
             </span>
           </a>
 
-          <nav class="hidden md:flex items-center gap-8 text-sm text-slate-600">
-            <a href="#home" class="hover:text-slate-900 transition">Download</a>
-
-            <a
-              href="https://alexandrastudio.se/Performance_Report_2026.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:text-slate-900 transition"
-            >
-              Services
-            </a>
-
-            <a
-              href="https://alexandrastudio.se/Performance_Report_2026.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:text-slate-900 transition"
-            >
-              Work Together
-            </a>
-
-            <a href="#about" class="hover:text-slate-900 transition">About</a>
-
-            <a
-              href="https://alexandrastudio.se/Performance_Report_2026.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:text-slate-900 transition"
-            >
-              Learn
-            </a>
-
-            <a href="#contact" class="hover:text-slate-900 transition">Contact</a>
+          <nav class="hidden md:flex items-center gap-8 text-[15px] font-normal">
+            <a href="#home" class="text-neutral-500 hover:text-neutral-900 transition">Download</a>
+            <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-900 transition">Services</a>
+            <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-900 transition">Work Together</a>
+            <a href="#about" class="text-neutral-500 hover:text-neutral-900 transition">About</a>
+            <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-900 transition">Learn</a>
+            <a href="#contact" class="px-5 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition">Contact</a>
           </nav>
 
           <!-- Mobile menu button -->
           <button
             id="menuBtn"
             type="button"
-            class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-full border border-slate-200 bg-white hover:bg-slate-50 transition
-                   focus:outline-none focus:ring-4 focus:ring-slate-200"
+            class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition focus:outline-none focus:ring-2 focus:ring-neutral-200"
             aria-label="Open menu"
             aria-expanded="false"
             aria-controls="mobileNav"
@@ -168,681 +157,415 @@
           id="mobileNav"
           class="md:hidden overflow-hidden max-h-0 opacity-0 pointer-events-none transition-all duration-300 ease-out"
         >
-          <div class="mt-4 rounded-2xl border border-slate-200 bg-[#fbfbf9] p-3 text-sm text-slate-700">
+          <div class="mt-4 rounded-2xl scandi-border bg-neutral-50/50 p-3 text-sm backdrop-blur-xl">
             <div class="grid grid-cols-2 gap-2">
-              <a href="#home" class="px-4 py-3 rounded-xl hover:bg-white transition">Home</a>
-
-              <a
-                href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="px-4 py-3 rounded-xl hover:bg-white transition"
-              >
-                Services
-              </a>
-
-              <a href="#about" class="px-4 py-3 rounded-xl hover:bg-white transition">About</a>
-
-              <a
-                href="https://alexandrastudio.se/Performance_Report_2026.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="px-4 py-3 rounded-xl hover:bg-white transition"
-              >
-                Insights
-              </a>
-
-              <a href="#contact" class="px-4 py-3 rounded-xl hover:bg-white transition">Contact</a>
-              <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" class="px-4 py-3 rounded-xl hover:bg-white transition">Search</a>
+              <a href="#home" class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Home</a>
+              <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Services</a>
+              <a href="#about" class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">About</a>
+              <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Insights</a>
+              <a href="#contact" class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Contact</a>
+              <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Search</a>
             </div>
           </div>
         </div>
-      </header>
+      </div>
+    </header>
 
-      <!-- MAIN -->
-      <main id="home" class="px-6 md:px-10 pb-10 md:pb-14">
+    <!-- MAIN -->
+    <main id="home">
 
-        <!-- HERO -->
-        <section class="pt-12 md:pt-18 text-center" data-reveal>
-          <a
-            href="https://alexandrastudio.se/Performance_Report_2026.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 text-xs text-slate-600 bg-[#f4f4f1] border border-slate-200 px-4 py-2 rounded-full hover:bg-white transition"
-          >
-            <span class="w-2 h-2 rounded-full bg-[#0b3d2e]"></span>
-            <span>Stockholm, Sweden</span>
-          </a>
+      <!-- HERO -->
+      <section class="px-6 md:px-8 pt-20 md:pt-28 pb-16 md:pb-24" data-reveal>
+        <div class="mx-auto max-w-7xl">
+          <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 text-xs text-neutral-600 bg-neutral-50 scandi-border px-4 py-2 rounded-full mb-8">
+              <span class="w-1.5 h-1.5 rounded-full bg-neutral-900"></span>
+              <span>Stockholm, Sweden</span>
+            </div>
 
-          <h1 class="mt-7 md:mt-8 text-4xl md:text-6xl font-semibold leading-[1.05] tracking-tight">
-            Design systems<br class="hidden md:block" />
-            for CMOs, Fintechs & Performance Agencies
-          </h1>
+            <h1 class="text-5xl md:text-7xl font-light leading-[1.08] tracking-[-0.02em] text-neutral-900 mb-8">
+              Design systems for<br />
+              CMOs, Fintechs &<br />
+              Performance Agencies
+            </h1>
 
-          <p class="mt-5 md:mt-6 text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
-            with +10 satisfied customers in Fintech and Marketing
-          </p>
+            <p class="text-lg md:text-xl text-neutral-500 font-light max-w-2xl mx-auto mb-12">
+              With 10+ satisfied customers in Fintech and Marketing
+            </p>
 
-          <div class="mt-8 md:mt-10 flex justify-center">
-            <a href="https://alexandrastudio.se/Performance_Report_2026.pdf"
-               class="inline-flex items-center gap-3 px-7 py-4 rounded-full bg-[#0b3d2e] text-white font-medium
-                      shadow-[0_18px_45px_rgba(11,61,46,0.35)] hover:shadow-[0_24px_60px_rgba(11,61,46,0.35)]
-                      transition transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-emerald-200 soft-lift">
-              See Impact Report
-              <i class="bi bi-arrow-right"></i>
-            </a>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+              <a href="https://alexandrastudio.se/Performance_Report_2026.pdf"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-neutral-900 text-white text-[15px] font-medium hover:bg-neutral-800 transition transform hover:-translate-y-0.5">
+                See Impact Report
+                <i class="bi bi-arrow-right text-sm"></i>
+              </a>
+              
+              <a href="#contact"
+                 class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full scandi-border-thick bg-white text-neutral-900 text-[15px] font-medium hover:bg-neutral-50 transition">
+                Get Started
+              </a>
+            </div>
           </div>
 
-          <!-- ✅ Image row (ALL open Fintech report) -->
-          <div class="mt-10 md:mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            <a
-              href="https://alexandrastudio.se/Performance_Report_2026.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block rounded-[22px] overflow-hidden border border-slate-200 bg-slate-100 soft-lift hover:shadow-md focus:outline-none focus:ring-4 focus:ring-slate-200"
-              aria-label="Open Fintech report"
-            >
-              <img
-                src="https://millefeuillemockup.com/wp-content/uploads/2023/10/Millefeuille-Mockup-Antoine-Peltier-Design-MLLFLL-002.jpeg"
-                alt="Leaf texture"
-                class="w-full h-40 md:h-44 object-cover"
-                loading="lazy"
-              />
+          <!-- Image Grid -->
+          <div class="mt-20 md:mt-28 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer" class="block rounded-xl overflow-hidden scandi-border bg-neutral-50 refined-lift" aria-label="View work">
+              <img src="https://millefeuillemockup.com/wp-content/uploads/2023/10/Millefeuille-Mockup-Antoine-Peltier-Design-MLLFLL-002.jpeg" alt="Design work" class="w-full h-44 md:h-48 object-cover" loading="lazy" />
             </a>
 
-            <a
-              href="https://alexandrastudio.se/Performance_Report_2026.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block rounded-[22px] overflow-hidden border border-slate-200 bg-slate-100 soft-lift hover:shadow-md focus:outline-none focus:ring-4 focus:ring-slate-200"
-              aria-label="Open Fintech report"
-            >
-              <img
-                src="https://design-packs.com/cdn/shop/files/overlap-stacking-cards.gif?v=1753901686&width=823"
-                alt="Stacking cards"
-                class="w-full h-40 md:h-44 object-cover"
-                loading="lazy"
-              />
+            <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer" class="block rounded-xl overflow-hidden scandi-border bg-neutral-50 refined-lift" aria-label="View work">
+              <img src="https://design-packs.com/cdn/shop/files/overlap-stacking-cards.gif?v=1753901686&width=823" alt="Design work" class="w-full h-44 md:h-48 object-cover" loading="lazy" />
             </a>
 
-            <a
-              href="https://alexandrastudio.se/Performance_Report_2026.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block rounded-[22px] overflow-hidden border border-slate-200 bg-slate-100 soft-lift hover:shadow-md focus:outline-none focus:ring-4 focus:ring-slate-200"
-              aria-label="Open Fintech report"
-            >
-              <img
-                src="https://goodmockups.com/wp-content/uploads/2024/08/Free-Floating-Dual-iPhone-16-Pro-Max-Mockup-PSD.jpg"
-                alt="iPhone mockup"
-                class="w-full h-40 md:h-44 object-cover"
-                loading="lazy"
-              />
+            <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer" class="block rounded-xl overflow-hidden scandi-border bg-neutral-50 refined-lift" aria-label="View work">
+              <img src="https://goodmockups.com/wp-content/uploads/2024/08/Free-Floating-Dual-iPhone-16-Pro-Max-Mockup-PSD.jpg" alt="Design work" class="w-full h-44 md:h-48 object-cover" loading="lazy" />
             </a>
 
-            <a
-              href="https://alexandrastudio.se/Performance_Report_2026.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block rounded-[22px] overflow-hidden border border-slate-200 bg-slate-100 soft-lift hover:shadow-md focus:outline-none focus:ring-4 focus:ring-slate-200"
-              aria-label="Open Fintech report"
-            >
-              <img
-                src="https://elmish.land/assets/images/image1-3ca72746a8b25e1ef39aa74f8112ceb2.png"
-                alt="UI preview"
-                class="w-full h-40 md:h-44 object-cover"
-                loading="lazy"
-              />
+            <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer" class="block rounded-xl overflow-hidden scandi-border bg-neutral-50 refined-lift" aria-label="View work">
+              <img src="https://elmish.land/assets/images/image1-3ca72746a8b25e1ef39aa74f8112ceb2.png" alt="Design work" class="w-full h-44 md:h-48 object-cover" loading="lazy" />
             </a>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- ✅ SEO SECTION 3: Design Support for Performance Agencies -->
-        <section id="agency" class="mt-14 md:mt-20" data-reveal>
-          <div class="flex items-center justify-between gap-4">
-            <a
-              href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex text-xs px-4 py-2 rounded-full border border-slate-200 bg-[#f4f4f1] text-slate-600 hover:bg-white transition"
-            >
+      <!-- PERFORMANCE AGENCIES -->
+      <section id="agency" class="px-6 md:px-8 py-16 md:py-24 bg-neutral-50/50" data-reveal>
+        <div class="mx-auto max-w-7xl">
+          <div class="flex items-center justify-between gap-4 mb-10">
+            <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium">
               Performance agencies
-            </a>
-
-            <span class="text-sm text-slate-500 whitespace-nowrap">
-              Fast output • consistent system
             </span>
+            <span class="text-sm text-neutral-400 whitespace-nowrap font-light">Fast output • Consistent system</span>
           </div>
 
-          <article class="mt-7 md:mt-10 rounded-[28px] border border-slate-200 bg-white overflow-hidden soft-lift hover:shadow-md">
+          <article class="rounded-2xl scandi-border bg-white overflow-hidden refined-lift">
             <div class="grid md:grid-cols-12 gap-0">
-              <div class="md:col-span-5 p-6 md:p-8">
-                <div class="inline-flex items-center gap-2 text-xs text-slate-600">
-                  <span class="px-3 py-1 rounded-full bg-[#f6f0f2] text-slate-800 border border-slate-200">
+              <div class="md:col-span-5 p-8 md:p-12">
+                <div class="inline-flex items-center gap-2 text-[13px] text-neutral-600 mb-6">
+                  <span class="px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 scandi-border font-medium">
                     Design support
                   </span>
-                  <span>Ads → LP → Product</span>
+                  <span class="font-light">Ads → LP → Product</span>
                 </div>
 
-                <h2 class="mt-4 text-2xl md:text-3xl font-semibold leading-tight">
+                <h2 class="text-3xl md:text-4xl font-light leading-[1.15] tracking-tight text-neutral-900 mb-6">
                   Design support for fast-moving marketing & performance agencies
                 </h2>
 
-                <p class="mt-3 text-slate-600">
-                  When campaigns move fast, you need reusable structure. I build creative systems that keep quality high:
-                  landing page kits, Figma libraries, ad variations, and motion guidelines — so teams ship more, with less chaos.
+                <p class="text-neutral-600 leading-relaxed mb-6 font-light">
+                  When campaigns move fast, you need reusable structure. I build creative systems that keep quality high: landing page kits, Figma libraries, ad variations, and motion guidelines.
                 </p>
 
-                <p class="mt-3 text-sm text-slate-500">
-                  🇸🇪 Sökord: <span class="font-medium text-slate-700">frilans designer byrå</span>,
-                  <span class="font-medium text-slate-700">designstöd marknadsföringsbyrå</span>,
-                  <span class="font-medium text-slate-700">landing page designer</span>.
-                </p>
-
-                <ul class="mt-5 space-y-2 text-sm text-slate-700">
-                  <li class="flex gap-2"><i class="bi bi-check2 text-[#0b3d2e]"></i> Landing pages for paid social & search</li>
-                  <li class="flex gap-2"><i class="bi bi-check2 text-[#0b3d2e]"></i> Motion ad storyboards + creative guidelines</li>
-                  <li class="flex gap-2"><i class="bi bi-check2 text-[#0b3d2e]"></i> Figma libraries for scale + consistency</li>
+                <ul class="space-y-3 text-[15px] text-neutral-700 mb-8">
+                  <li class="flex items-start gap-3">
+                    <span class="w-1 h-1 rounded-full bg-neutral-900 mt-2 flex-shrink-0"></span>
+                    <span>Landing pages for paid social & search</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="w-1 h-1 rounded-full bg-neutral-900 mt-2 flex-shrink-0"></span>
+                    <span>Motion ad storyboards + creative guidelines</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="w-1 h-1 rounded-full bg-neutral-900 mt-2 flex-shrink-0"></span>
+                    <span>Figma libraries for scale + consistency</span>
+                  </li>
                 </ul>
 
-                <div class="mt-6 flex flex-wrap gap-2">
-                  <a
-                    href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
-                  >
-                    performance agency
-                  </a>
-
-                  <a
-                    href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
-                  >
-                    creative system
-                  </a>
-
-                  <a
-                    href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
-                  >
-                    motion ads
-                  </a>
-
-                  <a
-                    href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
-                  >
-                    landing pages
-                  </a>
+                <div class="flex flex-wrap gap-2">
+                  <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600 hover:bg-white transition">performance agency</a>
+                  <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600 hover:bg-white transition">creative system</a>
+                  <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600 hover:bg-white transition">motion ads</a>
                 </div>
               </div>
 
-              <div class="md:col-span-7 p-4 md:p-6 bg-[#fbfbf9]">
-                <div class="img-wrap rounded-[24px] overflow-hidden border border-slate-200 bg-slate-100">
-                  <img
-                    src="apg1.png"
-                    alt="Performance agency design system example"
-                    class="w-full h-[260px] md:h-[420px] object-cover"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                  />
+              <div class="md:col-span-7 p-6 md:p-8 bg-neutral-50/50">
+                <div class="rounded-xl overflow-hidden scandi-border bg-white">
+                  <img src="apg1.png" alt="Performance agency design" class="w-full h-[280px] md:h-[480px] object-cover" loading="lazy" />
                 </div>
               </div>
             </div>
           </article>
-        </section>
+        </div>
+      </section>
 
-        <!-- SERVICES -->
-        <section id="services" class="mt-14 md:mt-20" data-reveal>
-          <div class="flex items-center justify-between gap-4">
-            <a
-              href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex text-xs px-4 py-2 rounded-full border border-slate-200 bg-[#f4f4f1] text-slate-600 hover:bg-white transition"
-            >
+      <!-- SERVICES -->
+      <section id="services" class="px-6 md:px-8 py-16 md:py-24" data-reveal>
+        <div class="mx-auto max-w-7xl">
+          <div class="flex items-center justify-between gap-4 mb-10">
+            <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-neutral-50 text-neutral-700 font-medium">
               Services
-            </a>
-
-            <a
-              href="https://stockholmgrowthfintech.substack.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-sm text-slate-600 hover:text-slate-900 transition whitespace-nowrap"
-            >
-              For Fintech <i class="bi bi-arrow-right"></i>
+            </span>
+            <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-neutral-600 hover:text-neutral-900 transition whitespace-nowrap">
+              For Fintech <i class="bi bi-arrow-right text-xs"></i>
             </a>
           </div>
 
-          <div class="mt-7 md:mt-8 grid md:grid-cols-3 gap-5">
-            <div class="rounded-[22px] border border-slate-200 bg-white p-6 soft-lift hover:shadow-md">
-              <p class="text-sm font-medium text-slate-800">
-                <a
-                  href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="hover:underline"
-                >
-                  Fintech
-                </a>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="rounded-xl scandi-border bg-white p-8 refined-lift">
+              <div class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center mb-6">
+                <i class="bi bi-bank2 text-white text-lg"></i>
+              </div>
+              <p class="text-lg font-medium text-neutral-900 mb-2">
+                <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" class="hover:underline">Fintech</a>
               </p>
-              <p class="mt-2 text-slate-600">Trust patterns + publishing.</p>
-              <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[#0b3d2e] hover:underline">
-                Sponsor / partner <i class="bi bi-arrow-right"></i>
+              <p class="text-neutral-600 mb-6 font-light">Trust patterns + publishing.</p>
+              <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-neutral-900 hover:gap-3 transition-all">
+                Sponsor / partner <i class="bi bi-arrow-right text-xs"></i>
               </a>
             </div>
 
-            <div class="rounded-[22px] border border-slate-200 bg-white p-6 soft-lift hover:shadow-md">
-              <p class="text-sm font-medium text-slate-800">
-                <a
-                  href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="hover:underline"
-                >
-                  Performance Agencies
-                </a>
+            <div class="rounded-xl scandi-border bg-white p-8 refined-lift">
+              <div class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center mb-6">
+                <i class="bi bi-lightning-charge text-white text-lg"></i>
+              </div>
+              <p class="text-lg font-medium text-neutral-900 mb-2">
+                <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="hover:underline">Performance Agencies</a>
               </p>
-              <p class="mt-2 text-slate-600">Ad systems, motion, fast output.</p>
-              <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[#0b3d2e] hover:underline">
-                Download Services <i class="bi bi-arrow-right"></i>
+              <p class="text-neutral-600 mb-6 font-light">Ad systems, motion, fast output.</p>
+              <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-neutral-900 hover:gap-3 transition-all">
+                Download Services <i class="bi bi-arrow-right text-xs"></i>
               </a>
             </div>
 
-            <div class="rounded-[22px] border border-slate-200 bg-white p-6 soft-lift hover:shadow-md">
-              <p class="text-sm font-medium text-slate-800">Swedish Kommuner</p>
-              <p class="mt-2 text-slate-600">WCAG, navigation, engagement.</p>
-              <span class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-slate-500">
-                (coming soon) <i class="bi bi-arrow-right"></i>
+            <div class="rounded-xl scandi-border bg-neutral-50 p-8 opacity-50">
+              <div class="w-10 h-10 rounded-lg bg-neutral-200 flex items-center justify-center mb-6">
+                <i class="bi bi-building text-neutral-400 text-lg"></i>
+              </div>
+              <p class="text-lg font-medium text-neutral-700 mb-2">Swedish Kommuner</p>
+              <p class="text-neutral-500 mb-6 font-light">WCAG, navigation, engagement.</p>
+              <span class="inline-flex items-center gap-2 text-sm text-neutral-400">
+                Coming soon <i class="bi bi-arrow-right text-xs"></i>
               </span>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- INSIGHTS -->
-        <section id="insights" class="mt-14 md:mt-24" data-reveal>
-          <div class="flex items-center justify-between gap-4">
-            <a
-              href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex text-xs px-4 py-2 rounded-full border border-slate-200 bg-[#f4f4f1] text-slate-600 hover:bg-white transition"
-            >
+      <!-- INSIGHTS -->
+      <section id="insights" class="px-6 md:px-8 py-16 md:py-24 bg-neutral-50/50" data-reveal>
+        <div class="mx-auto max-w-7xl">
+          <div class="flex items-center justify-between gap-4 mb-10">
+            <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium">
               Resources & insights
-            </a>
-
-            <a href="https://stockholmgrowthfintech.substack.com/"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="text-sm text-slate-600 hover:text-slate-900 transition whitespace-nowrap">
-              View all <i class="bi bi-arrow-right"></i>
+            </span>
+            <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-neutral-600 hover:text-neutral-900 transition whitespace-nowrap">
+              View all <i class="bi bi-arrow-right text-xs"></i>
             </a>
           </div>
 
-          <div class="mt-7 md:mt-8 grid lg:grid-cols-2 gap-6 lg:gap-8 items-start">
-            <article class="rounded-[26px] border border-slate-200 bg-white overflow-hidden soft-lift hover:shadow-md">
-              <div class="p-6 md:p-7">
-                <div class="flex items-center gap-2 text-xs text-slate-600">
-                  <span class="px-3 py-1 rounded-full bg-[#e9efe8] text-[#0b3d2e] border border-slate-200">Strategy</span>
-                  <span>January 11, 2026</span>
+          <div class="grid lg:grid-cols-2 gap-8 items-start">
+            <article class="rounded-2xl scandi-border bg-white overflow-hidden refined-lift">
+              <div class="p-8">
+                <div class="flex items-center gap-2 text-[13px] text-neutral-600 mb-4">
+                  <span class="px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 scandi-border">Strategy</span>
+                  <span class="font-light">January 11, 2026</span>
                 </div>
 
-                <h3 class="mt-4 text-2xl md:text-3xl font-semibold leading-tight">
-                  <a
-                    href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="hover:underline"
-                  >
-                    How to design for trust (Brand Consistency)
+                <h3 class="text-2xl md:text-3xl font-light leading-tight mb-4">
+                  <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                    How to design for trust
                   </a>
                 </h3>
 
-                <p class="mt-3 text-slate-600">
+                <p class="text-neutral-600 font-light">
                   Patterns that feel stable, calm, and predictable.
                 </p>
               </div>
 
-              <div class="px-6 md:px-7 pb-6 md:pb-7">
-                <div class="rounded-[22px] overflow-hidden border border-slate-200 bg-slate-100">
-                  <img
-                    src="https://tint.creativemarket.com/0xHUYGoV6g46INY4wlYZI8RY7SuMuXNCfh9wOzpIwz0/width:1200/height:800/gravity:nowe/rt:fill-down/el:1/czM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3RzLzUyOTQvNTI5NDQvNTI5NDQ3ODkvMi1vLmpwZyMxNzQxMTY3ODUy?1741167852"
-                    alt="Evergreen texture"
-                    class="w-full h-56 md:h-72 object-cover"
-                    loading="lazy"
-                  />
+              <div class="px-8 pb-8">
+                <div class="rounded-xl overflow-hidden scandi-border bg-neutral-50">
+                  <img src="https://tint.creativemarket.com/0xHUYGoV6g46INY4wlYZI8RY7SuMuXNCfh9wOzpIwz0/width:1200/height:800/gravity:nowe/rt:fill-down/el:1/czM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3RzLzUyOTQvNTI5NDQvNTI5NDQ3ODkvMi1vLmpwZyMxNzQxMTY3ODUy?1741167852" alt="Design insights" class="w-full h-64 md:h-72 object-cover" loading="lazy" />
                 </div>
               </div>
             </article>
 
-            <article class="rounded-[26px] border border-slate-200 bg-white overflow-hidden soft-lift hover:shadow-md">
-              <div class="p-6 md:p-7">
-                <div class="rounded-[22px] overflow-hidden border border-slate-200 bg-slate-100">
-                  <img
-                    src="https://www.free-mockup.com/wp-content/uploads/edd/2025/03/iPhone-Mockup-PSD-Scene-01.jpg.webp"
-                    alt="iPhone scene"
-                    class="w-full h-56 md:h-64 object-cover"
-                    loading="lazy"
-                  />
+            <article class="rounded-2xl scandi-border bg-white overflow-hidden refined-lift">
+              <div class="p-8">
+                <div class="rounded-xl overflow-hidden scandi-border bg-neutral-50 mb-6">
+                  <img src="https://www.free-mockup.com/wp-content/uploads/edd/2025/03/iPhone-Mockup-PSD-Scene-01.jpg.webp" alt="Marketing insights" class="w-full h-64 object-cover" loading="lazy" />
                 </div>
 
-                <div class="mt-5 flex items-center gap-2 text-xs text-slate-600">
-                  <span class="px-3 py-1 rounded-full bg-[#eef2f7] text-slate-700 border border-slate-200">Reporting</span>
-                  <span>January 4, 2026</span>
+                <div class="flex items-center gap-2 text-[13px] text-neutral-600 mb-4">
+                  <span class="px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 scandi-border">Reporting</span>
+                  <span class="font-light">January 4, 2026</span>
                 </div>
 
-                <h3 class="mt-4 text-2xl font-semibold leading-tight">
-                  <a
-                    href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="hover:underline"
-                  >
+                <h3 class="text-2xl font-light leading-tight mb-4">
+                  <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="hover:underline">
                     A Design Boost for Marketers
                   </a>
                 </h3>
 
-                <p class="mt-3 text-slate-600">
+                <p class="text-neutral-600 font-light">
                   What to document, what to ship, what to skip.
                 </p>
               </div>
             </article>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- ✅ SEO SECTION 4: Fintech Website & Brand -->
-        <section id="website-brand" class="mt-14 md:mt-20" data-reveal>
-          <div class="flex items-center justify-between gap-4">
-            <a
-              href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex text-xs px-4 py-2 rounded-full border border-slate-200 bg-[#f4f4f1] text-slate-600 hover:bg-white transition"
-            >
+      <!-- FINTECH WEBSITE -->
+      <section id="website-brand" class="px-6 md:px-8 py-16 md:py-24" data-reveal>
+        <div class="mx-auto max-w-7xl">
+          <div class="flex items-center justify-between gap-4 mb-10">
+            <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-neutral-50 text-neutral-700 font-medium">
               Website & brand
-            </a>
-
-            <span class="text-sm text-slate-500 whitespace-nowrap">
-              Calm conversion
             </span>
+            <span class="text-sm text-neutral-400 whitespace-nowrap font-light">Calm conversion</span>
           </div>
 
-          <article class="mt-7 md:mt-10 rounded-[28px] border border-slate-200 bg-white overflow-hidden soft-lift hover:shadow-md">
+          <article class="rounded-2xl scandi-border bg-white overflow-hidden refined-lift">
             <div class="grid md:grid-cols-12 gap-0">
-              <div class="md:col-span-7 order-2 md:order-1 p-4 md:p-6 bg-[#fbfbf9]">
-                <div class="img-wrap rounded-[24px] overflow-hidden border border-slate-200 bg-slate-100">
-                  <img
-                    src="apg4.png"
-                    alt="Fintech website and brand example"
-                    class="w-full h-[260px] md:h-[620px] object-cover"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                  />
+              <div class="md:col-span-7 order-2 md:order-1 p-6 md:p-8 bg-neutral-50/50">
+                <div class="rounded-xl overflow-hidden scandi-border bg-white">
+                  <img src="apg4.png" alt="Fintech website" class="w-full h-[280px] md:h-[620px] object-cover" loading="lazy" />
                 </div>
               </div>
 
-              <div class="md:col-span-5 order-1 md:order-2 p-6 md:p-8">
-                <div class="inline-flex items-center gap-2 text-xs text-slate-600">
-                  <span class="px-3 py-1 rounded-full bg-[#e9efe8] text-[#0b3d2e] border border-slate-200">
+              <div class="md:col-span-5 order-1 md:order-2 p-8 md:p-12">
+                <div class="inline-flex items-center gap-2 text-[13px] text-neutral-600 mb-6">
+                  <span class="px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 scandi-border font-medium">
                     Fintech website design
                   </span>
-                  <span>Positioning • UX writing</span>
+                  <span class="font-light">Positioning</span>
                 </div>
 
-                <h2 class="mt-4 text-2xl md:text-3xl font-semibold leading-tight">
-                  <a
-                    href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="hover:underline"
-                  >
+                <h2 class="text-3xl md:text-4xl font-light leading-[1.15] tracking-tight text-neutral-900 mb-6">
+                  <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" class="hover:underline">
                     Fintech website & branding that feels premium — and ranks
                   </a>
                 </h2>
 
-                <p class="mt-3 text-slate-600">
-                  A clear narrative makes fintech easier to understand. I design websites and brand systems that connect product and marketing:
-                  homepage structure, pricing clarity, trust cues, and visual consistency — so the experience converts without shouting.
+                <p class="text-neutral-600 leading-relaxed mb-6 font-light">
+                  A clear narrative makes fintech easier to understand. I design websites and brand systems that connect product and marketing: homepage structure, pricing clarity, trust cues, and visual consistency.
                 </p>
 
-                <p class="mt-3 text-sm text-slate-500">
-                  🇸🇪 Sökord: <span class="font-medium text-slate-700">webbdesign fintech</span>,
-                  <span class="font-medium text-slate-700">varumärke fintech</span>,
-                  <span class="font-medium text-slate-700">designkonsult Stockholm</span>.
-                </p>
-
-                <div class="mt-5 rounded-2xl border border-slate-200 bg-white p-4">
-                  <p class="text-sm font-medium text-slate-800">Typical scope</p>
-                  <p class="mt-1 text-sm text-slate-600">
+                <div class="rounded-xl scandi-border bg-neutral-50 p-6 mb-8">
+                  <p class="text-sm font-medium text-neutral-900 mb-2">Typical scope</p>
+                  <p class="text-sm text-neutral-600 font-light leading-relaxed">
                     Homepage narrative • service pages • SEO sections • UI components • brand guidelines.
                   </p>
                 </div>
 
-                <div class="mt-6 flex flex-wrap gap-2">
-                  <a
-                    href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
-                  >
-                    fintech branding
-                  </a>
-
-                  <a
-                    href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
-                  >
-                    website design
-                  </a>
-
-                  <a
-                    href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
-                  >
-                    positioning
-                  </a>
-
-                  <a
-                    href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-xs px-3 py-1 rounded-full border border-slate-200 bg-[#fbfbf9] text-slate-600 hover:bg-white transition"
-                  >
-                    UX writing
-                  </a>
+                <div class="flex flex-wrap gap-2">
+                  <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600 hover:bg-white transition">fintech branding</a>
+                  <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600 hover:bg-white transition">website design</a>
+                  <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600 hover:bg-white transition">positioning</a>
                 </div>
               </div>
             </div>
           </article>
-        </section>
+        </div>
+      </section>
 
-        <!-- ABOUT -->
-        <section id="about" class="mt-14 md:mt-24 text-center" data-reveal>
-          <a
-            href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex text-xs px-4 py-2 rounded-full border border-slate-200 bg-[#f4f4f1] text-slate-600 hover:bg-white transition"
-          >
-            For Performance Agencies
-          </a>
+      <!-- ABOUT -->
+      <section id="about" class="px-6 md:px-8 py-16 md:py-24 bg-neutral-50/50" data-reveal>
+        <div class="mx-auto max-w-7xl">
+          <div class="max-w-4xl mx-auto text-center">
+            <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium mb-10">
+              For Performance Agencies
+            </span>
 
-          <a
-            href="https://www.linkedin.com/in/alexandragrisanti/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="block"
-            aria-label="Open Alexandra on LinkedIn"
-          >
-            <h2 class="mt-7 md:mt-8 text-3xl md:text-5xl font-semibold leading-[1.1] tracking-tight hover:underline">
-              I’m a systems-first designer helping<br class="hidden md:block" />
-              Marketing Teams build speed and trust.
-            </h2>
-          </a>
+            <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" class="block" aria-label="LinkedIn">
+              <h2 class="text-4xl md:text-6xl font-light leading-[1.1] tracking-tight text-neutral-900 mb-10 hover:underline">
+                I'm a systems-first designer<br />
+                helping Marketing Teams<br />
+                build speed and trust
+              </h2>
+            </a>
 
-          <div class="mt-8 md:mt-10 flex justify-center">
             <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
                target="_blank"
                rel="noopener noreferrer"
-               class="inline-flex items-center gap-3 px-7 py-4 rounded-full bg-[#0b3d2e] text-white font-medium
-                      shadow-[0_18px_45px_rgba(11,61,46,0.35)] hover:shadow-[0_24px_60px_rgba(11,61,46,0.35)]
-                      transition transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-emerald-200 soft-lift">
+               class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-neutral-900 text-white text-[15px] font-medium hover:bg-neutral-800 transition transform hover:-translate-y-0.5">
               Performance Designer
-              <i class="bi bi-arrow-right"></i>
+              <i class="bi bi-arrow-right text-sm"></i>
             </a>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- CONTACT -->
-        <section id="contact" class="mt-14 md:mt-24 text-center" data-reveal>
-          <div class="rounded-[26px] border border-slate-200 bg-[#fbfbf9] p-7 md:p-12">
-            <h3 class="text-2xl md:text-3xl font-semibold">Ready?</h3>
-            <p class="mt-3 text-slate-600 max-w-2xl mx-auto">
-              Here you can place an order and I will get started on the project right away.
-            </p>
+      <!-- CONTACT -->
+      <section id="contact" class="px-6 md:px-8 py-16 md:py-24" data-reveal>
+        <div class="mx-auto max-w-7xl">
+          <div class="max-w-3xl mx-auto text-center">
+            <div class="rounded-2xl scandi-border bg-white p-10 md:p-16">
+              <h3 class="text-3xl md:text-4xl font-light mb-6">Ready?</h3>
+              <p class="text-neutral-600 font-light max-w-xl mx-auto mb-10">
+                Here you can place an order and I will get started on the project right away.
+              </p>
 
-            <div class="mt-7 md:mt-8 flex flex-col sm:flex-row justify-center gap-3">
-              <a
-                href="mailto:alexandrapgrisanti@gmail.com?subject=New%20Project%20Order&body=Hi%20Alexandra%2C%0A%0AI%27d%20like%20to%20place%20an%20order.%0A%0AProject%20type%3A%0ATimeline%3A%0ABudget%3A%0ALinks%2Fnotes%3A%0A%0AThanks%21"
-                class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full bg-[#0b3d2e] text-white font-medium
-                       shadow-[0_18px_45px_rgba(11,61,46,0.35)] transition transform hover:-translate-y-0.5
-                       focus:outline-none focus:ring-4 focus:ring-emerald-200 soft-lift"
-              >
-                Make an Order <i class="bi bi-arrow-right"></i>
-              </a>
+              <div class="flex flex-col sm:flex-row justify-center gap-3">
+                <a href="mailto:alexandrapgrisanti@gmail.com?subject=New%20Project%20Order&body=Hi%20Alexandra%2C%0A%0AI%27d%20like%20to%20place%20an%20order.%0A%0AProject%20type%3A%0ATimeline%3A%0ABudget%3A%0ALinks%2Fnotes%3A%0A%0AThanks%21" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-neutral-900 text-white text-[15px] font-medium hover:bg-neutral-800 transition transform hover:-translate-y-0.5">
+                  Make an Order <i class="bi bi-arrow-right text-sm"></i>
+                </a>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- FOOTER -->
-        <footer class="mt-14 md:mt-20 border-t border-slate-200 pt-10">
-          <div class="grid gap-10 md:grid-cols-12 items-start">
+      <!-- FOOTER -->
+      <footer class="px-6 md:px-8 py-16 border-t scandi-border">
+        <div class="mx-auto max-w-7xl">
+          <div class="grid gap-12 md:grid-cols-12 items-start mb-16">
             <div class="md:col-span-5">
-              <p
-                class="bg-gradient-to-r from-[#519CFF] to-[#FFACC2] bg-clip-text text-transparent
-                       font-semibold tracking-[-0.05em] leading-[0.86]
-                       text-[44px] sm:text-[52px] md:text-[56px]"
-                style="font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text',system-ui,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;"
-              >
+              <p class="text-neutral-900 font-medium text-2xl mb-4">
                 Alexandra
               </p>
 
-              <p class="mt-3 text-slate-600 max-w-sm">
+              <p class="text-neutral-600 font-light max-w-sm mb-8">
                 Calm systems-first design for Performance agencies and fintech.
               </p>
 
-              <div class="mt-6 flex items-center gap-3">
-                <a href="https://www.linkedin.com/in/alexandragrisanti/"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="inline-flex items-center justify-center w-11 h-11 rounded-full border border-slate-200 bg-white hover:bg-slate-50 transition
-                          focus:outline-none focus:ring-4 focus:ring-slate-200"
-                   aria-label="LinkedIn">
-                  <i class="bi bi-linkedin text-slate-700"></i>
+              <div class="flex items-center gap-3">
+                <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition" aria-label="LinkedIn">
+                  <i class="bi bi-linkedin text-neutral-700"></i>
                 </a>
-                <a href="mailto:alexandrapgrisanti@gmail.com"
-                   class="inline-flex items-center justify-center w-11 h-11 rounded-full border border-slate-200 bg-white hover:bg-slate-50 transition
-                          focus:outline-none focus:ring-4 focus:ring-slate-200"
-                   aria-label="Email">
-                  <i class="bi bi-envelope text-slate-700"></i>
+                <a href="mailto:alexandrapgrisanti@gmail.com" class="inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition" aria-label="Email">
+                  <i class="bi bi-envelope text-neutral-700"></i>
                 </a>
               </div>
             </div>
 
             <div class="md:col-span-7">
-              <div class="grid gap-8 sm:grid-cols-3">
+              <div class="grid gap-10 sm:grid-cols-3">
                 <div>
-                  <p class="text-sm font-medium text-slate-900">Work</p>
-                  <div class="mt-3 space-y-2 text-sm text-slate-600">
-                    <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="block hover:text-slate-900 transition">Performance Agency design</a>
-
-                    <a href="https://stockholmgrowthfintech.substack.com/"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="block hover:text-slate-900 transition">Fintech advisory</a>
-
-                    <a href="https://platsivardagen.substack.com/"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="block hover:text-slate-900 transition">Kommun audits</a>
+                  <p class="text-sm font-medium text-neutral-900 mb-4">Work</p>
+                  <div class="space-y-3 text-sm text-neutral-600 font-light">
+                    <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Performance Agency design</a>
+                    <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Fintech advisory</a>
+                    <a href="https://platsivardagen.substack.com/" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Kommun audits</a>
                   </div>
                 </div>
 
                 <div>
-                  <p class="text-sm font-medium text-slate-900">Resources</p>
-                  <div class="mt-3 space-y-2 text-sm text-slate-600">
-                    <a href="https://stockholmgrowthfintech.substack.com/"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="block hover:text-slate-900 transition">Newsletter</a>
-
-                    <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="block hover:text-slate-900 transition">Media kit</a>
-
-                    <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="block hover:text-slate-900 transition">Downloadables</a>
+                  <p class="text-sm font-medium text-neutral-900 mb-4">Resources</p>
+                  <div class="space-y-3 text-sm text-neutral-600 font-light">
+                    <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Newsletter</a>
+                    <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Media kit</a>
+                    <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Downloadables</a>
                   </div>
                 </div>
 
                 <div>
-                  <p class="text-sm font-medium text-slate-900">Contact</p>
-                  <div class="mt-3 space-y-2 text-sm text-slate-600">
-                    <a href="https://calendly.com/alexandrapgrisanti/hello"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="block hover:text-slate-900 transition">Book a call</a>
-
-                    <a href="mailto:alexandrapgrisanti@gmail.com"
-                       class="block hover:text-slate-900 transition">Email</a>
-
-                    <a href="https://calendly.com/alexandrapgrisanti/hello"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="block hover:text-slate-900 transition">Speaking</a>
+                  <p class="text-sm font-medium text-neutral-900 mb-4">Contact</p>
+                  <div class="space-y-3 text-sm text-neutral-600 font-light">
+                    <a href="https://calendly.com/alexandrapgrisanti/hello" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Book a call</a>
+                    <a href="mailto:alexandrapgrisanti@gmail.com" class="block hover:text-neutral-900 transition">Email</a>
+                    <a href="https://calendly.com/alexandrapgrisanti/hello" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Speaking</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-4 pb-8 text-xs text-slate-500">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t scandi-border text-xs text-neutral-500 font-light">
             <p>
-              © 2026
-              <a
-                href="https://www.linkedin.com/in/alexandragrisanti/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:underline"
-              >
-                Alexandra Grisanti
-              </a>.
-              All rights reserved.
+              © 2026 <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 transition">Alexandra Grisanti</a>. All rights reserved.
             </p>
           </div>
         </footer>
@@ -852,14 +575,14 @@
   </div>
 
   <script>
-    // Reveal animations (smooth rise + stagger)
+    // Reveal animations
     (function () {
       const items = Array.from(document.querySelectorAll("[data-reveal]"));
       if (!items.length) return;
 
       items.forEach((el, i) => {
-        const base = 45; // ms
-        const max = 260;
+        const base = 50;
+        const max = 250;
         el.style.setProperty("--d", Math.min(i * base, max) + "ms");
       });
 
@@ -876,12 +599,12 @@
             io.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+      }, { threshold: 0.1, rootMargin: "0px 0px -8% 0px" });
 
       items.forEach(el => io.observe(el));
     })();
 
-    // Mobile menu toggle
+    // Mobile menu
     (function () {
       const menuBtn = document.getElementById("menuBtn");
       const mobileNav = document.getElementById("mobileNav");
