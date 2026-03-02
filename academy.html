@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Academy – Alexandra</title>
+  <title>Public Thinking – Alexandra</title>
 
-    <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYCJNCLLMW"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -28,6 +28,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
     html { scroll-behavior: smooth; }
     .scandi-border { border: 1px solid rgba(0,0,0,0.06); }
@@ -39,6 +40,18 @@
     #menuBtn.open .hamburger span:nth-child(1){ transform: translateY(6px) rotate(45deg); }
     #menuBtn.open .hamburger span:nth-child(2){ opacity: 0; }
     #menuBtn.open .hamburger span:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+
+    [data-reveal]{
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
+      transition: opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1);
+    }
+    [data-reveal].is-visible{ opacity: 1; transform: translate3d(0,0,0); }
+    [data-reveal] { transition-delay: var(--d, 0ms); }
+
+    @media (prefers-reduced-motion: reduce){
+      [data-reveal]{ opacity:1 !important; transform:none !important; transition:none !important; }
+    }
   </style>
 </head>
 
@@ -56,10 +69,10 @@
 
     <nav class="hidden md:flex items-center gap-8 text-[15px]">
       <a href="#" class="text-neutral-900 font-medium">Academy</a>
-      <a href="https://luma.com/user/agrisanti" target="_blank" class="text-neutral-500 hover:text-neutral-900">Events</a>
-      <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" class="text-neutral-500 hover:text-neutral-900">LinkedIn</a>
+      <a href="https://luma.com/user/agrisanti" target="_blank" class="text-neutral-500 hover:text-neutral-900 transition">Events</a>
+      <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" class="text-neutral-500 hover:text-neutral-900 transition">LinkedIn</a>
       <a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" class="px-5 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition">
-        Contact
+        Work with me
       </a>
     </nav>
 
@@ -70,10 +83,10 @@
 
   <div id="mobileNav" class="md:hidden overflow-hidden max-h-0 opacity-0 transition-all duration-300">
     <div class="mt-4 rounded-2xl scandi-border bg-neutral-50 p-3 text-sm">
-      <a href="#" class="block px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Academy</a>
+      <a href="#" class="block px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Intelligence</a>
       <a href="https://luma.com/user/agrisanti" class="block px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Events</a>
       <a href="https://www.linkedin.com/in/alexandragrisanti/" class="block px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">LinkedIn</a>
-      <a href="https://calendly.com/alexandra-alexandrastudio/30min" class="block px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Contact</a>
+      <a href="https://calendly.com/alexandra-alexandrastudio/30min" class="block px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Work with me</a>
     </div>
   </div>
 </header>
@@ -81,126 +94,252 @@
 <main>
 
 <!-- HERO -->
-<section class="px-6 md:px-8 pt-24 pb-16 text-center">
+<section class="px-6 md:px-8 pt-24 pb-16 text-center" data-reveal>
   <div class="max-w-3xl mx-auto">
-    <h1 class="text-5xl md:text-6xl font-light tracking-tight mb-6">Academy</h1>
-    <p class="text-lg md:text-xl text-neutral-500 font-light">
-      Here are some informational shorts to learn: What is Design? How can you do it yourself? How to do Branding yourself or Build Campaigns. Welcome!
+    <div class="inline-flex items-center gap-2 text-xs text-neutral-600 bg-neutral-50 scandi-border px-4 py-2 rounded-full mb-8">
+      <span class="w-1.5 h-1.5 rounded-full bg-neutral-900"></span>
+      <span>Public Thinking Layers</span>
+    </div>
+    <h1 class="text-5xl md:text-6xl font-light tracking-tight mb-6">Strategic thinking,<br />made practical</h1>
+    <p class="text-lg md:text-xl text-neutral-500 font-light max-w-2xl mx-auto">
+      I break down fintech positioning, distribution strategy, design systems and performance frameworks, so you can apply them immediately.
     </p>
   </div>
 </section>
 
-<!-- VERTICAL VIDEOS -->
-<section class="px-6 md:px-8 pb-24">
-  <div class="max-w-7xl mx-auto grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-
-  <div class="refined-lift">
-    <div class="aspect-[9/16] rounded-xl overflow-hidden scandi-border mb-4">
-      <iframe
-        class="w-full h-full"
-        src="https://www.youtube.com/embed/nmn6HuLLgOM?rel=0&modestbranding=1"
-        title="Architecture School: What Design Really Is"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+<!-- ECOSYSTEM CONTEXT -->
+<section class="px-6 md:px-8 pb-20" data-reveal>
+  <div class="max-w-7xl mx-auto">
+    <div class="rounded-2xl scandi-border bg-neutral-50 p-8 md:p-12">
+      <div class="max-w-3xl">
+        <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium mb-8 block w-fit">
+          Why this exists
+        </span>
+        <p class="text-xl md:text-2xl font-light text-neutral-800 leading-relaxed mb-6">
+          The Nordic fintech ecosystem is entering a margin compression era. Embedded finance is spreading. A2A challenges cards. PSD3 reshapes incentives. Distribution is consolidating.
+        </p>
+      </div>
     </div>
-    <h3 class="text-lg font-medium mb-1">Architecture School: What Design Really Is</h3>
-    <p class="text-neutral-500 text-sm">
-      What design actually means beyond choosing colors. Why it’s a structured way of thinking, a strategic skill, and a real-world superpower you can learn and apply.
-    </p>
   </div>
+</section>
 
-    <div class="refined-lift">
-      <div class="aspect-[9/16] rounded-xl overflow-hidden scandi-border mb-4">
-        <iframe
-          class="w-full h-full"
-          src="https://www.youtube.com/embed/xmDurblblUE?rel=0&modestbranding=1"
-          title="Creating Video Content or Podcasts"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </div>
-      <h3 class="text-lg font-medium mb-1">Creating Informational Video Content</h3>
-      <p class="text-neutral-500 text-sm">Gartner’s 2025 survey found 61 % of B2B buyers prefer a rep-free buying experience, indicating a strong desire to complete research without early sales interaction. You don't need a studio or a budget. Here's a 2-hour, zero-cost method that can increase your landing page conversions. Video gets 1200% more engagement than text and images combined and here's a way to make one in 2 hours and zero budget.</p>
+<!-- VIDEO FRAMEWORKS -->
+<section class="px-6 md:px-8 pb-24" data-reveal>
+  <div class="max-w-7xl mx-auto">
+
+    <div class="flex items-center justify-between gap-4 mb-10">
+      <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-neutral-50 text-neutral-700 font-medium">
+        Frameworks
+      </span>
+      <span class="text-sm text-neutral-400 font-light">Short-form strategic breakdowns</span>
     </div>
 
-    <div class="refined-lift">
-      <div class="aspect-[9/16] rounded-xl overflow-hidden scandi-border mb-4">
-        <iframe
-          class="w-full h-full"
-          src="https://www.youtube.com/embed/74WeKarBzIM"
-          title="Creating Video Content or Podcasts"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </div>
-      <h3 class="text-lg font-medium mb-1">A Hands-on Method for B2B SaaS Marketing</h3>
-      <p class="text-neutral-500 text-sm">B2B SaaS conversion is tough, with this four step method I guide you through the steps: from cold leads into partnerships for B2B software companies.</p>
-    </div>
-  </div>  <!-- CLOSE grid -->
-</div>    <!-- CLOSE container -->
-</section>  <!-- CLOSE video section -->
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
 
-<!-- ABOUT -->
-<section class="px-6 md:px-8 py-20 bg-neutral-50 text-center">
-  <div class="max-w-4xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-light mb-6">About the Academy</h2>
-    <p class="text-neutral-600 font-light leading-relaxed">
-        Hi, I’m Alexandra Grisanti, based in Stockholm.
-        I work with design systems, brand structure, and performance-driven creative work every day — helping teams build clarity, speed, and trust into their work.
-        
-        I believe knowledge compounds when it’s shared. Teaching and learning are part of the same process. It's rewarding to breaking down complex ideas into practical frameworks that others can use.
-        
-        Thank you for being here. If something resonates, share your perspective — or let’s build something meaningful together.
-    </p>
+      <div class="refined-lift">
+        <div class="aspect-[9/16] rounded-xl overflow-hidden scandi-border mb-5">
+          <iframe
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/nmn6HuLLgOM?rel=0&modestbranding=1"
+            title="Design as Competitive Advantage"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-[12px] px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-700 scandi-border">Positioning</span>
+        </div>
+        <h3 class="text-lg font-medium mb-2">Design as Competitive Advantage</h3>
+        <p class="text-neutral-500 text-sm font-light leading-relaxed">
+          Design is not aesthetic — it's a structured way of thinking. Why the companies that understand this outperform those that treat design as decoration.
+        </p>
+      </div>
+
+      <div class="refined-lift">
+        <div class="aspect-[9/16] rounded-xl overflow-hidden scandi-border mb-5">
+          <iframe
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/xmDurblblUE?rel=0&modestbranding=1"
+            title="How to Build Rep-Free Buying Systems"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-[12px] px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-700 scandi-border">Distribution</span>
+        </div>
+        <h3 class="text-lg font-medium mb-2">How to Build Rep-Free Buying Systems</h3>
+        <p class="text-neutral-500 text-sm font-light leading-relaxed">
+          Gartner's 2025 data shows 61% of B2B buyers prefer to complete research without early sales interaction. Here's a practical framework to build content-led distribution that converts without a sales rep in the room.
+        </p>
+      </div>
+
+      <div class="refined-lift">
+        <div class="aspect-[9/16] rounded-xl overflow-hidden scandi-border mb-5">
+          <iframe
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/74WeKarBzIM"
+            title="From Cold Traffic to Strategic Partnerships"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-[12px] px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-700 scandi-border">Growth systems</span>
+        </div>
+        <h3 class="text-lg font-medium mb-2">From Cold Traffic to Strategic Partnerships</h3>
+        <p class="text-neutral-500 text-sm font-light leading-relaxed">
+          A four-step conversion methodology for B2B SaaS — moving beyond lead generation into ecosystem partnerships that compound over time.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DEEP DIVES -->
+<section class="px-6 md:px-8 py-20 bg-neutral-50/50" data-reveal>
+  <div class="max-w-7xl mx-auto">
+
+    <div class="flex items-center justify-between gap-4 mb-10">
+      <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium">
+        Further reading
+      </span>
+      <span class="text-sm text-neutral-400 font-light">Long-form intelligence</span>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer"
+         class="rounded-2xl scandi-border bg-white p-8 md:p-10 refined-lift block group">
+        <div class="flex items-start justify-between gap-4 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center flex-shrink-0">
+            <i class="bi bi-graph-up text-white"></i>
+          </div>
+          <i class="bi bi-arrow-up-right text-neutral-400 group-hover:text-neutral-900 transition text-lg"></i>
+        </div>
+        <h3 class="text-xl font-medium text-neutral-900 mb-3">Stockholm Growth Fintech</h3>
+        <p class="text-neutral-600 font-light leading-relaxed mb-6">
+          Ecosystem and infrastructure strategy for the Nordic fintech market. Platform economics, distribution power, regulatory inflection points and infrastructure monetisation — analysed through the lens of creative advantage.
+        </p>
+        <span class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600">Substack · Ecosystem intelligence</span>
+      </a>
+
+      <a href="https://platsivardagen.substack.com/" target="_blank" rel="noopener noreferrer"
+         class="rounded-2xl scandi-border bg-white p-8 md:p-10 refined-lift block group">
+        <div class="flex items-start justify-between gap-4 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center flex-shrink-0">
+            <i class="bi bi-lightning-charge text-white"></i>
+          </div>
+          <i class="bi bi-arrow-up-right text-neutral-400 group-hover:text-neutral-900 transition text-lg"></i>
+        </div>
+        <h3 class="text-xl font-medium text-neutral-900 mb-3">Creative Performance Marketing</h3>
+        <p class="text-neutral-600 font-light leading-relaxed mb-6">
+            Design is not aesthetic — it's a structured way of thinking. Why the companies that understand this, outperform those that treat design just aesthetics.
+        </p>
+        <span class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600">Substack · Distribution systems</span>
+      </a>
+
+    </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="px-6 md:px-8 py-24">
-  <div class="max-w-7xl mx-auto text-center">
-    <h2 class="text-3xl md:text-4xl font-light mb-16">What it's like to Work With Me</h2>
+<section class="px-6 md:px-8 py-24 bg-neutral-50/50" data-reveal>
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center justify-between gap-4 mb-12">
+      <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium">
+        Perspective from the field
+      </span>
+    </div>
     <div class="grid md:grid-cols-3 gap-8">
 
       <div class="scandi-border rounded-2xl p-8 bg-white refined-lift">
-        <img src="niklas.jpg" class="w-14 h-14 rounded-full mx-auto mb-4" />
-        <p class="text-neutral-600 font-light mb-4">“Regardless of discussing the strategy of the products or collaborating with our developers or conducting user testing Alexandra's work has been highly appreciated. I managed and worked together with Alexandra at Zwapgrid. I had the role as CPO and Alexandra has the role of Product Designer in a small fintech startup. To work together with Alexandra is a great experience as she is creative, productive, collaborative and structured.”</p>
-        <p class="text-sm font-medium">Niklas, Director of Digital Experiences at Worldline</p>
+        <img src="niklas.jpg" class="w-12 h-12 rounded-full mb-5 object-cover" alt="Niklas" />
+        <p class="text-neutral-600 font-light mb-5 leading-relaxed text-[15px]">"Regardless of discussing the strategy of the products or collaborating with our developers or conducting user testing Alexandra's work has been highly appreciated. Creative, productive, collaborative and structured."</p>
+        <div>
+          <p class="text-sm font-medium text-neutral-900">Niklas</p>
+          <p class="text-xs text-neutral-500 font-light">Director of Digital Experiences, Worldline</p>
+        </div>
       </div>
 
       <div class="scandi-border rounded-2xl p-8 bg-white refined-lift">
-        <img src="agnes.jpg" class="w-14 h-14 rounded-full mx-auto mb-4" />
-        <p class="text-neutral-600 font-light mb-4">“I love working with Alexandra at Djungo. She is self-motivated, outcome-driven and cares deeply about our mission, the team and our users. From day one she brought a positive, can-do attitude and tackled a broad range of challenges across business planning & strategy, product management and UX design.”</p>
-        <p class="text-sm font-medium">Agnes, Design Strategist at Capital One</p>
+        <img src="agnes.jpg" class="w-12 h-12 rounded-full mb-5 object-cover" alt="Agnes" />
+        <p class="text-neutral-600 font-light mb-5 leading-relaxed text-[15px]">"Self-motivated, outcome-driven and cares deeply about the mission, the team and users. From day one she brought a positive, can-do attitude and tackled a broad range of challenges across strategy, product management and UX design."</p>
+        <div>
+          <p class="text-sm font-medium text-neutral-900">Agnes</p>
+          <p class="text-xs text-neutral-500 font-light">Design Strategist, Capital One</p>
+        </div>
       </div>
 
       <div class="scandi-border rounded-2xl p-8 bg-white refined-lift">
-        <img src="stefan.jpg" class="w-14 h-14 rounded-full mx-auto mb-4" />
-        <p class="text-neutral-600 font-light mb-4">“I had the pleasure of working with Alexandra on a SaaS product website project. Alexandra brings energy, creativity and diligence, and is very collaborative and easy to work with.”</p>
-        <p class="text-sm font-medium">Stefan, Chief Strategy Officer at PSA Solutions</p>
+        <img src="stefan.jpg" class="w-12 h-12 rounded-full mb-5 object-cover" alt="Stefan" />
+        <p class="text-neutral-600 font-light mb-5 leading-relaxed text-[15px]">"Alexandra brings energy, creativity and diligence, and is very collaborative and easy to work with."</p>
+        <div>
+          <p class="text-sm font-medium text-neutral-900">Stefan</p>
+          <p class="text-xs text-neutral-500 font-light">Chief Strategy Officer, PSA Solutions</p>
+        </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="px-6 md:px-8 py-20" data-reveal>
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-3xl mx-auto text-center rounded-2xl scandi-border bg-white p-10 md:p-16">
+      <h3 class="text-3xl md:text-4xl font-light mb-5">Join the Conversation</h3>
+      <p class="text-neutral-600 font-light max-w-lg mx-auto mb-10">
+        If you're working inside a fintech ecosystem and thinking about positioning, distribution or brand strategy, let's talk.
+      </p>
+      <a href="https://calendly.com/alexandra-alexandrastudio/30min"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-neutral-900 text-white text-[15px] font-medium hover:bg-neutral-800 transition transform hover:-translate-y-0.5">
+        Book a strategic call
+        <i class="bi bi-arrow-right text-sm"></i>
+      </a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="px-6 md:px-8 py-16 border-t scandi-border text-center text-sm text-neutral-500">
-  © 2026 Alexandra Grisanti. All rights reserved.
+<footer class="px-6 md:px-8 py-16 border-t scandi-border text-center text-sm text-neutral-500 font-light">
+  © 2026 <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 transition">Alexandra Grisanti</a>. All rights reserved.
 </footer>
 
 </main>
 
 <script>
+  // Mobile menu
   const menuBtn = document.getElementById("menuBtn");
   const mobileNav = document.getElementById("mobileNav");
   menuBtn.addEventListener("click", () => {
     menuBtn.classList.toggle("open");
     mobileNav.classList.toggle("is-open");
   });
+
+  // Reveal animations
+  (function () {
+    const items = Array.from(document.querySelectorAll("[data-reveal]"));
+    if (!items.length) return;
+    items.forEach((el, i) => {
+      el.style.setProperty("--d", Math.min(i * 60, 300) + "ms");
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -8% 0px" });
+    items.forEach(el => io.observe(el));
+  })();
 </script>
 
 </body>
