@@ -5,22 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alexandra Grisanti</title>
 
-  <!-- ✅ FAVICON -->
   <link
     rel="icon"
     type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111111'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial' font-size='34' font-weight='700' fill='white'%3EA%3C/text%3E%3C/svg%3E"
   />
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -29,1342 +25,987 @@
 
     html { scroll-behavior: smooth; }
 
-    /* Subtle reveal */
-    [data-reveal]{
+    /* Reveal */
+    [data-reveal] {
       opacity: 0;
       transform: translate3d(0, 20px, 0);
       transition:
         opacity 700ms cubic-bezier(.16,1,.3,1),
         transform 700ms cubic-bezier(.16,1,.3,1);
+      transition-delay: var(--d, 0ms);
       will-change: opacity, transform;
     }
-    [data-reveal].is-visible{
+    [data-reveal].is-visible {
       opacity: 1;
-      transform: translate3d(0,0,0);
+      transform: translate3d(0, 0, 0);
     }
-    [data-reveal] { transition-delay: var(--d, 0ms); }
 
-    /* Refined hover */
-    .refined-lift{
+    /* Hover lift */
+    .refined-lift {
       transition: transform 400ms cubic-bezier(.16,1,.3,1), box-shadow 400ms cubic-bezier(.16,1,.3,1);
       will-change: transform, box-shadow;
     }
-    .refined-lift:hover{ 
+    .refined-lift:hover {
       transform: translateY(-4px);
       box-shadow: 0 20px 40px rgba(0,0,0,0.08);
     }
 
-    /* Mobile menu */
-    #mobileNav.is-open{
+    /* Mobile nav */
+    #mobileNav.is-open {
       max-height: 520px;
       opacity: 1;
       pointer-events: auto;
     }
 
     /* Hamburger */
-    .hamburger span{
-      display:block;
-      width:20px;
-      height:2px;
-      background:#111;
-      border-radius:2px;
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #111;
+      border-radius: 2px;
       transition: transform 300ms cubic-bezier(.16,1,.3,1), opacity 300ms ease;
     }
-    .hamburger span + span{ margin-top:4px; }
-    #menuBtn.open .hamburger span:nth-child(1){ transform: translateY(6px) rotate(45deg); }
-    #menuBtn.open .hamburger span:nth-child(2){ opacity: 0; }
-    #menuBtn.open .hamburger span:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+    .hamburger span + span { margin-top: 4px; }
+    #menuBtn.open .hamburger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    #menuBtn.open .hamburger span:nth-child(2) { opacity: 0; }
+    #menuBtn.open .hamburger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-    /* Scandinavian minimal border */
-    .scandi-border {
-      border: 1px solid rgba(0,0,0,0.06);
+    /* Borders */
+    .scandi-border { border: 1px solid rgba(0,0,0,0.06); }
+    .scandi-border-thick { border: 1.5px solid rgba(0,0,0,0.08); }
+
+    /* ─── COLLABORATION SCROLL ─── */
+    .collaboration-scroll-wrapper {
+      position: absolute;
+      top: 80px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+    }
+    .collaboration-scroll-track {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      animation: collab-scroll 25s linear infinite;
+    }
+    .collaboration-image {
+      height: 30%;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      transform: scale(6);
+    }
+    @keyframes collab-scroll {
+      0%   { transform: translateX(400%); }
+      100% { transform: translateX(-500%); }
+    }
+    .fade-left {
+      position: absolute;
+      top: 80px; left: 0; bottom: 0;
+      width: 60px;
+      background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+      pointer-events: none;
+      z-index: 10;
+    }
+    .fade-right {
+      position: absolute;
+      top: 80px; right: 0; bottom: 0;
+      width: 60px;
+      background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
+      pointer-events: none;
+      z-index: 10;
+    }
+    .collaboration-scroll-wrapper:hover .collaboration-scroll-track {
+      animation-play-state: paused;
+    }
+    @media (max-width: 768px) {
+      .collaboration-scroll-wrapper { top: 60px; }
+      .fade-left, .fade-right { top: 60px; width: 40px; }
     }
 
-    .scandi-border-thick {
-      border: 1.5px solid rgba(0,0,0,0.08);
+    /* ─── CAROUSEL ─── */
+    .carousel-wrapper {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+      mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
     }
+    .carousel-track {
+      display: flex;
+      gap: 1rem;
+      cursor: grab;
+      animation: carousel-scroll 30s linear infinite;
+      will-change: transform;
+    }
+    @media (min-width: 768px) {
+      .carousel-track { gap: 1.5rem; }
+    }
+    .carousel-track:active { cursor: grabbing; }
+    .carousel-track:hover { animation-play-state: paused; }
 
-    @media (prefers-reduced-motion: reduce){
-      html { scroll-behavior: auto; }
-      [data-reveal]{
-        opacity:1 !important;
-        transform:none !important;
-        transition:none !important;
+    /* Single canonical @keyframes — calculated for 4 original cards */
+    @keyframes carousel-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(calc(-280px * 4 - 1rem * 4)); }
+    }
+    @media (min-width: 640px) {
+      @keyframes carousel-scroll {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(calc(-320px * 4 - 1rem * 4)); }
       }
-      .refined-lift{ transition:none !important; }
+    }
+    @media (min-width: 768px) {
+      @keyframes carousel-scroll {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(calc(-400px * 4 - 1.5rem * 4)); }
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .refined-lift { transition: none !important; }
+      .collaboration-scroll-track,
+      .carousel-track { animation: none !important; }
     }
   </style>
 </head>
 
 <body class="bg-white text-neutral-900 antialiased overflow-x-hidden">
+<div class="min-h-screen">
 
-  <div class="min-h-screen">
-    
-   <!-- HEADER -->
-<header class="px-6 md:px-8 py-6 md:py-7 border-b scandi-border sticky top-0 bg-white/80 backdrop-blur-xl z-50">
-  <div class="mx-auto max-w-7xl">
-    <div class="flex items-center justify-between gap-4">
-      
-      <!-- Logo -->
-      <a
-        href="https://alexandrastudio.se/Performance_Report_2026.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-3 group"
-      >
-        <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-neutral-900 transition-transform group-hover:scale-105">
-          <span class="text-white text-sm font-semibold">A</span>
-        </span>
+  <!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+  <header class="px-6 md:px-8 py-6 md:py-7 border-b scandi-border sticky top-0 bg-white/80 backdrop-blur-xl z-50">
+    <div class="mx-auto max-w-7xl">
+      <div class="flex items-center justify-between gap-4">
 
-        <span class="text-neutral-900 font-medium tracking-tight text-lg">
-          Alexandra
-        </span>
-      </a>
-
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center gap-8 text-[15px] font-normal">
-        <a href="https://alexandrastudio.se/academy.html"
-           class="text-neutral-500 hover:text-neutral-900 transition">
-          Academy
-        </a>
- 
-      <nav class="hidden md:flex items-center gap-8 text-[15px] font-normal">
-        <a href="https://luma.com/user/agrisanti"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="text-neutral-500 hover:text-neutral-900 transition">
-          Events
+        <!-- Logo -->
+        <a href="https://alexandrastudio.se/Performance_Report_2026.pdf"
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-3 group">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-neutral-900 transition-transform group-hover:scale-105">
+            <span class="text-white text-sm font-semibold">A</span>
+          </span>
+          <span class="text-neutral-900 font-medium tracking-tight text-lg">Alexandra</span>
         </a>
 
-        <a href="https://www.linkedin.com/in/alexandragrisanti/"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="text-neutral-500 hover:text-neutral-900 transition">
-          LinkedIn
-        </a>
+        <!-- Desktop Navigation (single <nav>) -->
+        <nav class="hidden md:flex items-center gap-8 text-[15px] font-normal">
+          <a href="https://alexandrastudio.se/academy.html"
+             class="text-neutral-500 hover:text-neutral-900 transition">Academy</a>
+          <a href="https://luma.com/user/agrisanti"
+             target="_blank" rel="noopener noreferrer"
+             class="text-neutral-500 hover:text-neutral-900 transition">Events</a>
+          <a href="https://www.linkedin.com/in/alexandragrisanti/"
+             target="_blank" rel="noopener noreferrer"
+             class="text-neutral-500 hover:text-neutral-900 transition">LinkedIn</a>
+          <a href="https://calendly.com/alexandra-alexandrastudio/30min"
+             target="_blank" rel="noopener noreferrer"
+             class="px-5 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition">Contact</a>
+        </nav>
 
-        <a href="https://calendly.com/alexandra-alexandrastudio/30min"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="px-5 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition">
-          Contact
-        </a>
-      </nav>
+        <!-- Mobile Menu Button -->
+        <button id="menuBtn" type="button"
+          class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition focus:outline-none focus:ring-2 focus:ring-neutral-200"
+          aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+          <span class="hamburger" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+      </div>
 
-      <!-- Mobile Menu Button -->
-      <button
-        id="menuBtn"
-        type="button"
-        class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition focus:outline-none focus:ring-2 focus:ring-neutral-200"
-        aria-label="Open menu"
-        aria-expanded="false"
-        aria-controls="mobileNav"
-      >
-        <span class="hamburger" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </span>
-      </button>
+      <!-- Mobile Navigation -->
+      <div id="mobileNav"
+        class="md:hidden overflow-hidden max-h-0 opacity-0 pointer-events-none transition-all duration-300 ease-out">
+        <div class="mt-4 rounded-2xl scandi-border bg-neutral-50/50 p-3 text-sm backdrop-blur-xl">
+          <div class="grid grid-cols-1 gap-2">
+            <a href="https://alexandrastudio.se/academy.html"
+               class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Academy</a>
+            <a href="https://luma.com/user/agrisanti"
+               target="_blank" rel="noopener noreferrer"
+               class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Events</a>
+            <a href="https://www.linkedin.com/in/alexandragrisanti/"
+               target="_blank" rel="noopener noreferrer"
+               class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">LinkedIn</a>
+            <a href="https://calendly.com/alexandra-alexandrastudio/30min"
+               target="_blank" rel="noopener noreferrer"
+               class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Contact</a>
+          </div>
+        </div>
+      </div>
     </div>
+  </header>
 
-    <!-- Mobile Navigation -->
-    <div
-      id="mobileNav"
-      class="md:hidden overflow-hidden max-h-0 opacity-0 pointer-events-none transition-all duration-300 ease-out"
-    >
-      <div class="mt-4 rounded-2xl scandi-border bg-neutral-50/50 p-3 text-sm backdrop-blur-xl">
-        <div class="grid grid-cols-1 gap-2">
+  <!-- ═══════════════════════════ MAIN ═══════════════════════════ -->
+  <main id="home">
+
+    <!-- ── HERO ── -->
+    <section class="px-6 md:px-8 pt-20 md:pt-28 pb-16 md:pb-24" data-reveal>
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="inline-flex items-center gap-2 text-xs text-neutral-600 bg-neutral-50 scandi-border px-4 py-2 rounded-full mb-8">
+            <span class="w-1.5 h-1.5 rounded-full bg-neutral-900"></span>
+            <span>Nordic Fintech Ecosystem</span>
+          </div>
+
+          <h1 class="text-5xl md:text-7xl font-light leading-[1.08] tracking-[-0.02em] text-neutral-900 mb-8">
+            Creative Strategy for the<br />Fintech Power Shift
+          </h1>
+
+          <p class="text-lg md:text-xl text-neutral-500 font-light max-w-2xl mx-auto mb-12">
+            For strategy teams, partnership leaders, investors — and companies that need creative leverage. I analyze ecosystem shifts in Nordic fintech — margin compression, embedded finance, PSD3, distribution power — and translate them into positioning, product design and performance systems.
+          </p>
+
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="https://alexandrastudio.se/Performance_Report_2026.pdf"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-neutral-900 text-white text-[15px] font-medium hover:bg-neutral-800 transition transform hover:-translate-y-0.5">
+              See Impact Report
+              <i class="bi bi-arrow-right text-sm"></i>
+            </a>
+            <a href="https://calendly.com/alexandra-alexandrastudio/30min"
+               class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full scandi-border-thick bg-white text-neutral-900 text-[15px] font-medium hover:bg-neutral-50 transition">
+              Get Started
+            </a>
+          </div>
+        </div>
+
+        <!-- Image Grid -->
+        <div class="mt-20 md:mt-28 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer"
+             class="block rounded-xl overflow-hidden scandi-border bg-neutral-50 refined-lift" aria-label="View work">
+            <img src="https://millefeuillemockup.com/wp-content/uploads/2023/10/Millefeuille-Mockup-Antoine-Peltier-Design-MLLFLL-002.jpeg"
+                 alt="Design work" class="w-full h-44 md:h-48 object-cover" loading="lazy" />
+          </a>
+          <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer"
+             class="block rounded-xl overflow-hidden scandi-border bg-neutral-50 refined-lift" aria-label="View work">
+            <img src="https://design-packs.com/cdn/shop/files/overlap-stacking-cards.gif?v=1753901686&width=823"
+                 alt="Design work" class="w-full h-44 md:h-48 object-cover" loading="lazy" />
+          </a>
+          <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer"
+             class="block rounded-xl overflow-hidden scandi-border bg-neutral-50 refined-lift" aria-label="View work">
+            <img src="https://goodmockups.com/wp-content/uploads/2024/08/Free-Floating-Dual-iPhone-16-Pro-Max-Mockup-PSD.jpg"
+                 alt="Design work" class="w-full h-44 md:h-48 object-cover" loading="lazy" />
+          </a>
+          <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer"
+             class="block rounded-xl overflow-hidden scandi-border bg-neutral-50 refined-lift" aria-label="View work">
+            <img src="https://elmish.land/assets/images/image1-3ca72746a8b25e1ef39aa74f8112ceb2.png"
+                 alt="Design work" class="w-full h-44 md:h-48 object-cover" loading="lazy" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STRATEGIC EXECUTION ── -->
+    <section id="agency" class="px-6 md:px-8 py-16 md:py-24 bg-neutral-50/50" data-reveal>
+      <div class="mx-auto max-w-7xl">
+        <div class="flex items-center justify-between gap-4 mb-10">
+          <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium">
+            Strategic Execution
+          </span>
+          <span class="text-sm text-neutral-400 whitespace-nowrap font-light">
+            Positioning • Product • Performance
+          </span>
+        </div>
+
+        <article class="rounded-2xl scandi-border bg-white overflow-hidden refined-lift">
+          <div class="grid md:grid-cols-12 gap-0">
+            <div class="md:col-span-5 p-8 md:p-12">
+              <div class="inline-flex items-center gap-2 text-[13px] text-neutral-600 mb-6">
+                <span class="px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 scandi-border font-medium">
+                  For Fintech & Platforms
+                </span>
+                <span class="font-light">Distribution is strategy</span>
+              </div>
+
+              <h2 class="text-3xl md:text-4xl font-light leading-[1.15] tracking-tight text-neutral-900 mb-6">
+                When infrastructure shifts, positioning becomes leverage
+              </h2>
+
+              <p class="text-neutral-600 leading-relaxed mb-6 font-light">
+                Embedded finance compresses margins.
+                Platforms consolidate distribution.
+                Regulation reshapes incentives.
+                <br /><br />
+                I help fintechs and platform companies translate these shifts into
+                clear narratives, structured products and performance systems
+                that compound.
+              </p>
+
+              <ul class="space-y-3 text-[15px] text-neutral-700 mb-8">
+                <li class="flex items-start gap-3">
+                  <span class="w-1 h-1 rounded-full bg-neutral-900 mt-2 flex-shrink-0"></span>
+                  <span>Product & ecosystem positioning</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="w-1 h-1 rounded-full bg-neutral-900 mt-2 flex-shrink-0"></span>
+                  <span>Fintech website & brand systems built for trust</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="w-1 h-1 rounded-full bg-neutral-900 mt-2 flex-shrink-0"></span>
+                  <span>Performance campaigns aligned with margin economics</span>
+                </li>
+              </ul>
+
+              <div class="flex flex-wrap gap-2">
+                <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+                   target="_blank" rel="noopener noreferrer"
+                   class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600 hover:bg-white transition">
+                  fintech positioning
+                </a>
+                <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+                   target="_blank" rel="noopener noreferrer"
+                   class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600 hover:bg-white transition">
+                  performance systems
+                </a>
+                <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+                   target="_blank" rel="noopener noreferrer"
+                   class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600 hover:bg-white transition">
+                  ecosystem strategy
+                </a>
+              </div>
+            </div>
+
+            <div class="md:col-span-7 p-6 md:p-8 bg-neutral-50/50">
+              <div class="rounded-xl overflow-hidden scandi-border bg-white">
+                <img src="apg1.png" alt="Strategic fintech design"
+                     class="w-full h-[280px] md:h-[480px] object-cover" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── SERVICES ── -->
+    <section id="services" class="px-6 md:px-8 py-16 md:py-24" data-reveal>
+      <div class="mx-auto max-w-7xl">
+        <div class="flex items-center justify-between gap-4 mb-10">
+          <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-neutral-50 text-neutral-700 font-medium">
+            Work With Me
+          </span>
+          <a href="https://stockholmgrowthfintech.substack.com/"
+             target="_blank" rel="noopener noreferrer"
+             class="text-sm text-neutral-600 hover:text-neutral-900 transition whitespace-nowrap">
+            Ecosystem insights <i class="bi bi-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="rounded-xl scandi-border bg-white p-8 refined-lift">
+            <div class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center mb-6">
+              <i class="bi bi-graph-up text-white text-lg"></i>
+            </div>
+            <p class="text-lg font-medium text-neutral-900 mb-2">Strategic Inventory</p>
+            <p class="text-neutral-600 mb-6 font-light">
+              Ecosystem analysis, positioning clarity and distribution strategy for fintechs navigating margin pressure and platform shifts.
+            </p>
+            <a href="https://calendly.com/alexandra-alexandrastudio/30min"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-sm text-neutral-900 hover:gap-3 transition-all">
+              Book strategy call <i class="bi bi-arrow-right text-xs"></i>
+            </a>
+          </div>
+
+          <div class="rounded-xl scandi-border bg-white p-8 refined-lift">
+            <div class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center mb-6">
+              <i class="bi bi-bank2 text-white text-lg"></i>
+            </div>
+            <p class="text-lg font-medium text-neutral-900 mb-2">Product & Brand Systems</p>
+            <p class="text-neutral-600 mb-6 font-light">
+              Fintech-native website structures, trust patterns, narrative architecture and brand systems designed for regulated markets.
+            </p>
+            <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-sm text-neutral-900 hover:gap-3 transition-all">
+              View fintech services <i class="bi bi-arrow-right text-xs"></i>
+            </a>
+          </div>
+
+          <div class="rounded-xl scandi-border bg-white p-8 refined-lift">
+            <div class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center mb-6">
+              <i class="bi bi-lightning-charge text-white text-lg"></i>
+            </div>
+            <p class="text-lg font-medium text-neutral-900 mb-2">Performance & Creative Systems</p>
+            <p class="text-neutral-600 mb-6 font-light">
+              Campaign frameworks, landing systems, motion guidelines and creative infrastructure aligned with margin economics.
+            </p>
+            <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-sm text-neutral-900 hover:gap-3 transition-all">
+              Download services <i class="bi bi-arrow-right text-xs"></i>
+            </a>
+          </div>
+
+          <div class="rounded-xl scandi-border bg-white p-8 refined-lift">
+            <div class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center mb-6">
+              <i class="bi bi-people text-white text-lg"></i>
+            </div>
+            <p class="text-lg font-medium text-neutral-900 mb-2">Events & Ecosystem Building</p>
+            <p class="text-neutral-600 mb-6 font-light">
+              Curated fintech gatherings connecting banks, platforms, infrastructure players and investors to increase ecosystem liquidity.
+            </p>
+            <a href="https://luma.com/user/agrisanti"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-sm text-neutral-900 hover:gap-3 transition-all">
+              See upcoming events <i class="bi bi-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── INSIGHTS ── -->
+    <section id="insights" class="px-6 md:px-8 py-16 md:py-24 bg-neutral-50/50" data-reveal>
+      <div class="mx-auto max-w-7xl">
+        <div class="flex items-center justify-between gap-4 mb-10">
+          <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium">
+            Resources & insights
+          </span>
+          <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer"
+             class="text-sm text-neutral-600 hover:text-neutral-900 transition whitespace-nowrap">
+            View all <i class="bi bi-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 items-start">
+          <article class="rounded-2xl scandi-border bg-white overflow-hidden refined-lift">
+            <div class="p-8">
+              <div class="flex items-center gap-2 text-[13px] text-neutral-600 mb-4">
+                <span class="px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 scandi-border">Strategy</span>
+                <span class="font-light">January 11, 2026</span>
+              </div>
+              <h3 class="text-2xl md:text-3xl font-light leading-tight mb-4">
+                <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
+                   target="_blank" rel="noopener noreferrer" class="hover:underline">
+                  How to design for trust
+                </a>
+              </h3>
+              <p class="text-neutral-600 font-light">Patterns that feel stable, calm, and predictable.</p>
+            </div>
+            <div class="px-8 pb-8">
+              <div class="rounded-xl overflow-hidden scandi-border bg-neutral-50">
+                <img src="https://tint.creativemarket.com/0xHUYGoV6g46INY4wlYZI8RY7SuMuXNCfh9wOzpIwz0/width:1200/height:800/gravity:nowe/rt:fill-down/el:1/czM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3RzLzUyOTQvNTI5NDQvNTI5NDQ3ODkvMi1vLmpwZyMxNzQxMTY3ODUy?1741167852"
+                     alt="Design insights" class="w-full h-64 md:h-72 object-cover" loading="lazy" />
+              </div>
+            </div>
+          </article>
+
+          <article class="rounded-2xl scandi-border bg-white overflow-hidden refined-lift">
+            <div class="p-8">
+              <div class="rounded-xl overflow-hidden scandi-border bg-neutral-50 mb-6">
+                <img src="https://www.free-mockup.com/wp-content/uploads/edd/2025/03/iPhone-Mockup-PSD-Scene-01.jpg.webp"
+                     alt="Marketing insights" class="w-full h-64 object-cover" loading="lazy" />
+              </div>
+              <div class="flex items-center gap-2 text-[13px] text-neutral-600 mb-4">
+                <span class="px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 scandi-border">Reporting</span>
+                <span class="font-light">January 4, 2026</span>
+              </div>
+              <h3 class="text-2xl font-light leading-tight mb-4">
+                <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
+                   target="_blank" rel="noopener noreferrer" class="hover:underline">
+                  A Design Boost for Marketers
+                </a>
+              </h3>
+              <p class="text-neutral-600 font-light">What to document, what to ship, what to skip.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LET'S WORK TOGETHER CAROUSEL ── -->
+    <section id="work-together" class="relative px-6 md:px-8 py-16 md:py-24 bg-white" data-reveal>
+      <div class="mx-auto max-w-7xl">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-light leading-[1.1] tracking-tight text-neutral-900 mb-4">
+            Let's work together
+          </h2>
+          <p class="text-lg text-neutral-500 font-light">Choose your collaboration style</p>
+        </div>
+
+        <div class="carousel-wrapper">
+          <div id="carousel-track" class="carousel-track">
+
+            <!-- Original 4 cards -->
+            <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now%E2%9C%89%EF%B8%8F&body=Hi%20Alexandra%2C%20I%20found%20your%20website%20and%20this%20automated%20email%20responder.%20I%27m%20curious%20to%20find%20out%20more%2C%20could%20you%20reach%20out%20to%20me%2C%20at%20this%20email%20address%3F%20Thank%20you%20and%20I%27m%20looking%20forward%20to%20it."
+               class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group">
+              <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
+                <img src="https://images.pexels.com/photos/19328775/pexels-photo-19328775.jpeg"
+                     alt="Fintech B2B Product Design"
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent"></div>
+                <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
+                  <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-neutral-900 text-center leading-tight">
+                    Fintech B2B<br />Product Design
+                  </h3>
+                </div>
+              </div>
+            </a>
+
+            <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now%E2%9C%89%EF%B8%8F&body=Found%20your%20website.%20Could%20you%20reach%20out%20to%20me%20at%20this%20email%20address%3F"
+               class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group">
+              <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
+                <img src="https://images.pexels.com/photos/18362173/pexels-photo-18362173.jpeg"
+                     alt="Branding"
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent"></div>
+                <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
+                  <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-neutral-900 text-center leading-tight">
+                    Branding
+                  </h3>
+                </div>
+              </div>
+            </a>
+
+            <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now%E2%9C%89%EF%B8%8F&body=Found%20your%20website.%20Could%20you%20reach%20out%20to%20me%20at%20this%20email%20address%3F"
+               class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group">
+              <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
+                <img src="https://images.pexels.com/photos/14979020/pexels-photo-14979020.jpeg"
+                     alt="Digital Experiences"
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
+                  <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-white text-center leading-tight">
+                    Digital<br />Experiences
+                  </h3>
+                </div>
+              </div>
+            </a>
+
+            <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now%E2%9C%89%EF%B8%8F&body=Found%20your%20website.%20Could%20you%20reach%20out%20to%20me%20at%20this%20email%20address%3F"
+               class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group">
+              <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
+                <img src="https://images.pexels.com/photos/6956225/pexels-photo-6956225.jpeg"
+                     alt="Performance Marketing"
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
+                  <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-white text-center leading-tight">
+                    Performance<br />Marketing
+                  </h3>
+                </div>
+              </div>
+            </a>
+
+            <!-- Duplicate set for seamless loop -->
+            <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now%E2%9C%89%EF%B8%8F&body=Found%20your%20website.%20Could%20you%20reach%20out%20to%20me%20at%20this%20email%20address%3F"
+               class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group" aria-hidden="true">
+              <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
+                <img src="https://images.pexels.com/photos/19328775/pexels-photo-19328775.jpeg"
+                     alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent"></div>
+                <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
+                  <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-neutral-900 text-center leading-tight">
+                    Fintech B2B<br />Product Design
+                  </h3>
+                </div>
+              </div>
+            </a>
+
+            <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now%E2%9C%89%EF%B8%8F&body=Found%20your%20website.%20Could%20you%20reach%20out%20to%20me%20at%20this%20email%20address%3F"
+               class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group" aria-hidden="true">
+              <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
+                <img src="https://images.pexels.com/photos/18362173/pexels-photo-18362173.jpeg"
+                     alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent"></div>
+                <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
+                  <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-neutral-900 text-center leading-tight">
+                    Branding
+                  </h3>
+                </div>
+              </div>
+            </a>
+
+            <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now%E2%9C%89%EF%B8%8F&body=Found%20your%20website.%20Could%20you%20reach%20out%20to%20me%20at%20this%20email%20address%3F"
+               class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group" aria-hidden="true">
+              <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
+                <img src="https://images.pexels.com/photos/14979020/pexels-photo-14979020.jpeg"
+                     alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
+                  <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-white text-center leading-tight">
+                    Digital<br />Experiences
+                  </h3>
+                </div>
+              </div>
+            </a>
+
+            <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now%E2%9C%89%EF%B8%8F&body=Found%20your%20website.%20Could%20you%20reach%20out%20to%20me%20at%20this%20email%20address%3F"
+               class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group" aria-hidden="true">
+              <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
+                <img src="https://images.pexels.com/photos/6956225/pexels-photo-6956225.jpeg"
+                     alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
+                  <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-white text-center leading-tight">
+                    Performance<br />Marketing
+                  </h3>
+                </div>
+              </div>
+            </a>
+
+          </div><!-- /carousel-track -->
+        </div><!-- /carousel-wrapper -->
+      </div>
+    </section>
+
+    <!-- ── THREE COLUMN (COUNTERS + COLLABORATIONS) ── -->
+    <section class="py-16 md:py-24 px-6 bg-white">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8" id="counter-section">
+
+          <div class="flex flex-col items-center justify-center p-8 md:p-12 bg-neutral-50 rounded-2xl scandi-border min-h-[300px] md:min-h-[400px]">
+            <div class="text-center">
+              <div id="productsCounter" class="text-5xl sm:text-6xl md:text-7xl font-light text-neutral-900 mb-4">+0</div>
+              <div class="text-lg md:text-xl font-light text-neutral-600">Products Designed</div>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-center justify-center p-8 md:p-12 bg-neutral-50 rounded-2xl scandi-border min-h-[300px] md:min-h-[400px]">
+            <div class="text-center">
+              <div id="brandsCounter" class="text-5xl sm:text-6xl md:text-7xl font-light text-neutral-900 mb-4">+0</div>
+              <div class="text-lg md:text-xl font-light text-neutral-600">Brands</div>
+            </div>
+          </div>
+
+          <div class="relative rounded-2xl scandi-border overflow-hidden min-h-[300px] md:min-h-[400px] bg-white">
+            <div class="absolute top-0 left-0 right-0 z-20 text-center pt-6 md:pt-8">
+              <h3 class="text-2xl md:text-3xl font-light text-neutral-900">Collaborations</h3>
+            </div>
+            <div class="collaboration-scroll-wrapper">
+              <div class="collaboration-scroll-track">
+                <img src="9.png" alt="Collaborations" class="collaboration-image" />
+              </div>
+            </div>
+            <div class="fade-left"></div>
+            <div class="fade-right"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ── -->
+    <section class="px-6 md:px-8 py-24 bg-neutral-50/50" data-reveal>
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between gap-4 mb-12">
+          <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium">
+            Perspective from the field
+          </span>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+
+          <div class="scandi-border rounded-2xl p-8 bg-white refined-lift">
+            <img src="niklas.jpg" class="w-12 h-12 rounded-full mb-5 object-cover" alt="Niklas" />
+            <p class="text-neutral-600 font-light mb-5 leading-relaxed text-[15px]">
+              "Regardless of discussing the strategy of the products or collaborating with our developers or conducting user testing Alexandra's work has been highly appreciated. Creative, productive, collaborative and structured."
+            </p>
+            <div>
+              <p class="text-sm font-medium text-neutral-900">Niklas</p>
+              <p class="text-xs text-neutral-500 font-light">Director of Digital Experiences, Worldline</p>
+            </div>
+          </div>
+
+          <div class="scandi-border rounded-2xl p-8 bg-white refined-lift">
+            <img src="agnes.jpg" class="w-12 h-12 rounded-full mb-5 object-cover" alt="Agnes" />
+            <p class="text-neutral-600 font-light mb-5 leading-relaxed text-[15px]">
+              "Self-motivated, outcome-driven and cares deeply about the mission, the team and users. From day one she brought a positive, can-do attitude and tackled a broad range of challenges across strategy, product management and UX design."
+            </p>
+            <div>
+              <p class="text-sm font-medium text-neutral-900">Agnes</p>
+              <p class="text-xs text-neutral-500 font-light">Design Strategist, Capital One</p>
+            </div>
+          </div>
+
+          <div class="scandi-border rounded-2xl p-8 bg-white refined-lift">
+            <img src="stefan.jpg" class="w-12 h-12 rounded-full mb-5 object-cover" alt="Stefan" />
+            <p class="text-neutral-600 font-light mb-5 leading-relaxed text-[15px]">
+              "Alexandra brings energy, creativity and diligence, and is very collaborative and easy to work with."
+            </p>
+            <div>
+              <p class="text-sm font-medium text-neutral-900">Stefan</p>
+              <p class="text-xs text-neutral-500 font-light">Chief Strategy Officer, PSA Solutions</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT ── -->
+    <section id="about" class="px-6 md:px-8 py-16 md:py-24 bg-neutral-50/50" data-reveal>
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-4xl mx-auto text-center">
+          <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium mb-10">
+            For Strategy Teams • Partnerships • Investors • Ecosystem Builders
+          </span>
 
           <a href="https://alexandrastudio.se/academy.html"
-          class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">
-         Academy
-          </a>
-          
-          <a href="https://luma.com/user/agrisanti"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">
-            Events
+             target="_blank" rel="noopener noreferrer"
+             class="block" aria-label="Academy">
+            <h2 class="text-4xl md:text-6xl font-light leading-[1.1] tracking-tight text-neutral-900 mb-10 hover:underline">
+              Operatating at the intersection<br />
+              of fintech ecosystem<br />
+              and creative execution
+            </h2>
           </a>
 
-          <a href="https://www.linkedin.com/in/alexandragrisanti/"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">
-            LinkedIn
-          </a>
+          <p class="text-neutral-600 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+            Not just a design — and not just writing.
+            <br /><br />
+            Get an analysis of inside power shifts for financial infrastructure:
+            distribution control, margin compression, embedded finance,
+            regulatory transitions and platform economics.
+            <br /><br />
+            Then translate those shifts into positioning, product systems,
+            brand clarity and performance strategy.
+            <br /><br />
+            When incentives collide across banks, fintechs,
+            infrastructure players and capital —
+            You see the whole board.
+          </p>
 
           <a href="https://calendly.com/alexandra-alexandrastudio/30min"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">
-            Contact
+             target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-neutral-900 text-white text-[15px] font-medium hover:bg-neutral-800 transition transform hover:-translate-y-0.5">
+            Book Strategic Call
+            <i class="bi bi-arrow-right text-sm"></i>
           </a>
-
         </div>
       </div>
-    </div>
-  </div>
-</header>
+    </section>
 
-    <!-- MAIN -->
-    <main id="home">
-
-      <!-- HERO -->
-      <section class="px-6 md:px-8 pt-20 md:pt-28 pb-16 md:pb-24" data-reveal>
-        <div class="mx-auto max-w-7xl">
-          <div class="max-w-4xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 text-xs text-neutral-600 bg-neutral-50 scandi-border px-4 py-2 rounded-full mb-8">
-              <span class="w-1.5 h-1.5 rounded-full bg-neutral-900"></span>
-              <span>Nordic Fintech Ecosystem</span>
-            </div>
-
-            <h1 class="text-5xl md:text-7xl font-light leading-[1.08] tracking-[-0.02em] text-neutral-900 mb-8">
-                Creative Strategy for the<br />
-                Fintech Power Shift
-            </h1>
-
-            <p class="text-lg md:text-xl text-neutral-500 font-light max-w-2xl mx-auto mb-12">
-                For strategy teams, partnership leaders, investors — and companies that need creative leverage. I analyze ecosystem shifts in Nordic fintech — margin compression, embedded finance, PSD3, distribution power — and translate them into positioning, product design and performance systems.
+    <!-- ── CONTACT ── -->
+    <section id="contact" class="px-6 md:px-8 py-16 md:py-24" data-reveal>
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-3xl mx-auto text-center">
+          <div class="rounded-2xl scandi-border bg-white p-10 md:p-16">
+            <h3 class="text-3xl md:text-4xl font-light mb-6">Ready?</h3>
+            <p class="text-neutral-600 font-light max-w-xl mx-auto mb-10">
+              When you need creative help or a strategic boost, let's chat.
             </p>
-
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-              <a href="https://alexandrastudio.se/Performance_Report_2026.pdf"
-                 target="_blank"
-                 rel="noopener noreferrer"
+            <div class="flex flex-col sm:flex-row justify-center gap-3">
+              <a href="https://calendly.com/alexandra-alexandrastudio/30min"
+                 target="_blank" rel="noopener noreferrer"
                  class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-neutral-900 text-white text-[15px] font-medium hover:bg-neutral-800 transition transform hover:-translate-y-0.5">
-                See Impact Report
+                Book a 30-min Call
                 <i class="bi bi-arrow-right text-sm"></i>
               </a>
-              
-              <a href="https://calendly.com/alexandra-alexandrastudio/30min"
-                 class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full scandi-border-thick bg-white text-neutral-900 text-[15px] font-medium hover:bg-neutral-50 transition">
-                Get Started
-              </a>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Image Grid -->
-          <div class="mt-20 md:mt-28 grid grid-cols-2 md:grid-cols-4 gap-4">
-            <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer" class="block rounded-xl overflow-hidden scandi-border bg-neutral-50 refined-lift" aria-label="View work">
-              <img src="https://millefeuillemockup.com/wp-content/uploads/2023/10/Millefeuille-Mockup-Antoine-Peltier-Design-MLLFLL-002.jpeg" alt="Design work" class="w-full h-44 md:h-48 object-cover" loading="lazy" />
+  </main>
+
+  <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+  <footer class="px-6 md:px-8 py-16 border-t scandi-border">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-12 md:grid-cols-12 items-start mb-16">
+        <div class="md:col-span-5">
+          <p class="text-neutral-900 font-medium text-2xl mb-4">Alexandra</p>
+          <p class="text-neutral-600 font-light max-w-sm mb-8">
+            Calm systems-first design for Performance agencies and fintech.
+          </p>
+          <div class="flex items-center gap-3">
+            <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition" aria-label="LinkedIn">
+              <i class="bi bi-linkedin text-neutral-700"></i>
             </a>
-
-            <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer" class="block rounded-xl overflow-hidden scandi-border bg-neutral-50 refined-lift" aria-label="View work">
-              <img src="https://design-packs.com/cdn/shop/files/overlap-stacking-cards.gif?v=1753901686&width=823" alt="Design work" class="w-full h-44 md:h-48 object-cover" loading="lazy" />
-            </a>
-
-            <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer" class="block rounded-xl overflow-hidden scandi-border bg-neutral-50 refined-lift" aria-label="View work">
-              <img src="https://goodmockups.com/wp-content/uploads/2024/08/Free-Floating-Dual-iPhone-16-Pro-Max-Mockup-PSD.jpg" alt="Design work" class="w-full h-44 md:h-48 object-cover" loading="lazy" />
-            </a>
-
-            <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer" class="block rounded-xl overflow-hidden scandi-border bg-neutral-50 refined-lift" aria-label="View work">
-              <img src="https://elmish.land/assets/images/image1-3ca72746a8b25e1ef39aa74f8112ceb2.png" alt="Design work" class="w-full h-44 md:h-48 object-cover" loading="lazy" />
+            <a href="mailto:alexandrapgrisanti@gmail.com"
+               class="inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition" aria-label="Email">
+              <i class="bi bi-envelope text-neutral-700"></i>
             </a>
           </div>
         </div>
-      </section>
 
+        <div class="md:col-span-7">
+          <div class="grid gap-10 sm:grid-cols-3">
+            <div>
+              <p class="text-sm font-medium text-neutral-900 mb-4">Work</p>
+              <div class="space-y-3 text-sm text-neutral-600 font-light">
+                <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Performance Agency design</a>
+                <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Fintech advisory</a>
+                <a href="https://platsivardagen.substack.com/" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Kommun audits</a>
+              </div>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-neutral-900 mb-4">Resources</p>
+              <div class="space-y-3 text-sm text-neutral-600 font-light">
+                <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Newsletter</a>
+                <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Media kit</a>
+                <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Downloadables</a>
+              </div>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-neutral-900 mb-4">Contact</p>
+              <div class="space-y-3 text-sm text-neutral-600 font-light">
+                <a href="https://calendly.com/alexandrapgrisanti/hello" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Book a call</a>
+                <a href="mailto:alexandrapgrisanti@gmail.com" class="block hover:text-neutral-900 transition">Email</a>
+                <a href="https://calendly.com/alexandrapgrisanti/hello" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Speaking</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<style>
-  /* Scandinavian border style */
-  .scandi-border {
-    border: 1px solid rgba(0, 0, 0, 0.06);
-  }
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t scandi-border text-xs text-neutral-500 font-light">
+        <p>
+          © 2026 <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 transition">Alexandra Grisanti</a>. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
 
-  /* Collaboration scroll container */
-  .collaboration-scroll-wrapper {
-    position: absolute;
-    top: 80px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
-  }
+</div><!-- /min-h-screen -->
 
-  .collaboration-scroll-track {
-    position: left;
-    height: 100%;
-    width: auto;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    animation: scrollHorizontal 25s linear infinite;
-  }
-
-  .collaboration-image {
-    height: 30%;
-    width: auto;
-    object-fit: contain;
-    display: block;
-    transform: scale(6);
-  }
-
-  /* Horizontal scrolling animation - right to left */
-  @keyframes scrollHorizontal {
-    0% {
-      transform: translateX(400%);
-    }
-    100% {
-      transform: translateX(-500%);
-    }
-  }
-
-  /* Fade overlays for horizontal scroll */
-  .fade-left {
-    position: absolute;
-    top: 80px;
-    left: 0;
-    bottom: 0;
-    width: 60px;
-    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-    pointer-events: none;
-    z-index: 10;
-  }
-
-  .fade-right {
-    position: absolute;
-    top: 80px;
-    right: 0;
-    bottom: 0;
-    width: 60px;
-    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-    pointer-events: none;
-    z-index: 10;
-  }
-
-  /* Pause animation on hover */
-  .collaboration-scroll-wrapper:hover .collaboration-scroll-track {
-    animation-play-state: paused;
-  }
-
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
-    .collaboration-scroll-wrapper {
-      top: 60px;
-    }
-
-    .fade-left,
-    .fade-right {
-      top: 60px;
-      width: 40px;
-    }
-  }
-
-  /* Reduced motion support */
-  @media (prefers-reduced-motion: reduce) {
-    .collaboration-scroll-track {
-      animation: none;
-    }
-  }
-</style>
-
+<!-- ═══════════════════════════ SCRIPTS ═══════════════════════════ -->
 <script>
-  // Counter animation function (80% slower = 5x duration)
-  function animateCounter(id, start, end, duration) {
-    const element = document.getElementById(id);
-    if (!element) return;
+  // ── Reveal animations ──
+  (function () {
+    const items = Array.from(document.querySelectorAll('[data-reveal]'));
+    if (!items.length) return;
 
-    const range = end - start;
-    const increment = range / (duration / 16);
-    let current = start;
+    items.forEach((el, i) => {
+      el.style.setProperty('--d', Math.min(i * 50, 250) + 'ms');
+    });
 
-    const step = () => {
-      current += increment;
-      if (current >= end) {
-        element.textContent = '+' + Math.round(end);
-      } else {
-        element.textContent = '+' + Math.round(current);
-        requestAnimationFrame(step);
-      }
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      items.forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+
+    items.forEach(el => io.observe(el));
+  })();
+
+  // ── Mobile menu ──
+  (function () {
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    if (!menuBtn || !mobileNav) return;
+
+    let open = false;
+
+    const setExpanded = (isOpen) => {
+      open = isOpen;
+      menuBtn.classList.toggle('open', isOpen);
+      mobileNav.classList.toggle('is-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
     };
 
-    requestAnimationFrame(step);
-  }
+    menuBtn.addEventListener('click', () => setExpanded(!open));
 
-  // Intersection Observer to trigger counters when section is visible
-  const observerOptions = {
-    threshold: 0.2,
-    rootMargin: '0px'
-  };
-
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Animate counters - 80% slower (10000ms instead of 2000ms)
-        animateCounter("productsCounter", 0, 9, 10000);
-        animateCounter("brandsCounter", 0, 11, 10000);
-        counterObserver.unobserve(entry.target);
-      }
+    mobileNav.addEventListener('click', (e) => {
+      if (e.target.closest('a')) setExpanded(false);
     });
-  }, observerOptions);
 
-  // Initialize on page load
-  document.addEventListener('DOMContentLoaded', () => {
-    const section = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-3');
-    if (section) {
-      counterObserver.observe(section);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && open) setExpanded(false);
+    });
+  })();
+
+  // ── Counter animation ──
+  (function () {
+    function animateCounter(id, end, duration) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const increment = end / (duration / 16);
+      let current = 0;
+      const step = () => {
+        current += increment;
+        if (current >= end) {
+          el.textContent = '+' + end;
+        } else {
+          el.textContent = '+' + Math.round(current);
+          requestAnimationFrame(step);
+        }
+      };
+      requestAnimationFrame(step);
     }
-  });
-</script>
 
+    const section = document.getElementById('counter-section');
+    if (!section) return;
 
- <!-- STRATEGIC EXECUTION -->
-<section id="agency" class="px-6 md:px-8 py-16 md:py-24 bg-neutral-50/50" data-reveal>
-    <div class="mx-auto max-w-7xl">
-      <div class="flex items-center justify-between gap-4 mb-10">
-        <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium">
-          Strategic Execution
-        </span>
-        <span class="text-sm text-neutral-400 whitespace-nowrap font-light">
-          Positioning • Product • Performance
-        </span>
-      </div>
-  
-      <article class="rounded-2xl scandi-border bg-white overflow-hidden refined-lift">
-        <div class="grid md:grid-cols-12 gap-0">
-          
-          <div class="md:col-span-5 p-8 md:p-12">
-  
-            <div class="inline-flex items-center gap-2 text-[13px] text-neutral-600 mb-6">
-              <span class="px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 scandi-border font-medium">
-                For Fintech & Platforms
-              </span>
-              <span class="font-light">Distribution is strategy</span>
-            </div>
-  
-            <h2 class="text-3xl md:text-4xl font-light leading-[1.15] tracking-tight text-neutral-900 mb-6">
-              When infrastructure shifts, positioning becomes leverage
-            </h2>
-  
-            <p class="text-neutral-600 leading-relaxed mb-6 font-light">
-              Embedded finance compresses margins. 
-              Platforms consolidate distribution. 
-              Regulation reshapes incentives.
-              <br /><br />
-              I help fintechs and platform companies translate these shifts into
-              clear narratives, structured products and performance systems
-              that compound.
-            </p>
-  
-            <ul class="space-y-3 text-[15px] text-neutral-700 mb-8">
-              <li class="flex items-start gap-3">
-                <span class="w-1 h-1 rounded-full bg-neutral-900 mt-2 flex-shrink-0"></span>
-                <span>Product & ecosystem positioning</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="w-1 h-1 rounded-full bg-neutral-900 mt-2 flex-shrink-0"></span>
-                <span>Fintech website & brand systems built for trust</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="w-1 h-1 rounded-full bg-neutral-900 mt-2 flex-shrink-0"></span>
-                <span>Performance campaigns aligned with margin economics</span>
-              </li>
-            </ul>
-  
-            <div class="flex flex-wrap gap-2">
-              <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600 hover:bg-white transition">
-                fintech positioning
-              </a>
-  
-              <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600 hover:bg-white transition">
-                performance systems
-              </a>
-  
-              <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600 hover:bg-white transition">
-                ecosystem strategy
-              </a>
-            </div>
-  
-          </div>
-  
-          <div class="md:col-span-7 p-6 md:p-8 bg-neutral-50/50">
-            <div class="rounded-xl overflow-hidden scandi-border bg-white">
-              <img src="apg1.png" alt="Strategic fintech design" class="w-full h-[280px] md:h-[480px] object-cover" loading="lazy" />
-            </div>
-          </div>
-  
-        </div>
-      </article>
-    </div>
-  </section>
-
-<!-- SERVICES -->
-<section id="services" class="px-6 md:px-8 py-16 md:py-24" data-reveal>
-    <div class="mx-auto max-w-7xl">
-      <div class="flex items-center justify-between gap-4 mb-10">
-        <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-neutral-50 text-neutral-700 font-medium">
-          Work With Me
-        </span>
-        <a href="https://stockholmgrowthfintech.substack.com/" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           class="text-sm text-neutral-600 hover:text-neutral-900 transition whitespace-nowrap">
-          Ecosystem insights <i class="bi bi-arrow-right text-xs"></i>
-        </a>
-      </div>
-  
-      <div class="grid md:grid-cols-4 gap-6">
-  
-        <!-- 1. Fintech Strategic Advisory -->
-        <div class="rounded-xl scandi-border bg-white p-8 refined-lift">
-          <div class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center mb-6">
-            <i class="bi bi-graph-up text-white text-lg"></i>
-          </div>
-          <p class="text-lg font-medium text-neutral-900 mb-2">
-            Strategic Inventory
-          </p>
-          <p class="text-neutral-600 mb-6 font-light">
-            Ecosystem analysis, positioning clarity and distribution strategy for fintechs navigating margin pressure and platform shifts.
-          </p>
-          <a href="https://calendly.com/alexandra-alexandrastudio/30min"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="inline-flex items-center gap-2 text-sm text-neutral-900 hover:gap-3 transition-all">
-            Book strategy call <i class="bi bi-arrow-right text-xs"></i>
-          </a>
-        </div>
-  
-        <!-- 2. Product & Brand Positioning -->
-        <div class="rounded-xl scandi-border bg-white p-8 refined-lift">
-          <div class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center mb-6">
-            <i class="bi bi-bank2 text-white text-lg"></i>
-          </div>
-          <p class="text-lg font-medium text-neutral-900 mb-2">
-            Product & Brand Systems
-          </p>
-          <p class="text-neutral-600 mb-6 font-light">
-            Fintech-native website structures, trust patterns, narrative architecture and brand systems designed for regulated markets.
-          </p>
-          <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="inline-flex items-center gap-2 text-sm text-neutral-900 hover:gap-3 transition-all">
-            View fintech services <i class="bi bi-arrow-right text-xs"></i>
-          </a>
-        </div>
-  
-        <!-- 3. Performance & Creative Systems -->
-        <div class="rounded-xl scandi-border bg-white p-8 refined-lift">
-          <div class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center mb-6">
-            <i class="bi bi-lightning-charge text-white text-lg"></i>
-          </div>
-          <p class="text-lg font-medium text-neutral-900 mb-2">
-            Performance & Creative Systems
-          </p>
-          <p class="text-neutral-600 mb-6 font-light">
-            Campaign frameworks, landing systems, motion guidelines and creative infrastructure aligned with margin economics.
-          </p>
-          <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="inline-flex items-center gap-2 text-sm text-neutral-900 hover:gap-3 transition-all">
-            Download services <i class="bi bi-arrow-right text-xs"></i>
-          </a>
-        </div>
-  
-        <!-- 4. Events & Ecosystem Building -->
-        <div class="rounded-xl scandi-border bg-white p-8 refined-lift">
-          <div class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center mb-6">
-            <i class="bi bi-people text-white text-lg"></i>
-          </div>
-          <p class="text-lg font-medium text-neutral-900 mb-2">
-            Events & Ecosystem Building
-          </p>
-          <p class="text-neutral-600 mb-6 font-light">
-            Curated fintech gatherings connecting banks, platforms, infrastructure players and investors to increase ecosystem liquidity.
-          </p>
-          <a href="https://luma.com/user/agrisanti"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="inline-flex items-center gap-2 text-sm text-neutral-900 hover:gap-3 transition-all">
-            See upcoming events <i class="bi bi-arrow-right text-xs"></i>
-          </a>
-        </div>
-  
-      </div>
-    </div>
-  </section>
-
-      <!-- INSIGHTS -->
-      <section id="insights" class="px-6 md:px-8 py-16 md:py-24 bg-neutral-50/50" data-reveal>
-        <div class="mx-auto max-w-7xl">
-          <div class="flex items-center justify-between gap-4 mb-10">
-            <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium">
-              Resources & insights
-            </span>
-            <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-neutral-600 hover:text-neutral-900 transition whitespace-nowrap">
-              View all <i class="bi bi-arrow-right text-xs"></i>
-            </a>
-          </div>
-
-          <div class="grid lg:grid-cols-2 gap-8 items-start">
-            <article class="rounded-2xl scandi-border bg-white overflow-hidden refined-lift">
-              <div class="p-8">
-                <div class="flex items-center gap-2 text-[13px] text-neutral-600 mb-4">
-                  <span class="px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 scandi-border">Strategy</span>
-                  <span class="font-light">January 11, 2026</span>
-                </div>
-
-                <h3 class="text-2xl md:text-3xl font-light leading-tight mb-4">
-                  <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" class="hover:underline">
-                    How to design for trust
-                  </a>
-                </h3>
-
-                <p class="text-neutral-600 font-light">
-                  Patterns that feel stable, calm, and predictable.
-                </p>
-              </div>
-
-              <div class="px-8 pb-8">
-                <div class="rounded-xl overflow-hidden scandi-border bg-neutral-50">
-                  <img src="https://tint.creativemarket.com/0xHUYGoV6g46INY4wlYZI8RY7SuMuXNCfh9wOzpIwz0/width:1200/height:800/gravity:nowe/rt:fill-down/el:1/czM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3RzLzUyOTQvNTI5NDQvNTI5NDQ3ODkvMi1vLmpwZyMxNzQxMTY3ODUy?1741167852" alt="Design insights" class="w-full h-64 md:h-72 object-cover" loading="lazy" />
-                </div>
-              </div>
-            </article>
-
-            <article class="rounded-2xl scandi-border bg-white overflow-hidden refined-lift">
-              <div class="p-8">
-                <div class="rounded-xl overflow-hidden scandi-border bg-neutral-50 mb-6">
-                  <img src="https://www.free-mockup.com/wp-content/uploads/edd/2025/03/iPhone-Mockup-PSD-Scene-01.jpg.webp" alt="Marketing insights" class="w-full h-64 object-cover" loading="lazy" />
-                </div>
-
-                <div class="flex items-center gap-2 text-[13px] text-neutral-600 mb-4">
-                  <span class="px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 scandi-border">Reporting</span>
-                  <span class="font-light">January 4, 2026</span>
-                </div>
-
-                <h3 class="text-2xl font-light leading-tight mb-4">
-                  <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="hover:underline">
-                    A Design Boost for Marketers
-                  </a>
-                </h3>
-
-                <p class="text-neutral-600 font-light">
-                  What to document, what to ship, what to skip.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- LET'S WORK TOGETHER CAROUSEL SECTION -->
-<section id="work-together" class="relative px-6 md:px-8 py-16 md:py-24 bg-white" data-reveal>
-  <div class="mx-auto max-w-7xl">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-light leading-[1.1] tracking-tight text-neutral-900 mb-4">
-        Let's work together
-      </h2>
-      <p class="text-lg text-neutral-500 font-light">
-        Choose your collaboration style
-      </p>
-    </div>
-
-    <!-- Carousel Container -->
-    <div class="carousel-wrapper relative overflow-hidden">
-      <div id="carousel-track" class="carousel-track flex gap-4 md:gap-6">
-        
-        <!-- Card 1 - Fintech B2B Product Design -->
-        <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now✉️&body=Hi%20Alexandra%2C%20I%20found%20your%20website%20and%20this%20automated%20email%20responder.%20I%27m%20curious%20to%20find%20out%20more%2C%20could%20you%20reach%20out%20to%20me%2C%20at%20this%20email%20address%3F%20Thank%20you%20and%20I%27m%20looking%20forward%20to%20it.%0A%0A" 
-           class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group">
-          <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
-            <img src="https://images.pexels.com/photos/19328775/pexels-photo-19328775.jpeg" 
-                 alt="Fintech B2B Product Design" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                 loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent"></div>
-            <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
-              <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-neutral-900 text-center leading-tight">
-                Fintech B2B<br />Product Design
-              </h3>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 2 - Branding -->
-       <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now✉️&body=%0A%0AFound%20your%20website%20and%20this%20automated%20email%20responder.%2C%20Could%20you%20reach%20out%20to%20me%2C%20at%20this%20email%20address%3F%20.%0A%0A"            class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group">
-          <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
-            <img src="https://images.pexels.com/photos/18362173/pexels-photo-18362173.jpeg" 
-                 alt="Branding" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                 loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent"></div>
-            <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
-              <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-neutral-900 text-center leading-tight">
-                Branding
-              </h3>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 3 - Digital Experiences -->
-     <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now✉️&body=%0A%0AFound%20your%20website%20and%20this%20automated%20email%20responder.%2C%20Could%20you%20reach%20out%20to%20me%2C%20at%20this%20email%20address%3F%20.%0A%0A"            class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group">
-          <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
-            <img src="https://images.pexels.com/photos/14979020/pexels-photo-14979020.jpeg" 
-                 alt="Digital Experiences" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                 loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-            <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
-              <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-white text-center leading-tight">
-                Digital<br />Experiences
-              </h3>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 4 - Performance Marketing -->
-   <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now✉️&body=%0A%0AFound%20your%20website%20and%20this%20automated%20email%20responder.%2C%20Could%20you%20reach%20out%20to%20me%2C%20at%20this%20email%20address%3F%20.%0A%0A"            class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group">
-          <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
-            <img src="https://images.pexels.com/photos/6956225/pexels-photo-6956225.jpeg" 
-                 alt="Performance Marketing" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                 loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-            <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
-              <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-white text-center leading-tight">
-                Performance<br />Marketing
-              </h3>
-            </div>
-          </div>
-        </a>
-
-        <!-- Duplicate cards for infinite loop -->
-   <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now✉️&body=%0A%0AFound%20your%20website%20and%20this%20automated%20email%20responder.%2C%20Could%20you%20reach%20out%20to%20me%2C%20at%20this%20email%20address%3F%20.%0A%0A"            class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group">
-          <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
-            <img src="https://images.pexels.com/photos/19328775/pexels-photo-19328775.jpeg" 
-                 alt="Fintech B2B Product Design" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                 loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent"></div>
-            <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
-              <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-neutral-900 text-center leading-tight">
-                Fintech B2B<br />Product Design
-              </h3>
-            </div>
-          </div>
-        </a>
-
-   <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now✉️&body=%0A%0AFound%20your%20website%20and%20this%20automated%20email%20responder.%2C%20Could%20you%20reach%20out%20to%20me%2C%20at%20this%20email%20address%3F%20.%0A%0A"            class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group">
-          <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
-            <img src="https://images.pexels.com/photos/18362173/pexels-photo-18362173.jpeg" 
-                 alt="Branding" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                 loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent"></div>
-            <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
-              <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-neutral-900 text-center leading-tight">
-                Branding
-              </h3>
-            </div>
-          </div>
-        </a>
-
-   <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now✉️&body=%0A%0AFound%20your%20website%20and%20this%20automated%20email%20responder.%2C%20Could%20you%20reach%20out%20to%20me%2C%20at%20this%20email%20address%3F%20.%0A%0A"            class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group">
-          <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
-            <img src="https://images.pexels.com/photos/14979020/pexels-photo-14979020.jpeg" 
-                 alt="Digital Experiences" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                 loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-            <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
-              <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-white text-center leading-tight">
-                Digital<br />Experiences
-              </h3>
-            </div>
-          </div>
-        </a>
-
-        <a href="mailto:alexandrapgrisanti@gmail.com?subject=Send%20Now✉️&body=%0A%0AFound%20your%20website%20and%20this%20automated%20email%20responder.%2C%20Could%20you%20reach%20out%20to%20me%2C%20at%20this%20email%20address%3F%20.%0A%0A" 
-           class="carousel-card flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] rounded-2xl overflow-hidden scandi-border bg-white hover:shadow-2xl transition-shadow duration-500 group">
-          <div class="relative h-[360px] sm:h-[400px] md:h-[480px] overflow-hidden">
-            <img src="https://images.pexels.com/photos/6956225/pexels-photo-6956225.jpeg" 
-                 alt="Performance Marketing" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                 loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-            <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12 px-6 md:px-8">
-              <h3 class="text-2xl sm:text-3xl md:text-4xl font-light text-white text-center leading-tight">
-                Performance<br />Marketing
-              </h3>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-  .carousel-wrapper {
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 5%,
-      black 95%,
-      transparent
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 5%,
-      black 95%,
-      transparent
-    );
-  }
-
-  .carousel-track {
-    animation: scrollCarousel 30s linear infinite;
-    cursor: grab;
-  }
-
-  .carousel-track:active {
-    cursor: grabbing;
-  }
-
-  .carousel-track:hover {
-    animation-play-state: paused;
-  }
-
-  /* Mobile - 280px cards */
-  @keyframes scrollCarousel {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-284px * 4 - 1rem * 4));
-    }
-  }
-
-  /* Small screens - 320px cards */
-  @media (min-width: 640px) {
-    @keyframes scrollCarousel {
-      0% {
-        transform: translateX(0);
+    let triggered = false;
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !triggered) {
+        triggered = true;
+        animateCounter('productsCounter', 9, 10000);
+        animateCounter('brandsCounter', 11, 10000);
+        io.disconnect();
       }
-      100% {
-        transform: translateX(calc(-324px * 4 - 1rem * 4));
-      }
-    }
-  }
+    }, { threshold: 0.2 });
 
-  /* Desktop - 400px cards */
-  @media (min-width: 768px) {
-    @keyframes scrollCarousel {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(calc(-406px * 4 - 1.5rem * 4));
-      }
-    }
-  }
+    io.observe(section);
+  })();
 
-  @media (prefers-reduced-motion: reduce) {
-    .carousel-track {
-      animation: none;
-    }
-  }
-</style>
-
-      <!-- THREE COLUMN SECTION - BRAND STYLE -->
-      <section class="py-16 md:py-24 px-6 bg-white">
-        <div class="mx-auto max-w-7xl">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            
-            <!-- Counter Column 1 - Products Designed -->
-            <div class="flex flex-col items-center justify-center p-8 md:p-12 bg-neutral-50 rounded-2xl scandi-border min-h-[300px] md:min-h-[400px]">
-              <div class="text-center">
-                <div id="productsCounter" class="text-5xl sm:text-6xl md:text-7xl font-light text-neutral-900 mb-4">+0</div>
-                <div class="text-lg md:text-xl font-light text-neutral-600">Products Designed</div>
-              </div>
-            </div>
-      
-            <!-- Counter Column 2 - Brands -->
-            <div class="flex flex-col items-center justify-center p-8 md:p-12 bg-neutral-50 rounded-2xl scandi-border min-h-[300px] md:min-h-[400px]">
-              <div class="text-center">
-                <div id="brandsCounter" class="text-5xl sm:text-6xl md:text-7xl font-light text-neutral-900 mb-4">+0</div>
-                <div class="text-lg md:text-xl font-light text-neutral-600">Brands</div>
-              </div>
-            </div>
-      
-            <!-- Scrolling Image Column 3 - Collaborations -->
-            <div class="relative rounded-2xl scandi-border overflow-hidden min-h-[300px] md:min-h-[400px] bg-white">
-              <!-- Title -->
-              <div class="absolute top-0 left-0 right-0 z-20 text-center pt-6 md:pt-8">
-                <h3 class="text-2xl md:text-3xl font-light text-neutral-900">Collaborations</h3>
-              </div>
-              
-              <!-- Image scroll container -->
-              <div class="collaboration-scroll-wrapper">
-                <div class="collaboration-scroll-track">
-                  <img src="9.png" alt="Collaborations" class="collaboration-image" />
-                </div>
-              </div>
-              
-              <!-- Fade overlays -->
-              <div class="fade-left"></div>
-              <div class="fade-right"></div>
-            </div>
-      
-          </div>
-        </div>
-      </section>
-
-<script>
-  (function() {
+  // ── Carousel drag / touch ──
+  (function () {
     const track = document.getElementById('carousel-track');
     if (!track) return;
 
     let isDragging = false;
     let startX = 0;
-    let scrollLeft = 0;
+    let animPaused = false;
 
-    // Mouse drag to scroll
-    track.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startX = e.pageX - track.offsetLeft;
-      scrollLeft = track.scrollLeft;
+    const pauseAnim = () => {
       track.style.animationPlayState = 'paused';
-    });
-
-    track.addEventListener('mouseleave', () => {
-      isDragging = false;
-    });
-
-    track.addEventListener('mouseup', () => {
-      isDragging = false;
+      animPaused = true;
+    };
+    const resumeAnim = () => {
       setTimeout(() => {
         track.style.animationPlayState = 'running';
+        animPaused = false;
       }, 2000);
-    });
+    };
 
+    // Mouse drag
+    track.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.clientX;
+      pauseAnim();
+    });
+    window.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        resumeAnim();
+      }
+    });
     track.addEventListener('mousemove', (e) => {
       if (!isDragging) return;
       e.preventDefault();
-      const x = e.pageX - track.offsetLeft;
-      const walk = (x - startX) * 2;
-      track.scrollLeft = scrollLeft - walk;
     });
 
-    // Touch support for mobile
+    // Touch
     let touchStartX = 0;
-    
     track.addEventListener('touchstart', (e) => {
       touchStartX = e.touches[0].clientX;
-      track.style.animationPlayState = 'paused';
+      pauseAnim();
     }, { passive: true });
-
-    track.addEventListener('touchend', () => {
-      setTimeout(() => {
-        track.style.animationPlayState = 'running';
-      }, 2000);
-    });
-
-    track.addEventListener('touchmove', (e) => {
-      const touchX = e.touches[0].clientX;
-      const diff = touchStartX - touchX;
-      track.scrollLeft += diff;
-      touchStartX = touchX;
-    }, { passive: true });
+    track.addEventListener('touchend', () => resumeAnim());
   })();
 </script>
 
-<style>
-  .carousel-wrapper {
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 5%,
-      black 95%,
-      transparent
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 5%,
-      black 95%,
-      transparent
-    );
-  }
-
-  .carousel-track {
-    animation: scroll 30s linear infinite;
-    cursor: grab;
-  }
-
-  .carousel-track:active {
-    cursor: grabbing;
-  }
-
-  .carousel-track.user-scrolling {
-    animation-play-state: paused;
-  }
-
-  /* Hide scrollbar but keep functionality */
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-344px * 4 - 1.5rem * 4));
-    }
-  }
-
-  @media (min-width: 768px) {
-    @keyframes scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(calc(-424px * 4 - 1.5rem * 4));
-      }
-    }
-  }
-
-  .carousel-track:hover {
-    animation-play-state: paused;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .carousel-track {
-      animation: none;
-    }
-  }
-</style>
-
-<script>
-  (function() {
-    const track = document.getElementById('carousel-track');
-    if (!track) return;
-
-    let isUserScrolling = false;
-    let scrollTimeout;
-
-    // Handle user scroll
-    track.addEventListener('scroll', () => {
-      isUserScrolling = true;
-      track.classList.add('user-scrolling');
-      
-      // Clear existing timeout
-      clearTimeout(scrollTimeout);
-      
-      // Resume auto-scroll after user stops scrolling
-      scrollTimeout = setTimeout(() => {
-        isUserScrolling = false;
-        track.classList.remove('user-scrolling');
-      }, 2000);
-    });
-
-    // Handle mouse wheel for horizontal scrolling
-    track.addEventListener('wheel', (e) => {
-      // Allow vertical page scroll normally, but enable horizontal scroll with shift key or trackpad
-      if (e.shiftKey || Math.abs(e.deltaX) > 0) {
-        e.preventDefault();
-        track.scrollLeft += e.deltaY + e.deltaX;
-      }
-    }, { passive: false });
-
-    // Infinite scroll logic
-    track.addEventListener('scroll', () => {
-      const scrollLeft = track.scrollLeft;
-      const scrollWidth = track.scrollWidth;
-      const clientWidth = track.clientWidth;
-      
-      // Reset position when reaching the end
-      if (scrollLeft + clientWidth >= scrollWidth - 10) {
-        track.scrollLeft = 0;
-      }
-      
-      // Reset position when reaching the beginning
-      if (scrollLeft <= 0) {
-        track.scrollLeft = scrollWidth / 2;
-      }
-    });
-  })();
-</script>
-
-
-
-
-      
-      <!-- FINTECH WEBSITE -->
-      <section id="website-brand" class="px-6 md:px-8 py-16 md:py-24" data-reveal>
-        <div class="mx-auto max-w-7xl">
-          <div class="flex items-center justify-between gap-4 mb-10">
-            <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-neutral-50 text-neutral-700 font-medium">
-              Website & brand
-            </span>
-            <span class="text-sm text-neutral-400 whitespace-nowrap font-light">Calm conversion</span>
-          </div>
-
-          <article class="rounded-2xl scandi-border bg-white overflow-hidden refined-lift">
-            <div class="grid md:grid-cols-12 gap-0">
-              <div class="md:col-span-7 order-2 md:order-1 p-6 md:p-8 bg-neutral-50/50">
-                <div class="rounded-xl overflow-hidden scandi-border bg-white">
-                  <img src="apg4.png" alt="Fintech website" class="w-full h-[280px] md:h-[620px] object-cover" loading="lazy" />
-                </div>
-              </div>
-
-              <div class="md:col-span-5 order-1 md:order-2 p-8 md:p-12">
-                <div class="inline-flex items-center gap-2 text-[13px] text-neutral-600 mb-6">
-                  <span class="px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 scandi-border font-medium">
-                    Fintech website design
-                  </span>
-                  <span class="font-light">Positioning</span>
-                </div>
-
-                <h2 class="text-3xl md:text-4xl font-light leading-[1.15] tracking-tight text-neutral-900 mb-6">
-                  <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" class="hover:underline">
-                    Fintech website & branding that feels premium — and ranks
-                  </a>
-                </h2>
-
-                <p class="text-neutral-600 leading-relaxed mb-6 font-light">
-                  A clear narrative makes fintech easier to understand. I design websites and brand systems that connect product and marketing: homepage structure, pricing clarity, trust cues, and visual consistency.
-                </p>
-
-                <div class="rounded-xl scandi-border bg-neutral-50 p-6 mb-8">
-                  <p class="text-sm font-medium text-neutral-900 mb-2">Typical scope</p>
-                  <p class="text-sm text-neutral-600 font-light leading-relaxed">
-                    Homepage narrative • service pages • SEO sections • UI components • brand guidelines.
-                  </p>
-                </div>
-
-                <div class="flex flex-wrap gap-2">
-                  <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600 hover:bg-white transition">fintech branding</a>
-                  <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600 hover:bg-white transition">website design</a>
-                  <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600 hover:bg-white transition">positioning</a>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-<!-- ABOUT -->
-<section id="about" class="px-6 md:px-8 py-16 md:py-24 bg-neutral-50/50" data-reveal>
-    <div class="mx-auto max-w-7xl">
-      <div class="max-w-4xl mx-auto text-center">
-        
-        <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium mb-10">
-          For Strategy Teams • Partnerships • Investors • Ecosystem Builders
-        </span>
-  
-        <a href="https://www.linkedin.com/in/alexandragrisanti/" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           class="block" 
-           aria-label="LinkedIn">
-           
-          <h2 class="text-4xl md:text-6xl font-light leading-[1.1] tracking-tight text-neutral-900 mb-10 hover:underline">
-            We operate at the intersection<br />
-            of fintech ecosystem intelligence<br />
-            and creative execution
-          </h2>
-        </a>
-  
-        <p class="text-neutral-600 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
-          Not just a design — and not just writing.
-          <br /><br />
-          We analyze how power shifts inside financial infrastructure:
-          distribution control, margin compression, embedded finance,
-          regulatory transitions and platform economics.
-          <br /><br />
-          Then translate those shifts into positioning, product systems,
-          brand clarity and performance strategy.
-          <br /><br />
-          When incentives collide across banks, fintechs,
-          infrastructure players and capital —
-          We help you see the whole board.
-        </p>
-  
-        <a href="https://calendly.com/alexandra-alexandrastudio/30min"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-neutral-900 text-white text-[15px] font-medium hover:bg-neutral-800 transition transform hover:-translate-y-0.5">
-           
-           Book Strategic Call
-           <i class="bi bi-arrow-right text-sm"></i>
-        </a>
-  
-      </div>
-    </div>
-  </section>
-
-      <!-- CONTACT -->
-      <section id="contact" class="px-6 md:px-8 py-16 md:py-24" data-reveal>
-        <div class="mx-auto max-w-7xl">
-          <div class="max-w-3xl mx-auto text-center">
-            <div class="rounded-2xl scandi-border bg-white p-10 md:p-16">
-              <h3 class="text-3xl md:text-4xl font-light mb-6">Ready?</h3>
-              <p class="text-neutral-600 font-light max-w-xl mx-auto mb-10">
-                Here you can place an order and I will get started on the project right away.
-              </p>
-
-            <div class="flex flex-col sm:flex-row justify-center gap-3">
-              <a href="https://calendly.com/alexandra-alexandrastudio/30min"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-neutral-900 text-white text-[15px] font-medium hover:bg-neutral-800 transition transform hover:-translate-y-0.5">
-                 
-                 Book a 30-min Call
-                 <i class="bi bi-arrow-right text-sm"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- FOOTER -->
-      <footer class="px-6 md:px-8 py-16 border-t scandi-border">
-        <div class="mx-auto max-w-7xl">
-          <div class="grid gap-12 md:grid-cols-12 items-start mb-16">
-            <div class="md:col-span-5">
-              <p class="text-neutral-900 font-medium text-2xl mb-4">
-                Alexandra
-              </p>
-
-              <p class="text-neutral-600 font-light max-w-sm mb-8">
-                Calm systems-first design for Performance agencies and fintech.
-              </p>
-
-              <div class="flex items-center gap-3">
-                <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition" aria-label="LinkedIn">
-                  <i class="bi bi-linkedin text-neutral-700"></i>
-                </a>
-                <a href="mailto:alexandrapgrisanti@gmail.com" class="inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition" aria-label="Email">
-                  <i class="bi bi-envelope text-neutral-700"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="md:col-span-7">
-              <div class="grid gap-10 sm:grid-cols-3">
-                <div>
-                  <p class="text-sm font-medium text-neutral-900 mb-4">Work</p>
-                  <div class="space-y-3 text-sm text-neutral-600 font-light">
-                    <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Performance Agency design</a>
-                    <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Fintech advisory</a>
-                    <a href="https://platsivardagen.substack.com/" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Kommun audits</a>
-                  </div>
-                </div>
-
-                <div>
-                  <p class="text-sm font-medium text-neutral-900 mb-4">Resources</p>
-                  <div class="space-y-3 text-sm text-neutral-600 font-light">
-                    <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Newsletter</a>
-                    <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Media kit</a>
-                    <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Downloadables</a>
-                  </div>
-                </div>
-
-                <div>
-                  <p class="text-sm font-medium text-neutral-900 mb-4">Contact</p>
-                  <div class="space-y-3 text-sm text-neutral-600 font-light">
-                    <a href="https://calendly.com/alexandrapgrisanti/hello" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Book a call</a>
-                    <a href="mailto:alexandrapgrisanti@gmail.com" class="block hover:text-neutral-900 transition">Email</a>
-                    <a href="https://calendly.com/alexandrapgrisanti/hello" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Speaking</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t scandi-border text-xs text-neutral-500 font-light">
-            <p>
-              © 2026 <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 transition">Alexandra Grisanti</a>. All rights reserved.
-            </p>
-          </div>
-        </footer>
-
-      </main>
-    </div>
-  </div>
-
-  <script>
-    // Reveal animations
-    (function () {
-      const items = Array.from(document.querySelectorAll("[data-reveal]"));
-      if (!items.length) return;
-
-      items.forEach((el, i) => {
-        const base = 50;
-        const max = 250;
-        el.style.setProperty("--d", Math.min(i * base, max) + "ms");
-      });
-
-      const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduce) {
-        items.forEach(el => el.classList.add("is-visible"));
-        return;
-      }
-
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: "0px 0px -8% 0px" });
-
-      items.forEach(el => io.observe(el));
-    })();
-
-    // Mobile menu
-    (function () {
-      const menuBtn = document.getElementById("menuBtn");
-      const mobileNav = document.getElementById("mobileNav");
-      if (!menuBtn || !mobileNav) return;
-
-      const setExpanded = (isOpen) => {
-        menuBtn.classList.toggle("open", isOpen);
-        mobileNav.classList.toggle("is-open", isOpen);
-        menuBtn.setAttribute("aria-expanded", String(isOpen));
-      };
-
-      let open = false;
-      menuBtn.addEventListener("click", () => {
-        open = !open;
-        setExpanded(open);
-      });
-
-      mobileNav.addEventListener("click", (e) => {
-        const a = e.target.closest("a");
-        if (!a) return;
-        open = false;
-        setExpanded(false);
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && open) {
-          open = false;
-          setExpanded(false);
-        }
-      });
-    })();
-  </script>
 </body>
 </html>
