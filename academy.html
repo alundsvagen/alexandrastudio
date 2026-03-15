@@ -3,9 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Public Thinking – Alexandra</title>
 
-  <!-- Google tag (gtag.js) -->
+  <!-- PRIMARY SEO -->
+  <title>Academy — Alexandra Grisanti | Fintech Growth & B2B Marketing Intelligence</title>
+  <meta name="description" content="Strategic frameworks, webinars, and deep-dive content for fintech CMOs and growth leaders in the Nordic market. B2B marketing intelligence from Alexandra Grisanti." />
+  <meta name="keywords" content="fintech marketing, Nordic fintech, B2B growth strategy, CMO resources, Swedish fintech, performance marketing, embedded finance, open banking" />
+  <meta name="author" content="Alexandra Grisanti" />
+  <link rel="canonical" href="https://alexandrastudio.se/academy" />
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://alexandrastudio.se/academy" />
+  <meta property="og:title" content="Academy — Alexandra Grisanti | Fintech Growth & B2B Marketing Intelligence" />
+  <meta property="og:description" content="Strategic frameworks, webinars, and deep-dive content for fintech CMOs and growth leaders in the Nordic market." />
+  <meta property="og:site_name" content="Alexandra Studio" />
+
+  <!-- TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Academy — Alexandra Grisanti | Fintech Growth & B2B Marketing" />
+  <meta name="twitter:description" content="Strategic frameworks, webinars, and content for fintech CMOs and growth leaders in the Nordic market." />
+
+  <!-- STRUCTURED DATA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Alexandra Studio Academy",
+    "url": "https://alexandrastudio.se/academy",
+    "description": "Strategic fintech marketing intelligence and frameworks for B2B growth leaders in the Nordic market.",
+    "founder": {
+      "@type": "Person",
+      "name": "Alexandra Grisanti",
+      "jobTitle": "Marketing Designer & Growth Strategist",
+      "sameAs": "https://www.linkedin.com/in/alexandragrisanti/"
+    }
+  }
+  </script>
+
+  <!-- GOOGLE ANALYTICS -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYCJNCLLMW"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -15,9 +50,7 @@
   </script>
 
   <!-- FAVICON -->
-  <link
-    rel="icon"
-    type="image/svg+xml"
+  <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111111'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial' font-size='34' font-weight='700' fill='white'%3EA%3C/text%3E%3C/svg%3E"
   />
 
@@ -26,41 +59,173 @@
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; }
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
+
     html { scroll-behavior: smooth; }
-    .scandi-border { border: 1px solid rgba(0,0,0,0.06); }
-    .refined-lift { transition: all 400ms cubic-bezier(.16,1,.3,1); }
-    .refined-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-    #mobileNav.is-open{ max-height: 520px; opacity: 1; pointer-events: auto; }
-    .hamburger span{ display:block; width:20px; height:2px; background:#111; border-radius:2px; transition:300ms; }
-    .hamburger span + span{ margin-top:4px; }
-    #menuBtn.open .hamburger span:nth-child(1){ transform: translateY(6px) rotate(45deg); }
-    #menuBtn.open .hamburger span:nth-child(2){ opacity: 0; }
-    #menuBtn.open .hamburger span:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
 
-    [data-reveal]{
-      opacity: 0;
-      transform: translate3d(0, 20px, 0);
-      transition: opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1);
+    .scandi-border { border: 1px solid rgba(0,0,0,0.07); }
+
+    .refined-lift {
+      transition: all 400ms cubic-bezier(.16,1,.3,1);
     }
-    [data-reveal].is-visible{ opacity: 1; transform: translate3d(0,0,0); }
-    [data-reveal] { transition-delay: var(--d, 0ms); }
+    .refined-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
 
-    @media (prefers-reduced-motion: reduce){
-      [data-reveal]{ opacity:1 !important; transform:none !important; transition:none !important; }
+    /* NAV */
+    #mobileNav.is-open { max-height: 520px; opacity: 1; pointer-events: auto; }
+    .hamburger span { display: block; width: 20px; height: 2px; background: #111; border-radius: 2px; transition: 300ms; }
+    .hamburger span + span { margin-top: 4px; }
+    #menuBtn.open .hamburger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    #menuBtn.open .hamburger span:nth-child(2) { opacity: 0; }
+    #menuBtn.open .hamburger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* SCROLL REVEAL */
+    [data-reveal] {
+      opacity: 0;
+      transform: translate3d(0, 24px, 0);
+      transition: opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1);
+      transition-delay: var(--d, 0ms);
+    }
+    [data-reveal].is-visible { opacity: 1; transform: translate3d(0,0,0); }
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+
+    /* STAT PILLS */
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.875rem;
+      border-radius: 999px;
+      background: white;
+      border: 1px solid rgba(0,0,0,0.07);
+      font-size: 0.8125rem;
+      color: #555;
+      font-weight: 500;
+    }
+    .stat-dot { width: 6px; height: 6px; border-radius: 50%; background: #111; flex-shrink: 0; }
+
+    /* RESPONSIVE VIDEO WRAPPER — 16:9 for landscape, 9:16 for portrait shorts */
+    .video-16-9 {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+    .video-16-9 iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    .video-9-16 {
+      position: relative;
+      width: 100%;
+      padding-bottom: 177.78%; /* 9:16 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+    .video-9-16 iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    /* REPORT PREVIEW */
+    .report-preview {
+      border-radius: 12px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.14), 0 4px 16px rgba(0,0,0,0.06);
+      transform: rotate(-1.5deg);
+      transition: transform 500ms cubic-bezier(.16,1,.3,1), box-shadow 500ms cubic-bezier(.16,1,.3,1);
+      display: block;
+      width: 100%;
+    }
+    .report-preview-wrap { cursor: pointer; position: relative; display: block; }
+    .report-preview-wrap:hover .report-preview {
+      transform: rotate(0deg) scale(1.01);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .report-preview-wrap::after {
+      content: 'Get the report →';
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #111;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 300ms;
+      pointer-events: none;
+    }
+    .report-preview-wrap:hover::after { opacity: 1; }
+
+    /* SECTION LABELS */
+    .section-label {
+      display: inline-flex;
+      font-size: 0.8125rem;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.07);
+      background: white;
+      color: #444;
+      font-weight: 500;
+    }
+
+    /* FILLOUT */
+    .fillout-wrapper iframe { border: none !important; }
+
+    /* SECTION DIVIDER */
+    .section-divider {
+      width: 48px;
+      height: 2px;
+      background: #111;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* EXECUTIVE VALUE BADGE */
+    .exec-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: #111;
+      color: white;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
     }
   </style>
 </head>
 
 <body class="bg-white text-neutral-900 antialiased overflow-x-hidden">
 
-<!-- HEADER -->
-<header class="px-6 md:px-8 py-6 md:py-7 border-b scandi-border sticky top-0 bg-white/80 backdrop-blur-xl z-50">
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════ -->
+<header class="px-6 md:px-8 py-6 md:py-7 border-b scandi-border sticky top-0 bg-white/90 backdrop-blur-xl z-50">
   <div class="mx-auto max-w-7xl flex items-center justify-between">
-    <a href="https://alexandrastudio.se" class="inline-flex items-center gap-3 group">      
+    <a href="https://alexandrastudio.se" class="inline-flex items-center gap-3 group">
       <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-neutral-900">
         <span class="text-white text-sm font-semibold">A</span>
       </span>
@@ -69,69 +234,297 @@
 
     <nav class="hidden md:flex items-center gap-8 text-[15px]">
       <a href="#" class="text-neutral-900 font-medium">Academy</a>
-      <a href="https://luma.com/user/agrisanti" target="_blank" class="text-neutral-500 hover:text-neutral-900 transition">Events</a>
-      <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" class="text-neutral-500 hover:text-neutral-900 transition">LinkedIn</a>
-      <a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" class="px-5 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition">
+      <a href="https://luma.com/user/agrisanti" target="_blank" rel="noopener" class="text-neutral-500 hover:text-neutral-900 transition">Events</a>
+      <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener" class="text-neutral-500 hover:text-neutral-900 transition">LinkedIn</a>
+      <a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener"
+         class="px-5 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition">
         Work with me
       </a>
     </nav>
 
-    <button id="menuBtn" class="md:hidden w-10 h-10 rounded-lg scandi-border flex items-center justify-center">
+    <button id="menuBtn" aria-label="Open menu" class="md:hidden w-10 h-10 rounded-lg scandi-border flex items-center justify-center">
       <span class="hamburger"><span></span><span></span><span></span></span>
     </button>
   </div>
 
-  <div id="mobileNav" class="md:hidden overflow-hidden max-h-0 opacity-0 transition-all duration-300">
+  <div id="mobileNav" class="md:hidden overflow-hidden max-h-0 opacity-0 pointer-events-none transition-all duration-300">
     <div class="mt-4 rounded-2xl scandi-border bg-neutral-50 p-3 text-sm">
-      <a href="#" class="block px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Intelligence</a>
-      <a href="https://luma.com/user/agrisanti" class="block px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Events</a>
-      <a href="https://www.linkedin.com/in/alexandragrisanti/" class="block px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">LinkedIn</a>
-      <a href="https://calendly.com/alexandra-alexandrastudio/30min" class="block px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Work with me</a>
+      <a href="#" class="block px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700 font-medium">Academy</a>
+      <a href="https://luma.com/user/agrisanti" target="_blank" class="block px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Events</a>
+      <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" class="block px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">LinkedIn</a>
+      <a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" class="block px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Work with me</a>
     </div>
   </div>
 </header>
 
 <main>
 
-<!-- HERO -->
-<section class="px-6 md:px-8 pt-24 pb-16 text-center" data-reveal>
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section class="px-6 md:px-8 pt-24 pb-14 text-center" data-reveal>
   <div class="max-w-3xl mx-auto">
     <div class="inline-flex items-center gap-2 text-xs text-neutral-600 bg-neutral-50 scandi-border px-4 py-2 rounded-full mb-8">
       <span class="w-1.5 h-1.5 rounded-full bg-neutral-900"></span>
-      <span>Public Thinking Layers</span>
+      <span>For fintech CMOs &amp; growth leaders</span>
     </div>
-    <h1 class="text-5xl md:text-6xl font-light tracking-tight mb-6">Strategic Thinking,<br />Made Practical</h1>
-    <p class="text-lg md:text-xl text-neutral-500 font-light max-w-2xl mx-auto">
-      Let's break down fintech positioning, distribution strategy, design systems and performance frameworks, so you can apply them immediately.
+    <h1 class="text-5xl md:text-6xl font-light tracking-tight mb-6 leading-tight">
+      Strategic Thinking,<br />Made Practical
+    </h1>
+    <p class="text-lg md:text-xl text-neutral-500 font-light max-w-2xl mx-auto leading-relaxed">
+      Fintech positioning, distribution strategy, and performance frameworks — built for executives who need intelligence they can act on, not more noise.
     </p>
   </div>
 </section>
 
-<!-- ECOSYSTEM CONTEXT -->
+<!-- ═══════════════════════════════════════
+     WHY THIS EXISTS — Context strip
+═══════════════════════════════════════ -->
 <section class="px-6 md:px-8 pb-20" data-reveal>
   <div class="max-w-7xl mx-auto">
     <div class="rounded-2xl scandi-border bg-neutral-50 p-8 md:p-12">
       <div class="max-w-3xl">
-        <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium mb-8 block w-fit">
-          Why now?
-        </span>
-        <p class="text-xl md:text-2xl font-light text-neutral-800 leading-relaxed mb-6">
-          The Nordic fintech ecosystem is entering a margin compression era while teams are struggling with authentic positioning, communications and brand consistency across channels. Who owns the customer is getting more vague. Embedded finance is spreading with distribution, consolidating.
+        <span class="section-label mb-8 block w-fit">The pressure you're under</span>
+        <p class="text-xl md:text-2xl font-light text-neutral-800 leading-relaxed">
+          Nordic fintech is entering a margin compression era. CMOs are being held accountable for growth while being cut out of product conversations. Embedded finance is spreading distribution. Who owns the customer is getting more vague — and testing is harder when the season is moving your baseline.
+        </p>
+        <p class="text-base text-neutral-500 font-light mt-6 leading-relaxed">
+          This academy exists to give you one fewer unknown. Concrete frameworks, real data, and thinking built for B2B executives navigating this exact moment.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DEEP DIVES -->
-<section class="px-6 md:px-8 py-20 bg-neutral-50/50" data-reveal>
+<!-- ═══════════════════════════════════════
+     WEBINAR — Featured content FIRST
+═══════════════════════════════════════ -->
+<section id="webinar" class="px-6 md:px-8 py-20 bg-neutral-50/60" data-reveal>
   <div class="max-w-7xl mx-auto">
 
-    <div class="flex items-center justify-between gap-4 mb-10">
-      <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium">
-        Further reading
-      </span>
-      <span class="text-sm text-neutral-400 font-light">Long-form intelligence</span>
+    <div class="mb-10">
+      <span class="exec-badge mb-4 inline-flex"><i class="bi bi-play-circle"></i> Featured Webinar</span>
+      <h2 class="text-3xl md:text-4xl font-light tracking-tight mb-3">Follow the Money</h2>
+      <p class="text-neutral-500 font-light text-lg max-w-xl leading-relaxed">
+        When Swedish buyers actually spend — and what that means for your B2B marketing calendar.
+      </p>
+      <div class="flex flex-wrap gap-2 mt-5">
+        <span class="stat-pill"><span class="stat-dot"></span>30 min</span>
+        <span class="stat-pill"><span class="stat-dot"></span>SCB data 2022–2025</span>
+        <span class="stat-pill"><span class="stat-dot"></span>6 economic indicators</span>
+        <span class="stat-pill"><span class="stat-dot"></span>Free report included</span>
+      </div>
+    </div>
+
+    <!-- PRE-WEBINAR: Luma registration block — swap for video after March 20 -->
+    <a href="https://luma.com/xbvgn462" target="_blank" rel="noopener noreferrer"
+       class="group relative flex items-center justify-center w-full rounded-2xl bg-neutral-900 overflow-hidden mb-12"
+       style="aspect-ratio: 16/9;"
+       aria-label="Register for the Follow the Money webinar on Luma">
+
+      <!-- Subtle grid texture -->
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:40px 40px;"></div>
+
+      <!-- Glow -->
+      <div style="position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.06) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;"></div>
+
+      <!-- Content -->
+      <div class="relative text-center px-8 py-12">
+        <!-- Live badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-white text-xs font-medium mb-8">
+          <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+          Live · March 20, 2026
+        </div>
+
+        <!-- Play button -->
+        <div class="mx-auto mb-8 w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110">
+          <i class="bi bi-play-fill text-neutral-900 text-3xl" style="margin-left:3px;"></i>
+        </div>
+
+        <h3 class="text-white text-2xl md:text-3xl font-light mb-3">Register to join live</h3>
+        <p class="text-white/60 font-light text-base mb-8 max-w-sm mx-auto">
+          The recording drops here after the event. Until then — grab your spot.
+        </p>
+
+        <span class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-neutral-900 text-sm font-medium transition-all duration-300 group-hover:bg-neutral-100 group-hover:gap-3">
+          Reserve your seat on Luma
+          <i class="bi bi-arrow-up-right text-sm"></i>
+        </span>
+      </div>
+    </a>
+    <p class="text-center text-sm text-neutral-400 font-light -mt-8 mb-14">Live March 20, 2026 · Recording available after the event</p>
+
+    <!-- Report download + form -->
+    <div class="grid md:grid-cols-2 gap-10 lg:gap-16 items-start">
+
+      <!-- Left: report image + bullets -->
+      <div>
+        <div class="mb-10 px-4">
+          <div class="report-preview-wrap" id="openFillout" role="button" tabindex="0" aria-label="Get the seasonal spending report">
+            <img src="march13.png"
+                 alt="2026 Seasonal B2B Spending Trends in Sweden — Report Preview by Alexandra Grisanti"
+                 class="report-preview" />
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-neutral-900 flex items-center justify-center flex-shrink-0">
+              <i class="bi bi-calendar3 text-white" style="font-size:9px;"></i>
+            </span>
+            <p class="text-sm text-neutral-600 font-light leading-relaxed">
+              <span class="font-medium text-neutral-900">The two windows that matter.</span>
+              Q2 and Q4 are structurally different from the rest of the year — for consumers and for B2B buyers. Your budget timing should reflect this.
+            </p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-neutral-900 flex items-center justify-center flex-shrink-0">
+              <i class="bi bi-building text-white" style="font-size:9px;"></i>
+            </span>
+            <p class="text-sm text-neutral-600 font-light leading-relaxed">
+              <span class="font-medium text-neutral-900">Where IT budget is concentrated.</span>
+              72.7% of Swedish IT spend sits with large enterprises across manufacturing, finance, and wholesale — with clear seasonal patterns.
+            </p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="mt-1 w-5 h-5 rounded-full bg-neutral-900 flex items-center justify-center flex-shrink-0">
+              <i class="bi bi-megaphone text-white" style="font-size:9px;"></i>
+            </span>
+            <p class="text-sm text-neutral-600 font-light leading-relaxed">
+              <span class="font-medium text-neutral-900">Buyer mindset shifts by quarter.</span>
+              Same buyer, different mode — growth in Q2, execution in Q4. Your message needs to match their mental state, not your internal roadmap.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="md:sticky md:top-28 space-y-4">
+        <div class="rounded-2xl scandi-border bg-white p-8">
+          <h3 class="text-xl font-medium mb-1">Get the report</h3>
+          <p class="text-neutral-500 text-sm font-light mb-6 leading-relaxed">
+            Fill in your details and the full PDF lands in your inbox. Alexandra will follow up personally — no sequence, just a conversation if it makes sense.
+          </p>
+          <div class="fillout-wrapper">
+            <div style="width:100%;height:500px;"
+              data-fillout-id="x8nvXm1VNJus"
+              data-fillout-embed-type="standard"
+              data-fillout-inherit-parameters
+              data-fillout-dynamic-resize>
+            </div>
+            <script src="https://server.fillout.com/embed/v1/"></script>
+          </div>
+          <p class="text-[11px] text-neutral-400 text-center font-light mt-4">
+            No spam. Just the report and a personal note from Alexandra.
+          </p>
+        </div>
+        <div class="rounded-2xl scandi-border bg-neutral-50 p-5 flex items-center justify-between gap-4">
+          <div>
+            <p class="text-sm font-medium text-neutral-900 mb-0.5">Prefer to just say hello?</p>
+            <p class="text-xs text-neutral-500 font-light">No forms. One email.</p>
+          </div>
+          <a href="mailto:hello@alexandrastudio.se"
+             class="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition whitespace-nowrap">
+            <i class="bi bi-envelope text-xs"></i>
+            Send an email
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SHORT-FORM VIDEO — Tactical frameworks
+═══════════════════════════════════════ -->
+<section id="frameworks" class="px-6 md:px-8 py-20" data-reveal>
+  <div class="max-w-7xl mx-auto">
+
+    <div class="flex items-start justify-between gap-4 mb-4 flex-wrap">
+      <div>
+        <span class="exec-badge mb-4 inline-flex"><i class="bi bi-lightning-charge"></i> Frameworks</span>
+        <h2 class="text-2xl md:text-3xl font-light tracking-tight">Techniques for growth leaders</h2>
+        <p class="text-neutral-500 font-light mt-2 max-w-lg">Short-form breakdowns to get to know Alexandra.</p>
+      </div>
+      <span class="text-sm text-neutral-400 font-light self-end pb-1">Short-form strategic breakdowns</span>
+    </div>
+
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mt-10">
+
+      <!-- Video 1 -->
+      <article class="refined-lift">
+        <div class="video-9-16 scandi-border mb-5">
+          <iframe
+            src="https://www.youtube.com/embed/nmn6HuLLgOM?rel=0&modestbranding=1"
+            title="Design as Competitive Advantage — Alexandra Grisanti"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-[12px] px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-700 scandi-border">Positioning</span>
+        </div>
+        <h3 class="text-base font-medium mb-2">Design as Competitive Advantage</h3>
+        <p class="text-neutral-500 text-sm font-light leading-relaxed">
+          Design is not aesthetic — it's a structured way of thinking. Why companies that understand this outperform those that treat design as decoration.
+        </p>
+      </article>
+
+      <!-- Video 2 -->
+      <article class="refined-lift">
+        <div class="video-9-16 scandi-border mb-5">
+          <iframe
+            src="https://www.youtube.com/embed/xmDurblblUE?rel=0&modestbranding=1"
+            title="How to Build Rep-Free Buying Systems — Alexandra Grisanti"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-[12px] px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-700 scandi-border">Distribution</span>
+        </div>
+        <h3 class="text-base font-medium mb-2">How to Build Rep-Free Buying Systems</h3>
+        <p class="text-neutral-500 text-sm font-light leading-relaxed">
+          Gartner's 2025 data shows 61% of B2B buyers prefer to complete research without early sales interaction. A practical framework to build content-led distribution that converts without a rep in the room.
+        </p>
+      </article>
+
+      <!-- Video 3 -->
+      <article class="refined-lift">
+        <div class="video-9-16 scandi-border mb-5">
+          <iframe
+            src="https://www.youtube.com/embed/74WeKarBzIM?rel=0&modestbranding=1"
+            title="From Cold Traffic to Strategic Partnerships — Alexandra Grisanti"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-[12px] px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-700 scandi-border">Growth systems</span>
+        </div>
+        <h3 class="text-base font-medium mb-2">From Cold Traffic to Strategic Partnerships</h3>
+        <p class="text-neutral-500 text-sm font-light leading-relaxed">
+          A four-step conversion methodology for B2B SaaS — moving beyond lead generation into ecosystem partnerships that compound over time.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     LONG-FORM INTELLIGENCE — Newsletters
+═══════════════════════════════════════ -->
+<section id="intelligence" class="px-6 md:px-8 py-20 bg-neutral-50/50" data-reveal>
+  <div class="max-w-7xl mx-auto">
+
+    <div class="mb-10">
+      <span class="exec-badge mb-4 inline-flex"><i class="bi bi-journal-text"></i> Intelligence</span>
+      <h2 class="text-2xl md:text-3xl font-light tracking-tight mb-2">Ecosystem intelligence for Nordic fintech</h2>
+      <p class="text-neutral-500 font-light max-w-xl leading-relaxed">
+        Two Substack publications covering the strategic and operational dimensions of fintech growth — read by executives at Trustly, Nordnet, Northmill, EQT Ventures, and others.
+      </p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-6">
@@ -144,9 +537,10 @@
           </div>
           <i class="bi bi-arrow-up-right text-neutral-400 group-hover:text-neutral-900 transition text-lg"></i>
         </div>
+        <p class="text-[11px] font-medium text-neutral-400 uppercase tracking-widest mb-3">For: Fintech CMOs · Platform leads · Investors</p>
         <h3 class="text-xl font-medium text-neutral-900 mb-3">Stockholm Growth and Fintech</h3>
         <p class="text-neutral-600 font-light leading-relaxed mb-6">
-          Ecosystem and infrastructure strategy for the Nordic fintech market. Platform economics, distribution power, regulatory inflection points and infrastructure monetisation, analysed through the lens of creative advantage.
+          Platform economics, embedded finance distribution, regulatory inflection points (PSD3, FIDA), and infrastructure monetisation — analysed through the lens of creative and commercial advantage.
         </p>
         <span class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600">Substack · Ecosystem intelligence</span>
       </a>
@@ -159,9 +553,10 @@
           </div>
           <i class="bi bi-arrow-up-right text-neutral-400 group-hover:text-neutral-900 transition text-lg"></i>
         </div>
+        <p class="text-[11px] font-medium text-neutral-400 uppercase tracking-widest mb-3">For: Growth marketers · Brand leads · CMOs</p>
         <h3 class="text-xl font-medium text-neutral-900 mb-3">Creative Performance Marketing</h3>
         <p class="text-neutral-600 font-light leading-relaxed mb-6">
-            Design is not aesthetic, it's a structured way of thinking. Companies that understand this outperform those who don't. You're missing an opprotunity if you treat design as aesthetics rather than a system.
+          Design is not aesthetic — it's a structured way of thinking. Companies that understand this outperform those who don't. Practical frameworks for marketers who need to prove ROI and build brand at the same time.
         </p>
         <span class="text-[13px] px-3 py-1.5 rounded-full scandi-border bg-neutral-50 text-neutral-600">Substack · Distribution systems</span>
       </a>
@@ -170,95 +565,21 @@
   </div>
 </section>
 
-<!-- VIDEO FRAMEWORKS -->
-<section class="px-6 md:px-8 pb-24" data-reveal>
+<!-- ═══════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════ -->
+<section class="px-6 md:px-8 py-20" data-reveal>
   <div class="max-w-7xl mx-auto">
 
-    <div class="flex items-center justify-between gap-4 mb-10">
-      <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-neutral-50 text-neutral-700 font-medium">
-        Techniques
-      </span>
-      <span class="text-sm text-neutral-400 font-light">Short-form strategic breakdowns</span>
+    <div class="mb-12">
+      <span class="exec-badge mb-4 inline-flex"><i class="bi bi-chat-quote"></i> Perspective from the field</span>
+      <h2 class="text-2xl md:text-3xl font-light tracking-tight">What collaborators say</h2>
     </div>
 
-    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid md:grid-cols-3 gap-6">
 
-      <div class="refined-lift">
-        <div class="aspect-[9/16] rounded-xl overflow-hidden scandi-border mb-5">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/nmn6HuLLgOM?rel=0&modestbranding=1"
-            title="Design as Competitive Advantage"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-[12px] px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-700 scandi-border">Positioning</span>
-        </div>
-        <h3 class="text-lg font-medium mb-2">Design as Competitive Advantage</h3>
-        <p class="text-neutral-500 text-sm font-light leading-relaxed">
-          Design is not aesthetic — it's a structured way of thinking. Why the companies that understand this outperform those that treat design as decoration.
-        </p>
-      </div>
-
-      <div class="refined-lift">
-        <div class="aspect-[9/16] rounded-xl overflow-hidden scandi-border mb-5">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/xmDurblblUE?rel=0&modestbranding=1"
-            title="How to Build Rep-Free Buying Systems"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-[12px] px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-700 scandi-border">Distribution</span>
-        </div>
-        <h3 class="text-lg font-medium mb-2">How to Build Rep-Free Buying Systems</h3>
-        <p class="text-neutral-500 text-sm font-light leading-relaxed">
-          Gartner's 2025 data shows 61% of B2B buyers prefer to complete research without early sales interaction. Here's a practical framework to build content-led distribution that converts without a sales rep in the room.
-        </p>
-      </div>
-
-      <div class="refined-lift">
-        <div class="aspect-[9/16] rounded-xl overflow-hidden scandi-border mb-5">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/74WeKarBzIM"
-            title="From Cold Traffic to Strategic Partnerships"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-[12px] px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-700 scandi-border">Growth systems</span>
-        </div>
-        <h3 class="text-lg font-medium mb-2">From Cold Traffic to Strategic Partnerships</h3>
-        <p class="text-neutral-500 text-sm font-light leading-relaxed">
-          A four-step conversion methodology for B2B SaaS — moving beyond lead generation into ecosystem partnerships that compound over time.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="px-6 md:px-8 py-24 bg-neutral-50/50" data-reveal>
-  <div class="max-w-7xl mx-auto">
-    <div class="flex items-center justify-between gap-4 mb-12">
-      <span class="inline-flex text-[13px] px-4 py-2 rounded-full scandi-border bg-white text-neutral-700 font-medium">
-        Perspective from the field
-      </span>
-    </div>
-    <div class="grid md:grid-cols-3 gap-8">
-
-      <div class="scandi-border rounded-2xl p-8 bg-white refined-lift">
-        <img src="niklas.jpg" class="w-12 h-12 rounded-full mb-5 object-cover" alt="Niklas" />
+      <div class="scandi-border rounded-2xl p-8 bg-neutral-50 refined-lift">
+        <img src="niklas.jpg" class="w-12 h-12 rounded-full mb-5 object-cover" alt="Niklas, Director of Digital Experiences at Worldline" loading="lazy" />
         <p class="text-neutral-600 font-light mb-5 leading-relaxed text-[15px]">"Regardless of discussing the strategy of the products or collaborating with our developers or conducting user testing Alexandra's work has been highly appreciated. Creative, productive, collaborative and structured."</p>
         <div>
           <p class="text-sm font-medium text-neutral-900">Niklas</p>
@@ -266,8 +587,8 @@
         </div>
       </div>
 
-      <div class="scandi-border rounded-2xl p-8 bg-white refined-lift">
-        <img src="agnes.jpg" class="w-12 h-12 rounded-full mb-5 object-cover" alt="Agnes" />
+      <div class="scandi-border rounded-2xl p-8 bg-neutral-50 refined-lift">
+        <img src="agnes.jpg" class="w-12 h-12 rounded-full mb-5 object-cover" alt="Agnes, Design Strategist at Capital One" loading="lazy" />
         <p class="text-neutral-600 font-light mb-5 leading-relaxed text-[15px]">"Self-motivated, outcome-driven and cares deeply about the mission, the team and users. From day one she brought a positive, can-do attitude and tackled a broad range of challenges across strategy, product management and UX design."</p>
         <div>
           <p class="text-sm font-medium text-neutral-900">Agnes</p>
@@ -275,8 +596,8 @@
         </div>
       </div>
 
-      <div class="scandi-border rounded-2xl p-8 bg-white refined-lift">
-        <img src="stefan.jpg" class="w-12 h-12 rounded-full mb-5 object-cover" alt="Stefan" />
+      <div class="scandi-border rounded-2xl p-8 bg-neutral-50 refined-lift">
+        <img src="stefan.jpg" class="w-12 h-12 rounded-full mb-5 object-cover" alt="Stefan, Chief Strategy Officer at PSA Solutions" loading="lazy" />
         <p class="text-neutral-600 font-light mb-5 leading-relaxed text-[15px]">"Alexandra brings energy, creativity and diligence, and is very collaborative and easy to work with."</p>
         <div>
           <p class="text-sm font-medium text-neutral-900">Stefan</p>
@@ -288,18 +609,71 @@
   </div>
 </section>
 
-<!-- CTA -->
+<!-- ═══════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════ -->
+<section id="about" class="px-6 md:px-8 py-20 bg-neutral-50/50" data-reveal>
+  <div class="max-w-7xl mx-auto">
+    <span class="section-label mb-10 block w-fit">About the author</span>
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-3xl font-light tracking-tight mb-4">Alexandra Grisanti</h2>
+        <p class="text-neutral-600 font-light leading-relaxed mb-4">
+          Marketing designer specialising in fintech — performance marketing, brand design, and creative strategy for B2B companies who need work that is analytically grounded and built to convert.
+        </p>
+        <p class="text-neutral-500 font-light leading-relaxed mb-8 text-sm">
+          Speaker at Stockholm Fintech Week 2026. Author of two Substack newsletters read by executives across the Nordic fintech ecosystem. Formerly Lead Product Designer at Zwapgrid. Works with growth-stage and enterprise B2B fintech across the Nordics.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition">
+            <i class="bi bi-calendar text-sm"></i>
+            Book a call
+          </a>
+          <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 px-6 py-3 rounded-full scandi-border bg-white text-neutral-700 text-sm font-medium hover:bg-neutral-50 transition">
+            <i class="bi bi-linkedin text-sm"></i>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div class="rounded-2xl scandi-border bg-white p-6">
+          <p class="text-2xl font-light mb-1">B2B</p>
+          <p class="text-sm text-neutral-500 font-light">Performance marketing</p>
+        </div>
+        <div class="rounded-2xl scandi-border bg-white p-6">
+          <p class="text-2xl font-light mb-1">Fintech</p>
+          <p class="text-sm text-neutral-500 font-light">Industry specialisation</p>
+        </div>
+        <div class="rounded-2xl scandi-border bg-white p-6">
+          <p class="text-2xl font-light mb-1">Design</p>
+          <p class="text-sm text-neutral-500 font-light">Brand &amp; creative strategy</p>
+        </div>
+        <div class="rounded-2xl scandi-border bg-white p-6">
+          <p class="text-2xl font-light mb-1">Nordic</p>
+          <p class="text-sm text-neutral-500 font-light">Market focus</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CTA
+═══════════════════════════════════════ -->
 <section class="px-6 md:px-8 py-20" data-reveal>
   <div class="max-w-7xl mx-auto">
-    <div class="max-w-3xl mx-auto text-center rounded-2xl scandi-border bg-white p-10 md:p-16">
-      <h3 class="text-3xl md:text-4xl font-light mb-5">Join the Conversation</h3>
-      <p class="text-neutral-600 font-light max-w-lg mx-auto mb-10">
-        If you're working inside a fintech ecosystem and thinking about positioning, distribution or brand strategy, let's talk.
+    <div class="max-w-3xl mx-auto text-center rounded-2xl scandi-border bg-neutral-50 p-10 md:p-16">
+      <h3 class="text-3xl md:text-4xl font-light mb-5">Work with Alexandra</h3>
+      <p class="text-neutral-600 font-light max-w-lg mx-auto mb-10 leading-relaxed">
+        If you're a CMO or growth leader in fintech thinking about positioning, distribution strategy, or brand performance — let's have a conversation.
       </p>
       <a href="https://calendly.com/alexandra-alexandrastudio/30min"
          target="_blank"
          rel="noopener noreferrer"
-         class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-neutral-900 text-white text-[15px] font-medium hover:bg-neutral-800 transition transform hover:-translate-y-0.5">
+         class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-neutral-900 text-white text-[15px] font-medium hover:bg-neutral-800 transition hover:-translate-y-0.5 transform">
         Book a strategic call
         <i class="bi bi-arrow-right text-sm"></i>
       </a>
@@ -307,29 +681,57 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="px-6 md:px-8 py-16 border-t scandi-border text-center text-sm text-neutral-500 font-light">
-  © 2026 <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 transition">Alexandra Grisanti</a>. All rights reserved.
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer class="px-6 md:px-8 py-12 border-t scandi-border">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <p class="text-sm text-neutral-500 font-light">
+      © 2026 <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener" class="hover:text-neutral-900 transition">Alexandra Grisanti</a> · Alexandra Studio
+    </p>
+    <div class="flex items-center gap-6 text-sm text-neutral-400">
+      <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener" class="hover:text-neutral-900 transition">Newsletter</a>
+      <a href="https://luma.com/user/agrisanti" target="_blank" rel="noopener" class="hover:text-neutral-900 transition">Events</a>
+      <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener" class="hover:text-neutral-900 transition">LinkedIn</a>
+    </div>
+  </div>
 </footer>
 
 </main>
 
+<!-- FILLOUT POPUP trigger -->
+<button id="filloutTriggerBtn"
+        data-fillout-id="x8nvXm1VNJus"
+        data-fillout-embed-type="popup"
+        data-fillout-popup-size="medium"
+        style="display:none;">
+  Open
+</button>
+
 <script>
-  // Mobile menu
+  // ── Mobile nav ──────────────────────────────
   const menuBtn = document.getElementById("menuBtn");
   const mobileNav = document.getElementById("mobileNav");
   menuBtn.addEventListener("click", () => {
-    menuBtn.classList.toggle("open");
-    mobileNav.classList.toggle("is-open");
+    const open = menuBtn.classList.toggle("open");
+    mobileNav.classList.toggle("is-open", open);
+    menuBtn.setAttribute("aria-expanded", open);
   });
 
-  // Reveal animations
+  // ── Fillout popup on image click ──────────────
+  const openFillout = document.getElementById("openFillout");
+  const triggerBtn  = document.getElementById("filloutTriggerBtn");
+  if (openFillout && triggerBtn) {
+    function activateFillout() { triggerBtn.click(); }
+    openFillout.addEventListener("click", activateFillout);
+    openFillout.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); activateFillout(); } });
+  }
+
+  // ── Scroll reveal ────────────────────────────
   (function () {
     const items = Array.from(document.querySelectorAll("[data-reveal]"));
     if (!items.length) return;
-    items.forEach((el, i) => {
-      el.style.setProperty("--d", Math.min(i * 60, 300) + "ms");
-    });
+    items.forEach((el, i) => el.style.setProperty("--d", Math.min(i * 60, 300) + "ms"));
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -337,7 +739,7 @@
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: "0px 0px -8% 0px" });
+    }, { threshold: 0.08, rootMargin: "0px 0px -6% 0px" });
     items.forEach(el => io.observe(el));
   })();
 </script>
