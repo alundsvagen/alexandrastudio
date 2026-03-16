@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legal AI, Case Study, Alexandra Grisanti</title>
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111111'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial' font-size='34' font-weight='700' fill='white'%3EA%3C/text%3E%3C/svg%3E"
+  />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html { scroll-behavior: smooth; }
+    .serif { font-family: 'Playfair Display', Georgia, serif; }
+
+    [data-reveal] { opacity: 1; transform: none; }
+    body.js-ready [data-reveal] {
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
+      transition: opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1);
+      transition-delay: var(--d, 0ms);
+      will-change: opacity, transform;
+    }
+    body.js-ready [data-reveal].is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    #mobileNav.is-open { max-height: 560px; opacity: 1; pointer-events: auto; }
+
+    .hamburger span {
+      display: block; width: 20px; height: 2px;
+      background: #111; border-radius: 2px;
+      transition: transform 300ms cubic-bezier(.16,1,.3,1), opacity 300ms ease;
+    }
+    .hamburger span + span { margin-top: 4px; }
+    #menuBtn.open .hamburger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    #menuBtn.open .hamburger span:nth-child(2) { opacity: 0; }
+    #menuBtn.open .hamburger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    .scandi-border { border: 1px solid rgba(0,0,0,0.06); }
+    .scandi-border-thick { border: 1.5px solid rgba(0,0,0,0.08); }
+
+    /* Result cards */
+    .result-card {
+      background: #f0f7f1;
+      border-radius: 16px;
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 200px;
+    }
+    .result-card.blue { background: #eef4fb; }
+
+    /* Ad campaign images placeholder */
+    .ad-placeholder {
+      background: #f5f5f3;
+      border-radius: 8px;
+      aspect-ratio: 1/1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Device placeholders */
+    .device-ipad {
+      background: #f5f5f3;
+      border-radius: 16px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 2px solid rgba(0,0,0,0.07);
+    }
+    .device-phone {
+      background: #f5f5f3;
+      border-radius: 32px;
+      aspect-ratio: 9/19;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 2px solid rgba(248, 246, 246, 0.07);
+    }
+
+    /* Service tag pill */
+    .service-pill {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: #f0f0ee;
+      color: #555;
+      border-radius: 999px;
+      padding: 6px 14px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+
+<body class="bg-white text-neutral-900 antialiased overflow-x-hidden">
+<div class="min-h-screen">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="px-6 md:px-8 py-6 md:py-7 border-b scandi-border sticky top-0 bg-white/80 backdrop-blur-xl z-50">
+    <div class="mx-auto max-w-7xl">
+      <div class="flex items-center justify-between gap-4">
+        <a href="https://alexandrastudio.se" class="inline-flex items-center gap-3 group">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-neutral-900 transition-transform group-hover:scale-105">
+            <span class="text-white text-sm font-semibold">A</span>
+          </span>
+          <span class="text-neutral-900 font-medium tracking-tight text-lg">Alexandra</span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8 text-[15px] font-normal">
+          <a href="https://alexandrastudio.se/academy.html" class="text-neutral-500 hover:text-neutral-900 transition">Academy</a>
+          <a href="#" class="text-neutral-900 font-medium border-b border-neutral-900 pb-0.5 transition">Design</a>
+          <a href="https://luma.com/user/agrisanti" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-900 transition">Events</a>
+          <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-900 transition">LinkedIn</a>
+          <a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener noreferrer"
+             class="px-5 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition">Contact</a>
+        </nav>
+
+        <button id="menuBtn" type="button"
+          class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition focus:outline-none focus:ring-2 focus:ring-neutral-200"
+          aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+          <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+
+      <div id="mobileNav" class="md:hidden overflow-hidden max-h-0 opacity-0 pointer-events-none transition-all duration-300 ease-out">
+        <div class="mt-4 rounded-2xl scandi-border bg-neutral-50/50 p-3 text-sm backdrop-blur-xl">
+          <div class="grid grid-cols-1 gap-2">
+            <a href="https://alexandrastudio.se/academy.html" class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Academy</a>
+            <a href="#" class="px-4 py-3 rounded-xl bg-white transition text-neutral-900 font-medium">Design</a>
+            <a href="https://luma.com/user/agrisanti" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Events</a>
+            <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">LinkedIn</a>
+            <a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ MAIN ═══ -->
+  <main>
+
+    <!-- ── HERO ── -->
+    <section class="px-6 md:px-8 pt-16 pb-10">
+      <div class="mx-auto max-w-7xl">
+
+        <!-- Label + Title -->
+        <div class="mb-10" data-reveal>
+          <span class="inline-flex items-center px-4 py-1.5 rounded-full border scandi-border-thick text-xs font-medium tracking-widest text-neutral-500 uppercase mb-6">Case Study</span>
+          <div class="grid md:grid-cols-2 gap-8 items-end">
+            <div>
+              <h1 class="text-4xl md:text-5xl font-light tracking-tight text-neutral-900 leading-tight mb-4">
+                Legal AI: making one product impossible to ignore
+              </h1>
+              <p class="text-neutral-500 font-light leading-relaxed text-[15px] max-w-md">
+                A suite of products lost in the noise and one needed to finally be seen. Visual strategy and website design in HubSpot for a Legal AI tech company betting on their flagship.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 md:justify-end items-end">
+              <span class="service-pill">Visual Strategy</span>
+              <span class="service-pill">Website Design</span>
+              <span class="service-pill">HubSpot</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Image 16:9 -->
+        <div data-reveal style="--d:100ms;">
+          <div class="w-full overflow-hidden rounded-2xl bg-neutral-100" style="aspect-ratio: 16/9;">
+            <img src="legalhero.png" alt="Legal AI case study hero"
+                 class="w-full h-full object-cover"
+                 onerror="this.style.display='none'; this.parentElement.style.background='#f0f0ee'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:#aaa;font-size:14px;font-weight:300;\'>Hero image, replace with your asset</div>';" />
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── PROBLEMS ── -->
+    <section class="px-6 md:px-8 py-16">
+      <div class="mx-auto max-w-7xl">
+        <div data-reveal>
+          <span class="inline-flex items-center px-4 py-1.5 rounded-full border scandi-border-thick text-xs font-medium tracking-widest text-neutral-500 uppercase mb-12">The Problem</span>
+        </div>
+        <div class="grid gap-4 md:grid-cols-3" data-reveal style="--d:80ms;">
+
+          <div class="result-card">
+            <div>
+              <p class="text-[13px] font-medium text-green-800 uppercase tracking-widest mb-4">01</p>
+              <h3 class="text-xl font-light text-neutral-900 mb-3 leading-snug">No product market fit</h3>
+              <p class="text-neutral-600 font-light text-[14px] leading-relaxed">
+                Multiple products across the suite were competing for attention internally and externally, with none achieving clear traction in the market.
+              </p>
+            </div>
+          </div>
+
+          <div class="result-card blue">
+            <div>
+              <p class="text-[13px] font-medium text-blue-800 uppercase tracking-widest mb-4">02</p>
+              <h3 class="text-xl font-light text-neutral-900 mb-3 leading-snug">Invisible flagship</h3>
+              <p class="text-neutral-600 font-light text-[14px] leading-relaxed">
+                The strongest product in the portfolio lacked the brand presence and narrative needed to stand out in a competitive Legal AI space.
+              </p>
+            </div>
+          </div>
+
+          <div class="result-card">
+            <div>
+              <p class="text-[13px] font-medium text-green-800 uppercase tracking-widest mb-4">03</p>
+              <h3 class="text-xl font-light text-neutral-900 mb-3 leading-snug">Scattered positioning</h3>
+              <p class="text-neutral-600 font-light text-[14px] leading-relaxed">
+                Without a deliberate bet on one product, messaging was diluted across the suite, making it impossible for the right audience to find the right solution.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── OVERVIEW / SOLUTION ── -->
+    <section class="px-6 md:px-8 py-16 border-t scandi-border">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid md:grid-cols-12 gap-12 items-start">
+
+          <div class="md:col-span-3" data-reveal>
+            <span class="inline-flex items-center px-4 py-1.5 rounded-full border scandi-border-thick text-xs font-medium tracking-widest text-neutral-500 uppercase">Overview</span>
+          </div>
+
+          <div class="md:col-span-9" data-reveal style="--d:80ms;">
+            <p class="text-neutral-700 font-light leading-relaxed text-[16px] mb-8 max-w-2xl">
+              The brief was clear: celebrate an abstract technology without alienating an existing brand. Working closely with the team, I developed a visual strategy and designed the website in HubSpot to give the flagship product a design system that felt polished, innovative, and grounded. The goal was to make cutting-edge legal tech feel credible and desirable without being jarring.
+            </p>
+
+            <div class="rounded-2xl bg-neutral-50 p-8" style="border: 1px solid rgba(0,0,0,0.05);">
+              <h3 class="text-base font-medium text-neutral-900 mb-3">Legal AI Tech Company</h3>
+              <p class="text-neutral-600 font-light text-[14px] leading-relaxed">
+                A fast-growing Legal AI company offering a suite of automation and intelligence tools for law firms and legal departments. With strong engineering but fragmented visibility, they needed a design that could spotlight their flagship product and signal innovative technology to the right buyers.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AD CAMPAIGN ── -->
+    <section class="px-6 md:px-8 py-16 border-t scandi-border">
+      <div class="mx-auto max-w-7xl">
+
+        <div class="mb-10" data-reveal>
+          <span class="inline-flex items-center px-4 py-1.5 rounded-full border scandi-border-thick text-xs font-medium tracking-widest text-neutral-500 uppercase mb-6">Campaign</span>
+          <h2 class="text-2xl md:text-3xl font-light tracking-tight text-neutral-900 max-w-lg">
+            Brand and visibility campaign
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" data-reveal style="--d:80ms;">
+
+          <!-- Ad 1 -->
+          <div class="ad-placeholder">
+            <img src="legalad1.png" alt="Campaign ad 1" class="w-full h-full object-cover"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:12px;padding:2rem;\'><div style=\'width:40px;height:40px;border-radius:50%;background:#e5e5e3;display:flex;align-items:center;justify-content:center;\'><svg width=\'16\' height=\'16\' fill=\'none\' stroke=\'#aaa\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg></div><p style=\'font-size:12px;color:#aaa;font-weight:300;text-align:center;\'>Ad 1, 1:1<br/>Replace with asset</p></div>';" />
+          </div>
+
+          <!-- Ad 2 -->
+          <div class="ad-placeholder">
+            <img src="legalad2.png" alt="Campaign ad 2" class="w-full h-full object-cover"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:12px;padding:2rem;\'><div style=\'width:40px;height:40px;border-radius:50%;background:#e5e5e3;display:flex;align-items:center;justify-content:center;\'><svg width=\'16\' height=\'16\' fill=\'none\' stroke=\'#aaa\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg></div><p style=\'font-size:12px;color:#aaa;font-weight:300;text-align:center;\'>Ad 2, 1:1<br/>Replace with asset</p></div>';" />
+          </div>
+
+          <!-- Ad 3 -->
+          <div class="ad-placeholder">
+            <img src="legalad3.png" alt="Campaign ad 3" class="w-full h-full object-cover"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:12px;padding:2rem;\'><div style=\'width:40px;height:40px;border-radius:50%;background:#e5e5e3;display:flex;align-items:center;justify-content:center;\'><svg width=\'16\' height=\'16\' fill=\'none\' stroke=\'#aaa\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg></div><p style=\'font-size:12px;color:#aaa;font-weight:300;text-align:center;\'>Ad 3, 1:1<br/>Replace with asset</p></div>';" />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DEVICES ── -->
+    <section class="px-6 md:px-8 py-16 border-t scandi-border">
+      <div class="mx-auto max-w-7xl">
+
+        <div class="mb-10" data-reveal>
+          <span class="inline-flex items-center px-4 py-1.5 rounded-full border scandi-border-thick text-xs font-medium tracking-widest text-neutral-500 uppercase">Product Design</span>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-end gap-8" data-reveal style="--d:80ms;">
+
+          <!-- iPad -->
+          <div class="w-full md:w-2/3">
+            <div class="device-ipad">
+              <img src="legalipad.png" alt="iPad mockup" class="w-full h-full object-cover"
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:12px;\'><svg width=\'32\' height=\'32\' fill=\'none\' stroke=\'#ccc\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><rect x=\'4\' y=\'2\' width=\'16\' height=\'20\' rx=\'2\'/><circle cx=\'12\' cy=\'18\' r=\'1\'/></svg><p style=\'font-size:12px;color:#bbb;font-weight:300;\'>iPad, replace with your asset</p></div>';" />
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="w-full md:w-1/3 flex justify-center md:justify-start" style="max-width:240px;">
+            <div class="device-phone w-full">
+              <img src="legalphone.png" alt="Phone mockup" class="w-full h-full object-cover"
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:12px;padding:1rem;\'><svg width=\'24\' height=\'24\' fill=\'none\' stroke=\'#ccc\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><rect x=\'5\' y=\'2\' width=\'14\' height=\'20\' rx=\'2\'/><circle cx=\'12\' cy=\'18\' r=\'1\'/></svg><p style=\'font-size:11px;color:#bbb;font-weight:300;text-align:center;\'>Phone<br/>replace with asset</p></div>';" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SERVICES DELIVERED ── -->
+    <section class="px-6 md:px-8 py-16 border-t scandi-border">
+      <div class="mx-auto max-w-7xl">
+
+        <div class="mb-10" data-reveal>
+          <span class="inline-flex items-center px-4 py-1.5 rounded-full border scandi-border-thick text-xs font-medium tracking-widest text-neutral-500 uppercase">Services Delivered</span>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-3" data-reveal style="--d:80ms;">
+
+          <div class="rounded-2xl p-8" style="background:#f0f7f1; border: 1px solid rgba(0,0,0,0.04);">
+            <p class="text-[11px] font-medium text-green-800 uppercase tracking-widest mb-4">01</p>
+            <h3 class="text-lg font-light text-neutral-900 mb-3">Visual Strategy</h3>
+            <p class="text-neutral-600 font-light text-[13px] leading-relaxed">
+              A design direction that celebrated abstract AI technology through a high-polish visual language, staying close to the existing brand while signalling innovation.
+            </p>
+          </div>
+
+          <div class="rounded-2xl p-8" style="background:#eef4fb; border: 1px solid rgba(0,0,0,0.04);">
+            <p class="text-[11px] font-medium text-blue-800 uppercase tracking-widest mb-4">02</p>
+            <h3 class="text-lg font-light text-neutral-900 mb-3">Website Design</h3>
+            <p class="text-neutral-600 font-light text-[13px] leading-relaxed">
+              End-to-end website design crafted to give the flagship product visibility, clarity, and a distinctive presence that stood apart in a crowded market.
+            </p>
+          </div>
+
+          <div class="rounded-2xl p-8" style="background:#f0f7f1; border: 1px solid rgba(0,0,0,0.04);">
+            <p class="text-[11px] font-medium text-green-800 uppercase tracking-widest mb-4">03</p>
+            <h3 class="text-lg font-light text-neutral-900 mb-3">HubSpot Build</h3>
+            <p class="text-neutral-600 font-light text-[13px] leading-relaxed">
+              Full implementation in HubSpot, translating the design system into a live, maintainable website the team could own and scale independently.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="px-6 md:px-8 py-16 border-t scandi-border">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-12 md:grid-cols-12 items-start mb-16">
+        <div class="md:col-span-5">
+          <p class="text-neutral-900 font-medium text-2xl mb-4">Alexandra</p>
+          <p class="text-neutral-600 font-light max-w-sm mb-2">
+            Calm systems-first design for Performance agencies and fintech.
+          </p>
+          <p class="text-neutral-400 font-light text-sm mb-2">Ringvägen 35, Stockholm</p>
+          <p class="text-neutral-400 font-light text-sm mb-8">Org. nr SE930825-2841</p>
+          <div class="flex items-center gap-3">
+            <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition" aria-label="LinkedIn">
+              <i class="bi bi-linkedin text-neutral-700"></i>
+            </a>
+            <a href="/cdn-cgi/l/email-protection#620a070e0e0d22030e071a030c061003111617060b0d4c1107" class="inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition" aria-label="Email">
+              <i class="bi bi-envelope text-neutral-700"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="md:col-span-7">
+          <div class="grid gap-10 sm:grid-cols-3">
+            <div>
+              <p class="text-sm font-medium text-neutral-900 mb-4">Work</p>
+              <div class="space-y-3 text-sm text-neutral-600 font-light">
+                <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Performance Agency design</a>
+                <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Fintech advisory</a>
+                <a href="https://platsivardagen.substack.com/" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Kommun audits</a>
+              </div>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-neutral-900 mb-4">Resources</p>
+              <div class="space-y-3 text-sm text-neutral-600 font-light">
+                <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Newsletter</a>
+                <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Media kit</a>
+                <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Downloadables</a>
+              </div>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-neutral-900 mb-4">Contact</p>
+              <div class="space-y-3 text-sm text-neutral-600 font-light">
+                <a href="https://calendly.com/alexandrapgrisanti/hello" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Book a call</a>
+                <a href="/cdn-cgi/l/email-protection#e38b868f8f8ca3828f869b828d879182909796878a8ccd9086" class="block hover:text-neutral-900 transition">Email</a>
+                <a href="https://calendly.com/alexandrapgrisanti/hello" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Speaking</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t scandi-border text-xs text-neutral-500 font-light">
+        <p>© 2026 <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 transition">Alexandra Grisanti</a>. All rights reserved.</p>
+        <p>SE930825-2841</p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  (function () {
+    const items = Array.from(document.querySelectorAll('[data-reveal]'));
+    if (!items.length) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.body.classList.add('js-ready');
+    items.forEach((el, i) => el.style.setProperty('--d', Math.min(i * 80, 300) + 'ms'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(el => io.observe(el));
+  })();
+
+  (function () {
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    if (!menuBtn || !mobileNav) return;
+    let open = false;
+    const setExpanded = (isOpen) => {
+      open = isOpen;
+      menuBtn.classList.toggle('open', isOpen);
+      mobileNav.classList.toggle('is-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    };
+    menuBtn.addEventListener('click', () => setExpanded(!open));
+    mobileNav.addEventListener('click', (e) => {
+      if (e.targe
