@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Theory, Alexandra Grisanti</title>
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111111'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial' font-size='34' font-weight='700' fill='white'%3EA%3C/text%3E%3C/svg%3E"
+  />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html { scroll-behavior: smooth; }
+    .serif { font-family: 'Playfair Display', Georgia, serif; }
+
+    [data-reveal] { opacity: 1; transform: none; }
+    body.js-ready [data-reveal] {
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
+      transition: opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1);
+      transition-delay: var(--d, 0ms);
+      will-change: opacity, transform;
+    }
+    body.js-ready [data-reveal].is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    #mobileNav.is-open { max-height: 560px; opacity: 1; pointer-events: auto; }
+
+    .hamburger span {
+      display: block; width: 20px; height: 2px;
+      background: #111; border-radius: 2px;
+      transition: transform 300ms cubic-bezier(.16,1,.3,1), opacity 300ms ease;
+    }
+    .hamburger span + span { margin-top: 4px; }
+    #menuBtn.open .hamburger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    #menuBtn.open .hamburger span:nth-child(2) { opacity: 0; }
+    #menuBtn.open .hamburger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    .scandi-border { border: 1px solid rgba(0,0,0,0.06); }
+    .scandi-border-thick { border: 1.5px solid rgba(0,0,0,0.08); }
+
+    /* ── Tab system ── */
+    .tab-btn {
+      position: relative;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 400;
+      color: #888;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: transparent;
+      cursor: pointer;
+      transition: color 200ms ease, background 200ms ease, border-color 200ms ease;
+      white-space: nowrap;
+    }
+    .tab-btn:hover { color: #111; background: #f5f5f3; }
+    .tab-btn.active {
+      color: #111;
+      background: #fff;
+      border-color: rgba(0,0,0,0.08);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── Prose image scatter ── */
+    .prose-img {
+      background: #f5f5f3;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .prose-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .float-right-img {
+      float: right;
+      margin: 0 0 1.5rem 2rem;
+      width: 42%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #f5f5f3;
+    }
+    .float-left-img {
+      float: left;
+      margin: 0 2rem 1.5rem 0;
+      width: 40%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #f5f5f3;
+    }
+
+    @media (max-width: 640px) {
+      .float-right-img, .float-left-img {
+        float: none;
+        width: 100%;
+        margin: 1.5rem 0;
+      }
+    }
+
+    .clearfix::after { content: ''; display: table; clear: both; }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 2px solid #111;
+      padding: 0.25rem 0 0.25rem 1.5rem;
+      margin: 2rem 0;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Tab scroll on mobile */
+    .tab-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .tab-scroll::-webkit-scrollbar { display: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+
+<body class="bg-white text-neutral-900 antialiased overflow-x-hidden">
+<div class="min-h-screen">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="px-6 md:px-8 py-6 md:py-7 border-b scandi-border sticky top-0 bg-white/80 backdrop-blur-xl z-50">
+    <div class="mx-auto max-w-7xl">
+      <div class="flex items-center justify-between gap-4">
+        <a href="https://alexandrastudio.se" class="inline-flex items-center gap-3 group">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-neutral-900 transition-transform group-hover:scale-105">
+            <span class="text-white text-sm font-semibold">A</span>
+          </span>
+          <span class="text-neutral-900 font-medium tracking-tight text-lg">Alexandra</span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8 text-[15px] font-normal">
+          <a href="https://alexandrastudio.se/academy.html" class="text-neutral-500 hover:text-neutral-900 transition">Academy</a>
+          <a href="https://alexandrastudio.se/design.html" class="text-neutral-500 hover:text-neutral-900 transition">Design</a>
+          <a href="theory.html" class="text-neutral-900 font-medium border-b border-neutral-900 pb-0.5 transition">Theory</a>
+          <a href="https://luma.com/user/agrisanti" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-900 transition">Events</a>
+          <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-900 transition">LinkedIn</a>
+          <a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener noreferrer"
+             class="px-5 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition">Contact</a>
+        </nav>
+
+        <button id="menuBtn" type="button"
+          class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition focus:outline-none focus:ring-2 focus:ring-neutral-200"
+          aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+          <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+
+      <div id="mobileNav" class="md:hidden overflow-hidden max-h-0 opacity-0 pointer-events-none transition-all duration-300 ease-out">
+        <div class="mt-4 rounded-2xl scandi-border bg-neutral-50/50 p-3 text-sm backdrop-blur-xl">
+          <div class="grid grid-cols-1 gap-2">
+            <a href="https://alexandrastudio.se/academy.html" class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Academy</a>
+            <a href="https://alexandrastudio.se/design.html" class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Design</a>
+            <a href="theory.html" class="px-4 py-3 rounded-xl bg-white transition text-neutral-900 font-medium">Theory</a>
+            <a href="https://luma.com/user/agrisanti" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Events</a>
+            <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">LinkedIn</a>
+            <a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ MAIN ═══ -->
+  <main>
+
+    <!-- ── PAGE HEADER ── -->
+    <section class="px-6 md:px-8 pt-16 pb-10 border-b scandi-border">
+      <div class="mx-auto max-w-7xl">
+        <div data-reveal>
+          <span class="inline-flex items-center px-4 py-1.5 rounded-full border scandi-border-thick text-xs font-medium tracking-widest text-neutral-500 uppercase mb-6">CREATE TRACTION</span>
+          <h1 class="text-4xl md:text-5xl font-light tracking-tight text-neutral-900 leading-tight mb-4">Theory</h1>
+          <p class="text-neutral-500 font-light leading-relaxed text-[15px] max-w-lg">
+            I work with select clients to deliever fast- High Quality Growth Results, based in Stockholm. Below are the four manuals to create this kind of traction yourself and for your team. Need more resources? Reach out to me. I currently work with two clients and I am taking on one more for Spring 2026.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TABS ── -->
+    <section class="px-6 md:px-8 pt-10 pb-20">
+      <div class="mx-auto max-w-7xl">
+
+        <!-- Tab navigation -->
+        <div class="mb-10" data-reveal>
+          <div class="tab-scroll">
+            <div class="inline-flex items-center gap-1 p-1 rounded-full bg-neutral-100" style="min-width: max-content;">
+              <button class="tab-btn active" data-tab="about">Basics</button>
+              <button class="tab-btn" data-tab="growth">Scale Up</button>
+              <button class="tab-btn" data-tab="layers">Layers</button>
+              <button class="tab-btn" data-tab="design">Design</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TAB: ABOUT ── -->
+        <div class="tab-panel active" id="tab-about" data-reveal style="--d:80ms;">
+          <div class="grid md:grid-cols-12 gap-12">
+            <div class="md:col-span-7 md:col-start-2">
+
+              <p class="text-[11px] font-medium text-neutral-400 uppercase tracking-widest mb-6">About</p>
+              <h2 class="text-2xl md:text-3xl font-light tracking-tight text-neutral-900 mb-8 leading-snug">
+                Beyond Differentiation
+              </h2>
+
+              <div class="clearfix">
+                <div class="float-right-img" style="aspect-ratio: 4/3;">
+                  <img src="theory1.jpg" alt="About theory image"
+                    onerror="this.style.display='none'; this.parentElement.style.minHeight='200px'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:200px;color:#ccc;font-size:12px;font-weight:300;\'>Image placeholder</div>';" />
+                </div>
+                <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-5">
+                  Differentiation isn't enough. A good product isn't enough. Growth requires seven pieces to fall into place and most companies aren't aware of them, wondering why their branding won't stick or why clicks aren't converting.
+                </p>
+                <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-5">
+                  I was recently featured in Nordic Fintech Magazine on Lovable's viral go-to-market strategy. What makes that case interesting is the underlying logic. The reason it works is unintuitive but genius: distribution is harder to achieve than differentiation. We aren't selling a product. We are creating a space for the audience's voice. For their belonging.
+                </p>
+              </div>
+
+              <div class="pull-quote">
+                "Differentiation defines yourself. Distribution requires someone else to say it."
+              </div>
+
+              <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-5">
+                In these four manuals I'll walk through what growth actually is, the seven pieces it takes to scale, the layered approach to acquisition, and why design is the thing that makes distribution work. Not as a checklist — as a way of thinking.
+              </p>
+
+              <div class="prose-img mb-6" style="aspect-ratio: 16/7;">
+                <img src="theory-about-2.jpg" alt="About theory wide image"
+                  onerror="this.style.display='none'; this.parentElement.style.minHeight='180px'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:180px;color:#ccc;font-size:12px;font-weight:300;\'>Image placeholder</div>';" />
+              </div>
+
+              <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-5">
+                I work with clients to discover their audience's voice instead of guessing at it. Together we use their perspective and their words to reach and speak to other users like them. That's not a soft strategy. It's the most precise targeting available — because most growth strategies are built around what the company wants to say. These four manuals are about learning to get out of the way.
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TAB: GROWTH ── -->
+        <div class="tab-panel" id="tab-growth">
+          <div class="grid md:grid-cols-12 gap-12">
+            <div class="md:col-span-7 md:col-start-2">
+
+              <p class="text-[11px] font-medium text-neutral-400 uppercase tracking-widest mb-6">Scale Up</p>
+              <h2 class="text-2xl md:text-3xl font-light tracking-tight text-neutral-900 mb-8 leading-snug">
+                Achieve Real Growth, Not Just Clicks That Don't Convert
+              </h2>
+
+              <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-5">
+                Most companies are losing money on ads guessing USPs and what the audience wants to hear. Different "creatives", same assumptions. We guess at the words our customers respond to. We brainstorm in rooms full of people who are not the customer. And then we wonder why our strategies don't take off.
+              </p>
+
+              <div class="float-left-img" style="aspect-ratio: 10/7;">
+                <img src="growth1.png" alt="Growth theory image"
+                  onerror="this.style.display='none'; this.parentElement.style.minHeight='240px'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:240px;color:#ccc;font-size:12px;font-weight:300;\'>Image placeholder</div>';" />
+              </div>
+
+              <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-5">
+                Digital content doesn't give you the recovery time a sales conversation does. You can't read the room, pivot, save it. The audience is exhausted, overstimulated, and moving fast — and most marketing makes them feel more alone, not less.
+              </p>
+
+              <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-8">
+                Here's what growth actually requires. All seven pieces.
+              </p>
+
+              <div class="space-y-6 mb-8">
+                <div>
+                  <p class="text-[12px] font-medium text-neutral-900 uppercase tracking-widest mb-1">01 — Acquisition</p>
+                  <p class="text-neutral-600 font-light text-[14px] leading-relaxed">Getting someone to care enough to look. That's the easy part to name and the hard part to earn.</p>
+                </div>
+                <div>
+                  <p class="text-[12px] font-medium text-neutral-900 uppercase tracking-widest mb-1">02 — Voice</p>
+                  <p class="text-neutral-600 font-light text-[14px] leading-relaxed">Not your voice — theirs. Real stories, real language, the specific way your customer describes the problem you solve. Nothing performs better than that, and it cannot be generated.</p>
+                </div>
+                <div>
+                  <p class="text-[12px] font-medium text-neutral-900 uppercase tracking-widest mb-1">03 — Conversion</p>
+                  <p class="text-neutral-600 font-light text-[14px] leading-relaxed">Getting someone to your page is 20% of the work. The other 80% is what happens when they arrive. Where do they leave? What do they not understand? Build it for them, not for you. Companies still aren't building their landing pages by user testing. Build the website for real potential customers, who you have tested the website on. You'll be surprised how confusing your website is when you user test it.</p>
+                </div>
+                <div>
+                  <p class="text-[12px] font-medium text-neutral-900 uppercase tracking-widest mb-1">04 — Advocacy</p>
+                  <p class="text-neutral-600 font-light text-[14px] leading-relaxed">A purchase happened — but that's not growth, that's a transaction. Growth happens when that customer tells someone who trusts them. What is your share strategy? What are you doing to deserve it? Pull this data into your product roadmap to achieve scalability.</p>
+                </div>
+                <div>
+                  <p class="text-[12px] font-medium text-neutral-900 uppercase tracking-widest mb-1">05 — Retention</p>
+                  <p class="text-neutral-600 font-light text-[14px] leading-relaxed">Churn is data. It is your customers telling you something. You must discover why this happening. Even the smallest amount of churn will be insightful.</p>
+                </div>
+                <div>
+                  <p class="text-[12px] font-medium text-neutral-900 uppercase tracking-widest mb-1">06 — Distribution</p>
+                  <p class="text-neutral-600 font-light text-[14px] leading-relaxed">How you scale beyond your own reach — through partners, platforms, and adjacent communities that already have the trust you're trying to build. Don't do all the awareness alone. Cross-collaborations go a long way.</p>
+                </div>
+                <div>
+                  <p class="text-[12px] font-medium text-neutral-900 uppercase tracking-widest mb-1">07 — Community and Narrative</p>
+                  <p class="text-neutral-600 font-light text-[14px] leading-relaxed">We are not building a product with users. We are building a space with belonging, an identity, a narrative. This is the heart of branding and has everything to do with your customer base as a whole.</p>
+                </div>
+              </div>
+
+              <div class="pull-quote">
+                "A purchase is a transaction. Growth is not just acquisition. It's conversion, retention, referral and brand community."
+              </div>
+
+              <div class="prose-img mb-6" style="aspect-ratio: 10/6;">
+                <img src="growthtwo.png" alt="Growth theory wide image"
+                  onerror="this.style.display='none'; this.parentElement.style.minHeight='180px'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:180px;color:#ccc;font-size:12px;font-weight:300;\'>Image placeholder</div>';" />
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+<!-- ── TAB: LAYERS ── -->
+<div class="tab-panel" id="tab-layers">
+  <div class="grid md:grid-cols-12 gap-12">
+    <div class="md:col-span-7 md:col-start-2">
+
+      <p class="text-[11px] font-medium text-neutral-400 uppercase tracking-widest mb-6">Layers</p>
+      <h2 class="text-2xl md:text-3xl font-light tracking-tight text-neutral-900 mb-8 leading-snug">
+        The Layered Approach to Compounding Growth
+      </h2>
+
+      <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-5">
+        Most growth strategies work in isolation. A campaign here. A partnership there. A rebrand when things plateau. The layered approach is different — it's designed so that each piece makes the next one more powerful. The compounding effect is the point.
+      </p>
+
+      <div class="float-right-img" style="aspect-ratio: 5/2;">
+        <img src="layer11.png" alt="Layers theory image"
+          onerror="this.style.display='none'; this.parentElement.style.minHeight='200px'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:200px;color:#ccc;font-size:12px;font-weight:300;\'>Image placeholder</div>';" />
+      </div>
+
+      <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-5">
+        This is a six-month framework. Not because transformation takes exactly six months, but because that's the minimum runway needed to move through all the layers without skipping the ones that feel slow but matter most.
+      </p>
+
+      <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-8">
+        Here is how the layers build on each other.
+      </p>
+
+      <div class="space-y-6 mb-8">
+
+        <div>
+          <p class="text-[12px] font-medium text-neutral-900 uppercase tracking-widest mb-1">Layer 01 — In-Person Listening</p>
+          <p class="text-neutral-600 font-light text-[14px] leading-relaxed">Before any campaign, any content, any positioning work — you go into the room. Events, roundtables, informal conversations with real customers. You are not presenting. You are listening. The language people use to describe their own problems is the single most valuable creative asset you will collect in six months. No survey, no focus group, no AI tool replicates it.</p>
+          <p class="text-neutral-500 font-light text-[13px] leading-relaxed mt-2 italic">Outcome: A bank of authentic customer language, real pain points, and the emotional triggers that actually drive decisions.</p>
+        </div>
+
+        <div>
+          <p class="text-[12px] font-medium text-neutral-900 uppercase tracking-widest mb-1">Layer 02 — Expert Partnerships</p>
+          <p class="text-neutral-600 font-light text-[14px] leading-relaxed">Reach out to credible voices in your field — not for endorsements, but for genuine knowledge collaboration. Co-authored articles, shared research, joint events. This builds trust with your audience through association and gives you content with real intellectual weight behind it. The audience can tell the difference between expertise and content marketing dressed up as expertise.</p>
+          <p class="text-neutral-500 font-light text-[13px] leading-relaxed mt-2 italic">Outcome: Organic authority, expanded reach into the expert's audience, and a library of credible knowledge assets.</p>
+        </div>
+
+        <div>
+          <p class="text-[12px] font-medium text-neutral-900 uppercase tracking-widest mb-1">Layer 03 — Brand Partnerships</p>
+          <p class="text-neutral-600 font-light text-[14px] leading-relaxed">Identify adjacent brands serving the same audience but not competing with you. A well-chosen brand partnership gets you into a distribution channel that already has trust — the thing that takes years to build alone. The goal is a genuine win-win: shared audiences, shared content, shared reach. Not a logo swap.</p>
+          <p class="text-neutral-500 font-light text-[13px] leading-relaxed mt-2 italic">Outcome: Access to warm audiences, increased distribution, and brand credibility through association.</p>
+        </div>
+
+        <div>
+          <p class="text-[12px] font-medium text-neutral-900 uppercase tracking-widest mb-1">Layer 04 — Shareable Product Design</p>
+          <p class="text-neutral-600 font-light text-[14px] leading-relaxed">Advocacy doesn't happen by accident. The product itself needs to be designed with shareability in mind — personalised outputs, results worth showing, moments that make the customer feel seen enough to tell someone else. This is where product, UX, and growth strategy meet. If sharing your product feels natural, your customers become your distribution.</p>
+          <p class="text-neutral-500 font-light text-[13px] leading-relaxed mt-2 italic">Outcome: Organic referral loops, lower acquisition costs, and a product that markets itself.</p>
+        </div>
+
+        <div>
+          <p class="text-[12px] font-medium text-neutral-900 uppercase tracking-widest mb-1">Layer 05 — Conversion Analysis</p>
+          <p class="text-neutral-600 font-light text-[14px] leading-relaxed">Running this analysis mid-runway, not at the end. Where are people dropping off? At which step, on which page, after which message? Drop-off is not failure — it is a precise signal about where your communication is breaking down or where expectations are being misset. This layer is what separates campaigns that iterate from campaigns that repeat the same mistake.</p>
+          <p class="text-neutral-500 font-light text-[13px] leading-relaxed mt-2 italic">Outcome: A clear picture of friction points, with data to prioritise what to fix first.</p>
+        </div>
+
+        <div>
+          <p class="text-[12px] font-medium text-neutral-900 uppercase tracking-widest mb-1">Layer 06 — Campaign and Narrative</p>
+          <p class="text-neutral-600 font-light text-[14px] leading-relaxed">Now you have everything. Real customer language from layer one. Credible content from layer two. Expanded reach from layer three. A product people share from layer four. Conversion data from layer five. The campaign built from all of this is not a creative guess. It is a high-quality, evidence-backed narrative told in your audience's own voice — which is the only voice they fully trust.</p>
+          <p class="text-neutral-500 font-light text-[13px] leading-relaxed mt-2 italic">Outcome: Campaigns with measurably higher resonance, built on real insight rather than assumption.</p>
+        </div>
+
+        <div>
+          <p class="text-[12px] font-medium text-neutral-900 uppercase tracking-widest mb-1">Layer 07 — Brand and Messaging Refinement</p>
+          <p class="text-neutral-600 font-light text-[14px] leading-relaxed">The final layer is where everything feeds back into the brand itself. What you've learned across six months — about language, trust, drop-off, community — becomes the basis for refining your positioning, visual identity, and core messaging. This is not a rebrand. It is a recalibration, grounded in evidence, that makes every future campaign start from a stronger place.</p>
+          <p class="text-neutral-500 font-light text-[13px] leading-relaxed mt-2 italic">Outcome: A brand that reflects who your customer actually is — and speaks to more people like them.</p>
+        </div>
+
+      </div>
+
+      <div class="pull-quote">
+        "Each layer makes the next one more powerful. Smart efforts compound."
+      </div>
+
+      <div class="prose-img mb-6" style="aspect-ratio: 46/28;">
+        <img src="layer1.png" alt="Layers theory wide image"
+          onerror="this.style.display='none'; this.parentElement.style.minHeight='180px'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:180px;color:#ccc;font-size:12px;font-weight:300;\'>Image placeholder</div>';" />
+      </div>
+
+      <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-5">
+        Six months done well leaves you with something most companies don't have: a growth system that knows why it's working. Not a campaign that got lucky once.
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── TAB: DESIGN ── -->
+<div class="tab-panel" id="tab-design">
+  <div class="grid md:grid-cols-12 gap-12">
+    <div class="md:col-span-7 md:col-start-2">
+
+      <p class="text-[11px] font-medium text-neutral-400 uppercase tracking-widest mb-6">Design</p>
+      <h2 class="text-2xl md:text-3xl font-light tracking-tight text-neutral-900 mb-8 leading-snug">
+        Show, Don't Tell. 
+      </h2>
+
+      <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-5">
+        As humans we feel before we give something a chance. The language of the colors, photography, layout, style. The quality of light. You learn quickly in architecture that people don't experience plans. They experience what's actually there. My background is in Architecture and I approach my work as an Architect does. We communicate using mood, atmosphere and lifestyle.
+      </p>
+
+      <div class="float-left-img" style="aspect-ratio: 3/4;">
+        <img src="theory-design-1.jpg" alt="Design theory image"
+          onerror="this.style.display='none'; this.parentElement.style.minHeight='240px'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:240px;color:#ccc;font-size:12px;font-weight:300;\'>Image placeholder</div>';" />
+      </div>
+
+      <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-5">
+        You can write pages of narrative. You can define your values, articulate your mission, workshop your positioning until it's airtight. And if you don't express it visually, it is lost. Not because the words are wrong. Because no one cares to read pages of text. At first glance they have already decided if this is their tribe or not.
+      </p>
+
+      <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-5">
+        People respond to what they see, hear, and feel before they respond to what they're told. Emotion moves faster than argument. Mood is absorbed before meaning. This is not a weakness in your audience — it is how human perception works, and design is the discipline built for it.
+      </p>
+
+      <div class="pull-quote">
+        "You don't read a room. You feel it. Brand works the same way."
+      </div>
+
+      <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-5">
+        Visual language is how you do this. Photography that shows the real community — not a stock image approximation of it, but the actual faces, textures, and moments that make your audience recognise themselves. Typography that carries mood before it carries meaning. Colour and atmosphere that tell someone, before they've read a word, whether this is for them.
+      </p>
+
+      <div class="prose-img mb-6" style="aspect-ratio: 16/7;">
+        <img src="theory-design-1.png" alt="Design theory wide image"
+          onerror="this.style.display='none'; this.parentElement.style.minHeight='180px'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:180px;color:#ccc;font-size:12px;font-weight:300;\'>Image placeholder</div>';" />
+      </div>
+
+      <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-5">
+        The question I ask at the start of every visual identity project is not what do you want to say. It's who is this community, what do they feel like, what do they sound like — and how do we make someone who belongs in it see themselves immediately when they encounter this brand.
+      </p>
+
+      <p class="text-neutral-700 font-light leading-relaxed text-[15px] mb-5">
+        Show the real thing. Always show. The moment a brand starts illustrating the idea of its community instead of its actual community, it loses the only thing design cannot manufacture: trust. To build trust you have to show- not tell real stories and real people like them.
+      </p>
+
+    </div>
+  </div>
+</div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="px-6 md:px-8 py-16 border-t scandi-border">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-12 md:grid-cols-12 items-start mb-16">
+        <div class="md:col-span-5">
+          <p class="text-neutral-900 font-medium text-2xl mb-4">Alexandra</p>
+          <p class="text-neutral-600 font-light max-w-sm mb-2">
+            Calm systems-first design for Performance agencies and fintech.
+          </p>
+          <p class="text-neutral-400 font-light text-sm mb-2">Ringvägen 35, Stockholm</p>
+          <p class="text-neutral-400 font-light text-sm mb-8">Org. nr SE930825-2841</p>
+          <div class="flex items-center gap-3">
+            <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition" aria-label="LinkedIn">
+              <i class="bi bi-linkedin text-neutral-700"></i>
+            </a>
+            <a href="mailto:hello@alexandrastudio.se"
+               class="inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition" aria-label="Email">
+              <i class="bi bi-envelope text-neutral-700"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="md:col-span-7">
+          <div class="grid gap-10 sm:grid-cols-3">
+            <div>
+              <p class="text-sm font-medium text-neutral-900 mb-4">Work</p>
+              <div class="space-y-3 text-sm text-neutral-600 font-light">
+                <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Performance Agency design</a>
+                <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Fintech advisory</a>
+                <a href="https://platsivardagen.substack.com/" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Kommun audits</a>
+              </div>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-neutral-900 mb-4">Resources</p>
+              <div class="space-y-3 text-sm text-neutral-600 font-light">
+                <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Newsletter</a>
+                <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Media kit</a>
+                <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Downloadables</a>
+              </div>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-neutral-900 mb-4">Contact</p>
+              <div class="space-y-3 text-sm text-neutral-600 font-light">
+                <a href="https://calendly.com/alexandrapgrisanti/hello" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Book a call</a>
+                <a href="mailto:hello@alexandrastudio.se" class="block hover:text-neutral-900 transition">Email</a>
+                <a href="https://calendly.com/alexandrapgrisanti/hello" target="_blank" rel="noopener noreferrer" class="block hover:text-neutral-900 transition">Speaking</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t scandi-border text-xs text-neutral-500 font-light">
+        <p>© 2026 <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 transition">Alexandra Grisanti</a>. All rights reserved.</p>
+        <p>SE930825-2841</p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // ── Reveal on scroll ──
+  (function () {
+    const items = Array.from(document.querySelectorAll('[data-reveal]'));
+    if (!items.length) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.body.classList.add('js-ready');
+    items.forEach((el, i) => el.style.setProperty('--d', Math.min(i * 80, 300) + 'ms'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(el => io.observe(el));
+  })();
+
+  // ── Mobile menu ──
+  (function () {
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    if (!menuBtn || !mobileNav) return;
+    let open = false;
+    const setExpanded = (isOpen) => {
+      open = isOpen;
+      menuBtn.classList.toggle('open', isOpen);
+      mobileNav.classList.toggle('is-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    };
+    menuBtn.addEventListener('click', () => setExpanded(!open));
+    mobileNav.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') setExpanded(false);
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && open) setExpanded(false); });
+  })();
+
+  // ── Tabs ──
+  (function () {
+    const buttons = document.querySelectorAll('.tab-btn');
+    const panels  = document.querySelectorAll('.tab-panel');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+
+        buttons.forEach(b => b.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+
+        btn.classList.add('active');
+        const panel = document.getElementById('tab-' + target);
+        if (panel) panel.classList.add('active');
+      });
+    });
+  })();
+</script>
+</body>
+</html>
