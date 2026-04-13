@@ -106,17 +106,10 @@
       100% { transform: translateX(calc(-380px * 4 - 1rem * 4)); }
     }
 
-    .collab-scroll-wrapper { position: absolute; top: 72px; left: 0; right: 0; bottom: 0; overflow: hidden; }
-    .collab-scroll-track { position: absolute; top: 0; left: 0; height: 100%; display: flex; align-items: center; white-space: nowrap; animation: collab-scroll 22s linear infinite; }
-    .collab-image { height: 30%; width: auto; object-fit: contain; transform: scale(6); }
-    @keyframes collab-scroll { 0% { transform: translateX(400%); } 100% { transform: translateX(-500%); } }
-    .fade-l { position: absolute; top: 72px; left: 0; bottom: 0; width: 50px; background: linear-gradient(to right, white, transparent); pointer-events: none; z-index: 10; }
-    .fade-r { position: absolute; top: 72px; right: 0; bottom: 0; width: 50px; background: linear-gradient(to left, white, transparent); pointer-events: none; z-index: 10; }
-
     @media (prefers-reduced-motion: reduce) {
       [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
       .lift { transition: none !important; }
-      .carousel-track, .collab-scroll-track { animation: none !important; }
+      .carousel-track { animation: none !important; }
     }
 
     #collab-modal { display: none; }
@@ -124,6 +117,266 @@
 
     .carousel-btn:hover img { transform: scale(1.04); }
     .carousel-btn:hover .card-cta { opacity: 1 !important; }
+
+    /* ── MOBILE RESPONSIVE FIXES ── */
+
+    /* Hero grid: 2-col on desktop, single col on mobile */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-bottom: 64px;
+    }
+    @media (max-width: 767px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-bottom: 32px;
+      }
+      .hero-photo-desktop { display: none; }
+    }
+    @media (min-width: 768px) {
+      .hero-photo-mobile { display: none; }
+    }
+
+    /* Image grid below hero */
+    .hero-image-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 767px) {
+      .hero-image-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+    }
+
+    /* Fintech-first feature block */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    @media (max-width: 767px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      .feature-image-col {
+        display: none;
+      }
+    }
+
+    /* Contact section grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (max-width: 767px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* Footer grid */
+    .footer-top-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 767px) {
+      .footer-top-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-links-grid { display: none; }
+    }
+
+    /* Mobile footer links */
+    .footer-links-mobile {
+      display: none;
+    }
+    @media (max-width: 767px) {
+      .footer-links-mobile {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-bottom: 32px;
+      }
+    }
+
+    /* Hero section padding */
+    .hero-section {
+      padding: 64px 24px 72px;
+    }
+    @media (max-width: 767px) {
+      .hero-section {
+        padding: 40px 20px 48px;
+      }
+    }
+
+    /* General section padding fixes */
+    .section-pad {
+      padding: 72px 24px;
+    }
+    @media (max-width: 767px) {
+      .section-pad {
+        padding: 48px 20px;
+      }
+    }
+
+    /* Feature section inner padding */
+    .feature-inner-pad {
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @media (max-width: 767px) {
+      .feature-inner-pad {
+        padding: 28px 24px 32px;
+      }
+    }
+
+    /* Services grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--border);
+    }
+    @media (max-width: 640px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Insights grid */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    @media (max-width: 640px) {
+      .insights-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Testimonials grid */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    @media (max-width: 640px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Hero h1 */
+    .hero-h1 {
+      font-size: clamp(36px, 5.5vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    /* CTA buttons row */
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    @media (max-width: 480px) {
+      .hero-ctas {
+        flex-direction: column;
+      }
+      .hero-ctas a {
+        justify-content: center;
+      }
+    }
+
+    /* Section header row */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+    .section-header-sm {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    /* Carousel card size on mobile */
+    @media (max-width: 480px) {
+      .carousel-btn, .carousel-clone {
+        width: 280px !important;
+      }
+      @keyframes carousel-scroll {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(calc(-280px * 4 - 1rem * 4)); }
+      }
+    }
+
+    /* Modal responsive */
+    .modal-inner {
+      background: white;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 520px;
+      padding: 40px;
+      position: relative;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.18);
+    }
+    @media (max-width: 540px) {
+      .modal-inner {
+        padding: 28px 20px;
+        border-radius: 18px;
+      }
+    }
+
+    /* About section */
+    .about-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .about-inner {
+        text-align: left;
+      }
+      .about-inner .tag { display: inline-flex; }
+      .about-inner button { width: 100%; justify-content: center; }
+    }
+
+    /* Footer bottom row */
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
   </style>
 </head>
 
@@ -176,12 +429,13 @@
   <main>
 
     <!-- HERO -->
-    <section style="padding:64px 24px 72px;" data-reveal>
+    <section class="hero-section" data-reveal>
       <div style="max-width:1280px;margin:0 auto;">
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:64px;" class="md:grid block">
+        <div class="hero-grid">
 
-          <div style="border-radius:20px;overflow:hidden;aspect-ratio:4/5;border:1px solid rgba(0,0,0,0.06);">
+          <!-- Desktop photo -->
+          <div class="hero-photo-desktop" style="border-radius:20px;overflow:hidden;aspect-ratio:4/5;border:1px solid rgba(0,0,0,0.06);">
             <img src="apg10.jpg" alt="Alexandra at a fintech event in Stockholm"
                  style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;" />
           </div>
@@ -192,9 +446,14 @@
               Nordic Fintech Ecosystem
             </div>
 
-            <h1 style="font-size:clamp(40px,5.5vw,72px);line-height:1.05;letter-spacing:-0.02em;margin-bottom:20px;font-weight:400;">
+            <h1 class="hero-h1">
               I help fintech brands<br />get <em>more customers.</em>
             </h1>
+
+            <!-- Mobile photo (inside content column) -->
+            <div class="hero-photo-mobile" style="margin-bottom:24px;border-radius:16px;overflow:hidden;aspect-ratio:3/2;">
+              <img src="apg10.jpg" alt="Alexandra at a fintech event" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;" />
+            </div>
 
             <p style="font-size:17px;line-height:1.75;color:var(--ink-soft);font-weight:300;max-width:440px;margin-bottom:28px;">
               Brand design, ad campaigns, newsletter growth, and events — for fintechs and growth-stage companies in the Nordic ecosystem.
@@ -209,7 +468,7 @@
               <span style="font-size:13px;font-weight:500;color:var(--ink-soft);">Heijbel Growth</span>
             </div>
 
-            <div style="display:flex;flex-wrap:wrap;gap:12px;">
+            <div class="hero-ctas">
               <a href="https://alexandrastudio.se/design.html"
                  style="display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:100px;background:#111;color:white;font-size:14px;font-weight:500;text-decoration:none;transition:opacity 200ms;" onmouseover="this.style.opacity='0.82'" onmouseout="this.style.opacity='1'">
                 See my work <i class="bi bi-arrow-right" style="font-size:12px;"></i>
@@ -222,13 +481,8 @@
           </div>
         </div>
 
-        <!-- Mobile photo -->
-        <div class="md:hidden" style="margin-bottom:32px;border-radius:16px;overflow:hidden;aspect-ratio:3/2;">
-          <img src="apg10.jpg" alt="Alexandra at a fintech event" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;" />
-        </div>
-
-        <!-- Image grid desktop -->
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;" class="hidden md:grid">
+        <!-- Image grid -->
+        <div class="hero-image-grid">
           <a href="https://alexandrastudio.se/design.html" class="lift" style="border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);display:block;">
             <img src="https://millefeuillemockup.com/wp-content/uploads/2023/10/Millefeuille-Mockup-Antoine-Peltier-Design-MLLFLL-002.jpeg" alt="Design work" style="width:100%;height:192px;object-fit:cover;display:block;" loading="lazy" />
           </a>
@@ -247,13 +501,13 @@
     </section>
 
     <!-- WHAT I DO -->
-    <section style="padding:72px 24px;background:var(--surface-2);" data-reveal>
+    <section class="section-pad" style="background:var(--surface-2);" data-reveal>
       <div style="max-width:1280px;margin:0 auto;">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:48px;">
+        <div class="section-header">
           <span class="tag">What I do</span>
           <span style="font-size:13px;color:var(--ink-muted);">Pick one, or all four.</span>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--border);">
+        <div class="services-grid">
           <div class="lift" style="background:var(--surface);padding:36px 32px;">
             <div class="svc-num">01</div>
             <h3 style="font-size:20px;font-weight:400;margin-bottom:12px;">Brand & product design</h3>
@@ -283,16 +537,16 @@
     </section>
 
     <!-- FEATURED -->
-    <section style="padding:72px 24px;" data-reveal>
+    <section class="section-pad" data-reveal>
       <div style="max-width:1280px;margin:0 auto;">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:40px;">
+        <div class="section-header-sm">
           <span class="tag">Fintech-first</span>
           <span style="font-size:13px;color:var(--ink-muted);">Deep experience in payments & embedded finance</span>
         </div>
         <div class="lift" style="border-radius:20px;border:1px solid var(--border);background:var(--surface);overflow:hidden;">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;" class="md:grid block">
-            <div style="padding:48px;display:flex;flex-direction:column;justify-content:center;">
-              <h2 style="font-size:clamp(28px,3vw,40px);line-height:1.15;letter-spacing:-0.015em;font-weight:400;margin-bottom:20px;">
+          <div class="feature-grid">
+            <div class="feature-inner-pad">
+              <h2 style="font-size:clamp(24px,3vw,40px);line-height:1.15;letter-spacing:-0.015em;font-weight:400;margin-bottom:20px;">
                 Most designers don't know fintech.<br />I do.
               </h2>
               <p style="font-size:15px;line-height:1.75;color:var(--ink-soft);font-weight:300;margin-bottom:24px;">
@@ -316,7 +570,7 @@
                 <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" style="font-size:12px;padding:7px 16px;border-radius:100px;border:1px solid var(--border-med);background:var(--surface-2);color:var(--ink-soft);text-decoration:none;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--surface-2)'">ecosystem strategy</a>
               </div>
             </div>
-            <div style="background:var(--surface-2);padding:24px;">
+            <div class="feature-image-col" style="background:var(--surface-2);padding:24px;">
               <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);height:100%;min-height:320px;">
                 <img src="apg1.png" alt="Strategic fintech design" style="width:100%;height:100%;object-fit:cover;display:block;min-height:320px;" loading="lazy" />
               </div>
@@ -327,14 +581,14 @@
     </section>
 
     <!-- INSIGHTS -->
-    <section style="padding:72px 24px;background:var(--surface-2);" data-reveal>
+    <section class="section-pad" style="background:var(--surface-2);" data-reveal>
       <div style="max-width:1280px;margin:0 auto;">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:40px;">
+        <div class="section-header-sm">
           <span class="tag">Resources & Insights</span>
           <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer"
              style="font-size:13px;color:var(--ink-soft);text-decoration:none;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink-soft)'">View all <i class="bi bi-arrow-right" style="font-size:11px;"></i></a>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
+        <div class="insights-grid">
           <article class="lift" style="background:var(--surface);border-radius:20px;border:1px solid var(--border);overflow:hidden;">
             <div style="padding:32px 32px 0;">
               <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
@@ -374,11 +628,11 @@
 
     <!-- MODAL -->
     <div id="collab-modal" style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px;" onclick="if(event.target===this)closeModal()">
-      <div style="background:white;border-radius:24px;width:100%;max-width:520px;padding:40px;position:relative;box-shadow:0 32px 80px rgba(0,0,0,0.18);">
+      <div class="modal-inner">
         <button onclick="closeModal()" aria-label="Close"
           style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(0,0,0,0.08);background:#fafafa;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:#525252;line-height:1;">&#x2715;</button>
         <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
-          <img src="apg10.jpg" alt="Alexandra" style="width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:center 15%;border:1px solid rgba(0,0,0,0.06);" />
+          <img src="apg10.jpg" alt="Alexandra" style="width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:center 15%;border:1px solid rgba(0,0,0,0.06);flex-shrink:0;" />
           <div>
             <p id="modal-title" style="font-family:'Playfair Display',serif;font-size:18px;font-weight:400;margin:0 0 4px;"></p>
             <p id="modal-subtitle" style="font-size:13px;color:#737373;font-weight:300;margin:0;">Drop your email — I'll be in touch within 24 hours.</p>
@@ -394,7 +648,7 @@
     <section style="padding:72px 0;" data-reveal>
       <div style="max-width:1280px;margin:0 auto;padding:0 24px;">
         <div style="text-align:center;margin-bottom:48px;">
-          <h2 style="font-size:clamp(36px,5vw,56px);font-weight:400;letter-spacing:-0.015em;line-height:1.1;margin-bottom:12px;">Let's work together</h2>
+          <h2 style="font-size:clamp(32px,5vw,56px);font-weight:400;letter-spacing:-0.015em;line-height:1.1;margin-bottom:12px;">Let's work together</h2>
           <p style="font-size:16px;color:var(--ink-muted);font-weight:300;">Choose your collaboration style</p>
         </div>
       </div>
@@ -450,22 +704,22 @@
           </button>
 
           <!-- Loop duplicates -->
-          <div aria-hidden="true" style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);position:relative;height:460px;">
+          <div aria-hidden="true" class="carousel-clone" style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);position:relative;height:460px;">
             <img src="https://images.pexels.com/photos/19328775/pexels-photo-19328775.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
             <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,0.35),transparent 40%);"></div>
             <div style="position:absolute;top:32px;left:0;right:0;text-align:center;"><h3 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:#111;line-height:1.2;">Fintech B2B<br />Product Design</h3></div>
           </div>
-          <div aria-hidden="true" style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);position:relative;height:460px;">
+          <div aria-hidden="true" class="carousel-clone" style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);position:relative;height:460px;">
             <img src="https://images.pexels.com/photos/18362173/pexels-photo-18362173.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
             <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,0.35),transparent 40%);"></div>
             <div style="position:absolute;top:32px;left:0;right:0;text-align:center;"><h3 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:#111;line-height:1.2;">Branding</h3></div>
           </div>
-          <div aria-hidden="true" style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);position:relative;height:460px;">
+          <div aria-hidden="true" class="carousel-clone" style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);position:relative;height:460px;">
             <img src="https://images.pexels.com/photos/14979020/pexels-photo-14979020.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
             <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.55),rgba(0,0,0,0.15) 40%);"></div>
             <div style="position:absolute;top:32px;left:0;right:0;text-align:center;"><h3 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:white;line-height:1.2;">Digital<br />Experiences</h3></div>
           </div>
-          <div aria-hidden="true" style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);position:relative;height:460px;">
+          <div aria-hidden="true" class="carousel-clone" style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);position:relative;height:460px;">
             <img src="https://images.pexels.com/photos/6956225/pexels-photo-6956225.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
             <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.55),rgba(0,0,0,0.15) 40%);"></div>
             <div style="position:absolute;top:32px;left:0;right:0;text-align:center;"><h3 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:white;line-height:1.2;">Performance<br />Marketing</h3></div>
@@ -476,12 +730,12 @@
     </section>
 
     <!-- TESTIMONIALS -->
-    <section style="padding:72px 24px;background:var(--surface-2);" data-reveal>
+    <section class="section-pad" style="background:var(--surface-2);" data-reveal>
       <div style="max-width:1280px;margin:0 auto;">
         <div style="display:flex;align-items:center;margin-bottom:40px;">
           <span class="tag">From people I've worked with</span>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+        <div class="testimonials-grid">
           <div class="lift" style="background:var(--surface);border-radius:20px;border:1px solid var(--border);padding:32px;">
             <img src="niklas.jpg" style="width:44px;height:44px;border-radius:50%;object-fit:cover;margin-bottom:20px;" alt="Niklas" />
             <p style="font-size:14px;line-height:1.75;color:var(--ink-soft);font-weight:300;margin-bottom:20px;">"Regardless of discussing the strategy of the products or collaborating with our developers or conducting user testing Alexandra's work has been highly appreciated. Creative, productive, collaborative and structured."</p>
@@ -511,11 +765,11 @@
     </section>
 
     <!-- ABOUT -->
-    <section style="padding:72px 24px;" data-reveal>
+    <section class="section-pad" data-reveal>
       <div style="max-width:1280px;margin:0 auto;">
-        <div style="max-width:680px;margin:0 auto;text-align:center;">
+        <div class="about-inner">
           <span class="tag" style="margin-bottom:32px;display:inline-flex;">About</span>
-          <h2 style="font-size:clamp(32px,4vw,52px);font-weight:400;line-height:1.1;letter-spacing:-0.015em;margin-bottom:28px;">
+          <h2 style="font-size:clamp(28px,4vw,52px);font-weight:400;line-height:1.1;letter-spacing:-0.015em;margin-bottom:28px;">
             Designer. Strategist.<br />Fintech native.
           </h2>
           <p style="font-size:15px;line-height:1.8;color:var(--ink-soft);font-weight:300;margin-bottom:32px;">
@@ -531,13 +785,13 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" style="padding:72px 24px;background:var(--surface-2);" data-reveal>
+    <section id="contact" class="section-pad" style="background:var(--surface-2);" data-reveal>
       <div style="max-width:1280px;margin:0 auto;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;" class="md:grid block">
+        <div class="contact-grid">
 
           <div>
             <span class="tag" style="margin-bottom:28px;display:inline-flex;">Let's talk</span>
-            <h2 style="font-size:clamp(36px,4vw,52px);font-weight:400;line-height:1.1;letter-spacing:-0.015em;margin-bottom:20px;">
+            <h2 style="font-size:clamp(32px,4vw,52px);font-weight:400;line-height:1.1;letter-spacing:-0.015em;margin-bottom:20px;">
               Tell me what<br />you're building.
             </h2>
             <p style="font-size:16px;line-height:1.75;color:var(--ink-soft);font-weight:300;margin-bottom:32px;">
@@ -584,7 +838,7 @@
   <!-- FOOTER -->
   <footer style="padding:56px 24px;border-top:1px solid var(--border);">
     <div style="max-width:1280px;margin:0 auto;">
-      <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;margin-bottom:48px;" class="md:grid block">
+      <div class="footer-top-grid">
         <div>
           <p style="font-family:'Playfair Display',serif;font-size:22px;margin-bottom:8px;">Alexandra</p>
           <p style="font-size:14px;color:var(--ink-soft);font-weight:300;max-width:320px;margin-bottom:20px;">Calm systems-first design for Performance agencies and fintech.</p>
@@ -604,7 +858,8 @@
           </div>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;" class="md:grid hidden">
+        <!-- Desktop footer links -->
+        <div class="footer-links-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;">
           <div>
             <p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:16px;">Work</p>
             <div style="display:flex;flex-direction:column;gap:10px;">
@@ -632,7 +887,32 @@
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid var(--border);">
+      <!-- Mobile footer links -->
+      <div class="footer-links-mobile">
+        <div>
+          <p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:12px;">Work</p>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--ink-soft);text-decoration:none;font-weight:300;">Performance agency</a>
+            <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--ink-soft);text-decoration:none;font-weight:300;">Fintech advisory</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:12px;">Links</p>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--ink-soft);text-decoration:none;font-weight:300;">Newsletter</a>
+            <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--ink-soft);text-decoration:none;font-weight:300;">Media kit</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:12px;">Contact</p>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <button onclick="openModal('Book a call')" style="font-size:13px;color:var(--ink-soft);font-weight:300;background:none;border:0;cursor:pointer;padding:0;text-align:left;">Book a call</button>
+            <a href="mailto:alexandrapgrisanti@gmail.com" style="font-size:13px;color:var(--ink-soft);text-decoration:none;font-weight:300;">Email</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
         <p style="font-size:12px;color:var(--ink-muted);font-weight:300;">&#169; 2026 <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" style="color:var(--ink-muted);text-decoration:none;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink-muted)'">Alexandra Grisanti</a>. All rights reserved.</p>
         <p style="font-size:12px;color:var(--ink-muted);font-weight:300;">Stockholm, Sweden</p>
       </div>
