@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alexandra Grisanti — Fintech Growth & Brand Design</title>
 
-  <link
-    rel="icon"
-    type="image/svg+xml"
+  <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111111'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial' font-size='34' font-weight='700' fill='white'%3EA%3C/text%3E%3C/svg%3E"
   />
 
@@ -21,200 +19,203 @@
     :root {
       --ink: #111111;
       --ink-soft: #525252;
-      --ink-muted: #737373;
+      --ink-muted: #8a8a8a;
       --surface: #ffffff;
-      --surface-2: #fafafa;
-      --surface-3: #f5f5f5;
-      --border: rgba(0,0,0,0.06);
-      --border-med: rgba(0,0,0,0.08);
+      --surface-2: #f9f8f6;
+      --surface-3: #f2f0ed;
+      --border: rgba(0,0,0,0.07);
+      --border-med: rgba(0,0,0,0.1);
     }
 
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--surface);
       color: var(--ink);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
-    html { scroll-behavior: smooth; }
+    h1, h2, h3, h4, .serif { font-family: 'Playfair Display', Georgia, serif; }
 
-    h1, h2, h3, .serif { font-family: 'Playfair Display', Georgia, serif; }
-
-    /* Reveal */
     [data-reveal] {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 600ms cubic-bezier(.16,1,.3,1), transform 600ms cubic-bezier(.16,1,.3,1);
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1);
       transition-delay: var(--d, 0ms);
     }
-    [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+    [data-reveal].is-visible { opacity: 1; transform: none; }
 
-    /* Lift */
-    .lift {
-      transition: transform 350ms cubic-bezier(.16,1,.3,1), box-shadow 350ms cubic-bezier(.16,1,.3,1);
-    }
-    .lift:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.07); }
-
-    /* Original branding borders */
-    .scandi-border { border: 1px solid rgba(0,0,0,0.06); }
-    .scandi-border-thick { border: 1.5px solid rgba(0,0,0,0.08); }
-
-    /* Tag pill */
     .tag {
-      display: inline-flex; align-items: center;
-      font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase;
-      font-family: 'Inter', sans-serif; font-weight: 500;
-      padding: 5px 14px; border-radius: 100px;
-      border: 1px solid rgba(0,0,0,0.08); background: #fafafa;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+      font-weight: 500; padding: 6px 14px; border-radius: 100px;
+      border: 1px solid var(--border-med); background: var(--surface-2);
       color: var(--ink-soft);
     }
+    .tag-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--ink); flex-shrink: 0; }
 
-    /* Hamburger */
+    .lift { transition: transform 350ms cubic-bezier(.16,1,.3,1), box-shadow 350ms cubic-bezier(.16,1,.3,1); }
+    .lift:hover { transform: translateY(-3px); box-shadow: 0 20px 48px rgba(0,0,0,0.08); }
+
     .hamburger span {
-      display: block; width: 20px; height: 2px;
-      background: #111; border-radius: 2px;
+      display: block; width: 20px; height: 2px; background: #111; border-radius: 2px;
       transition: transform 300ms cubic-bezier(.16,1,.3,1), opacity 300ms ease;
     }
     .hamburger span + span { margin-top: 4px; }
     #menuBtn.open .hamburger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
     #menuBtn.open .hamburger span:nth-child(2) { opacity: 0; }
     #menuBtn.open .hamburger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
-    /* Mobile nav */
     #mobileNav.is-open { max-height: 520px; opacity: 1; pointer-events: auto; }
 
-    /* Fillout embed */
-    .fillout-wrap {
-      background: #fafafa;
-      border-radius: 20px;
-      border: 1px solid rgba(0,0,0,0.06);
-      overflow: hidden;
-      padding: 48px 40px 40px;
+    .pcard {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
+      transition: transform 350ms cubic-bezier(.16,1,.3,1), box-shadow 350ms;
     }
-    @media (max-width: 640px) {
-      .fillout-wrap { padding: 32px 24px; }
-    }
-
-    /* Service card number */
-    .svc-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 48px;
-      color: rgba(0,0,0,0.12);
-      line-height: 1;
-      margin-bottom: 16px;
+    .pcard:hover { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(0,0,0,0.09); }
+    .pcard-icon {
+      width: 52px; height: 52px; border-radius: 14px; border: 1px solid var(--border);
+      background: var(--surface-2); display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 20px;
     }
 
-    /* Carousel */
-    .carousel-wrapper {
-      overflow: hidden;
-      -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
-      mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    .work-item {
+      display: grid; grid-template-columns: 280px 1fr; gap: 0;
+      border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
+      transition: transform 350ms cubic-bezier(.16,1,.3,1), box-shadow 350ms;
     }
-    .carousel-track {
-      display: flex;
-      gap: 1rem;
-      animation: carousel-scroll 32s linear infinite;
-      will-change: transform;
-    }
-    .carousel-track:hover { animation-play-state: paused; }
-    @keyframes carousel-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(calc(-380px * 4 - 1rem * 4)); }
+    .work-item:hover { transform: translateY(-3px); box-shadow: 0 20px 48px rgba(0,0,0,0.08); }
+    @media (max-width: 720px) {
+      .work-item { grid-template-columns: 1fr; }
+      .work-img { aspect-ratio: 16/9 !important; min-height: unset !important; }
     }
 
-    /* Collab scroll */
-    .collab-scroll-wrapper { position: absolute; top: 72px; left: 0; right: 0; bottom: 0; overflow: hidden; }
-    .collab-scroll-track { position: absolute; top: 0; left: 0; height: 100%; display: flex; align-items: center; white-space: nowrap; animation: collab-scroll 22s linear infinite; }
-    .collab-image { height: 30%; width: auto; object-fit: contain; transform: scale(6); }
-    @keyframes collab-scroll { 0% { transform: translateX(400%); } 100% { transform: translateX(-500%); } }
-    .fade-l { position: absolute; top: 72px; left: 0; bottom: 0; width: 50px; background: linear-gradient(to right, white, transparent); pointer-events: none; z-index: 10; }
-    .fade-r { position: absolute; top: 72px; right: 0; bottom: 0; width: 50px; background: linear-gradient(to left, white, transparent); pointer-events: none; z-index: 10; }
+    .banner-strip { width: 100%; overflow: hidden; border-radius: 14px; border: 1px solid var(--border); }
+    .banner-strip img { width: 100%; height: 72px; object-fit: cover; object-position: center; display: block; }
 
-    @media (prefers-reduced-motion: reduce) {
-      [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
-      .lift { transition: none !important; }
-      .carousel-track, .collab-scroll-track { animation: none !important; }
+    hr.rule { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    .section { padding: 72px 24px; }
+    .section-alt { padding: 72px 24px; background: var(--surface-2); }
+    .wrap { max-width: 1160px; margin: 0 auto; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 900px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+
+    .btn-dark {
+      display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 100px;
+      background: var(--ink); color: white; font-size: 14px; font-weight: 500;
+      text-decoration: none; transition: opacity 200ms; border: none; cursor: pointer;
     }
+    .btn-dark:hover { opacity: 0.82; }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 100px;
+      background: transparent; color: var(--ink); font-size: 14px; font-weight: 500;
+      text-decoration: none; transition: background 200ms; border: 1.5px solid var(--border-med); cursor: pointer;
+    }
+    .btn-ghost:hover { background: var(--surface-2); }
+
+    .section-label {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px; margin-bottom: 40px;
+    }
+
+    .num-accent { font-family: 'Playfair Display', serif; font-size: 56px; color: rgba(0,0,0,0.08); line-height: 1; margin-bottom: 12px; }
+
+    .arrow-link {
+      font-size: 13px; color: var(--ink-soft); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: gap 200ms, color 200ms;
+    }
+    .arrow-link:hover { gap: 10px; color: var(--ink); }
+
+    .tcard { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 32px; }
+
+    .dot-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .dot-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+    .dot-list li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--ink); flex-shrink: 0; margin-top: 8px; }
+
+    .stat-row { display: flex; gap: 40px; flex-wrap: wrap; }
+    .stat-item { display: flex; flex-direction: column; gap: 4px; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 36px; line-height: 1; }
+    .stat-label { font-size: 12px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    .section-dark { padding: 72px 24px; background: var(--ink); color: white; }
+    .section-dark .tag { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); }
+    .section-dark .tag-dot { background: white; }
+    .section-dark p { color: rgba(255,255,255,0.6); }
+    .section-dark h2, .section-dark h3 { color: white; }
+    .section-dark .pcard { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
+    .section-dark .pcard-icon { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
+    .section-dark .num-accent { color: rgba(255,255,255,0.1); }
+    .section-dark .dot-list li { color: rgba(255,255,255,0.55); }
+    .section-dark .dot-list li::before { background: rgba(255,255,255,0.5); }
 
     /* Modal */
-    #collab-modal { transition: opacity 200ms; }
+    #collab-modal { display: none; }
     #collab-modal.is-open { display: flex !important; }
+    .modal-inner {
+      background: white; border-radius: 24px; width: 100%; max-width: 520px;
+      padding: 40px; position: relative; box-shadow: 0 32px 80px rgba(0,0,0,0.18);
+    }
+    @media (max-width: 540px) { .modal-inner { padding: 28px 20px; border-radius: 18px; } }
 
-    /* Carousel card hover — reveal CTA, zoom image */
-    .carousel-btn:hover img { transform: scale(1.04); }
-    .carousel-btn:hover .card-cta { opacity: 1 !important; }
+    @media (max-width: 768px) {
+      .section, .section-alt, .section-dark { padding: 52px 20px; }
+      .hero-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+      .hero-img { display: none !important; }
+      .mob-sub { display: block !important; }
+    }
+    @media (min-width: 769px) { .mob-sub { display: none !important; } }
   </style>
 </head>
 
 <body class="bg-white text-neutral-900 antialiased overflow-x-hidden">
 <div class="min-h-screen">
 
-  <!-- ═══ HEADER ═══ -->
-  <header class="px-6 md:px-8 py-6 md:py-7 border-b scandi-border sticky top-0 bg-white/80 backdrop-blur-xl z-50">
-    <div class="mx-auto max-w-7xl">
-      <div class="flex items-center justify-between gap-4">
+  <!-- HEADER -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);">
+    <div style="max-width:1280px;margin:0 auto;padding:24px 24px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
 
-        <!-- Logo -->
-        <a href="https://alexandrastudio.se/"
-           class="inline-flex items-center gap-3 group">
-          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-neutral-900 transition-transform group-hover:scale-105">
-            <span class="text-white text-sm font-semibold">A</span>
+        <a href="https://alexandrastudio.se/" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:#111;flex-shrink:0;">
+            <span style="color:white;font-size:14px;font-weight:600;">A</span>
           </span>
-          <span class="text-neutral-900 font-medium tracking-tight text-lg">Alexandra</span>
+          <span style="color:#111;font-weight:500;font-size:17px;letter-spacing:-0.01em;">Alexandra</span>
         </a>
 
-        <!-- Desktop Navigation -->
-        <nav class="hidden md:flex items-center gap-8 text-[15px] font-normal">
-          <a href="https://alexandrastudio.se/academy.html"
-             class="text-neutral-500 hover:text-neutral-900 transition">Academy</a>
-          <a href="https://alexandrastudio.se/design.html"
-             class="text-neutral-500 hover:text-neutral-900 transition">Design</a>
-          <a href="https://alexandrastudio.se/theory.html"
-             class="text-neutral-500 hover:text-neutral-900 transition">Theory</a>
-          <a href="https://luma.com/user/agrisanti"
-             target="_blank" rel="noopener noreferrer"
-             class="text-neutral-500 hover:text-neutral-900 transition">Events</a>
-          <a href="https://www.linkedin.com/in/alexandragrisanti/"
-             target="_blank" rel="noopener noreferrer"
-             class="text-neutral-500 hover:text-neutral-900 transition">LinkedIn</a>
-          <a href="https://calendly.com/alexandra-alexandrastudio/30min"
-             target="_blank" rel="noopener noreferrer"
-             class="px-5 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition">Contact</a>
+        <nav style="display:flex;align-items:center;gap:32px;font-size:15px;" class="desktop-nav">
+          <a href="https://alexandrastudio.se/academy.html" style="color:var(--ink-soft);text-decoration:none;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink-soft)'">Academy</a>
+          <a href="https://alexandrastudio.se/design.html" style="color:var(--ink-soft);text-decoration:none;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink-soft)'">Design</a>
+          <a href="https://alexandrastudio.se/theory.html" style="color:var(--ink-soft);text-decoration:none;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink-soft)'">Theory</a>
+          <a href="https://luma.com/user/agrisanti" target="_blank" rel="noopener noreferrer" style="color:var(--ink-soft);text-decoration:none;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink-soft)'">Events</a>
+          <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" style="color:var(--ink-soft);text-decoration:none;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink-soft)'">LinkedIn</a>
+          <button onclick="openModal('Get in touch')"
+            style="padding:10px 22px;border-radius:100px;background:#111;color:white;font-size:14px;font-weight:500;border:none;cursor:pointer;transition:opacity 200ms;"
+            onmouseover="this.style.opacity='0.82'" onmouseout="this.style.opacity='1'">Contact</button>
         </nav>
 
-        <!-- Mobile Menu Button -->
         <button id="menuBtn" type="button"
-          class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg scandi-border bg-white hover:bg-neutral-50 transition focus:outline-none focus:ring-2 focus:ring-neutral-200"
-          aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
-          <span class="hamburger" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </span>
+          style="display:none;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;border:1px solid var(--border);background:white;cursor:pointer;"
+          aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" class="mob-only">
+          <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
         </button>
       </div>
 
-      <!-- Mobile Navigation -->
-      <div id="mobileNav"
-        class="md:hidden overflow-hidden max-h-0 opacity-0 pointer-events-none transition-all duration-300 ease-out">
-        <div class="mt-4 rounded-2xl scandi-border bg-neutral-50/50 p-3 text-sm backdrop-blur-xl">
-          <div class="grid grid-cols-1 gap-2">
-            <a href="https://alexandrastudio.se/academy.html"
-               class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Academy</a>
-            <a href="https://alexandrastudio.se/design.html"
-               class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Design</a>
-            <a href="https://alexandrastudio.se/theory.html"
-               class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Theory</a>
-            <a href="https://luma.com/user/agrisanti"
-               target="_blank" rel="noopener noreferrer"
-               class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Events</a>
-            <a href="https://www.linkedin.com/in/alexandragrisanti/"
-               target="_blank" rel="noopener noreferrer"
-               class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">LinkedIn</a>
-            <a href="https://calendly.com/alexandra-alexandrastudio/30min"
-               target="_blank" rel="noopener noreferrer"
-               class="px-4 py-3 rounded-xl hover:bg-white transition text-neutral-700">Contact</a>
+      <div id="mobileNav" class="overflow-hidden max-h-0 opacity-0 pointer-events-none" style="transition:max-height 300ms ease,opacity 300ms ease;">
+        <div style="margin-top:16px;border-radius:16px;border:1px solid var(--border);background:rgba(249,248,246,0.8);padding:12px;">
+          <div style="display:flex;flex-direction:column;gap:4px;font-size:15px;">
+            <a href="https://alexandrastudio.se/academy.html" style="padding:12px 16px;border-radius:10px;color:var(--ink-soft);text-decoration:none;" onmouseover="this.style.background='white'" onmouseout="this.style.background='transparent'">Academy</a>
+            <a href="https://alexandrastudio.se/design.html" style="padding:12px 16px;border-radius:10px;color:var(--ink-soft);text-decoration:none;" onmouseover="this.style.background='white'" onmouseout="this.style.background='transparent'">Design</a>
+            <a href="https://alexandrastudio.se/theory.html" style="padding:12px 16px;border-radius:10px;color:var(--ink-soft);text-decoration:none;" onmouseover="this.style.background='white'" onmouseout="this.style.background='transparent'">Theory</a>
+            <a href="https://luma.com/user/agrisanti" target="_blank" rel="noopener noreferrer" style="padding:12px 16px;border-radius:10px;color:var(--ink-soft);text-decoration:none;" onmouseover="this.style.background='white'" onmouseout="this.style.background='transparent'">Events</a>
+            <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" style="padding:12px 16px;border-radius:10px;color:var(--ink-soft);text-decoration:none;" onmouseover="this.style.background='white'" onmouseout="this.style.background='transparent'">LinkedIn</a>
+            <button onclick="openModal('Get in touch');document.getElementById('mobileNav').classList.remove('is-open');"
+              style="padding:12px 16px;border-radius:10px;color:var(--ink-soft);text-align:left;background:transparent;border:none;cursor:pointer;font-size:15px;">Contact</button>
           </div>
         </div>
       </div>
@@ -223,475 +224,313 @@
 
   <main>
 
-    <!-- ═══ HERO ═══ -->
-    <section style="padding:64px 24px 72px;" data-reveal>
-      <div style="max-width:1280px;margin:0 auto;">
+    <!-- HERO -->
+    <section class="section" data-reveal>
+      <div class="wrap">
 
-        <!-- Two-col: photo left, copy right -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:64px;" class="md:grid block">
+        <div style="margin-bottom:32px;">
+          <span class="tag"><span class="tag-dot"></span>Nordic Fintech Ecosystem</span>
+        </div>
 
-          <!-- Photo -->
-          <div style="border-radius:20px;overflow:hidden;aspect-ratio:4/5;border:1px solid rgba(0,0,0,0.06);">
-            <img src="apg10.jpg" alt="Alexandra at a fintech event in Stockholm"
-                 style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;" />
-          </div>
-
-          <!-- Copy -->
+        <div style="display:grid;grid-template-columns:1fr 420px;gap:64px;align-items:end;margin-bottom:48px;" class="hero-grid">
           <div>
-            <div class="tag" style="margin-bottom:24px;">
-              <span style="width:6px;height:6px;border-radius:50%;background:var(--ink);margin-right:8px;display:inline-block;"></span>
-              Nordic Fintech Ecosystem
-            </div>
-
-            <h1 style="font-size:clamp(40px,5.5vw,72px);line-height:1.05;letter-spacing:-0.02em;margin-bottom:20px;font-weight:400;">
-              I help fintech brands<br />get <em>more customers.</em>
+            <h1 style="font-size:clamp(44px,6vw,80px);line-height:1.04;letter-spacing:-0.02em;font-weight:400;margin-bottom:0;">
+              Opening doors<br />for fintechs<br /><em>to get into banks.</em>
             </h1>
-
-            <p style="font-size:17px;line-height:1.75;color:var(--ink-soft);font-weight:300;max-width:440px;margin-bottom:28px;">
-              Brand design, ad campaigns, newsletter growth, and events — for fintechs and growth-stage companies in the Nordic ecosystem.
+          </div>
+          <div class="hero-img" style="padding-bottom:8px;">
+            <p style="font-size:16px;line-height:1.8;color:var(--ink-soft);font-weight:300;margin-bottom:28px;">
+              Fintech startups struggle to reach the right people inside banks. I actively grow these relationships — through events, breakfasts, and ecosystem work. Now I connect startups ready to grow through partnerships.
             </p>
-
-            <!-- Social proof strip -->
-            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:32px;">
-              <span style="font-size:13px;color:var(--ink-muted);">Working with</span>
-              <span style="font-size:13px;font-weight:500;color:var(--ink-soft);">Nordic Fintech Summit</span>
-              <span style="font-size:11px;color:var(--ink-muted);">·</span>
-              <span style="font-size:13px;font-weight:500;color:var(--ink-soft);">Solvapay</span>
-              <span style="font-size:11px;color:var(--ink-muted);">·</span>
-              <span style="font-size:13px;font-weight:500;color:var(--ink-soft);">Heijbel Growth</span>
-            </div>
-
-            <!-- CTAs -->
-            <div style="display:flex;flex-wrap:wrap;gap:12px;">
-              <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer"
-                 style="display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:100px;background:#111;color:white;font-size:14px;font-weight:500;text-decoration:none;transition:opacity 200ms;" onmouseover="this.style.opacity='0.82'" onmouseout="this.style.opacity='1'">
-                See impact report <i class="bi bi-arrow-right" style="font-size:12px;"></i>
-              </a>
-              <a href="#contact"
-                 style="display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:100px;border:1.5px solid rgba(0,0,0,0.08);color:#111;font-size:14px;font-weight:500;text-decoration:none;transition:background 200ms;" onmouseover="this.style.background='#fafafa'" onmouseout="this.style.background='transparent'">
-                Work with me
-              </a>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;">
+              <a href="#partnerships" class="btn-dark">See how it works <i class="bi bi-arrow-down" style="font-size:12px;"></i></a>
+              <button onclick="openModal('Book a call')" class="btn-ghost">Book a call</button>
             </div>
           </div>
         </div>
 
-        <!-- Mobile: photo full width above copy -->
-        <div class="md:hidden" style="margin-bottom:32px;border-radius:16px;overflow:hidden;aspect-ratio:3/2;">
-          <img src="apg10.jpg" alt="Alexandra at a fintech event"
-               style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;" />
+        <!-- Mobile sub text -->
+        <div style="display:none;" class="mob-sub">
+          <p style="font-size:15px;line-height:1.8;color:var(--ink-soft);font-weight:300;margin-bottom:24px;">
+            Fintech startups struggle to reach the right people inside banks. I've spent years building those relationships — through events, breakfasts, and ecosystem work. Now I put them to work for the startups ready to grow.
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;">
+            <a href="#partnerships" class="btn-dark">See how it works <i class="bi bi-arrow-down" style="font-size:12px;"></i></a>
+            <button onclick="openModal('Book a call')" class="btn-ghost">Book a call</button>
+          </div>
         </div>
 
-        <!-- Image grid (desktop only) -->
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;" class="hidden md:grid">
-          <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer"
-             class="lift" style="border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);display:block;">
-            <img src="https://millefeuillemockup.com/wp-content/uploads/2023/10/Millefeuille-Mockup-Antoine-Peltier-Design-MLLFLL-002.jpeg" alt="Design work" style="width:100%;height:192px;object-fit:cover;display:block;" loading="lazy" />
-          </a>
-          <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer"
-             class="lift" style="border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);display:block;">
-            <img src="https://design-packs.com/cdn/shop/files/overlap-stacking-cards.gif?v=1753901686&width=823" alt="Design work" style="width:100%;height:192px;object-fit:cover;display:block;" loading="lazy" />
-          </a>
-          <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer"
-             class="lift" style="border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);display:block;">
-            <img src="https://goodmockups.com/wp-content/uploads/2024/08/Free-Floating-Dual-iPhone-16-Pro-Max-Mockup-PSD.jpg" alt="Design work" style="width:100%;height:192px;object-fit:cover;display:block;" loading="lazy" />
-          </a>
-          <a href="https://alexandrastudio.se/Performance_Report_2026.pdf" target="_blank" rel="noopener noreferrer"
-             class="lift" style="border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);display:block;">
-            <img src="https://elmish.land/assets/images/image1-3ca72746a8b25e1ef39aa74f8112ceb2.png" alt="Design work" style="width:100%;height:192px;object-fit:cover;display:block;" loading="lazy" />
-          </a>
+        <div class="banner-strip" style="margin-bottom:48px;">
+          <img src="9.png" alt="Ecosystem partners and clients" style="width:100%;height:80px;object-fit:cover;object-position:center;" />
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-item">
+            <span class="stat-num">6–18</span>
+            <span class="stat-label">Month avg. bank sales cycle</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">Nordic</span>
+            <span class="stat-label">Primary market focus</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">8</span>
+            <span class="stat-label">Max retainer clients at once</span>
+          </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ═══ WHAT I DO ═══ -->
-    <section style="padding:72px 24px;background:var(--surface-2);" data-reveal>
-      <div style="max-width:1280px;margin:0 auto;">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:48px;">
-          <span class="tag">What I do</span>
-          <span style="font-size:13px;color:var(--ink-muted);">Pick one, or all four.</span>
+    <hr class="rule" />
+
+    <!-- HOW I WORK WITH YOU -->
+    <section class="section-dark" id="partnerships" data-reveal>
+      <div class="wrap">
+
+        <div class="section-label">
+          <span class="tag"><span class="tag-dot"></span>How it works</span>
+          <span style="font-size:13px;color:rgba(255,255,255,0.35);">Retainer-based market access</span>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--border);">
+        <h2 style="font-size:clamp(32px,4vw,52px);font-weight:400;line-height:1.1;letter-spacing:-0.015em;margin-bottom:16px;color:white;">
+          Your outsourced Business Development function<br />inside the Nordic banking world.
+        </h2>
+        <p style="font-size:16px;line-height:1.75;color:rgba(255,255,255,0.55);max-width:560px;margin-bottom:56px;font-weight:300;">
+          I don't send cold emails on your behalf. I make warm introductions to people who already trust my judgment — because they've seen me show up and I only make introductions that make sense.
+        </p>
 
-          <div class="lift" style="background:var(--surface);padding:36px 32px;">
-            <div class="svc-num">01</div>
-            <h3 style="font-size:20px;font-weight:400;margin-bottom:12px;">Brand & product design</h3>
-            <p style="font-size:14px;line-height:1.7;color:var(--ink-soft);font-weight:300;margin-bottom:20px;">Websites, brand systems, and trust-first design for fintechs. Built to convert and built to last.</p>
-            <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'">View services <i class="bi bi-arrow-right" style="font-size:11px;transition:inherit;"></i></a>
-          </div>
-
-          <div class="lift" style="background:var(--surface);padding:36px 32px;">
-            <div class="svc-num">02</div>
-            <h3 style="font-size:20px;font-weight:400;margin-bottom:12px;">Ads & performance campaigns</h3>
-            <p style="font-size:14px;line-height:1.7;color:var(--ink-soft);font-weight:300;margin-bottom:20px;">Meta static ads, App Store screens, and creative systems designed to drive conversions — not just look good.</p>
-            <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'">Download overview <i class="bi bi-arrow-right" style="font-size:11px;"></i></a>
-          </div>
-
-          <div class="lift" style="background:var(--surface);padding:36px 32px;">
-            <div class="svc-num">03</div>
-            <h3 style="font-size:20px;font-weight:400;margin-bottom:12px;">Newsletter & audience growth</h3>
-            <p style="font-size:14px;line-height:1.7;color:var(--ink-soft);font-weight:300;margin-bottom:20px;">I run two newsletters — fintech and marketing — and help clients grow theirs. More subscribers, better open rates, actual ticket sales.</p>
-            <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'">Read newsletter <i class="bi bi-arrow-right" style="font-size:11px;"></i></a>
-          </div>
-
-          <div class="lift" style="background:var(--surface);padding:36px 32px;">
-            <div class="svc-num">04</div>
-            <h3 style="font-size:20px;font-weight:400;margin-bottom:12px;">Events & in-person community</h3>
-            <p style="font-size:14px;line-height:1.7;color:var(--ink-soft);font-weight:300;margin-bottom:20px;">From Nordic Fintech Summit to the Embedded Finance Hackathon in August — I create events where the right people actually meet.</p>
-            <a href="https://luma.com/user/agrisanti" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'">Upcoming events <i class="bi bi-arrow-right" style="font-size:11px;"></i></a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ FEATURED SECTION (Strategic Execution) ═══ -->
-    <section style="padding:72px 24px;" data-reveal>
-      <div style="max-width:1280px;margin:0 auto;">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:40px;">
-          <span class="tag">Fintech-first</span>
-          <span style="font-size:13px;color:var(--ink-muted);">Deep experience in payments & embedded finance</span>
-        </div>
-
-        <div class="lift" style="border-radius:20px;border:1px solid var(--border);background:var(--surface);overflow:hidden;">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;" class="md:grid block">
-            <div style="padding:48px 48px 48px;display:flex;flex-direction:column;justify-content:center;" class="p-8 md:p-12">
-              <h2 style="font-size:clamp(28px,3vw,40px);line-height:1.15;letter-spacing:-0.015em;font-weight:400;margin-bottom:20px;">
-                Most designers don't know fintech.<br />I do.
-              </h2>
-              <p style="font-size:15px;line-height:1.75;color:var(--ink-soft);font-weight:300;margin-bottom:24px;">
-                I've worked inside payments, embedded finance, and B2B fintech — so I understand the compliance constraints, the trust signals that matter, and what actually converts in this industry.<br /><br />
-                That means faster briefs, fewer revisions, and work that doesn't need to be explained to your team.
-              </p>
-              <ul style="list-style:none;padding:0;margin:0 0 32px;display:flex;flex-direction:column;gap:10px;">
-                <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--ink-soft);">
-                  <span style="width:4px;height:4px;border-radius:50%;background:var(--ink);margin-top:8px;flex-shrink:0;"></span>
-                  Brand & website design for regulated markets
-                </li>
-                <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--ink-soft);">
-                  <span style="width:4px;height:4px;border-radius:50%;background:var(--ink);margin-top:8px;flex-shrink:0;"></span>
-                  Ad campaigns that understand fintech buyers
-                </li>
-                <li style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--ink-soft);">
-                  <span style="width:4px;height:4px;border-radius:50%;background:var(--ink);margin-top:8px;flex-shrink:0;"></span>
-                  Events and community in the Nordic ecosystem
-                </li>
-              </ul>
-              <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer"
-                   style="font-size:12px;padding:7px 16px;border-radius:100px;border:1px solid var(--border-med);background:var(--surface-2);color:var(--ink-soft);text-decoration:none;transition:background 200ms;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--surface-2)'">fintech positioning</a>
-                <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer"
-                   style="font-size:12px;padding:7px 16px;border-radius:100px;border:1px solid var(--border-med);background:var(--surface-2);color:var(--ink-soft);text-decoration:none;transition:background 200ms;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--surface-2)'">performance systems</a>
-                <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer"
-                   style="font-size:12px;padding:7px 16px;border-radius:100px;border:1px solid var(--border-med);background:var(--surface-2);color:var(--ink-soft);text-decoration:none;transition:background 200ms;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--surface-2)'">ecosystem strategy</a>
-              </div>
-            </div>
-            <div style="background:var(--surface-2);padding:24px;">
-              <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);height:100%;min-height:320px;">
-                <img src="apg1.png" alt="Strategic fintech design" style="width:100%;height:100%;object-fit:cover;display:block;min-height:320px;" loading="lazy" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ INSIGHTS ═══ -->
-    <section style="padding:72px 24px;background:var(--surface-2);" data-reveal>
-      <div style="max-width:1280px;margin:0 auto;">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:40px;">
-          <span class="tag">Resources & Insights</span>
-          <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer"
-             style="font-size:13px;color:var(--ink-soft);text-decoration:none;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink-soft)'">View all <i class="bi bi-arrow-right" style="font-size:11px;"></i></a>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
-          <article class="lift" style="background:var(--surface);border-radius:20px;border:1px solid var(--border);overflow:hidden;">
-            <div style="padding:32px 32px 0;">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
-                <span style="font-size:11px;padding:4px 12px;border-radius:100px;background:var(--surface-3);border:1px solid var(--border);color:var(--ink-soft);">Strategy</span>
-                <span style="font-size:12px;color:var(--ink-muted);">January 11, 2026</span>
-              </div>
-              <h3 style="font-size:24px;font-weight:400;line-height:1.2;margin-bottom:10px;">
-                <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank" rel="noopener noreferrer" style="color:var(--ink);text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">How to design for trust</a>
-              </h3>
-              <p style="font-size:14px;color:var(--ink-soft);font-weight:300;margin-bottom:24px;">Patterns that feel stable, calm, and predictable.</p>
-            </div>
-            <div style="padding:0 32px 32px;">
-              <div style="border-radius:10px;overflow:hidden;border:1px solid var(--border);">
-                <img src="https://tint.creativemarket.com/0xHUYGoV6g46INY4wlYZI8RY7SuMuXNCfh9wOzpIwz0/width:1200/height:800/gravity:nowe/rt:fill-down/el:1/czM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3RzLzUyOTQvNTI5NDQvNTI5NDQ3ODkvMi1vLmpwZyMxNzQxMTY3ODUy?1741167852"
-                     alt="Design insights" style="width:100%;height:220px;object-fit:cover;display:block;" loading="lazy" />
-              </div>
-            </div>
-          </article>
-
-          <article class="lift" style="background:var(--surface);border-radius:20px;border:1px solid var(--border);overflow:hidden;">
-            <div style="padding:32px;">
-              <div style="border-radius:10px;overflow:hidden;border:1px solid var(--border);margin-bottom:24px;">
-                <img src="https://www.free-mockup.com/wp-content/uploads/edd/2025/03/iPhone-Mockup-PSD-Scene-01.jpg.webp"
-                     alt="Marketing insights" style="width:100%;height:220px;object-fit:cover;display:block;" loading="lazy" />
-              </div>
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
-                <span style="font-size:11px;padding:4px 12px;border-radius:100px;background:var(--surface-3);border:1px solid var(--border);color:var(--ink-soft);">Reporting</span>
-                <span style="font-size:12px;color:var(--ink-muted);">January 4, 2026</span>
-              </div>
-              <h3 style="font-size:24px;font-weight:400;line-height:1.2;margin-bottom:10px;">
-                <a href="https://alundsvagen.github.io/alexandrastudio/Marketing_Service.pdf" target="_blank" rel="noopener noreferrer" style="color:var(--ink);text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">A Design Boost for Marketers</a>
-              </h3>
-              <p style="font-size:14px;color:var(--ink-soft);font-weight:300;">What to document, what to ship, what to skip.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ MODAL OVERLAY ═══ -->
-    <div id="collab-modal" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px;" onclick="if(event.target===this)closeModal()">
-      <div style="background:white;border-radius:24px;width:100%;max-width:520px;padding:40px;position:relative;box-shadow:0 32px 80px rgba(0,0,0,0.18);">
-        <!-- Close -->
-        <button onclick="closeModal()" aria-label="Close"
-          style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(0,0,0,0.08);background:#fafafa;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:#525252;line-height:1;">
-          ✕
-        </button>
-        <!-- Header -->
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
-          <img src="apg10.jpg" alt="Alexandra"
-               style="width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:center 15%;border:1px solid rgba(0,0,0,0.06);" />
+        <!-- Retainer callout -->
+        <div style="margin-top:32px;border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:32px 36px;background:rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
           <div>
-            <p id="modal-title" style="font-family:'Playfair Display',serif;font-size:18px;font-weight:400;margin:0 0 2px;"></p>
-            <p style="font-size:13px;color:#737373;font-weight:300;margin:0;">Drop your email — I'll be in touch within 24 hours.</p>
+            <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.35);margin-bottom:6px;">Engagement model</p>
+            <p style="font-size:18px;color:white;font-weight:400;font-family:'Playfair Display',serif;">3-month minimum retainer · €4,000–6,000/mo · Success fee on close</p>
           </div>
+          <button onclick="openModal('Apply for a retainer')"
+            style="display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:100px;background:white;color:#111;font-size:14px;font-weight:500;border:none;cursor:pointer;transition:opacity 200ms;white-space:nowrap;"
+            onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+            Apply for a retainer <i class="bi bi-arrow-right" style="font-size:12px;"></i>
+          </button>
         </div>
-        <!-- Fillout form -->
-        <div data-fillout-id="4vjkiFwcM2us" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize style="width:100%;"></div>
-        <script src="https://server.fillout.com/embed/v1/"></script>
-        <p style="font-size:11px;color:#a3a3a3;margin-top:14px;text-align:center;font-weight:300;">Or book a call: <a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener noreferrer" style="color:#737373;text-decoration:underline;">Calendly</a></p>
-      </div>
-    </div>
 
-    <!-- ═══ CAROUSEL ═══ -->
-    <section style="padding:72px 0;" data-reveal>
-      <div style="max-width:1280px;margin:0 auto;padding:0 24px 0;">
-        <div style="text-align:center;margin-bottom:48px;">
-          <h2 style="font-size:clamp(36px,5vw,56px);font-weight:400;letter-spacing:-0.015em;line-height:1.1;margin-bottom:12px;">Let's work together</h2>
-          <p style="font-size:16px;color:var(--ink-muted);font-weight:300;">Choose your collaboration style</p>
+      </div>
+    </section>
+
+    <!-- WORK EXAMPLES -->
+    <section class="section" data-reveal>
+      <div class="wrap">
+
+        <div class="section-label">
+          <span class="tag"><span class="tag-dot"></span>Client work</span>
+          <span style="font-size:13px;color:var(--ink-muted);">Selected projects</span>
         </div>
-      </div>
-      <div class="carousel-wrapper">
-        <div id="carousel-track" class="carousel-track">
 
-          <!-- 4 originals — now buttons that open modal -->
-          <button onclick="openModal('Fintech B2B Product Design')" class="carousel-btn"
-             style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);display:block;position:relative;height:460px;cursor:pointer;padding:0;background:none;">
-            <img src="https://images.pexels.com/photos/19328775/pexels-photo-19328775.jpeg" alt="Fintech B2B Product Design" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 500ms cubic-bezier(.16,1,.3,1);" />
-            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,0.35),transparent 40%);"></div>
-            <div style="position:absolute;top:32px;left:0;right:0;text-align:center;">
-              <h3 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:#111;line-height:1.2;">Fintech B2B<br />Product Design</h3>
-            </div>
-            <div style="position:absolute;bottom:24px;left:0;right:0;text-align:center;opacity:0;transition:opacity 250ms;" class="card-cta">
-              <span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#111;background:white;padding:8px 18px;border-radius:100px;border:1px solid rgba(0,0,0,0.08);">Get in touch <i class="bi bi-arrow-right" style="font-size:11px;"></i></span>
-            </div>
-          </button>
+        <h2 style="font-size:clamp(28px,3.5vw,44px);font-weight:400;line-height:1.1;letter-spacing:-0.015em;margin-bottom:40px;">
+          Work that spans design,<br />strategy & ecosystem access.
+        </h2>
 
-          <button onclick="openModal('Branding')" class="carousel-btn"
-             style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);display:block;position:relative;height:460px;cursor:pointer;padding:0;background:none;">
-            <img src="https://images.pexels.com/photos/18362173/pexels-photo-18362173.jpeg" alt="Branding" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 500ms cubic-bezier(.16,1,.3,1);" />
-            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,0.35),transparent 40%);"></div>
-            <div style="position:absolute;top:32px;left:0;right:0;text-align:center;">
-              <h3 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:#111;line-height:1.2;">Branding</h3>
-            </div>
-            <div style="position:absolute;bottom:24px;left:0;right:0;text-align:center;opacity:0;transition:opacity 250ms;" class="card-cta">
-              <span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#111;background:white;padding:8px 18px;border-radius:100px;border:1px solid rgba(0,0,0,0.08);">Get in touch <i class="bi bi-arrow-right" style="font-size:11px;"></i></span>
-            </div>
-          </button>
+        <div style="display:flex;flex-direction:column;gap:20px;">
 
-          <button onclick="openModal('Digital Experiences')" class="carousel-btn"
-             style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);display:block;position:relative;height:460px;cursor:pointer;padding:0;background:none;">
-            <img src="https://images.pexels.com/photos/14979020/pexels-photo-14979020.jpeg" alt="Digital Experiences" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 500ms cubic-bezier(.16,1,.3,1);" />
-            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.55),rgba(0,0,0,0.15) 40%);"></div>
-            <div style="position:absolute;top:32px;left:0;right:0;text-align:center;">
-              <h3 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:white;line-height:1.2;">Digital<br />Experiences</h3>
+          <a href="https://alexandrastudio.se/aptoolbox.html" class="work-item" style="text-decoration:none;color:inherit;">
+            <div class="work-img" style="background:var(--surface-2);min-height:240px;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:32px;">
+              <img src="APToolbox.gif" alt="AP Toolbox" style="width:100%;max-width:220px;height:auto;border-radius:12px;display:block;" />
             </div>
-            <div style="position:absolute;bottom:24px;left:0;right:0;text-align:center;opacity:0;transition:opacity 250ms;" class="card-cta">
-              <span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#111;background:white;padding:8px 18px;border-radius:100px;border:1px solid rgba(0,0,0,0.08);">Get in touch <i class="bi bi-arrow-right" style="font-size:11px;"></i></span>
+            <div style="padding:36px 40px;display:flex;flex-direction:column;justify-content:center;background:white;">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
+                <span class="tag">Product Design</span><span class="tag">Fintech</span>
+              </div>
+              <h3 style="font-size:26px;font-weight:400;line-height:1.2;margin-bottom:12px;">AP Toolbox</h3>
+              <p style="font-size:14px;line-height:1.75;color:var(--ink-soft);font-weight:300;margin-bottom:24px;">A curated toolkit for accounts payable teams navigating digital transformation. Built for fintech-native workflows with trust-first UX patterns.</p>
+              <span class="arrow-link">View project <i class="bi bi-arrow-right" style="font-size:11px;"></i></span>
             </div>
-          </button>
+          </a>
 
-          <button onclick="openModal('Performance Marketing')" class="carousel-btn"
-             style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);display:block;position:relative;height:460px;cursor:pointer;padding:0;background:none;">
-            <img src="https://images.pexels.com/photos/6956225/pexels-photo-6956225.jpeg" alt="Performance Marketing" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 500ms cubic-bezier(.16,1,.3,1);" />
-            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.55),rgba(0,0,0,0.15) 40%);"></div>
-            <div style="position:absolute;top:32px;left:0;right:0;text-align:center;">
-              <h3 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:white;line-height:1.2;">Performance<br />Marketing</h3>
+          <a href="https://alexandrastudio.se/financeapi.html" class="work-item" style="text-decoration:none;color:inherit;">
+            <div class="work-img" style="background:#f0f4f8;min-height:240px;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:32px;">
+              <div style="text-align:center;">
+                <div style="font-size:48px;margin-bottom:12px;">⚙️</div>
+                <p style="font-family:'Playfair Display',serif;font-size:20px;color:#1a2e44;">Finance API</p>
+              </div>
             </div>
-            <div style="position:absolute;bottom:24px;left:0;right:0;text-align:center;opacity:0;transition:opacity 250ms;" class="card-cta">
-              <span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#111;background:white;padding:8px 18px;border-radius:100px;border:1px solid rgba(0,0,0,0.08);">Get in touch <i class="bi bi-arrow-right" style="font-size:11px;"></i></span>
+            <div style="padding:36px 40px;display:flex;flex-direction:column;justify-content:center;background:white;">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
+                <span class="tag">API Design</span><span class="tag">B2B</span>
+              </div>
+              <h3 style="font-size:26px;font-weight:400;line-height:1.2;margin-bottom:12px;">Finance API Platform</h3>
+              <p style="font-size:14px;line-height:1.75;color:var(--ink-soft);font-weight:300;margin-bottom:24px;">Developer-facing product design for a financial data API. Translating complex integrations into an experience that builds confidence and reduces time-to-first-call.</p>
+              <span class="arrow-link">View project <i class="bi bi-arrow-right" style="font-size:11px;"></i></span>
             </div>
-          </button>
+          </a>
 
-          <!-- Duplicates for seamless loop (aria-hidden, no onclick) -->
-          <div aria-hidden="true" style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);display:block;position:relative;height:460px;">
-            <img src="https://images.pexels.com/photos/19328775/pexels-photo-19328775.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
-            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,0.35),transparent 40%);"></div>
-            <div style="position:absolute;top:32px;left:0;right:0;text-align:center;"><h3 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:#111;line-height:1.2;">Fintech B2B<br />Product Design</h3></div>
-          </div>
-          <div aria-hidden="true" style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);display:block;position:relative;height:460px;">
-            <img src="https://images.pexels.com/photos/18362173/pexels-photo-18362173.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
-            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,0.35),transparent 40%);"></div>
-            <div style="position:absolute;top:32px;left:0;right:0;text-align:center;"><h3 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:#111;line-height:1.2;">Branding</h3></div>
-          </div>
-          <div aria-hidden="true" style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);display:block;position:relative;height:460px;">
-            <img src="https://images.pexels.com/photos/14979020/pexels-photo-14979020.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
-            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.55),rgba(0,0,0,0.15) 40%);"></div>
-            <div style="position:absolute;top:32px;left:0;right:0;text-align:center;"><h3 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:white;line-height:1.2;">Digital<br />Experiences</h3></div>
-          </div>
-          <div aria-hidden="true" style="flex-shrink:0;width:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);display:block;position:relative;height:460px;">
-            <img src="https://images.pexels.com/photos/6956225/pexels-photo-6956225.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
-            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.55),rgba(0,0,0,0.15) 40%);"></div>
-            <div style="position:absolute;top:32px;left:0;right:0;text-align:center;"><h3 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:white;line-height:1.2;">Performance<br />Marketing</h3></div>
-          </div>
+          <a href="https://alexandrastudio.se/legaltech.html" class="work-item" style="text-decoration:none;color:inherit;">
+            <div class="work-img" style="background:#f5f0eb;min-height:240px;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:32px;">
+              <div style="text-align:center;">
+                <div style="font-size:48px;margin-bottom:12px;">⚖️</div>
+                <p style="font-family:'Playfair Display',serif;font-size:20px;color:#2e1f0e;">Legaltech</p>
+              </div>
+            </div>
+            <div style="padding:36px 40px;display:flex;flex-direction:column;justify-content:center;background:white;">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
+                <span class="tag">Legaltech</span><span class="tag">B2B SaaS</span>
+              </div>
+              <h3 style="font-size:26px;font-weight:400;line-height:1.2;margin-bottom:12px;">Legaltech Platform</h3>
+              <p style="font-size:14px;line-height:1.75;color:var(--ink-soft);font-weight:300;margin-bottom:24px;">Brand and product design for a legal workflow platform entering the regulated financial sector. Building trust signals that matter in compliance-heavy environments.</p>
+              <span class="arrow-link">View project <i class="bi bi-arrow-right" style="font-size:11px;"></i></span>
+            </div>
+          </a>
 
         </div>
       </div>
     </section>
 
-    <!-- ═══ TESTIMONIALS ═══ -->
-    <section style="padding:72px 24px;background:var(--surface-2);" data-reveal>
-      <div style="max-width:1280px;margin:0 auto;">
-        <div style="display:flex;align-items:center;margin-bottom:40px;">
-          <span class="tag">From people I've worked with</span>
+    <hr class="rule" />
+
+    <!-- EVENTS -->
+    <section class="section-alt" data-reveal>
+      <div class="wrap">
+
+        <div class="section-label">
+          <span class="tag"><span class="tag-dot"></span>In-person community</span>
+          <a href="https://luma.com/user/agrisanti" target="_blank" rel="noopener noreferrer" class="arrow-link">All events <i class="bi bi-arrow-right" style="font-size:11px;"></i></a>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
 
-          <div class="lift" style="background:var(--surface);border-radius:20px;border:1px solid var(--border);padding:32px;">
-            <img src="niklas.jpg" style="width:44px;height:44px;border-radius:50%;object-fit:cover;margin-bottom:20px;" alt="Niklas" />
-            <p style="font-size:14px;line-height:1.75;color:var(--ink-soft);font-weight:300;margin-bottom:20px;">"Regardless of discussing the strategy of the products or collaborating with our developers or conducting user testing Alexandra's work has been highly appreciated. Creative, productive, collaborative and structured."</p>
-            <div>
-              <p style="font-size:13px;font-weight:500;color:var(--ink);margin:0;">Niklas</p>
-              <p style="font-size:12px;color:var(--ink-muted);margin:4px 0 0;font-weight:300;">Director of Digital Experiences, Worldline</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:48px;" class="hero-grid">
+          <div>
+            <h2 style="font-size:clamp(28px,3.5vw,44px);font-weight:400;line-height:1.1;letter-spacing:-0.015em;margin-bottom:16px;">
+              The events where<br />the right people meet.
+            </h2>
+            <p style="font-size:15px;line-height:1.8;color:var(--ink-soft);font-weight:300;margin-bottom:28px;">
+              I don't run networking events. I run targeted gatherings where bank executives and fintech founders meet because there's a genuine reason to. Every event is curated — the people, the format, the follow-up.
+            </p>
+            <a href="https://luma.com/user/agrisanti" target="_blank" rel="noopener noreferrer" class="btn-dark">See upcoming events <i class="bi bi-arrow-right" style="font-size:12px;"></i></a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div class="lift" style="background:white;border:1px solid var(--border);border-radius:16px;padding:24px 28px;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+                <span style="font-size:24px;">☕</span>
+                <span style="font-size:11px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-muted);">Format</span>
+              </div>
+              <h4 style="font-size:17px;font-weight:400;margin-bottom:6px;">Industry Breakfasts</h4>
+              <p style="font-size:13px;color:var(--ink-soft);font-weight:300;line-height:1.6;">Quarterly mornings with 10–15 senior people from Nordic banks and growth-stage fintechs. Invite-only. No presentations, just conversation.</p>
+            </div>
+            <div class="lift" style="background:white;border:1px solid var(--border);border-radius:16px;padding:24px 28px;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+                <span style="font-size:24px;">⚡</span>
+                <span style="font-size:11px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-muted);">Format</span>
+              </div>
+              <h4 style="font-size:17px;font-weight:400;margin-bottom:6px;">Build Days</h4>
+              <p style="font-size:13px;color:var(--ink-soft);font-weight:300;line-height:1.6;">Half-day focused sessions pairing fintechs with bank teams around a shared challenge. Problem-led. The format that turns conversations into pilots.</p>
+            </div>
+            <div class="lift" style="background:white;border:1px solid var(--border);border-radius:16px;padding:24px 28px;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+                <span style="font-size:24px;">🏗️</span>
+                <span style="font-size:11px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-muted);">Annual</span>
+              </div>
+              <h4 style="font-size:17px;font-weight:400;margin-bottom:6px;">Embedded Finance Hackathon</h4>
+              <p style="font-size:13px;color:var(--ink-soft);font-weight:300;line-height:1.6;">Flagship August event. Teams, banks, and builders working on embedded finance problems together. Applications open soon.</p>
             </div>
           </div>
+        </div>
 
-          <div class="lift" style="background:var(--surface);border-radius:20px;border:1px solid var(--border);padding:32px;">
-            <img src="agnes.jpg" style="width:44px;height:44px;border-radius:50%;object-fit:cover;margin-bottom:20px;" alt="Agnes" />
-            <p style="font-size:14px;line-height:1.75;color:var(--ink-soft);font-weight:300;margin-bottom:20px;">"Self-motivated, outcome-driven and cares deeply about the mission, the team and users. From day one she brought a positive, can-do attitude and tackled a broad range of challenges across strategy, product management and UX design."</p>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section" data-reveal>
+      <div class="wrap">
+        <div class="section-label" style="margin-bottom:40px;">
+          <span class="tag"><span class="tag-dot"></span>From people I've worked with</span>
+        </div>
+        <div class="grid-3">
+          <div class="tcard lift">
+            <img src="niklas.jpg" style="width:44px;height:44px;border-radius:50%;object-fit:cover;margin-bottom:20px;border:1px solid var(--border);" alt="Niklas" onerror="this.style.display='none'" />
+            <p style="font-size:14px;line-height:1.75;color:var(--ink-soft);font-weight:300;margin-bottom:20px;">"Creative, productive, collaborative and structured — regardless of discussing strategy, collaborating with developers, or conducting user testing, Alexandra's work has been highly appreciated."</p>
             <div>
-              <p style="font-size:13px;font-weight:500;color:var(--ink);margin:0;">Agnes</p>
-              <p style="font-size:12px;color:var(--ink-muted);margin:4px 0 0;font-weight:300;">Design Strategist, Capital One</p>
+              <p style="font-size:13px;font-weight:500;">Niklas</p>
+              <p style="font-size:12px;color:var(--ink-muted);margin-top:3px;font-weight:300;">Director of Digital Experiences, Worldline</p>
             </div>
           </div>
-
-          <div class="lift" style="background:var(--surface);border-radius:20px;border:1px solid var(--border);padding:32px;">
-            <img src="stefan.jpg" style="width:44px;height:44px;border-radius:50%;object-fit:cover;margin-bottom:20px;" alt="Stefan" />
+          <div class="tcard lift">
+            <img src="agnes.jpg" style="width:44px;height:44px;border-radius:50%;object-fit:cover;margin-bottom:20px;border:1px solid var(--border);" alt="Agnes" onerror="this.style.display='none'" />
+            <p style="font-size:14px;line-height:1.75;color:var(--ink-soft);font-weight:300;margin-bottom:20px;">"Self-motivated, outcome-driven and cares deeply about the mission. From day one she brought a positive, can-do attitude and tackled a broad range of challenges across strategy and UX design."</p>
+            <div>
+              <p style="font-size:13px;font-weight:500;">Agnes</p>
+              <p style="font-size:12px;color:var(--ink-muted);margin-top:3px;font-weight:300;">Design Strategist, Capital One</p>
+            </div>
+          </div>
+          <div class="tcard lift">
+            <img src="stefan.jpg" style="width:44px;height:44px;border-radius:50%;object-fit:cover;margin-bottom:20px;border:1px solid var(--border);" alt="Stefan" onerror="this.style.display='none'" />
             <p style="font-size:14px;line-height:1.75;color:var(--ink-soft);font-weight:300;margin-bottom:20px;">"Alexandra brings energy, creativity and diligence, and is very collaborative and easy to work with."</p>
             <div>
-              <p style="font-size:13px;font-weight:500;color:var(--ink);margin:0;">Stefan</p>
-              <p style="font-size:12px;color:var(--ink-muted);margin:4px 0 0;font-weight:300;">Chief Strategy Officer, PSA Solutions</p>
+              <p style="font-size:13px;font-weight:500;">Stefan</p>
+              <p style="font-size:12px;color:var(--ink-muted);margin-top:3px;font-weight:300;">Chief Strategy Officer, PSA Solutions</p>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ═══ ABOUT ═══ -->
-    <section style="padding:72px 24px;" data-reveal>
-      <div style="max-width:1280px;margin:0 auto;">
-        <div style="max-width:680px;margin:0 auto;text-align:center;">
-          <span class="tag" style="margin-bottom:32px;display:inline-flex;">About</span>
-          <h2 style="font-size:clamp(32px,4vw,52px);font-weight:400;line-height:1.1;letter-spacing:-0.015em;margin-bottom:28px;">
-            Designer. Strategist.<br />Fintech native.
+    <hr class="rule" />
+
+    <!-- CONTACT -->
+    <section class="section-alt" id="contact" data-reveal>
+      <div class="wrap">
+        <div style="max-width:600px;margin:0 auto;text-align:center;">
+          <span class="tag" style="margin-bottom:28px;display:inline-flex;"><span class="tag-dot"></span>Let's talk</span>
+          <h2 style="font-size:clamp(36px,5vw,60px);font-weight:400;line-height:1.05;letter-spacing:-0.02em;margin-bottom:20px;">
+            Ready to get<br /><em>inside the room?</em>
           </h2>
-          <p style="font-size:15px;line-height:1.8;color:var(--ink-soft);font-weight:300;margin-bottom:32px;">
-            I'm Alexandra — I've spent years designing for fintech companies across payments, embedded finance, and B2B platforms. Now I run my own studio, working with growth-stage brands that need design and marketing that actually moves the needle.<br /><br />
-            I also run two newsletters, host events in the Nordic fintech ecosystem, and am organising the Embedded Finance Hackathon in August 2026.
+          <p style="font-size:16px;line-height:1.8;color:var(--ink-soft);font-weight:300;margin-bottom:36px;">
+            I take on a small number of retainer clients at a time. If you're a fintech startup serious about reaching Nordic banks, let's find out if there's a fit.
           </p>
-          <a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener noreferrer"
-             style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:100px;background:var(--ink);color:white;font-size:14px;font-weight:500;text-decoration:none;transition:opacity 200ms;" onmouseover="this.style.opacity='0.82'" onmouseout="this.style.opacity='1'">
-            Book a strategic call <i class="bi bi-arrow-right" style="font-size:12px;"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ CONTACT + FILLOUT FORM ═══ -->
-    <section id="contact" style="padding:72px 24px;background:var(--surface-2);" data-reveal>
-      <div style="max-width:1280px;margin:0 auto;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;" class="md:grid block">
-
-          <!-- Left: copy -->
-          <div>
-            <span class="tag" style="margin-bottom:28px;display:inline-flex;">Let's talk</span>
-            <h2 style="font-size:clamp(36px,4vw,52px);font-weight:400;line-height:1.1;letter-spacing:-0.015em;margin-bottom:20px;">
-              Tell me what<br />you're building.
-            </h2>
-            <p style="font-size:16px;line-height:1.75;color:var(--ink-soft);font-weight:300;margin-bottom:32px;">
-              Leave your email and I'll be in touch within 24 hours. No pitch decks needed — just a quick note about what you're working on.
-            </p>
-            <div style="display:flex;flex-direction:column;gap:12px;">
-              <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-soft);">
-                <span style="width:24px;height:24px;border-radius:50%;background:var(--surface-3);border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-check" style="font-size:12px;color:var(--ink);"></i></span>
-                Fintech brand & product design
-              </div>
-              <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-soft);">
-                <span style="width:24px;height:24px;border-radius:50%;background:var(--surface-3);border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-check" style="font-size:12px;color:var(--ink);"></i></span>
-                Performance campaigns & ads
-              </div>
-              <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-soft);">
-                <span style="width:24px;height:24px;border-radius:50%;background:var(--surface-3);border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-check" style="font-size:12px;color:var(--ink);"></i></span>
-                Newsletter & community growth
-              </div>
-              <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-soft);">
-                <span style="width:24px;height:24px;border-radius:50%;background:var(--surface-3);border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-check" style="font-size:12px;color:var(--ink);"></i></span>
-                Events & ecosystem building
-              </div>
-            </div>
+          <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:12px;">
+            <button onclick="openModal('Book a 30-min call')" class="btn-dark">Book a 30-min call <i class="bi bi-arrow-right" style="font-size:12px;"></i></button>
+            <a href="mailto:alexandrapgrisanti@gmail.com" class="btn-ghost"><i class="bi bi-envelope" style="font-size:13px;"></i> Email me</a>
           </div>
-
-          <!-- Right: Fillout form -->
-          <div>
-            <div class="fillout-wrap">
-              <p style="font-size:13px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-muted);font-weight:500;margin-bottom:8px;">Get in touch</p>
-              <p style="font-size:20px;font-family:'DM Serif Display',serif;font-weight:400;margin-bottom:28px;line-height:1.25;">Leave your email and I'll reach out shortly.</p>
-              <!-- Fillout embed -->
-              <div style="min-height:160px;">
-                <div data-fillout-id="4vjkiFwcM2us" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize style="width:100%;"></div>
-                <script src="https://server.fillout.com/embed/v1/"></script>
-              </div>
-              <p style="font-size:11px;color:var(--ink-muted);margin-top:16px;font-weight:300;text-align:center;">Or book directly: <a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener noreferrer" style="color:var(--ink-soft);text-decoration:underline;">30-min call on Calendly</a></p>
-            </div>
-          </div>
-
+          <p style="font-size:12px;color:var(--ink-muted);margin-top:20px;font-weight:300;">Usually respond within 24 hours · Based in Stockholm</p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ═══ FOOTER ═══ -->
+  <!-- MODAL -->
+  <div id="collab-modal"
+    style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px;"
+    onclick="if(event.target===this)closeModal()">
+    <div class="modal-inner">
+      <button onclick="closeModal()" aria-label="Close"
+        style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(0,0,0,0.08);background:#fafafa;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:#525252;line-height:1;">&#x2715;</button>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
+        <img src="apg10.jpg" alt="Alexandra" style="width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:center 15%;border:1px solid rgba(0,0,0,0.06);flex-shrink:0;" />
+        <div>
+          <p id="modal-title" style="font-family:'Playfair Display',serif;font-size:18px;font-weight:400;margin:0 0 4px;"></p>
+          <p id="modal-subtitle" style="font-size:13px;color:#737373;font-weight:300;margin:0;"></p>
+        </div>
+      </div>
+      <div data-fillout-id="4vjkiFwcM2us" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize style="width:100%;"></div>
+      <script src="https://server.fillout.com/embed/v1/"></script>
+      <p style="font-size:11px;color:#a3a3a3;margin-top:14px;text-align:center;font-weight:300;">I'll be in touch within 24 hours.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
   <footer style="padding:56px 24px;border-top:1px solid var(--border);">
     <div style="max-width:1280px;margin:0 auto;">
-      <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;margin-bottom:48px;" class="md:grid block">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;margin-bottom:48px;">
         <div>
-          <p style="font-family:'DM Serif Display',serif;font-size:22px;margin-bottom:8px;">Alexandra</p>
+          <p style="font-family:'Playfair Display',serif;font-size:22px;margin-bottom:8px;">Alexandra</p>
           <p style="font-size:14px;color:var(--ink-soft);font-weight:300;max-width:320px;margin-bottom:20px;">Calm systems-first design for Performance agencies and fintech.</p>
           <div style="display:flex;gap:10px;">
             <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer"
-               style="width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:var(--ink-soft);transition:background 200ms;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--surface-2)'" aria-label="LinkedIn">
-              <i class="bi bi-linkedin" style="font-size:14px;"></i>
-            </a>
+               style="width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:var(--ink-soft);transition:background 200ms;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--surface-2)'" aria-label="LinkedIn"><i class="bi bi-linkedin" style="font-size:14px;"></i></a>
             <a href="mailto:alexandrapgrisanti@gmail.com"
-               style="width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:var(--ink-soft);transition:background 200ms;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--surface-2)'" aria-label="Email">
-              <i class="bi bi-envelope" style="font-size:14px;"></i>
-            </a>
+               style="width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:var(--ink-soft);transition:background 200ms;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--surface-2)'" aria-label="Email"><i class="bi bi-envelope" style="font-size:14px;"></i></a>
             <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer"
-               style="width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:var(--ink-soft);transition:background 200ms;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--surface-2)'" aria-label="Newsletter">
-              <i class="bi bi-rss" style="font-size:14px;"></i>
-            </a>
+               style="width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:var(--ink-soft);transition:background 200ms;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--surface-2)'" aria-label="Newsletter"><i class="bi bi-rss" style="font-size:14px;"></i></a>
           </div>
         </div>
-
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;" class="md:grid hidden">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;">
           <div>
             <p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:16px;">Work</p>
             <div style="display:flex;flex-direction:column;gap:10px;">
@@ -711,14 +550,13 @@
           <div>
             <p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:16px;">Contact</p>
             <div style="display:flex;flex-direction:column;gap:10px;">
-              <a href="https://calendly.com/alexandrapgrisanti/hello" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--ink-soft);text-decoration:none;font-weight:300;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink-soft)'">Book a call</a>
+              <button onclick="openModal('Book a call')" style="font-size:13px;color:var(--ink-soft);font-weight:300;background:none;border:0;cursor:pointer;padding:0;text-align:left;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink-soft)'">Book a call</button>
               <a href="mailto:alexandrapgrisanti@gmail.com" style="font-size:13px;color:var(--ink-soft);text-decoration:none;font-weight:300;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink-soft)'">Email</a>
-              <a href="https://calendly.com/alexandrapgrisanti/hello" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--ink-soft);text-decoration:none;font-weight:300;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink-soft)'">Speaking</a>
+              <button onclick="openModal('Speaking enquiry')" style="font-size:13px;color:var(--ink-soft);font-weight:300;background:none;border:0;cursor:pointer;padding:0;text-align:left;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink-soft)'">Speaking</button>
             </div>
           </div>
         </div>
       </div>
-
       <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid var(--border);">
         <p style="font-size:12px;color:var(--ink-muted);font-weight:300;">© 2026 <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" style="color:var(--ink-muted);text-decoration:none;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink-muted)'">Alexandra Grisanti</a>. All rights reserved.</p>
         <p style="font-size:12px;color:var(--ink-muted);font-weight:300;">Stockholm, Sweden</p>
@@ -728,90 +566,73 @@
 
 </div>
 
+<style>
+  @media (max-width: 768px) {
+    .desktop-nav { display: none !important; }
+    .mob-only { display: inline-flex !important; }
+    .hero-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+    .hero-img { display: none !important; }
+    .mob-sub { display: block !important; }
+  }
+  @media (min-width: 769px) {
+    .mob-only { display: none !important; }
+    .mob-sub { display: none !important; }
+  }
+</style>
+
 <script>
-  // Modal
+  var modalSubtitles = {
+    'Get in touch': "Drop your email — I'll be in touch within 24 hours.",
+    'Book a call': "Leave your email and I'll follow up to schedule a call.",
+    'Book a 30-min call': "Leave your email and I'll follow up to schedule a call.",
+    'Apply for a retainer': "Tell me about your fintech — I'll reach out within 24 hours.",
+    'Speaking enquiry': "Tell me about your event — I'll get back to you shortly."
+  };
+
   function openModal(title) {
     document.getElementById('modal-title').textContent = title;
-    const m = document.getElementById('collab-modal');
-    m.classList.add('is-open');
+    var sub = modalSubtitles[title] || "Drop your email — I'll be in touch within 24 hours.";
+    document.getElementById('modal-subtitle').textContent = sub;
+    document.getElementById('collab-modal').classList.add('is-open');
     document.body.style.overflow = 'hidden';
   }
   function closeModal() {
     document.getElementById('collab-modal').classList.remove('is-open');
     document.body.style.overflow = '';
   }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
-  // Reveal
+  // Scroll reveal
   (function () {
-    const items = Array.from(document.querySelectorAll('[data-reveal]'));
+    var items = Array.from(document.querySelectorAll('[data-reveal]'));
     if (!items.length) return;
-    items.forEach((el, i) => el.style.setProperty('--d', Math.min(i * 40, 200) + 'ms'));
+    items.forEach(function(el, i) { el.style.setProperty('--d', Math.min(i * 40, 200) + 'ms'); });
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      items.forEach(el => el.classList.add('is-visible')); return;
+      items.forEach(function(el) { el.classList.add('is-visible'); }); return;
     }
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
-    items.forEach(el => io.observe(el));
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -5% 0px' });
+    items.forEach(function(el) { io.observe(el); });
   })();
 
   // Mobile menu
   (function () {
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    if (!menuBtn || !mobileNav) return;
-    let open = false;
-    const setExpanded = (isOpen) => {
-      open = isOpen;
-      menuBtn.classList.toggle('open', isOpen);
-      mobileNav.classList.toggle('is-open', isOpen);
-      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    var btn = document.getElementById('menuBtn');
+    var nav = document.getElementById('mobileNav');
+    if (!btn || !nav) return;
+    var open = false;
+    var toggle = function(state) {
+      open = state;
+      btn.classList.toggle('open', open);
+      nav.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', String(open));
     };
-    menuBtn.addEventListener('click', () => setExpanded(!open));
-    mobileNav.addEventListener('click', (e) => { if (e.target.closest('a')) setExpanded(false); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && open) setExpanded(false); });
-  })();
-
-  // Counters
-  (function () {
-    function animateCounter(id, end, duration) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const inc = end / (duration / 16);
-      let current = 0;
-      const step = () => {
-        current += inc;
-        if (current >= end) { el.textContent = '+' + end; }
-        else { el.textContent = '+' + Math.round(current); requestAnimationFrame(step); }
-      };
-      requestAnimationFrame(step);
-    }
-    const section = document.getElementById('counter-section');
-    if (!section) return;
-    let triggered = false;
-    const io = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && !triggered) {
-        triggered = true;
-        animateCounter('productsCounter', 9, 10000);
-        animateCounter('brandsCounter', 11, 10000);
-        io.disconnect();
-      }
-    }, { threshold: 0.2 });
-    io.observe(section);
-  })();
-
-  // Carousel drag
-  (function () {
-    const track = document.getElementById('carousel-track');
-    if (!track) return;
-    let dragging = false;
-    track.addEventListener('mousedown', () => { dragging = true; track.style.animationPlayState = 'paused'; });
-    window.addEventListener('mouseup', () => {
-      if (dragging) { dragging = false; setTimeout(() => { track.style.animationPlayState = 'running'; }, 1800); }
-    });
-    track.addEventListener('touchstart', () => { track.style.animationPlayState = 'paused'; }, { passive: true });
-    track.addEventListener('touchend', () => { setTimeout(() => { track.style.animationPlayState = 'running'; }, 1800); });
+    btn.addEventListener('click', function() { toggle(!open); });
+    nav.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { toggle(false); }); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && open) toggle(false); });
   })();
 </script>
 </body>
