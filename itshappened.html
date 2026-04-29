@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>It's Happened — Alexandra Grisanti</title>
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111111'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial' font-size='34' font-weight='700' fill='white'%3EA%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+  <style>
+    :root {
+      --black: #0f0f0f;
+      --white: #ffffff;
+      --blue: #3d94ff;
+      --off-white: #f5f4f2;
+      --ink-soft: #5a5a5a;
+      --ink-muted: #999;
+      --border: rgba(0,0,0,0.07);
+      --border-med: rgba(0,0,0,0.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      font-weight: 300;
+    }
+
+    h1, h2, h3, h4 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; }
+
+    [data-reveal] {
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 650ms cubic-bezier(.16,1,.3,1), transform 650ms cubic-bezier(.16,1,.3,1);
+      transition-delay: var(--d, 0ms);
+    }
+    [data-reveal].visible { opacity: 1; transform: translateY(0); }
+
+    .lift { transition: transform 360ms cubic-bezier(.16,1,.3,1), box-shadow 360ms; }
+    .lift:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.07); }
+
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+    .tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif; font-weight: 500;
+      padding: 5px 14px; border-radius: 100px;
+      border: 1px solid var(--border-med); background: var(--white); color: var(--ink-soft);
+    }
+    .tag-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 28px;
+      height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--black); }
+    .logo-mark {
+      width: 32px; height: 32px; border-radius: 8px; background: var(--black);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 300ms cubic-bezier(.16,1,.3,1);
+    }
+    .logo:hover .logo-mark { transform: rotate(-5deg) scale(1.06); }
+    .logo-mark span { color: white; font-family: 'DM Serif Display', serif; font-size: 15px; }
+    .logo-name { font-family: 'DM Serif Display', serif; font-size: 17px; }
+
+    nav { display: flex; align-items: center; gap: 2px; }
+    nav a, nav button {
+      font-size: 13.5px; color: var(--ink-soft); text-decoration: none;
+      padding: 6px 13px; border-radius: 8px; border: none; background: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-weight: 400;
+      transition: color 180ms, background 180ms; white-space: nowrap;
+    }
+    nav a:hover, nav button:hover { color: var(--black); background: var(--off-white); }
+    nav a.active { color: var(--black); font-weight: 500; background: var(--off-white); }
+    .nav-cta { background: var(--black) !important; color: var(--white) !important; border-radius: 8px !important; padding: 7px 16px !important; }
+    .nav-cta:hover { opacity: 0.82 !important; }
+
+    .hamburger-btn {
+      display: none; width: 36px; height: 36px; border-radius: 8px;
+      border: 1px solid var(--border-med); background: white;
+      flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer;
+    }
+    .hamburger-btn span { display: block; width: 17px; height: 1.5px; background: var(--black); border-radius: 2px; transition: transform 280ms, opacity 280ms; }
+    .hamburger-btn.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+    .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+    .hamburger-btn.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+    @media (max-width: 860px) { nav { display: none; } .hamburger-btn { display: flex; } }
+
+    #mobile-nav {
+      display: none; position: fixed; top: 62px; left: 0; right: 0; bottom: 0;
+      background: white; z-index: 99; overflow-y: auto; padding: 20px 24px 40px;
+    }
+    #mobile-nav.open { display: block; }
+    #mobile-nav a, #mobile-nav button {
+      display: block; width: 100%; font-size: 24px; font-family: 'DM Serif Display', serif;
+      color: var(--black); text-decoration: none; padding: 16px 0; border-bottom: 1px solid var(--border);
+      background: none; border-top: none; border-left: none; border-right: none; cursor: pointer; text-align: left;
+    }
+    .mobile-cta-wrap { margin-top: 32px; }
+    .mobile-cta-wrap button {
+      display: inline-flex !important; width: auto !important; align-items: center; gap: 8px;
+      font-size: 14px !important; font-family: 'DM Sans', sans-serif !important;
+      background: var(--black) !important; color: white !important;
+      padding: 13px 28px !important; border-radius: 8px !important; border: none !important;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: 8px;
+      background: var(--black); color: white;
+      font-size: 14px; font-weight: 500; font-family: 'DM Sans', sans-serif;
+      border: none; cursor: pointer; text-decoration: none; transition: opacity 200ms;
+    }
+    .btn-primary:hover { opacity: 0.82; }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: 8px; background: transparent; color: var(--black);
+      font-size: 14px; font-weight: 400; font-family: 'DM Sans', sans-serif;
+      border: 1.5px solid var(--border-med); cursor: pointer; text-decoration: none;
+      transition: background 180ms;
+    }
+    .btn-outline:hover { background: var(--off-white); }
+
+    .arrow-link {
+      font-size: 13px; color: var(--ink-soft); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px; transition: gap 200ms, color 200ms;
+    }
+    .arrow-link:hover { gap: 10px; color: var(--black); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 80px 28px 72px; background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    @media (max-width: 760px) { .page-header { padding: 52px 20px 56px; } }
+
+    .page-eyebrow {
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-muted); font-weight: 500; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .page-title { font-size: clamp(44px, 7vw, 80px); line-height: 1.0; letter-spacing: -0.03em; }
+    .page-title em { color: var(--blue); font-style: italic; }
+
+    /* ── SECTIONS ── */
+    .section { padding: 80px 28px; }
+    .section-bg { background: var(--off-white); }
+    @media (max-width: 760px) { .section { padding: 52px 20px; } }
+
+    .section-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px; margin-bottom: 48px;
+    }
+    .section-label {
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-muted); font-weight: 500; margin-bottom: 10px;
+    }
+    .section-title { font-size: clamp(26px, 3.5vw, 40px); letter-spacing: -0.02em; line-height: 1.1; }
+
+    /* ── ACCORDION ── */
+    .accordion {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; gap: 12px; height: 520px;
+    }
+    .acc-panel {
+      flex: 1; border-radius: 16px; overflow: hidden;
+      position: relative; cursor: pointer;
+      transition: flex 500ms cubic-bezier(.16,1,.3,1);
+      min-width: 0; text-decoration: none; color: inherit;
+    }
+    .acc-panel:first-child { flex: 2.2; }
+    .acc-panel:hover { flex: 2.8; }
+    .accordion:has(.acc-panel:hover) .acc-panel:not(:hover) { flex: 0.65; }
+
+    .acc-panel img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 600ms cubic-bezier(.16,1,.3,1);
+    }
+    .acc-panel:hover img { transform: scale(1.03); }
+
+    .acc-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.1) 50%, transparent 70%);
+    }
+    .acc-content {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 24px;
+    }
+    .acc-event-type {
+      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6); font-weight: 600; margin-bottom: 6px;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .acc-event-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(15px, 1.6vw, 20px); color: white; line-height: 1.2;
+    }
+    .acc-event-sub {
+      font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 7px;
+      opacity: 0; transform: translateY(5px);
+      transition: opacity 300ms 80ms, transform 300ms 80ms;
+    }
+    .acc-panel:hover .acc-event-sub { opacity: 1; transform: translateY(0); }
+
+    .acc-titles {
+      max-width: 1200px; margin: 16px auto 0;
+      display: flex; gap: 12px;
+    }
+    .acc-title-item { flex: 1; min-width: 0; padding-top: 12px; }
+    .acc-title-date { font-size: 11px; color: var(--blue); font-weight: 600; letter-spacing: 0.05em; margin-bottom: 3px; }
+    .acc-title-name { font-size: 13px; color: var(--black); font-weight: 400; line-height: 1.35; }
+
+    @media (max-width: 680px) {
+      .accordion { flex-direction: column; height: auto; gap: 10px; }
+      .acc-panel { flex: 1 !important; min-height: 240px; }
+      .accordion:has(.acc-panel:hover) .acc-panel:not(:hover) { flex: 1 !important; }
+      .acc-event-sub { opacity: 1; transform: none; }
+      .acc-titles { flex-direction: column; }
+    }
+
+    /* ── EVENT DETAIL CARDS ── */
+    .event-detail {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+      text-decoration: none; color: inherit;
+      transition: box-shadow 300ms, transform 300ms cubic-bezier(.16,1,.3,1);
+    }
+    .event-detail:hover { box-shadow: 0 20px 48px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    @media (max-width: 680px) { .event-detail { grid-template-columns: 1fr; } .event-detail-img { min-height: 220px; } }
+
+    .event-detail-img { overflow: hidden; position: relative; background: var(--off-white); }
+    .event-detail-img img {
+      width: 100%; height: 100%; object-fit: cover; display: block; min-height: 340px;
+      transition: transform 600ms cubic-bezier(.16,1,.3,1);
+    }
+    .event-detail:hover .event-detail-img img { transform: scale(1.03); }
+
+    .event-detail-body {
+      padding: 44px 44px; background: var(--white);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    @media (max-width: 760px) { .event-detail-body { padding: 28px 24px; } }
+
+    .event-detail-type {
+      font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--blue); font-weight: 600; margin-bottom: 8px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .event-detail-date { font-size: 13px; color: var(--ink-muted); margin-bottom: 16px; }
+    .event-detail-title { font-size: clamp(22px, 2.5vw, 30px); line-height: 1.1; letter-spacing: -0.015em; margin-bottom: 16px; }
+    .event-detail-desc { font-size: 14px; line-height: 1.8; color: var(--ink-soft); font-weight: 300; margin-bottom: 28px; }
+
+    .event-detail-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
+    .chip {
+      font-size: 11px; padding: 4px 12px; border-radius: 100px;
+      background: var(--off-white); color: var(--black);
+      border: 1px solid var(--border-med); font-weight: 400;
+    }
+
+    /* ── PRODUCT WORK ── */
+    .work-item {
+      display: grid; grid-template-columns: 260px 1fr;
+      border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+      text-decoration: none; color: inherit;
+      transition: transform 350ms cubic-bezier(.16,1,.3,1), box-shadow 350ms;
+    }
+    .work-item:hover { transform: translateY(-3px); box-shadow: 0 20px 48px rgba(0,0,0,0.08); }
+    @media (max-width: 680px) { .work-item { grid-template-columns: 1fr; } .work-img { aspect-ratio: 16/9 !important; min-height: unset !important; } }
+
+    .work-img {
+      background: var(--off-white); min-height: 200px; overflow: hidden;
+      display: flex; align-items: center; justify-content: center; padding: 28px;
+    }
+    .work-img img { width: 100%; max-width: 180px; height: auto; border-radius: 10px; display: block; }
+    .work-body { padding: 32px 36px; display: flex; flex-direction: column; justify-content: center; background: white; }
+    @media (max-width: 760px) { .work-body { padding: 24px 20px; } }
+    .work-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+    .work-title { font-size: 22px; line-height: 1.2; margin-bottom: 10px; }
+    .work-desc { font-size: 13px; line-height: 1.75; color: var(--ink-soft); margin-bottom: 20px; }
+
+    /* ── DIVIDER ── */
+    hr.rule { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    @media (max-width: 680px) {
+      .mission-img-grid { grid-template-columns: 1fr !important; }
+    }
+
+    /* ── TRANSITION BLOCK ── */
+    .transition-block {
+      padding: 72px 28px; background: var(--off-white);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .transition-block-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    @media (max-width: 760px) { .transition-block-inner { grid-template-columns: 1fr; gap: 32px; } .transition-block { padding: 52px 20px; } }
+
+    /* ── MODAL ── */
+    #modal {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.4); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center; padding: 24px;
+    }
+    #modal.open { display: flex; }
+    .modal-inner {
+      background: white; border-radius: 20px;
+      width: 100%; max-width: 480px; overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.15); position: relative;
+    }
+    .modal-top { background: var(--off-white); padding: 36px; border-bottom: 1px solid var(--border); }
+    @media (max-width: 520px) { .modal-top { padding: 28px 24px; } }
+    .modal-close {
+      position: absolute; top: 14px; right: 14px;
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 1px solid var(--border-med); background: white;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 13px; color: var(--ink-muted);
+    }
+    .modal-close:hover { background: var(--off-white); }
+    .modal-kicker { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+    .modal-top h2 { font-size: 24px; line-height: 1.15; margin-bottom: 8px; color: var(--black); }
+    .modal-top p { font-size: 13px; color: var(--ink-soft); font-weight: 300; line-height: 1.7; }
+    .modal-body { padding: 32px 36px 36px; }
+    @media (max-width: 520px) { .modal-body { padding: 24px; } }
+    .modal-perks { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .modal-perk { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--ink-soft); }
+    .perk-icon { width: 30px; height: 30px; border-radius: 8px; background: #edf4ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px; color: var(--blue); }
+
+    /* ── FOOTER ── */
+    footer { padding: 56px 28px; border-top: 1px solid var(--border); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: start; margin-bottom: 48px; }
+    @media (max-width: 640px) { .footer-top { grid-template-columns: 1fr; } .footer-links { display: none; } }
+    .footer-links { display: grid; grid-template-columns: repeat(3, 140px); gap: 40px; }
+    .footer-links-title { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+    .footer-links-col a, .footer-links-col button {
+      display: block; font-size: 13px; color: var(--ink-soft); text-decoration: none; margin-bottom: 10px;
+      background: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; padding: 0; text-align: left; transition: color 180ms;
+    }
+    .footer-links-col a:hover, .footer-links-col button:hover { color: var(--black); }
+    .footer-socials { display: flex; gap: 8px; margin-top: 20px; }
+    .social-btn {
+      width: 32px; height: 32px; border-radius: 7px; border: 1px solid var(--border); background: var(--off-white);
+      display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--ink-soft); font-size: 13px; transition: background 180ms;
+    }
+    .social-btn:hover { background: white; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+      padding-top: 24px; border-top: 1px solid var(--border); font-size: 12px; color: var(--ink-muted);
+    }
+    .footer-bottom a { color: var(--ink-muted); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--black); }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+ <!-- HEADER -->
+
+<header>
+  <div class="header-inner">
+    <a href="http://alexandrastudio.se/" class="logo">
+      <div class="logo-mark"><span>A</span></div>
+      <span class="logo-name">Alexandra</span>
+    </a>
+    <nav>
+      <a href="http://alexandrastudio.se/upnext.html">
+        <i class="bi bi-calendar-event" style="font-size:12px;margin-right:4px;"></i>Up Next
+      </a>
+      <a href="http://alexandrastudio.se/itshappened.html">
+        <i class="bi bi-check2-circle" style="font-size:12px;margin-right:4px;"></i>It's Happened
+      </a>
+      <a href="http://alexandrastudio.se/thoughtleadership.html">
+        <i class="bi bi-lightbulb" style="font-size:12px;margin-right:4px;"></i>Thought Leadership
+      </a>
+      <a href="https://luma.com/user/agrisanti">
+        <i class="bi bi-geo-alt" style="font-size:12px;margin-right:4px;"></i>Luma
+      </a>
+      <a href="https://www.linkedin.com/in/alexandragrisanti/">
+        <i class="bi bi-linkedin" style="font-size:12px;margin-right:4px;"></i>LinkedIn
+      </a>
+      <button class="nav-cta" onclick="openModal()">Get in touch</button>
+    </nav>
+    <button class="hamburger-btn" id="menu-btn">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div id="mobile-nav">
+  <a href="http://alexandrastudio.se/upnext.html" onclick="closeMobileNav()">Up Next</a>
+  <a href="http://alexandrastudio.se/itshappened.html" onclick="closeMobileNav()">It's Happened</a>
+  <a href="http://alexandrastudio.se/thoughtleadership.html" onclick="closeMobileNav()">Thought Leadership</a>
+  <a href="https://luma.com/user/agrisanti" onclick="closeMobileNav()">Luma</a>
+  <a href="https://www.linkedin.com/in/alexandragrisanti/" onclick="closeMobileNav()">LinkedIn</a>
+  <div class="mobile-cta-wrap">
+    <button onclick="openModal(); closeMobileNav();">
+      Get in touch <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header" data-reveal>
+    <div style="max-width:680px;margin:0 auto;text-align:center;">
+      <div class="page-eyebrow" style="justify-content:center;">Archive · Spring 2026</div>
+      <h1 class="page-title" style="margin-bottom:20px;">It's <em>Happened.</em></h1>
+      <p style="font-size:17px;line-height:1.8;color:var(--ink-soft);font-weight:300;margin-bottom:32px;">
+        These are the moments that moved things forward. Conversations that became pilots. Introductions that became partnerships. This is what it looks like when people actually meet.
+      </p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+        <a href="https:alexandrastudio.se/upnext.html" class="btn-primary" class="bi bi-arrow-right" style="font-size:12px;">See Program</i></a>
+        <button onclick="openModal()" class="btn-outline">Get in touch</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── WHY WE DO THIS ── -->
+  <section class="section section-bg" data-reveal>
+    <div class="wrap">
+
+      <!-- Header row -->
+      <div style="max-width:600px;margin-bottom:52px;">
+        <span class="tag" style="margin-bottom:20px;display:inline-flex;"><span class="tag-dot"></span>Why this matters</span>
+        <h2 style="font-size:clamp(26px,3.2vw,40px);line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px;">
+          This is how we remember each other.<br /><span style="font-style:italic;color:var(--blue);">And get to the next step.</span>
+        </h2>
+        <p style="font-size:15px;line-height:1.85;color:var(--ink-soft);">
+          Digital channels are saturated. Linkedin Feeds saturated. But a genuine conversation, a shared breakfast, a night of building something together — that sticks. It moves people from aware to committed. From curious to in progress.
+        </p>
+      </div>
+
+      <!-- Image + pillars row -->
+      <div class="mission-img-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;">
+
+        <!-- Image -->
+        <div style="border-radius:16px;overflow:hidden;aspect-ratio:4/3;">
+          <img src="DSCF2152.jpg" alt="Event in Stockholm" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+
+        <!-- Pillars -->
+        <div style="display:flex;flex-direction:column;gap:12px;justify-content:center;height:100%;">
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px 22px;display:flex;align-items:flex-start;gap:14px;">
+            <div style="width:34px;height:34px;border-radius:9px;background:#edf4ff;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-people" style="color:var(--blue);font-size:14px;"></i></div>
+            <div><div style="font-size:13px;font-weight:500;margin-bottom:3px;">Considered, not crowded</div><div style="font-size:13px;color:var(--ink-soft);line-height:1.6;">Every gathering is invite-only. The format, the people, and the follow-up are all thought through before anyone walks in.</div></div>
+          </div>
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px 22px;display:flex;align-items:flex-start;gap:14px;">
+            <div style="width:34px;height:34px;border-radius:9px;background:#edf4ff;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-lightning" style="color:var(--blue);font-size:14px;"></i></div>
+            <div><div style="font-size:13px;font-weight:500;margin-bottom:3px;">Built to move things forward</div><div style="font-size:13px;color:var(--ink-soft);line-height:1.6;">Not networking for its own sake. Pilots, partnerships, and traction — the formats are designed to produce a next step.</div></div>
+          </div>
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px 22px;display:flex;align-items:flex-start;gap:14px;">
+            <div style="width:34px;height:34px;border-radius:9px;background:#edf4ff;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-arrow-repeat" style="color:var(--blue);font-size:14px;"></i></div>
+            <div><div style="font-size:13px;font-weight:500;margin-bottom:3px;">Part of a six-month arc</div><div style="font-size:13px;color:var(--ink-soft);line-height:1.6;">Each event connects to a broader program — matchmaking, product design, iteration — that turns early momentum into real traction.</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ACCORDION — 3 EVENTS ── -->
+  <section class="section" data-reveal>
+    <div class="wrap" style="margin-bottom:36px;">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Previously</div>
+          <h2 class="section-title">Targeted Audiences.<br />Real momentum.</h2>
+        </div>
+        <button onclick="openModal()" style="font-size:13px;color:var(--ink-soft);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;font-family:'DM Sans',sans-serif;padding-bottom:4px;transition:color 180ms;" onmouseover="this.style.color='var(--black)'" onmouseout="this.style.color='var(--ink-soft)'">
+          Get involved in the next one <i class="bi bi-arrow-right" style="font-size:11px;"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="accordion">
+        <a href="#payment-layer" class="acc-panel">
+          <img src="DSCF2293.jpg" alt="The Payment Layer" />
+          <div class="acc-overlay"></div>
+          <div class="acc-content">
+            <div class="acc-event-type"><i class="bi bi-lightning" style="font-size:10px;"></i> Build Night · Stockholm</div>
+            <div class="acc-event-title">The Payment Layer</div>
+            <div class="acc-event-sub">35 Leads · Solvapay API · Live pitching</div>
+          </div>
+        </a>
+        <a href="#cmo-speed" class="acc-panel">
+          <img src="15-DSC00620.jpg" alt="CMO Breakfast: Enduring Speed" />
+          <div class="acc-overlay"></div>
+          <div class="acc-content">
+            <div class="acc-event-type"><i class="bi bi-briefcase" style="font-size:10px;"></i> CMO Breakfast · Stockholm</div>
+            <div class="acc-event-title">Enduring Speed while<br />Building Trust</div>
+            <div class="acc-event-sub">Senior marketing leaders · CMOs & SaaS</div>
+          </div>
+        </a>
+        <a href="#cmo-authenticity" class="acc-panel">
+          <img src="50-DSC00526.jpg" alt="CMO Breakfast: Plot-twist & Authenticity" />
+          <div class="acc-overlay"></div>
+          <div class="acc-content">
+            <div class="acc-event-type"><i class="bi bi-briefcase" style="font-size:10px;"></i> CMO Breakfast · Stockholm</div>
+            <div class="acc-event-title">Plot-twist &<br />Authenticity</div>
+            <div class="acc-event-sub">Brand trust in the age of AI</div>
+          </div>
+        </a>
+      </div>
+      <div class="acc-titles">
+        <div class="acc-title-item">
+          <div class="acc-title-date">2026 · Stockholm</div>
+          <div class="acc-title-name">The Payment Layer — Build Night</div>
+        </div>
+        <div class="acc-title-item">
+          <div class="acc-title-date">2026 · Stockholm</div>
+          <div class="acc-title-name">CMO Breakfast: Enduring Speed while Building Trust</div>
+        </div>
+        <div class="acc-title-item">
+          <div class="acc-title-date">2026 · Stockholm</div>
+          <div class="acc-title-name">CMO Breakfast: Plot-twist & Authenticity</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EVENT DETAIL 1 ── -->
+  <section class="section section-bg" id="payment-layer" data-reveal>
+    <div class="wrap">
+      <div class="section-label" style="margin-bottom:32px;">Event 01</div>
+      <a href="#" class="event-detail lift">
+        <div class="event-detail-img">
+          <img src="DSCF2293.jpg" alt="The Payment Layer — Build Night" />
+        </div>
+        <div class="event-detail-body">
+          <div class="event-detail-type"><i class="bi bi-lightning"></i> Build Night</div>
+          <div class="event-detail-date"><i class="bi bi-geo-alt" style="color:var(--blue);margin-right:4px;"></i>Stockholm &nbsp;·&nbsp; 2026</div>
+          <h2 class="event-detail-title">The Payment Layer — Build Night, Powered by Solvapay</h2>
+          <p class="event-detail-desc">
+            An invite-only evening for up to +25 builders from finance and SaaS companies — to prototype AI-driven fintech projects live using the Solvapay API. Teams pitched at the end of the night. The format turned a room of strangers into a room of collaborators.
+          </p>
+          <div class="event-detail-chips">
+            <span class="chip">Solvapay API</span>
+            <span class="chip">25 builders</span>
+            <span class="chip">Live pitching</span>
+            <span class="chip">AI-driven fintech</span>
+          </div>
+          <button onclick="openModal()" class="btn-primary" style="align-self:flex-start;">Get involved in the next one <i class="bi bi-arrow-right" style="font-size:12px;"></i></button>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── EVENT DETAIL 2 ── -->
+  <section class="section" id="cmo-speed" data-reveal>
+    <div class="wrap">
+      <div class="section-label" style="margin-bottom:32px;">Event 02</div>
+      <a href="#" class="event-detail lift" style="direction:rtl;">
+        <div class="event-detail-img" style="direction:ltr;">
+          <img src="15-DSC00620.jpg" alt="CMO Breakfast: Enduring Speed" />
+        </div>
+        <div class="event-detail-body" style="direction:ltr;">
+          <div class="event-detail-type"><i class="bi bi-briefcase"></i> CMO Breakfast</div>
+          <div class="event-detail-date"><i class="bi bi-geo-alt" style="color:var(--blue);margin-right:4px;"></i>Stockholm &nbsp;·&nbsp; 2026</div>
+          <h2 class="event-detail-title">Enduring Speed while Building Trust</h2>
+          <p class="event-detail-desc">
+            A senior gathering of CMOs and heads of marketing from across Nordic finance and SaaS. The conversation: how do you move fast enough to stay competitive, while building the brand trust that makes enterprise deals possible? No presentations — just a table of people working through the same problem.
+          </p>
+          <div class="event-detail-chips">
+            <span class="chip">Senior CMOs</span>
+            <span class="chip">Nordic finance</span>
+            <span class="chip">Brand strategy</span>
+            <span class="chip">Invite-only</span>
+          </div>
+          <button onclick="openModal()" class="btn-primary" style="align-self:flex-start;">Get on the list for the next one <i class="bi bi-arrow-right" style="font-size:12px;"></i></button>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── EVENT DETAIL 3 ── -->
+  <section class="section section-bg" id="cmo-authenticity" data-reveal>
+    <div class="wrap">
+      <div class="section-label" style="margin-bottom:32px;">Event 03</div>
+      <a href="#" class="event-detail lift">
+        <div class="event-detail-img">
+          <img src="50-DSC00526.jpg" alt="CMO Breakfast: Plot-twist & Authenticity" />
+        </div>
+        <div class="event-detail-body">
+          <div class="event-detail-type"><i class="bi bi-briefcase"></i> CMO Breakfast</div>
+          <div class="event-detail-date"><i class="bi bi-geo-alt" style="color:var(--blue);margin-right:4px;"></i>Stockholm &nbsp;·&nbsp; 2026</div>
+          <h2 class="event-detail-title">Plot-twist & Authenticity</h2>
+          <p class="event-detail-desc">
+            As AI reshapes how brands communicate, what does authenticity even mean? This breakfast brought together marketing leaders navigating exactly that question — how to stay genuinely human in brand voice, content, and positioning when the tools are increasingly artificial.
+          </p>
+          <div class="event-detail-chips">
+            <span class="chip">Brand trust</span>
+            <span class="chip">AI & authenticity</span>
+            <span class="chip">Nordic SaaS</span>
+            <span class="chip">Invite-only</span>
+          </div>
+          <button onclick="openModal()" class="btn-primary" style="align-self:flex-start;">Get on the list for the next one <i class="bi bi-arrow-right" style="font-size:12px;"></i></button>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── TRANSITION ── -->
+  <div class="transition-block" data-reveal>
+    <div class="transition-block-inner">
+      <div>
+        <span class="tag" style="margin-bottom:20px;display:inline-flex;"><span class="tag-dot"></span>The full scope</span>
+        <h2 style="font-size:clamp(26px,3.2vw,38px);line-height:1.1;letter-spacing:-0.018em;margin-bottom:16px;">
+          Events are one piece.<br />Design and product work is the other.
+        </h2>
+        <p style="font-size:15px;line-height:1.8;color:var(--ink-soft);font-weight:300;">
+          Getting in the room is the start. What happens after — onboarding design, product iteration, brand positioning — is what turns a conversation into stable traction. Below are examples of that work.
+        </p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-soft);"><i class="bi bi-calendar-event" style="color:var(--blue);font-size:14px;"></i> In-person events & ecosystem matchmaking</div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-soft);"><i class="bi bi-rocket" style="color:var(--blue);font-size:14px;"></i> Product pilots & onboarding design</div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-soft);"><i class="bi bi-arrow-repeat" style="color:var(--blue);font-size:14px;"></i> Iteration toward product-market fit</div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-soft);"><i class="bi bi-check2" style="color:var(--blue);font-size:14px;"></i> Solid traction at month six</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PRODUCT WORK ── -->
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Product & design work</div>
+          <h2 class="section-title">Selected projects</h2>
+        </div>
+        <span style="font-size:13px;color:var(--ink-muted);">B2B fintech & adjacent</span>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+
+        <a href="https://alexandrastudio.se/aptoolbox.html" class="work-item">
+          <div class="work-img"><img src="APToolbox.gif" alt="AP Toolbox" /></div>
+          <div class="work-body">
+            <div class="work-tags">
+              <span class="tag">Product Design</span><span class="tag">Fintech</span>
+            </div>
+            <h3 class="work-title">AP Toolbox</h3>
+            <p class="work-desc">A curated toolkit for accounts payable teams navigating digital transformation. Built for fintech-native workflows with trust-first UX patterns.</p>
+            <span class="arrow-link">View project <i class="bi bi-arrow-right" style="font-size:11px;"></i></span>
+          </div>
+        </a>
+
+        <a href="https://alexandrastudio.se/financeapi.html" class="work-item">
+          <div class="work-img"><img src="financeipad.png" alt="Finance API Platform" /></div>
+          <div class="work-body">
+            <div class="work-tags">
+              <span class="tag">API Design</span><span class="tag">B2B</span>
+            </div>
+            <h3 class="work-title">Finance API Platform</h3>
+            <p class="work-desc">Developer-facing product design for a financial data API. Translating complex integrations into an experience that builds confidence and reduces time-to-first-call.</p>
+            <span class="arrow-link">View project <i class="bi bi-arrow-right" style="font-size:11px;"></i></span>
+          </div>
+        </a>
+
+        <a href="https://alexandrastudio.se/legaltech.html" class="work-item">
+          <div class="work-img"><img src="Devstack.gif" alt="Legaltech Platform" /></div>
+          <div class="work-body">
+            <div class="work-tags">
+              <span class="tag">Legaltech</span><span class="tag">B2B SaaS</span>
+            </div>
+            <h3 class="work-title">Legaltech Platform</h3>
+            <p class="work-desc">Brand and product design for a legal workflow platform entering the regulated financial sector. Building trust signals that matter in compliance-heavy environments.</p>
+            <span class="arrow-link">View project <i class="bi bi-arrow-right" style="font-size:11px;"></i></span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ── CONTACT CTA ── -->
+  <section class="section section-bg" data-reveal>
+    <div class="wrap" style="max-width:640px;text-align:center;">
+      <span class="tag" style="margin-bottom:24px;display:inline-flex;"><span class="tag-dot"></span>Let's talk</span>
+      <h2 style="font-size:clamp(32px,4.5vw,52px);line-height:1.08;letter-spacing:-0.02em;margin-bottom:18px;">
+        Ready to be part of<br /><span style="font-style:italic;color:var(--blue);">what comes next?</span>
+      </h2>
+      <p style="font-size:15px;line-height:1.8;color:var(--ink-soft);margin-bottom:32px;">
+        Whether you're a fintech looking for introductions, a brand that needs a sharper story, or a company ready for a structured growth program — let's find out if there's a fit.
+      </p>
+      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+        <button class="btn-primary" onclick="openModal()">Get in touch <i class="bi bi-arrow-right" style="font-size:12px;"></i></button>
+        <a href="https://luma.com/user/agrisanti" target="_blank" class="btn-outline"><i class="bi bi-calendar3" style="font-size:12px;"></i> See upcoming events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MODAL ── -->
+  <div id="modal" onclick="if(event.target===this)closeModal()">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+      <div class="modal-top">
+        <div class="modal-kicker"><i class="bi bi-calendar-event"></i> Get involved</div>
+        <h2>Let's talk.</h2>
+        <p>Drop your email and I'll be in touch within 24 hours. No pitch decks needed — just a note about what you're working on.</p>
+      </div>
+      <div class="modal-body">
+        <div class="modal-perks">
+          <div class="modal-perk"><div class="perk-icon"><i class="bi bi-people"></i></div>Upcoming events and how to get on the list</div>
+          <div class="modal-perk"><div class="perk-icon"><i class="bi bi-rocket"></i></div>Growth programs and retainer work</div>
+          <div class="modal-perk"><div class="perk-icon"><i class="bi bi-vector-pen"></i></div>Brand, product and design projects</div>
+        </div>
+        <div data-fillout-id="4vjkiFwcM2us" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize style="width:100%;"></div>
+        <script src="https://server.fillout.com/embed/v1/"></script>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <p style="font-family:'DM Serif Display',serif;font-size:24px;margin-bottom:8px;">Alexandra</p>
+          <p style="font-size:14px;color:var(--ink-soft);max-width:300px;line-height:1.7;margin-bottom:4px;">Growth strategy, ecosystem building and brand design for Nordic fintechs.</p>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="bi bi-linkedin"></i></a>
+            <a href="mailto:alexandrapgrisanti@gmail.com" class="social-btn"><i class="bi bi-envelope"></i></a>
+            <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="bi bi-rss"></i></a>
+            <a href="https://luma.com/user/agrisanti" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="bi bi-calendar3"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-links-col">
+            <p class="footer-links-title">Program</p>
+            <a href="https:alexandrastudio.se/upnext.html"</a>
+            <a href="#">It's Happened</a>
+            <a href="https://luma.com/user/agrisanti"</a>
+          </div>
+          <div class="footer-links-col">
+            <p class="footer-links-title">Thinking</p>
+            <a href="https://alexandrastudio.se/thoughtleadership.html"</a>
+            <a href="https://stockholmgrowthfintech.substack.com/" target="_blank">Newsletter</a>
+            <a href="https://alundsvagen.github.io/alexandrastudio/Fintech_Services.pdf" target="_blank">Services PDF</a>
+          </div>
+          <div class="footer-links-col">
+            <p class="footer-links-title">Connect</p>
+            <button onclick="openModal()">Contact</button>
+            <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank">LinkedIn</a>
+            <a href="mailto:alexandrapgrisanti@gmail.com">Email</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank">Alexandra Grisanti</a>. All rights reserved.</p>
+        <p>Stockholm, Sweden</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var els = document.querySelectorAll('[data-reveal]');
+      if (!els.length) return;
+      if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+        els.forEach(function(el) { el.classList.add('visible'); }); return;
+      }
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -4% 0px' });
+      els.forEach(function(el) { io.observe(el); });
+    })();
+
+    function openModal() {
+      document.getElementById('modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+    var menuBtn = document.getElementById('menu-btn');
+    var mobileNav = document.getElementById('mobile-nav');
+    var navOpen = false;
+    function closeMobileNav() {
+      navOpen = false; menuBtn.classList.remove('open'); mobileNav.classList.remove('open');
+    }
+    menuBtn.addEventListener('click', function() {
+      navOpen = !navOpen;
+      menuBtn.classList.toggle('open', navOpen);
+      mobileNav.classList.toggle('open', navOpen);
+    });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && navOpen) closeMobileNav(); });
+  </script>
+
+</body>
+</html>
