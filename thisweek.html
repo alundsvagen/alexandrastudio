@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>This Week — Alexandra Grisanti | Nordic Fintech</title>
+  <meta name="description" content="Weekly fintech insights from Alexandra Grisanti — Avanza and the Nordic B2B growth playbook." />
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f0f0f'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='ui-sans-serif,system-ui,-apple-system' font-size='34' font-weight='700' fill='white'%3EA%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+  <style>
+    :root {
+      --black: #0f0f0f;
+      --white: #ffffff;
+      --blue: #3d94ff;
+      --off-white: #f5f4f2;
+      --ink-soft: #5a5a5a;
+      --ink-muted: #999;
+      --border: rgba(0,0,0,0.07);
+      --border-med: rgba(0,0,0,0.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      font-weight: 300;
+    }
+
+    h1, h2, h3, .serif { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; }
+
+    /* ── REVEAL ── */
+    [data-reveal] {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1);
+      transition-delay: var(--d, 0ms);
+    }
+    [data-reveal].visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 28px;
+      height: 62px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .logo {
+      display: inline-flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--black);
+    }
+    .logo-mark {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--black);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 300ms cubic-bezier(.16,1,.3,1);
+    }
+    .logo:hover .logo-mark { transform: rotate(-5deg) scale(1.06); }
+    .logo-mark span { color: white; font-family: 'DM Serif Display', serif; font-size: 15px; }
+    .logo-name { font-family: 'DM Serif Display', serif; font-size: 17px; }
+
+    nav { display: flex; align-items: center; gap: 2px; }
+    nav a, nav button {
+      font-size: 13.5px; color: var(--ink-soft);
+      text-decoration: none; padding: 6px 13px; border-radius: 8px;
+      border: none; background: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-weight: 400;
+      transition: color 180ms, background 180ms; white-space: nowrap;
+    }
+    nav a:hover, nav button:hover { color: var(--black); background: var(--off-white); }
+    .nav-cta {
+      background: var(--black) !important; color: var(--white) !important;
+      border-radius: 8px !important; padding: 7px 16px !important;
+    }
+    .nav-cta:hover { opacity: 0.82 !important; background: var(--black) !important; }
+
+    /* ── HAMBURGER ── */
+    .hamburger-btn {
+      display: none; width: 36px; height: 36px; border-radius: 8px;
+      border: 1px solid var(--border-med); background: white;
+      flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+      cursor: pointer;
+    }
+    .hamburger-btn span { display: block; width: 17px; height: 1.5px; background: var(--black); border-radius: 2px; transition: transform 280ms, opacity 280ms; }
+    .hamburger-btn.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+    .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+    .hamburger-btn.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+    #mobile-nav {
+      display: none; position: fixed; top: 62px; left: 0; right: 0; bottom: 0;
+      background: white; z-index: 99; overflow-y: auto; padding: 20px 24px 40px;
+    }
+    #mobile-nav.open { display: block; }
+    #mobile-nav a, #mobile-nav button {
+      display: block; width: 100%;
+      font-size: 24px; font-family: 'DM Serif Display', serif;
+      color: var(--black); text-decoration: none;
+      padding: 16px 0; border-bottom: 1px solid var(--border);
+      background: none; border-top: none; border-left: none; border-right: none;
+      cursor: pointer; text-align: left;
+    }
+
+    @media (max-width: 860px) { nav { display: none; } .hamburger-btn { display: flex; } }
+
+    /* ── PAGE ── */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── HERO STRIP ── */
+    .page-hero {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--border);
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--ink-muted); font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--blue); }
+
+    .page-hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin-bottom: 18px;
+    }
+    .page-hero h1 em { color: var(--blue); font-style: italic; }
+
+    .page-hero p {
+      font-size: 16px; line-height: 1.8; color: var(--ink-soft);
+      max-width: 560px;
+    }
+
+    .substack-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 28px;
+      font-size: 13px; color: var(--ink-soft);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-med);
+      background: var(--off-white);
+      transition: color 180ms, background 180ms;
+    }
+    .substack-link:hover { color: var(--black); background: white; }
+
+    /* ── VIDEO SECTION ── */
+    .videos-section { padding: 72px 0 96px; }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 760px) {
+      .videos-grid { grid-template-columns: 1fr; gap: 56px; }
+    }
+
+    .video-block { }
+
+    /* Label row */
+    .video-label-row {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 16px;
+    }
+    .video-issue-badge {
+      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 600; color: var(--blue);
+      padding: 4px 10px; border-radius: 100px;
+      background: #edf4ff;
+      border: 1px solid rgba(61,148,255,0.2);
+    }
+    .video-week-label {
+      font-size: 12px; color: var(--ink-muted);
+    }
+
+    .video-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(22px, 2.8vw, 32px);
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      margin-bottom: 12px;
+    }
+    .video-title em { font-style: italic; color: var(--blue); }
+
+    .video-desc {
+      font-size: 14px; line-height: 1.8; color: var(--ink-soft);
+      margin-bottom: 24px;
+    }
+
+    /* Shorts container — 9:16 */
+    .shorts-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto 20px;
+    }
+    .shorts-ratio {
+      position: relative;
+      padding-bottom: 177.78%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid var(--border-med);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.05);
+      background: #111;
+      transition: box-shadow 400ms cubic-bezier(.16,1,.3,1), transform 400ms cubic-bezier(.16,1,.3,1);
+    }
+    .shorts-ratio:hover {
+      box-shadow: 0 36px 80px rgba(0,0,0,0.14), 0 4px 12px rgba(0,0,0,0.06);
+      transform: translateY(-3px);
+    }
+    .shorts-ratio iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0; border-radius: 18px;
+    }
+
+    /* Featured / primary video is wider */
+    .video-block.primary .shorts-wrap {
+      max-width: 380px;
+    }
+
+    .video-cta {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; color: var(--black);
+      text-decoration: none;
+      padding: 9px 18px; border-radius: 8px;
+      border: 1.5px solid var(--border-med);
+      background: white;
+      font-weight: 400;
+      transition: background 180ms, border-color 180ms;
+    }
+    .video-cta:hover { background: var(--off-white); border-color: rgba(0,0,0,0.16); }
+    .video-cta.blue-cta {
+      background: var(--blue); color: white; border-color: transparent;
+    }
+    .video-cta.blue-cta:hover { opacity: 0.87; background: var(--blue); }
+
+    .cta-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none; border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ── BOTTOM CTA ── */
+    .bottom-cta {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .bottom-cta h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .bottom-cta h2 em { color: var(--blue); font-style: italic; }
+    .bottom-cta p {
+      font-size: 15px; color: var(--ink-soft);
+      max-width: 420px; margin: 0 auto 32px;
+      line-height: 1.8;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: 8px;
+      background: var(--black); color: white;
+      font-size: 14px; font-weight: 500; font-family: 'DM Sans', sans-serif;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: opacity 200ms;
+    }
+    .btn-primary:hover { opacity: 0.82; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 28px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+      font-size: 12px; color: var(--ink-muted);
+    }
+    .footer-inner a { color: var(--ink-muted); text-decoration: none; }
+    .footer-inner a:hover { color: var(--black); }
+    .footer-links-row { display: flex; gap: 20px; }
+  </style>
+</head>
+
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-inner">
+    <a href="https://alexandrastudio.se/" class="logo">
+      <div class="logo-mark"><span>A</span></div>
+      <span class="logo-name">Alexandra</span>
+    </a>
+    <nav>
+      <a href="https://alexandrastudio.se/upnext.html">
+        <i class="bi bi-calendar-event" style="font-size:12px;margin-right:4px;"></i>Up Next
+      </a>
+      <a href="https://alexandrastudio.se/itshappened.html">
+        <i class="bi bi-check2-circle" style="font-size:12px;margin-right:4px;"></i>It's Happened
+      </a>
+      <a href="https://alexandrastudio.se/thoughtleadership.html">
+        <i class="bi bi-lightbulb" style="font-size:12px;margin-right:4px;"></i>Thought Leadership
+      </a>
+      <a href="https://luma.com/user/agrisanti" target="_blank" rel="noopener">
+        <i class="bi bi-geo-alt" style="font-size:12px;margin-right:4px;"></i>Luma
+      </a>
+      <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener">
+        <i class="bi bi-linkedin" style="font-size:12px;margin-right:4px;"></i>LinkedIn
+      </a>
+      <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener" class="nav-cta">Subscribe</a>
+    </nav>
+    <button class="hamburger-btn" id="menu-btn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div id="mobile-nav">
+  <a href="https://alexandrastudio.se/upnext.html">Up Next</a>
+  <a href="https://alexandrastudio.se/itshappened.html">It's Happened</a>
+  <a href="https://alexandrastudio.se/thoughtleadership.html">Thought Leadership</a>
+  <a href="https://luma.com/user/agrisanti" target="_blank">Luma</a>
+  <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank">LinkedIn</a>
+  <a href="https://stockholmgrowthfintech.substack.com/" target="_blank">Subscribe</a>
+</div>
+
+<main>
+
+  <!-- ── PAGE HERO ── -->
+  <section class="page-hero" data-reveal>
+    <div class="wrap">
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Stockholm Growth &amp; Fintech &nbsp;·&nbsp; May 2026
+      </div>
+      <h1>This Week in<br /><em>Nordic Fintech</em></h1>
+      <p>
+        Two videos from this week's newsletter. The Avanza story is the one worth watching twice — it's a textbook case study in what B2B trust actually looks like in practice.
+      </p>
+      <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener" class="substack-link">
+        <i class="bi bi-rss" style="font-size:13px;color:var(--blue);"></i>
+        Read the full issue on Substack
+        <i class="bi bi-arrow-up-right" style="font-size:11px;"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── VIDEOS ── -->
+  <section class="videos-section">
+    <div class="wrap">
+      <div class="videos-grid">
+
+        <!-- VIDEO 1 — Avanza (core) -->
+        <div class="video-block primary" data-reveal style="--d:60ms;">
+          <div class="video-label-row">
+            <span class="video-issue-badge">This week's case</span>
+            <span class="video-week-label">Featured</span>
+          </div>
+          <h2 class="video-title">Avanza<br /><em>ahead or behind?</em></h2>
+          <p class="video-desc">
+            Avanza invested in product not physical spaces. But now they are behind. Pay attention to the distribution strategy fintech unicorns are taking. Here's what to look out for.
+          </p>
+          <div class="shorts-wrap">
+            <div class="shorts-ratio">
+              <iframe
+                src="https://www.youtube.com/embed/AMPmrXFyg1E?rel=0&modestbranding=1"
+                title="The Avanza Trust Playbook — Alexandra Grisanti"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+          <div class="cta-row">
+            <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener" class="video-cta blue-cta">
+              Read the full breakdown <i class="bi bi-arrow-right" style="font-size:11px;"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- VIDEO 2 — Cold to Strategic Partnerships -->
+        <div class="video-block" data-reveal style="--d:140ms;">
+          <div class="video-label-row">
+            <span class="video-issue-badge" style="background:#f5f4f2;color:var(--ink-soft);border-color:var(--border-med);">Also this week</span>
+          </div>
+          <h2 class="video-title">Cold traffic to<br /><em>strategic partnerships</em></h2>
+          <p class="video-desc">
+            A four-step methodology for B2B SaaS — moving beyond lead generation into ecosystem partnerships that compound. The approach that actually works in the Nordic market.
+          </p>
+          <div class="shorts-wrap">
+            <div class="shorts-ratio">
+              <iframe
+                src="https://www.youtube.com/embed/74WeKarBzIM?rel=0&modestbranding=1"
+                title="Cold Traffic to Strategic Partnerships — Alexandra Grisanti"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+          <div class="cta-row">
+            <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener" class="video-cta">
+              <i class="bi bi-linkedin" style="font-size:12px;"></i> Follow on LinkedIn
+            </a>
+            <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener" class="video-cta">
+              Subscribe <i class="bi bi-arrow-right" style="font-size:11px;"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ── BOTTOM CTA ── -->
+  <section class="bottom-cta" data-reveal>
+    <div class="wrap">
+      <h2>More where this<br /><em>came from.</em></h2>
+      <p>
+        Every week in the newsletter: one fintech case study, one growth framework, no fluff. Read by CMOs and growth leaders across the Nordic ecosystem.
+      </p>
+      <a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener" class="btn-primary">
+        Subscribe on Substack <i class="bi bi-arrow-right" style="font-size:12px;"></i>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <p>© 2026 <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank">Alexandra Grisanti</a> · Alexandra Studio · Stockholm</p>
+    <div class="footer-links-row">
+      <a href="https://stockholmgrowthfintech.substack.com/" target="_blank">Newsletter</a>
+      <a href="https://luma.com/user/agrisanti" target="_blank">Events</a>
+      <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank">LinkedIn</a>
+      <a href="https://alexandrastudio.se" target="_blank">Studio</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── REVEAL ──
+  (function () {
+    var els = document.querySelectorAll('[data-reveal]');
+    if (!els.length) return;
+    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+      els.forEach(function(el) { el.classList.add('visible'); }); return;
+    }
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -5% 0px' });
+    els.forEach(function(el) { io.observe(el); });
+  })();
+
+  // ── MOBILE NAV ──
+  var menuBtn = document.getElementById('menu-btn');
+  var mobileNav = document.getElementById('mobile-nav');
+  var navOpen = false;
+  menuBtn.addEventListener('click', function() {
+    navOpen = !navOpen;
+    menuBtn.classList.toggle('open', navOpen);
+    mobileNav.classList.toggle('open', navOpen);
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && navOpen) {
+      navOpen = false; menuBtn.classList.remove('open'); mobileNav.classList.remove('open');
+    }
+  });
+</script>
+
+</body>
+</html>
