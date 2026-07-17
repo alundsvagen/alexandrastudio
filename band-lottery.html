@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Band Lottery — Be in a Band for 5 Weeks | Alexandra Studio, Stockholm</title>
+<meta name="description" content="Band Lottery: get matched into a band, rehearse for 5 weeks, play one cover and one original at the final show September 27 in Stockholm. All instruments welcome — even spoons. 300 kr, full refund via Swish until August 19. Produced by Alexandra Studio." />
+<meta name="keywords" content="band lottery Stockholm, join a band Stockholm, musicians Stockholm, jam Stockholm, play live Stockholm, amateur band Stockholm" />
+<meta name="author" content="Alexandra Studio" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://alexandrastudio.se/band-lottery" />
+
+<meta name="geo.region" content="SE-AB" />
+<meta name="geo.placename" content="Stockholm" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Alexandra Studio" />
+<meta property="og:title" content="Band Lottery — Be in a Band for 5 Weeks" />
+<meta property="og:description" content="We match you into a band. 5 weeks later you're on stage: one cover, one original, ten minutes. 300 kr, refundable via Swish until August 19. Final show September 27." />
+<meta property="og:url" content="https://alexandrastudio.se/band-lottery" />
+<meta property="og:image" content="https://res.cloudinary.com/dxhph3qls/image/upload/v1784282225/IMG-1975_g1hfpg.jpg" />
+<meta property="og:locale" content="en_SE" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Band Lottery — Be in a Band for 5 Weeks" />
+<meta name="twitter:description" content="We match you into a band. 5 weeks later you're on stage. 300 kr, refundable until August 19. Final show September 27, Stockholm." />
+<meta name="twitter:image" content="https://res.cloudinary.com/dxhph3qls/image/upload/v1784282225/IMG-1975_g1hfpg.jpg" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Band Lottery — Final Show",
+  "description": "Musicians are matched into bands by instrument and experience level, rehearse for five weeks, then perform one cover and one original song at a shared final show. Produced by Alexandra Studio in Stockholm.",
+  "startDate": "2026-09-27",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "image": "https://res.cloudinary.com/dxhph3qls/image/upload/v1784282225/IMG-1975_g1hfpg.jpg",
+  "location": {
+    "@type": "Place",
+    "name": "Stockholm",
+    "address": { "@type": "PostalAddress", "addressLocality": "Stockholm", "addressCountry": "SE" }
+  },
+  "organizer": { "@type": "Organization", "name": "Alexandra Studio", "url": "https://alexandrastudio.se/" },
+  "offers": {
+    "@type": "Offer",
+    "price": "300",
+    "priceCurrency": "SEK",
+    "url": "https://forms.fillout.com/t/63b7bsrWYSus",
+    "validThrough": "2026-08-19"
+  }
+}
+</script>
+<link rel="icon" type="image/svg+xml"
+  href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111111'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial' font-size='34' font-weight='700' fill='white'%3EA%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --footer-blue: #679EF7;
+    --grad: linear-gradient(90.05deg, #679EF7 3.76%, #F2ABC6 48.33%);
+    --flip-speed: 0.55s;
+    --flip-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    color: var(--ink);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+    touch-action: none;
+  }
+
+  #deck {
+    height: 100dvh;
+    transition: transform var(--flip-speed) var(--flip-ease);
+    will-change: transform;
+  }
+
+  section {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 clamp(1.25rem, 5vw, 4rem);
+    position: relative;
+    background: #fff;
+  }
+
+  /* ---------- Page 1: hero ---------- */
+  .site-header {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(1rem, 3vw, 1.75rem) clamp(1.25rem, 4vw, 2.5rem);
+  }
+  .brand {
+    font-weight: 500;
+    font-size: clamp(1.6rem, 4.5vw, 2.5rem);
+    line-height: 1;
+    text-decoration: none;
+    user-select: none;
+    display: block;
+  }
+  .brand-mask { display: block; overflow: hidden; padding-bottom: 0.08em; }
+  .brand-inner {
+    display: inline-block;
+    letter-spacing: -0.04em;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    transform: translateY(115%);
+    transition: transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.15s,
+                letter-spacing 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  section.active .brand-inner { transform: translateY(0); }
+  .brand:hover .brand-inner { letter-spacing: -0.005em; }
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.945rem;
+    letter-spacing: -0.02em;
+    text-transform: capitalize;
+    text-decoration: none;
+    height: 51.43px;
+    padding: 0 2rem;
+    border-radius: 25.7154px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  .btn-pill:hover { transform: translateY(-2px); }
+
+  .hero-eyebrow {
+    font-weight: 500;
+    font-size: clamp(0.9rem, 2.5vw, 1.18rem);
+    letter-spacing: -0.04em;
+    color: #000;
+    margin-bottom: 1.1rem;
+  }
+  .hero-title {
+    font-weight: 500;
+    font-size: clamp(2.6rem, 9vw, 4.207rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: #000;
+    max-width: 12ch;
+    margin: 0 auto;
+  }
+  .hero-sub {
+    font-weight: 400;
+    font-size: 0.945rem;
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+    color: #000;
+    max-width: 420px;
+    margin: 1.5rem auto 0;
+  }
+  .hero-cta {
+    margin-top: 1.75rem;
+  }
+  .hero-note {
+    margin-top: 0.85rem;
+    font-weight: 400;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: rgba(10,10,10,0.5);
+  }
+  .hero-cta:focus-visible, .btn-pill:focus-visible {
+    outline: 2px solid var(--footer-blue);
+    outline-offset: 4px;
+  }
+
+  /* ---------- Two-column pages (Alexandra Studio layout) ---------- */
+  .success-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 478px) minmax(0, 648px);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 76rem;
+    text-align: left;
+  }
+  .success-grid.flip { grid-template-columns: minmax(0, 648px) minmax(0, 478px); }
+  .success-img { display: flex; justify-content: center; text-decoration: none; border: none; background: none; padding: 0; }
+  .success-img img {
+    width: 100%;
+    max-width: 478px;
+    height: auto;
+    border-radius: 34px;
+    animation: floaty 6s ease-in-out infinite;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  .success-title {
+    font-weight: 400;
+    font-size: clamp(2.2rem, 6vw, 3.782rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: #000;
+  }
+  .success-copy {
+    font-weight: 500;
+    font-size: 0.945rem;
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+    color: #000;
+    max-width: 524.9px;
+    margin-top: 1.1rem;
+  }
+  .success-copy + .success-copy { margin-top: 0.85rem; }
+  .success-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1.5rem, 3.5vw, 3.25rem);
+    margin-top: clamp(1.5rem, 4vh, 2.75rem);
+  }
+  .stat { display: flex; flex-direction: column; align-items: center; }
+  .stat .num {
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3vw, 2.08rem);
+    line-height: 1.45;
+    color: #000;
+  }
+  .stat .label {
+    font-weight: 400;
+    font-size: 0.608rem;
+    line-height: 1.45;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #000;
+  }
+
+  /* Timeline list (page 3) */
+  .timeline { margin-top: 1.35rem; max-width: 524.9px; text-align: left; }
+  .tl-item {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.7rem 0;
+  }
+  .tl-item + .tl-item { border-top: 1px solid rgba(10,10,10,0.1); }
+  .tl-date {
+    flex: 0 0 5.2rem;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .tl-text {
+    font-weight: 400;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+  }
+  .tl-text strong { font-weight: 600; }
+
+  /* Trust list (page 5) */
+  .trust-list { margin-top: 1.35rem; max-width: 524.9px; text-align: left; }
+  .trust-item { padding: 0.7rem 0; }
+  .trust-item + .trust-item { border-top: 1px solid rgba(10,10,10,0.1); }
+  .trust-item p.q { font-weight: 600; font-size: 0.9rem; letter-spacing: -0.01em; }
+  .trust-item p.a { font-weight: 400; font-size: 0.9rem; line-height: 1.45; letter-spacing: -0.01em; margin-top: 0.25rem; color: rgba(10,10,10,0.8); }
+  .trust-item a { color: var(--ink); font-weight: 500; }
+
+  @media (max-width: 820px) {
+    .success-grid, .success-grid.flip { grid-template-columns: 1fr; gap: 1.5rem; }
+    .success-grid .visual-col { order: -1; }
+    .success-img img { max-height: 28vh; width: auto; max-width: 100%; }
+    .success-title { font-size: clamp(2rem, 8vw, 2.6rem); }
+    .success-stats { gap: 1.25rem 2rem; }
+    .tl-date { flex-basis: 4.3rem; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+    transition-delay: 0.25s;
+  }
+  section.active .reveal { opacity: 1; transform: none; }
+  section.active .reveal:nth-child(2) { transition-delay: 0.32s; }
+  section.active .reveal:nth-child(3) { transition-delay: 0.39s; }
+  section.active .reveal:nth-child(4) { transition-delay: 0.46s; }
+
+  .hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.35;
+    animation: drift 2.2s ease-in-out infinite;
+  }
+  @keyframes drift {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 6px); }
+  }
+
+  nav.dots {
+    position: fixed;
+    right: clamp(0.75rem, 3vw, 1.75rem);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    z-index: 10;
+  }
+  nav.dots button {
+    width: 8px; height: 8px;
+    border: none; border-radius: 50%;
+    background: currentColor;
+    opacity: 0.25;
+    color: var(--ink);
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+    padding: 0;
+  }
+  nav.dots button.active { opacity: 1; transform: scale(1.4); }
+  nav.dots.on-blue button { color: #fff; }
+  nav.dots button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  nav.dots.on-blue button:focus-visible { outline-color: #fff; }
+
+  /* ---------- Footer ---------- */
+  #footer {
+    background: var(--footer-blue);
+    color: #fff;
+    align-items: stretch;
+    text-align: left;
+    justify-content: flex-end;
+    padding: clamp(1.5rem, 4vw, 4rem);
+  }
+  #footer .footer-inner {
+    width: 100%;
+    max-width: 72rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+  }
+  .footer-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: clamp(1.25rem, 3vh, 2.5rem);
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+  }
+  .footer-cta p.big { font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-weight: 600; }
+  .footer-cta p.small { font-size: 0.9rem; opacity: 0.85; margin-top: 0.35rem; max-width: 44ch; }
+  .btn-book {
+    display: inline-flex;
+    align-items: center;
+    background: #fff;
+    color: var(--footer-blue);
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  .btn-book:hover { transform: translateY(-2px); }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: clamp(1.25rem, 3vh, 2.5rem) 0;
+  }
+  .footer-links p.col-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.9rem;
+  }
+  .footer-links ul { list-style: none; }
+  .footer-links li { margin-bottom: 0.6rem; }
+  .footer-link {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.875rem;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.25s ease;
+  }
+  .footer-link:hover { color: #fff; }
+
+  .wordmark {
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.92;
+    font-size: clamp(3rem, 11.5vw, 9rem);
+    color: #fff;
+    text-decoration: none;
+    user-select: none;
+    display: block;
+    transition: letter-spacing 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .wordmark:hover { letter-spacing: -0.02em; }
+  .wm-line { display: block; overflow: hidden; }
+  .wm-inner {
+    display: inline-block;
+    transform: translateY(115%);
+    transition: transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.25s;
+  }
+  .wm-line:nth-child(2) .wm-inner { transition-delay: 0.37s; }
+  section.active .wm-inner { transform: translateY(0); }
+  .wm-line.studio { font-weight: 400; letter-spacing: -0.02em; }
+
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: clamp(1rem, 2.5vh, 2rem);
+    padding-top: clamp(1rem, 2.5vh, 1.75rem);
+    border-top: 1px solid rgba(255,255,255,0.25);
+    font-size: 0.8rem;
+  }
+  .footer-bottom p { opacity: 0.85; }
+
+  /* ---------- Registration form modal ---------- */
+  .visibility-modal { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 1rem; }
+  .visibility-modal.open { display: flex; }
+  .visibility-modal-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(10,10,10,0.62);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .visibility-modal.open .visibility-modal-backdrop { opacity: 1; }
+  .visibility-modal-panel {
+    position: relative;
+    width: min(680px, 100%);
+    height: min(85vh, 760px);
+    background: #fff;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 40px 80px -24px rgba(0,0,0,0.5);
+    transform: translateY(18px) scale(0.98);
+    opacity: 0;
+    transition: transform 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease;
+  }
+  .visibility-modal.open .visibility-modal-panel { transform: translateY(0) scale(1); opacity: 1; }
+  .visibility-modal-panel iframe { width: 100%; height: 100%; border: 0; display: block; touch-action: auto; }
+  .visibility-modal-close {
+    position: absolute; top: 12px; right: 12px; z-index: 1;
+    width: 38px; height: 38px; border-radius: 999px;
+    background: rgb(10,10,10); color: #fff; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.15rem; line-height: 1;
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  .visibility-modal-close:hover { transform: rotate(90deg); }
+
+  @media (max-width: 640px) {
+    .footer-links { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .footer-cta p.small { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #deck { transition: none; }
+    .reveal, .wm-inner, .brand-inner { opacity: 1; transform: none; transition: none; }
+    .hint { animation: none; }
+    .success-img img { animation: none; }
+    .visibility-modal-backdrop, .visibility-modal-panel { transition: none; }
+    .visibility-modal-panel { transform: none; opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="dots" aria-label="Page navigation">
+  <button data-page="0" aria-label="Page 1: Band Lottery"></button>
+  <button data-page="1" aria-label="Page 2: How it works"></button>
+  <button data-page="2" aria-label="Page 3: The five weeks"></button>
+  <button data-page="3" aria-label="Page 4: The final show"></button>
+  <button data-page="4" aria-label="Page 5: The honest part"></button>
+  <button data-page="5" aria-label="Page 6: Register"></button>
+</nav>
+
+<div id="deck">
+  <section id="hero" class="active">
+    <header class="site-header">
+      <a href="https://alexandrastudio.se/" class="brand" aria-label="Alexandra Studio">
+        <span class="brand-mask"><span class="brand-inner">ALEXANDRA.</span></span>
+      </a>
+      <button type="button" class="btn-pill js-open-register">Register</button>
+    </header>
+
+    <p class="hero-eyebrow reveal">BAND LOTTERY — AN ALEXANDRA STUDIO PRODUCTION</p>
+    <h1 class="hero-title reveal">Be in a band for 5 weeks.</h1>
+    <p class="sr-only">Band Lottery: musicians are matched into bands by instrument and experience, rehearse for five weeks, and play one cover and one original song at a shared final show on September 27 in Stockholm. All instruments welcome. 300 kr, fully refundable via Swish until August 19. Produced by Alexandra Studio.</p>
+    <p class="hero-sub reveal">You sign up. We sort you into a band by instrument and experience. Five weeks later you're on stage playing one cover and one original in front of everyone you know. No auditions, no drama, no "where is this going" talks.</p>
+    <button type="button" class="btn-pill hero-cta reveal js-open-register">Register — 300 kr</button>
+    <p class="hero-note reveal">Registration closes August 19 · Final show September 27 · Refundable via Swish</p>
+
+    <p class="hint">Scroll</p>
+  </section>
+
+  <section id="how">
+    <div class="success-grid">
+      <div class="success-img visual-col reveal">
+        <img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1784282334/pexels-eugene-bolshem-722706948-33284931_ue8zdt.jpg" alt="Musicians playing together" />
+      </div>
+      <div>
+        <h2 class="success-title reveal">How it works</h2>
+        <p class="success-copy reveal">Fate picks your bandmates — fate, and us, with a spreadsheet. We match you by instrument and experience level and drop you into a WhatsApp group with your new band. From there the band is yours: you choose your cover, you write your original, you decide when and where to rehearse. We handle the matchmaking and host the final show. You handle the magic.</p>
+        <div class="success-stats reveal">
+          <div class="stat"><span class="num">5</span><span class="label">Weeks total</span></div>
+          <div class="stat"><span class="num">2</span><span class="label">Songs: 1 cover, 1 original</span></div>
+          <div class="stat"><span class="num">10</span><span class="label">Minutes on stage</span></div>
+          <div class="stat"><span class="num">300 kr</span><span class="label">All in</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="weeks">
+    <div class="success-grid flip">
+      <div>
+        <h2 class="success-title reveal">The five weeks</h2>
+        <div class="timeline reveal">
+          <div class="tl-item">
+            <span class="tl-date">Now</span>
+            <span class="tl-text"><strong>Register.</strong> Tell us your instrument and experience level. That's the whole audition. All instruments welcome — guitar, drums, sax, accordion, nyckelharpa, theremin, kazoo, and yes, spoons.</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-date">Aug 19</span>
+            <span class="tl-text"><strong>Registration closes.</strong> The sorting happens and the bands are locked. Last day for a full refund.</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-date">Aug 22</span>
+            <span class="tl-text"><strong>Band reveal &amp; fika.</strong> We meet in person at a lokal on Ringvägen. You meet your band face to face, come up with a band name together, and we have fika.</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-date">5 weeks</span>
+            <span class="tl-text"><strong>Rehearse your way.</strong> Your band picks the songs, the space, and the schedule. It's your band — we're just the matchmakers.</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-date">Sep 27</span>
+            <span class="tl-text"><strong>The final show.</strong> Ten minutes on stage: one cover, one original. Friends and family invited.</span>
+          </div>
+        </div>
+      </div>
+      <div class="success-img visual-col reveal">
+        <img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1784282323/pexels-andreevaleksandar-27817797_pkac6j.jpg" alt="A band rehearsing" />
+      </div>
+    </div>
+  </section>
+
+  <section id="show">
+    <div class="success-grid">
+      <div class="success-img visual-col reveal">
+        <img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1784282225/IMG-1975_g1hfpg.jpg" alt="The final show venue in Stockholm, lit in blue, with a stage and audience" />
+      </div>
+      <div>
+        <h2 class="success-title reveal">This is the room</h2>
+        <p class="success-copy reveal">The final show happens here on September 27 — a real stage, real lights, real audience. Every band plays ten minutes, and everyone's friends and family are in the crowd. We shoot professional photos of the whole night so you can prove it happened. (Photos are included; recordings are not — some things you have to be there for.)</p>
+        <div class="success-stats reveal">
+          <div class="stat"><span class="num">27/9</span><span class="label">Final show</span></div>
+          <div class="stat"><span class="num">All</span><span class="label">Bands on one stage</span></div>
+          <div class="stat"><span class="num">📸</span><span class="label">Show photography included</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="honest">
+    <div class="success-grid flip">
+      <div>
+        <h2 class="success-title reveal">The honest part</h2>
+        <div class="trust-list reveal">
+          <div class="trust-item">
+            <p class="q">Is this a scam?</p>
+            <p class="a">No. Band Lottery is produced by <a href="https://alexandrastudio.se/" target="_blank" rel="noopener">Alexandra Studio</a>, a registered Swedish business based in Stockholm that produces events professionally. You can see who we are, what we've built, and <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener">find us on LinkedIn</a>.</p>
+          </div>
+          <div class="trust-item">
+            <p class="q">What if I change my mind?</p>
+            <p class="a">Full refund, no questions asked, straight back to you via Swish — any time until August 19, when the sorting is final and the bands are locked.</p>
+          </div>
+          <div class="trust-item">
+            <p class="q">What does 300 kr cover?</p>
+            <p class="a">The band matching, the kickoff fika, the final show venue and production, and professional photography of the night.</p>
+          </div>
+          <div class="trust-item">
+            <p class="q">Questions or complaints?</p>
+            <p class="a">Talk to a real human: <a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener">book a call</a> or reach out on <a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+          </div>
+        </div>
+      </div>
+      <div class="success-img visual-col reveal">
+        <img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1784282322/pexels-bigbagfilms-8512687_i5uojy.jpg" alt="Musicians on stage" />
+      </div>
+    </div>
+  </section>
+
+  <section id="footer">
+    <div class="footer-inner">
+      <div class="footer-cta reveal">
+        <div>
+          <p class="big">The lottery waits for no one.</p>
+          <p class="small">Register by August 19. Meet your band over fika. Play the final show September 27.</p>
+        </div>
+        <button type="button" class="btn-book js-open-register">Register now →</button>
+      </div>
+
+      <div class="footer-links reveal">
+        <div>
+          <p class="col-title">Band Lottery</p>
+          <ul>
+            <li><button type="button" class="footer-link js-open-register">Register — 300 kr</button></li>
+            <li><span class="footer-link" style="cursor:default;">Refunds via Swish until Aug 19</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="col-title">Connect</p>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a></li>
+            <li><a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener" class="footer-link">Book a call</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="col-title">More from us</p>
+          <ul>
+            <li><a href="https://alexandrastudio.se/" class="footer-link">Alexandra Studio</a></li>
+            <li><span class="footer-link" style="cursor:default;">Gärdet Beach Volley</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <a href="https://alexandrastudio.se/" class="wordmark" aria-label="Alexandra Studio">
+        <span class="wm-line"><span class="wm-inner">ALEXANDRA</span></span>
+        <span class="wm-line studio"><span class="wm-inner">studio</span></span>
+      </a>
+
+      <div class="footer-bottom reveal">
+        <p>© 2026 Alexandra Studio. All rights reserved.</p>
+        <p>Stockholm, Sweden</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Registration form modal -->
+<div id="visibility-modal" class="visibility-modal" role="dialog" aria-modal="true" aria-label="Register for Band Lottery">
+  <div class="visibility-modal-backdrop" data-close-visibility></div>
+  <div class="visibility-modal-panel">
+    <button type="button" class="visibility-modal-close" data-close-visibility aria-label="Close form">✕</button>
+    <iframe data-src="https://forms.fillout.com/t/63b7bsrWYSus" title="Band Lottery registration form"></iframe>
+  </div>
+</div>
+
+<script>
+  const deck = document.getElementById("deck");
+  const sections = [...document.querySelectorAll("section")];
+  const dots = [...document.querySelectorAll("nav.dots button")];
+  const dotsNav = document.querySelector("nav.dots");
+  const total = sections.length;
+  const modal = document.getElementById("visibility-modal");
+
+  let current = 0;
+  let locked = false;
+  const FLIP_MS = 550;
+
+  const modalOpen = () => modal.classList.contains("open");
+
+  function goTo(index) {
+    if (locked || modalOpen()) return;
+    index = Math.max(0, Math.min(total - 1, index));
+    if (index === current) return;
+
+    locked = true;
+    current = index;
+    deck.style.transform = `translateY(-${current * 100}dvh)`;
+
+    sections.forEach((s, i) => s.classList.toggle("active", i === current));
+    dots.forEach((d, i) => d.classList.toggle("active", i === current));
+    dotsNav.classList.toggle("on-blue", sections[current].id === "footer");
+
+    setTimeout(() => { locked = false; }, FLIP_MS + 80);
+  }
+
+  window.addEventListener("wheel", (e) => {
+    if (modalOpen()) return;
+    e.preventDefault();
+    if (locked) return;
+    if (Math.abs(e.deltaY) < 10) return;
+    goTo(current + (e.deltaY > 0 ? 1 : -1));
+  }, { passive: false });
+
+  let touchStartY = null;
+  window.addEventListener("touchstart", (e) => {
+    if (modalOpen()) return;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  window.addEventListener("touchend", (e) => {
+    if (modalOpen() || touchStartY === null) return;
+    const delta = touchStartY - e.changedTouches[0].clientY;
+    touchStartY = null;
+    if (Math.abs(delta) < 40) return;
+    goTo(current + (delta > 0 ? 1 : -1));
+  }, { passive: true });
+
+  window.addEventListener("keydown", (e) => {
+    if (modalOpen()) {
+      if (e.key === "Escape") closeModal();
+      return;
+    }
+    if (["ArrowDown", "PageDown", " "].includes(e.key)) { e.preventDefault(); goTo(current + 1); }
+    if (["ArrowUp", "PageUp"].includes(e.key)) { e.preventDefault(); goTo(current - 1); }
+    if (e.key === "Home") { e.preventDefault(); goTo(0); }
+    if (e.key === "End") { e.preventDefault(); goTo(total - 1); }
+  });
+
+  dots.forEach((d) => d.addEventListener("click", () => goTo(+d.dataset.page)));
+
+  // ---- Modal open/close (Fillout registration popup) ----
+  const frame = modal.querySelector("iframe");
+  function openModal(e) {
+    if (e) e.preventDefault();
+    const target = frame.getAttribute("data-src");
+    if (frame.src !== target) frame.src = target;
+    modal.classList.add("open");
+    modal.querySelector(".visibility-modal-close").focus();
+  }
+  function closeModal() {
+    modal.classList.remove("open");
+  }
+  document.querySelectorAll(".js-open-register").forEach((el) => el.addEventListener("click", openModal));
+  modal.querySelectorAll("[data-close-visibility]").forEach((el) => el.addEventListener("click", closeModal));
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    deck.style.transition = "none";
+  }
+
+  window.addEventListener("resize", () => {
+    deck.style.transition = "none";
+    deck.style.transform = `translateY(-${current * 100}dvh)`;
+    requestAnimationFrame(() => { deck.style.transition = ""; });
+  });
+</script>
+
+</body>
+</html>
