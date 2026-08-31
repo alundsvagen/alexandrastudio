@@ -1,0 +1,533 @@
+/* ==========================================================================
+   Alexandra Studio — shared stylesheet. MOBILE FIRST.
+   Base rules target a ~360px phone. Breakpoints add, they never undo.
+     560px  — two-up grids, buttons stop being full width
+     900px  — desktop nav, bento layout, full type scale
+     1140px — Figma sizes (90px h1, 43px radii, 258px CTA)
+   Tokens from the Figma export: Plus Jakarta Sans, #438BFF,
+   #679EF7 → #F2ABC6 wordmark gradient, 43px cards, 30px pills.
+   ========================================================================== */
+
+:root{
+  --blue:#438BFF;
+  --blue-deep:#2F6FDB;
+  --grad:linear-gradient(90deg,#679EF7 0%,#F2ABC6 100%);
+  --ink:#000000;
+  --ink-soft:#3B3B3B;
+  --ink-mute:#6E6E6E;
+  --panel:#F3F2F2;
+  --dark:#2A2929;
+  --star:#FFBA2F;
+  --line:rgba(0,0,0,.12);
+
+  --r-card:24px;      /* grows to 43px on desktop */
+  --r-panel:22px;
+  --r-pill:30px;
+
+  --maxw:1202px;
+  --gutter:20px;
+  --nav-h:68px;
+  --sect:44px;        /* vertical section rhythm */
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  color:var(--ink);
+  background:#fff;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+
+/* ---------- type (phone sizes) ----------
+   Roughly a 1.2 ratio: 16 / 19 / 23 / 27 / 36. Deliberately smaller than the
+   Figma's 90px display sizes, which only work at the 1280px artboard width. */
+h1,h2,h3,h4{font-weight:800;letter-spacing:-.025em;text-wrap:balance}
+h1{font-size:2.25rem;line-height:1.06}
+h2{font-size:1.625rem;line-height:1.12}
+h3{font-size:1.4375rem;line-height:1.15}
+h4{font-size:1.125rem;line-height:1.3;letter-spacing:-.015em;font-weight:700}
+p{font-size:1rem;line-height:1.6;color:var(--ink-soft)}
+.kicker{font-size:.9375rem;font-weight:500;color:var(--ink-mute);margin-bottom:.4rem}
+.lead{font-size:1.0625rem;line-height:1.5;color:var(--ink);font-weight:400}
+.note{font-size:.875rem;line-height:1.6;color:var(--ink-mute)}
+.label{font-size:1rem;font-weight:600}
+
+/* ---------- buttons: full width on phones, invert on hover ---------- */
+.btn{
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  width:100%;height:63px;padding:0 23px;border-radius:var(--r-pill);
+  background:var(--blue);color:#fff;box-shadow:inset 0 0 0 2px var(--blue);
+  font-family:inherit;font-weight:800;font-size:18px;line-height:23px;
+  text-decoration:none;border:0;cursor:pointer;
+  transition:background .2s ease,color .2s ease,box-shadow .2s ease,transform .15s ease;
+}
+.btn:active{transform:translateY(1px)}
+.btn-white{background:#fff;color:var(--blue);box-shadow:inset 0 0 0 2px #fff}
+.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px rgba(0,0,0,.22)}
+.btn-line-white{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.55)}
+
+@media(hover:hover){
+  /* blue on white  ->  white on blue, and the reverse */
+  .btn:hover{background:#fff;color:var(--blue);box-shadow:inset 0 0 0 2px var(--blue)}
+  .btn-white:hover{background:var(--blue);color:#fff;box-shadow:inset 0 0 0 2px #fff}
+  .btn-line:hover{background:var(--ink);color:#fff;box-shadow:inset 0 0 0 2px var(--ink)}
+  .btn-line-white:hover{background:#fff;color:var(--blue);box-shadow:inset 0 0 0 2px #fff}
+}
+
+/* ---------- header ---------- */
+.site-header{position:sticky;top:0;z-index:80;background:#fff}
+.header-inner{display:flex;align-items:center;gap:1rem;min-height:var(--nav-h);position:relative}
+.wordmark-nav{
+  font-weight:800;font-size:1.25rem;line-height:.9;letter-spacing:-.01em;
+  text-decoration:none;white-space:nowrap;margin-right:auto;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+}
+
+/* hamburger */
+.nav-toggle{
+  display:flex;align-items:center;justify-content:center;flex:none;
+  width:44px;height:44px;margin-right:-8px;
+  background:none;border:0;cursor:pointer;border-radius:8px;
+}
+.nav-toggle .bars{display:block;position:relative;width:24px;height:16px}
+.nav-toggle .bars span{
+  position:absolute;left:0;width:100%;height:2.5px;border-radius:2px;
+  background:var(--ink);
+  transition:transform .25s ease,opacity .2s ease,top .25s ease;
+}
+.nav-toggle .bars span:nth-child(1){top:0}
+.nav-toggle .bars span:nth-child(2){top:6.75px}
+.nav-toggle .bars span:nth-child(3){top:13.5px}
+.nav-toggle[aria-expanded="true"] .bars span:nth-child(1){top:6.75px;transform:rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .bars span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] .bars span:nth-child(3){top:6.75px;transform:rotate(-45deg)}
+
+.nav{
+  display:none;position:absolute;top:var(--nav-h);left:0;right:0;
+  flex-direction:column;align-items:stretch;gap:0;
+  background:#fff;border-top:1px solid var(--line);
+  padding:4px var(--gutter) 20px;
+  box-shadow:0 18px 30px -22px rgba(0,0,0,.4);
+}
+.nav.open{display:flex}
+.nav a{font-weight:800;font-size:1.0625rem;text-decoration:none;color:var(--ink);padding:16px 0;border-bottom:1px solid var(--line)}
+.nav a[aria-current="page"]{color:var(--blue)}
+.nav .btn{margin-top:16px;border-bottom:0}
+
+/* ---------- sections ---------- */
+section{padding:var(--sect) 0}
+.section-head{margin-bottom:24px;max-width:60ch}
+.section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;border-radius:var(--r-card);overflow:hidden;
+  min-height:420px;display:flex;align-items:flex-end;
+  background:var(--dark) center/cover no-repeat;
+  padding:24px;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.30) 0%,rgba(0,0,0,.72) 100%);
+}
+.hero-body{position:relative;z-index:1;color:#fff;width:100%}
+.hero-body h1{color:#fff;max-width:13ch}
+.hero-body .btn{margin-top:1.5rem}
+
+/* ---------- logo marquees ---------- */
+.rail{display:grid;gap:12px}
+.marquee-mask{
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+}
+.marquee-track{display:flex;width:max-content;animation:marquee-scroll 45s linear infinite}
+.marquee-set{display:flex;align-items:center;list-style:none;margin:0;padding:0}
+/* fixed slot = every logo occupies the same optical space, whatever its ratio */
+.marquee-set li{
+  flex:none;display:flex;align-items:center;justify-content:center;
+  width:104px;height:32px;margin-right:32px;
+}
+.marquee-set img{
+  max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;
+  filter:grayscale(1);opacity:.55;transition:opacity .3s ease,filter .3s ease;
+}
+.marquee-mask:hover .marquee-track{animation-play-state:paused}
+@media(hover:hover){.marquee-set img:hover{filter:grayscale(0);opacity:1}}
+@keyframes marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.banner-label{
+  text-align:center;font-size:.8125rem;font-weight:500;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-mute);margin-bottom:20px;
+}
+.marquee-lg .marquee-set li{width:124px;height:36px;margin-right:40px}
+
+/* ---------- value props ---------- */
+.props{display:grid;gap:32px}
+.prop{display:flex;align-items:flex-start;gap:16px}
+.prop-icon{flex:none;display:block;width:44px;height:44px;color:var(--ink)}
+.prop-icon svg{width:100%;height:100%;display:block}
+.prop-body h4{margin-bottom:.5rem}
+.prop-body p{font-size:.9375rem;line-height:1.5}
+
+/* ---------- bento cards ---------- */
+.bento{display:grid;gap:16px}
+.bento-row{display:grid;gap:16px}
+.card{
+  position:relative;border-radius:var(--r-card);overflow:hidden;
+  min-height:300px;padding:24px;display:flex;flex-direction:column;
+  justify-content:space-between;gap:1.5rem;text-decoration:none;
+  background:#fff center/cover no-repeat;box-shadow:inset 0 0 0 1px var(--ink);
+}
+.card h3{font-size:1.5rem}
+.card p{margin-top:.75rem;font-size:.9375rem}
+.card .btn{min-width:0}
+.card-dark{background-color:var(--dark);box-shadow:none;color:#fff}
+.card-blue{background-color:var(--blue);box-shadow:none;color:#fff}
+.card-photo{background-color:var(--dark);box-shadow:none;color:#fff}
+.card-photo::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.20) 0%,rgba(0,0,0,.70) 100%)}
+.card-photo > *{position:relative;z-index:1}
+.card-dark h3,.card-blue h3,.card-photo h3{color:#fff}
+.card-dark p,.card-blue p,.card-photo p{color:rgba(255,255,255,.85)}
+
+/* ---------- testimonials ---------- */
+.quotes{display:grid;gap:16px}
+.carousel-track{
+  display:flex;gap:16px;overflow-x:auto;padding-bottom:4px;
+  scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.carousel-track::-webkit-scrollbar{display:none}
+.carousel-track .quote{flex:0 0 86%;scroll-snap-align:start}
+.carousel-nav{display:flex;justify-content:center;gap:16px;margin-top:20px}
+.c-arrow{
+  display:flex;align-items:center;justify-content:center;
+  width:56px;height:56px;border:0;border-radius:999px;background:transparent;
+  color:#C4C4C4;cursor:pointer;transition:color .2s ease,opacity .2s ease;
+}
+.c-arrow svg{width:30px;height:30px}
+.c-arrow:hover:not(:disabled){color:var(--ink)}
+.c-arrow:disabled{opacity:.35;cursor:default}
+.quote{background:var(--panel);border-radius:var(--r-panel);padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem}
+.quote blockquote{font-size:1.0625rem;font-weight:600;line-height:1.4;letter-spacing:-.005em}
+.quote figcaption{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stars{display:flex;gap:3px;flex:none}
+.stars i{width:18px;height:18px;background:var(--star);border-radius:1px;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.stars i.off{background:#D9D9D9}
+.quote cite{font-style:normal;font-size:1rem;color:var(--ink)}
+
+/* ---------- split panel ---------- */
+.split{background:var(--panel);border-radius:var(--r-card);padding:24px;display:grid;gap:24px}
+.split-photo{border-radius:var(--r-panel);background:var(--dark) center/cover no-repeat;min-height:240px}
+.split-photo.is-contain{background-color:#fff;background-size:contain;background-position:center}
+.split h2{margin-bottom:.9rem}
+.split p{font-size:1.0625rem;line-height:1.5;color:var(--ink)}
+.split p + p{margin-top:1rem}
+.split-cta{margin-top:1.6rem}
+
+/* ---------- verticals ---------- */
+.verticals{display:grid;gap:16px}
+.center-cta{display:flex;justify-content:center;margin-top:32px}
+.vertical{background:var(--ink);color:#fff;border-radius:var(--r-card);padding:24px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;gap:1rem;text-decoration:none}
+.vertical h3{font-size:1.5rem;color:#fff}
+.vertical p{color:rgba(255,255,255,.75);font-size:.9375rem}
+
+/* ---------- blue CTA band ---------- */
+.band{background:var(--blue);border-radius:var(--r-card);padding:32px 24px;color:#fff;text-align:center}
+.band h2{color:#fff;margin-bottom:.9rem}
+.band p{color:rgba(255,255,255,.88);font-size:1rem;max-width:52ch;margin:0 auto}
+.band .btn{margin-top:1.75rem}
+.band-shot{margin-top:28px;border-radius:var(--r-panel);overflow:hidden;background:rgba(255,255,255,.12);min-height:160px}
+
+/* ---------- article pages ---------- */
+.page-hero{border-radius:var(--r-card);padding:36px 24px;background:var(--ink);color:#fff}
+.page-hero.is-blue{background:var(--blue)}
+.page-hero h1{color:#fff;max-width:16ch}
+.page-hero p{color:rgba(255,255,255,.85);font-size:1.0625rem;line-height:1.5;max-width:52ch;margin-top:1.1rem}
+.page-hero .btn{margin-top:1.75rem}
+.page-hero .kicker{color:rgba(255,255,255,.75)}
+
+.prose{max-width:68ch}
+.prose h2{margin:40px 0 14px}
+.prose h2:first-child{margin-top:0}
+.prose h3{font-size:1.3125rem;margin:28px 0 8px}
+.prose p{font-size:1.0625rem;line-height:1.65;margin-bottom:1rem}
+.prose ul,.prose ol{margin:0 0 1.4rem 1.15rem}
+.prose li{font-size:1.0625rem;line-height:1.65;color:var(--ink-soft);margin-bottom:.6rem}
+.prose strong{color:var(--ink)}
+
+.steps{display:grid;gap:16px}
+.step{background:var(--panel);border-radius:var(--r-panel);padding:24px}
+.step h4{margin-bottom:.45rem}
+.step p{font-size:.9375rem}
+.step .wk{font-size:.8125rem;font-weight:800;color:var(--blue);display:block;margin-bottom:.45rem}
+
+.grid-2,.grid-3{display:grid;gap:16px}
+.tile{background:var(--panel);border-radius:var(--r-panel);padding:24px;text-decoration:none}
+.tile h4{margin-bottom:.5rem}
+.tile p{font-size:.9375rem}
+.tile-line{background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+
+.stat{background:var(--panel);border-radius:var(--r-panel);padding:24px}
+.stat b{display:block;font-size:2rem;font-weight:800;letter-spacing:-.03em;line-height:1}
+.stat span{display:block;margin-top:.45rem;font-size:.9375rem;color:var(--ink-soft)}
+
+/* ---------- centred page title (whatis) ---------- */
+.page-title{text-align:center;max-width:700px;margin:0 auto}
+.page-title h1{margin-bottom:.6rem;text-wrap:balance}
+.page-title-sub{font-size:1.375rem;font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1.2}
+.title-actions{display:grid;gap:12px;margin-top:28px}
+
+/* ---------- statement block ---------- */
+.statement{max-width:70ch;margin-bottom:28px}
+.statement h2{font-size:1.375rem;line-height:1.25;margin-bottom:.6rem}
+.statement p{font-size:1.0625rem;line-height:1.6;color:var(--ink)}
+
+/* blue newsletter cards (b2bleadership) */
+.verticals.newsletters .vertical{background:var(--blue);justify-content:flex-start;gap:.9rem;min-height:200px;transition:background .2s ease}
+.newsletters .vertical p{color:rgba(255,255,255,.85);margin:0}
+.newsletters .go{margin-top:auto;font-weight:800;font-size:1rem;color:#fff}
+.newsletters .go::after{content:" →"}
+@media(hover:hover){.newsletters .vertical:hover{background:var(--blue-deep)}}
+
+/* pull quotes */
+.quote-section{padding-top:8px;padding-bottom:8px}
+.pullquote{
+  max-width:24ch;margin:0 auto;text-align:center;
+  font-size:1.5rem;font-weight:500;line-height:1.28;letter-spacing:-.02em;
+  color:var(--ink);text-wrap:balance;
+}
+.pullquote::before{content:"“"}
+.pullquote::after{content:"”"}
+
+/* light grey cards (claudesystem) */
+.verticals.cards-light .vertical{background:var(--panel);color:var(--ink);justify-content:flex-start;min-height:180px}
+.cards-light .vertical h3{color:var(--ink)}
+
+/* work gallery */
+.work-2,.work-3{display:grid;gap:16px}
+.work-card{
+  margin:0;border-radius:var(--r-card);overflow:hidden;
+  background:linear-gradient(180deg,#fff 0%,#FAFAFA 100%);
+  box-shadow:inset 0 0 0 1px #D9D9D9;
+  display:flex;align-items:center;justify-content:center;padding:24px;
+}
+.work-card img{max-width:100%;max-height:100%;width:auto;object-fit:contain}
+.work-card.is-photo{padding:0;box-shadow:none;background:var(--panel);aspect-ratio:362/448}
+.work-card.is-photo img{width:100%;height:100%;max-height:none;object-fit:cover}
+.work-card.is-blue{
+  background:var(--blue);box-shadow:none;color:#fff;
+  flex-direction:column;align-items:flex-start;justify-content:center;
+  gap:1rem;padding:32px;aspect-ratio:362/448;
+}
+.work-card.is-blue .k{font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.75);line-height:1.4}
+.client-list{list-style:none;margin:0;padding:0}
+.client-list li{font-size:1.375rem;font-weight:800;letter-spacing:-.02em;line-height:1.35;color:#fff}
+
+/* black figure cards: big number over a label */
+.verticals.figures .vertical{justify-content:flex-start;gap:.6rem;min-height:200px}
+.figures .fig{font-size:2.75rem;font-weight:800;letter-spacing:-.035em;line-height:1;color:#fff;margin:0}
+.figures .vertical h3{font-size:1.0625rem;font-weight:700;line-height:1.35;color:rgba(255,255,255,.82);max-width:20ch}
+
+/* black problem cards carry a heading only */
+.verticals.problems .vertical{min-height:180px;justify-content:flex-start}
+
+/* ---------- full-bleed figure ---------- */
+.figure-wide{margin:0;border-radius:var(--r-card);overflow:hidden;background:var(--dark);aspect-ratio:1183/661}
+.figure-wide img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- two-column body copy ---------- */
+.prose-2col{display:grid;gap:0 48px}
+.prose-2col p{font-size:1rem;line-height:1.65;margin-bottom:1rem;max-width:62ch}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:74ch}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-of-type{border-bottom:1px solid var(--line)}
+.faq summary{
+  cursor:pointer;list-style:none;padding:18px 0;min-height:56px;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  font-weight:700;font-size:1.0625rem;letter-spacing:-.01em;line-height:1.35;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-weight:800;font-size:1.5rem;color:var(--blue);flex:none;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 20px;max-width:66ch;font-size:1rem;line-height:1.62}
+
+/* ---------- footer ---------- */
+.site-footer{background:var(--blue);color:#fff;padding:44px 0 28px;margin-top:20px}
+.foot-cta{display:grid;gap:1.25rem;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.3)}
+.foot-cta h2{color:#fff}
+.foot-cta p{color:rgba(255,255,255,.86);margin-top:.6rem;max-width:44ch;font-size:1rem}
+.foot-cols{display:grid;gap:28px;padding:32px 0}
+.foot-cols h3{font-size:.8125rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:.8rem}
+.foot-cols ul{list-style:none}
+.foot-cols a{display:inline-block;padding:.4rem 0;font-size:.9375rem;color:rgba(255,255,255,.88);text-decoration:none}
+.foot-cols a:hover{color:#fff;text-decoration:underline}
+.foot-legal{font-size:.875rem;line-height:1.75;color:rgba(255,255,255,.8)}
+.foot-mark{display:block;text-decoration:none;color:#fff;font-weight:800;letter-spacing:-.04em;line-height:.9;font-size:2.5rem;padding:8px 0 18px}
+.foot-mark span{display:block;font-weight:400;letter-spacing:-.03em}
+.foot-bottom{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:space-between;border-top:1px solid rgba(255,255,255,.3);padding-top:18px;font-size:.8125rem;color:rgba(255,255,255,.8)}
+
+/* ==========================================================================
+   560px — small tablet / large phone landscape
+   ========================================================================== */
+@media(min-width:560px){
+  :root{--gutter:28px;--sect:56px;--r-card:32px;--r-panel:28px}
+  h1{font-size:2.75rem}
+  h2{font-size:1.875rem}
+  h3{font-size:1.5625rem}
+  .btn{display:inline-flex;width:auto;min-width:196px}
+  .btn-wide{min-width:258px}
+  .nav .btn{width:100%}
+  .hero{padding:32px;min-height:460px}
+  .quotes,.grid-2,.grid-3,.verticals,.bento-row{grid-template-columns:1fr 1fr}
+  .carousel-track .quote{flex:0 0 calc((100% - 16px)/2)}
+  .page-title-sub{font-size:1.5rem}
+  .statement h2{font-size:1.5rem}
+  .verticals.problems,.verticals.figures,.verticals.cards-light{grid-template-columns:repeat(3,1fr)}
+  .verticals.newsletters{grid-template-columns:1fr 1fr}
+  .pullquote{font-size:1.875rem}
+  .title-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
+  .work-2{grid-template-columns:1fr 1fr}
+  .bento-row > :last-child{grid-column:1/-1}
+  .card{min-height:340px;padding:28px}
+  .page-hero{padding:48px 32px}
+  .band{padding:44px 32px}
+  .foot-cols{grid-template-columns:1fr 1fr;gap:24px 32px}
+  .foot-mark{font-size:4rem}
+}
+
+/* ==========================================================================
+   900px — desktop nav and the bento layout
+   ========================================================================== */
+@media(min-width:900px){
+  :root{--gutter:32px;--sect:80px;--nav-h:88px}
+  h1{font-size:3.5rem;letter-spacing:-.03em}
+  h2{font-size:2.125rem}
+  h3{font-size:1.75rem}
+  h4{font-size:1.25rem}
+  .kicker{font-size:1rem}
+  .lead{font-size:1.1875rem;line-height:1.45;max-width:38ch}
+
+  .wordmark-nav{font-size:1.5625rem}
+  .nav-toggle{display:none}
+  .nav{
+    display:flex;position:static;flex-direction:row;align-items:center;gap:2.4rem;
+    background:none;border-top:0;padding:0;box-shadow:none;width:auto;
+  }
+  .nav a{padding:.4rem 0;border-bottom:2px solid transparent;font-size:1.125rem}
+  .nav a:hover{border-bottom-color:var(--blue)}
+  .nav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--blue)}
+  .nav .btn{margin-top:0;width:auto}
+
+  .hero{min-height:480px;padding:40px;align-items:flex-end}
+  .hero::after{background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.42) 55%,rgba(0,0,0,.28) 100%)}
+  .hero-body h1{max-width:12ch}
+
+  .rail{grid-template-columns:257px 1fr;gap:32px;align-items:center}
+  .rail .label{font-size:1rem;max-width:24ch}
+  .rail .marquee-track{gap:44px}
+  .rail .marquee-track img{height:28px}
+  .banner-label{margin-bottom:28px}
+
+  .props{grid-template-columns:repeat(3,1fr);gap:40px}
+  .prop{gap:22px}
+  .prop-icon{width:64px;height:64px}
+  .prop-body p{font-size:.875rem;line-height:1.5}
+
+  .carousel-track{gap:20px}
+  .carousel-track .quote{flex:0 0 calc((100% - 40px)/3)}
+  .carousel-nav{margin-top:28px;gap:24px}
+  .c-arrow{width:72px;height:72px}
+  .c-arrow svg{width:38px;height:38px}
+  .center-cta{margin-top:40px}
+
+  .page-title-sub{font-size:1.75rem}
+  .statement{margin-bottom:40px}
+  .statement h2{font-size:1.75rem}
+  .statement p{font-size:1.125rem}
+  .verticals.problems .vertical{min-height:220px}
+  .verticals.figures .vertical{min-height:220px}
+  .verticals.cards-light .vertical{min-height:220px}
+  .verticals.newsletters .vertical{min-height:230px;padding:36px}
+  .quote-section{padding-top:24px;padding-bottom:24px}
+  .pullquote{font-size:2.25rem;max-width:22ch}
+  .work-2,.work-3{gap:20px}
+  .work-3{grid-template-columns:repeat(3,1fr)}
+  .work-card{padding:32px;aspect-ratio:557/661}
+  .work-card.is-photo,.work-card.is-blue{aspect-ratio:362/448}
+  .client-list li{font-size:1.5rem}
+  .figures .fig{font-size:3.5rem}
+  .figures .vertical h3{font-size:1.125rem}
+  .prose-2col{grid-template-columns:1fr 1fr}
+  .prose-2col p{font-size:1.0625rem}
+
+  .bento{grid-template-columns:1fr 2fr;gap:24px}
+  .bento-row{grid-template-columns:repeat(3,1fr);gap:24px;grid-column:1/-1}
+  .bento-row > :last-child{grid-column:auto}
+  .card{min-height:380px;padding:32px}
+  .card h3{font-size:1.875rem;max-width:12ch}
+  .card p{max-width:32ch}
+
+  .quotes,.grid-3,.verticals{grid-template-columns:repeat(3,1fr);gap:20px}
+  .quote{padding:32px}
+  .quote blockquote{font-size:1.0625rem}
+  .quote cite{font-size:1rem}
+
+  .split{grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:40px}
+  .split-photo{min-height:400px}
+  .split p{font-size:1.0625rem;line-height:1.6}
+
+  .vertical{min-height:240px;padding:32px}
+  .vertical h3{font-size:1.75rem;max-width:12ch}
+
+  .page-hero{padding:64px 44px}
+  .page-hero p{font-size:1.125rem}
+  .prose h2{margin:52px 0 16px}
+  .prose h3{font-size:1.375rem}
+  .step{padding:32px 36px}
+  .tile,.stat{padding:32px}
+  .stat b{font-size:2.5rem}
+
+  .band{padding:60px 48px}
+  .band p{font-size:1.0625rem}
+  .band-shot{margin-top:40px;min-height:220px}
+
+  .faq summary{font-size:1.0625rem;padding:22px 0}
+
+  .site-footer{padding:60px 0 32px}
+  .foot-cta{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;padding-bottom:36px}
+  .foot-cta p{font-size:1rem}
+  .foot-cols{grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;padding:40px 0}
+  .foot-mark{font-size:5.5rem}
+}
+
+/* ==========================================================================
+   1140px — the Figma numbers
+   ========================================================================== */
+@media(min-width:1140px){
+  :root{--r-card:43px;--r-panel:40px;--nav-h:98px;--sect:88px}
+  h1{font-size:4.25rem}
+  h2{font-size:2.375rem}
+  h3{font-size:2rem}
+  .card h3{font-size:2rem}
+  .vertical h3{font-size:1.875rem}
+  .hero{min-height:520px;padding:48px}
+  .split{padding:52px;grid-template-columns:1.1fr 1fr;gap:48px}
+  .split-photo{min-height:400px}
+  .foot-mark{font-size:6.5rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
