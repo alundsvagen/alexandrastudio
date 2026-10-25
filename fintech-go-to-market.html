@@ -78,7 +78,7 @@
         "SME lending",
         "Payments and invoicing technology"
       ],
-      "priceRange": "45000 SEK/month",
+      "priceRange": "SEK 55,000/month excl. VAT, first month free",
       "slogan": "Fintech growth happens in rooms.",
       "sameAs": [
         "https://www.linkedin.com/company/alexandrastudio",
@@ -182,10 +182,17 @@
       "offers": [
         {
           "@type": "Offer",
-          "name": "Eight-week growth engagement",
-          "price": "45000",
+          "name": "Growth engagement: pay only when it works",
+          "price": "55000",
           "priceCurrency": "SEK",
-          "description": "SEK 45,000 per month for eight weeks. No ad spend. Event costs quoted separately and approved before booking. If 30 qualified leads and 5 held calls are not reached by week eight, the invoice for weeks five to eight is cancelled.",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "55000",
+            "priceCurrency": "SEK",
+            "unitText": "MONTH",
+            "valueAddedTaxIncluded": false
+          },
+          "description": "The first month is free. After that, SEK 55,000 per month excluding VAT, invoiced only for months in which 30 qualified leads and 5 held calls are reached. Month to month. No ad spend. Event costs quoted separately, approved before booking and billed at cost.",
           "availability": "https://schema.org/LimitedAvailability"
         },
         {
@@ -264,7 +271,7 @@
           "name": "What does it cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The eight-week growth engagement is SEK 45,000 per month, with a written guarantee: if 30 qualified leads and 5 held calls aren't there at week eight, the invoice for weeks five to eight is cancelled. A single room, series or build day has a fixed fee per package plus costs billed at cost. Advisory is a fixed fee for defined deliverables."
+            "text": "The growth engagement is free for the first month. After that it is SEK 55,000 a month excluding VAT, and it is only invoiced for months in which 30 qualified leads and 5 held calls are reached. It runs month to month. Event costs are separate and billed at cost. A single room, series or build day has a fixed fee per package plus costs billed at cost. Advisory is a fixed fee for defined deliverables."
           }
         },
         {
@@ -272,7 +279,15 @@
           "name": "How long before we see results?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The eight-week engagement is measured at week eight against 30 qualified leads and 5 held calls. For a single room, you see the confirmed guest list about three weeks before the date, and the report covers verified attendance, target-account coverage and follow-up meetings booked within 30 days."
+            "text": "Every month of the growth engagement is measured on its own against 30 qualified leads and 5 held calls, and you only pay for months that reach both. The first month is free while the first room is planned and the invitations go out. For a single room, you see the confirmed guest list about three weeks before the date, and the report covers verified attendance, target-account coverage and follow-up meetings booked within 30 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why not hire a salesperson in the region instead?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Nordic sales hire at the average Swedish B2B seller salary of SEK 53,200 a month costs about SEK 72,000 a month once 31.42% employer contributions and a 4.5% occupational pension are added, before commission, recruitment and travel, and you pay it whether or not meetings happen. They also have to recruit, work out a notice period, ramp up and build a network. With Alexandra Studio the first month is free, the SEK 55,000 fee excluding VAT is only invoiced in months that reach 30 qualified leads and 5 held calls, and you start with an existing network of partners, readers and members. When you do hire, that person inherits warm relationships instead of a cold list."
           }
         },
         {
@@ -320,6 +335,7 @@
   .gtm-table thead th{background:var(--panel);font-size:.8125rem;font-weight:800;letter-spacing:.02em}
   .gtm-table tbody tr:last-child th,.gtm-table tbody tr:last-child td{border-bottom:0}
   .gtm-table tr.is-us th,.gtm-table tr.is-us td{background:#eef4ff}
+  .vs-hire-table td:nth-child(3){background:#eef4ff}
   .gtm-table caption{caption-side:bottom;text-align:left;font-size:.8125rem;color:var(--ink-mute);padding:10px 16px 14px}
   .start-list{list-style:none;counter-reset:s;display:grid;gap:16px}
   .start-list li{counter-increment:s;background:var(--panel);border-radius:var(--r-panel);padding:22px 24px 22px 72px;position:relative}
@@ -404,7 +420,7 @@
           </ul>
         </div>
       </div>
-      <p class="note gtm-note">Common moments to start: you've just raised, you're hiring your first Nordic seller, a bank has opened an RFP you want to be part of, or you're about to spend heavily on a conference and want more from it than ten minutes at a booth.</p>
+      <p class="note gtm-note">Common moments to start: you've just raised, you're about to hire your first Nordic seller, a bank has opened an RFP you want to be part of, or you're about to spend heavily on a conference and want more from it than ten minutes at a booth.</p>
     </div>
   </section>
 
@@ -488,7 +504,7 @@
         <table>
           <thead><tr><th scope="col">Way of working</th><th scope="col">What it is</th><th scope="col">Price</th><th scope="col">What's guaranteed</th></tr></thead>
           <tbody>
-            <tr><th scope="row">Eight-week growth engagement</th><td>A programme of rooms, content and outreach aimed at your ICP</td><td>SEK 45,000 per month for eight weeks. No ad spend. Event costs approved by you before booking.</td><td>If 30 qualified leads and 5 held calls aren't there at week eight, the invoice for weeks five to eight is cancelled.</td></tr>
+            <tr class="is-us"><th scope="row">Growth engagement: pay only when it works</th><td>A programme of rooms, content and outreach aimed at your ICP, month to month</td><td>First month free. Then SEK 55,000 per month excl. VAT. No ad spend. Event costs approved by you before booking.</td><td>The monthly fee is only invoiced for months that reach 30 qualified leads and 5 held calls. Stop at any time.</td></tr>
             <tr><th scope="row">A single project</th><td>One room, a series of three, or a build day on your API</td><td>Fixed fee per package. Venue, food and travel billed at cost.</td><td>A go/no-go date: if the confirmed list is short, the date moves at no cost.</td></tr>
             <tr><th scope="row">Advisory</th><td>You host, we coach: format, guest strategy, co-host introductions</td><td>Fixed fee for defined deliverables</td><td>Your team runs the invitations; an outcome-linked element can be agreed before signing.</td></tr>
           </tbody>
@@ -524,6 +540,26 @@
         <div class="tile tile-line"><h4>One client per vertical</h4><p>We don't work with competing fintechs at the same time, and you keep the relationships, the opted-in contact list and the content.</p></div>
         <div class="tile tile-line"><h4>Counts and estimates kept apart</h4><p>Attendance, coverage and meetings are counted. Pipeline is an estimate and labelled as one. Booked revenue is yours and reported to you.</p></div>
       </div>
+
+      <div id="vs-hire" class="section-head" style="margin-top:56px">
+        <h3>Cheaper, faster and less risky than a first Nordic sales hire</h3>
+        <p class="lead" style="margin-top:.6rem">The usual alternative to us is hiring a seller in the region. A good seller is worth having, but they start without the network, and you pay them whether the meetings happen or not. We already have the network.</p>
+      </div>
+      <div class="gtm-table vs-hire-table">
+        <table>
+          <thead><tr><th scope="col"></th><th scope="col">A Nordic sales hire</th><th scope="col">Alexandra Studio growth engagement</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Monthly cost</th><td>About SEK 72,000 at the average Swedish B2B seller salary, before commission</td><td>SEK 0 in month one. Then SEK 55,000 excl. VAT, only in months that hit target</td></tr>
+            <tr><th scope="row">Six months, at most</th><td>About SEK 434,000, plus recruitment, commission and travel</td><td>SEK 275,000 excl. VAT, if every month after the first hits target</td></tr>
+            <tr><th scope="row">A month with no results</th><td>Full cost</td><td>No fee</td></tr>
+            <tr><th scope="row">Network on day one</th><td>Whatever they bring; often built from scratch</td><td>People from Danske Bank, Worldline, Froda, Visa, Open Payments and Zwapgrid in our rooms; 193 newsletter readers at 53 banks; the Operator Network's 100+ members</td></tr>
+            <tr><th scope="row">Time to the first meeting</th><td>Recruiting, the candidate's notice period, then ramp-up</td><td>The first room is planned in the free first month</td></tr>
+            <tr><th scope="row">If you want to stop</th><td>Employment notice periods apply</td><td>Month to month</td></tr>
+          </tbody>
+          <caption>Hire cost: SCB's average monthly salary for B2B sellers (företagssäljare), SEK 53,200 (2024 statistics), plus 31.42% employer contributions (Skatteverket, 2026) and 4.5% ITP 1 occupational pension: about SEK 72,300 a month. A senior seller with bank relationships usually costs more. Excludes recruitment fees, commission, travel and equipment. Alexandra Studio event costs, such as venue and food, are billed separately at cost.</caption>
+        </table>
+      </div>
+      <p class="note gtm-note">This isn't instead of ever hiring. When you do hire, your seller starts with the relationships, the opted-in contact list and the content from our rooms, rather than a cold list. Sources: <a href="https://www.scb.se/hitta-statistik/sverige-i-siffror/lonesok/Search/?lon=f%C3%B6retagss%C3%A4ljare" target="_blank" rel="noopener">SCB Lönesök</a>, <a href="https://www.skatteverket.se/privat/skatter/beloppochprocent/2026" target="_blank" rel="noopener">Skatteverket, belopp och procent 2026</a>, <a href="https://seb.se/privat/pension/tjanstepension/avtalspension/privatanstalld-tjansteman-itp/fakta" target="_blank" rel="noopener">ITP 1 premiums</a>.</p>
     </div>
   </section>
 
@@ -542,7 +578,7 @@
       </ol>
       <div class="band" style="margin-top:32px">
         <h2>Which accounts would change your year?</h2>
-        <p>Fifteen minutes, no deck. If there isn't a room worth building for you, we'll say so on the first call.</p>
+        <p>Fifteen minutes, no deck. The first month is free, and after that you only pay in months that hit 30 qualified leads and 5 held calls. If there isn't a room worth building for you, we'll say so on the first call.</p>
         <a class="btn btn-white btn-wide" href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener">Book a Discovery Call</a>
       </div>
     </div>
@@ -581,11 +617,15 @@
         </details>
         <details>
           <summary>What does it cost?</summary>
-          <p>The eight-week growth engagement is SEK 45,000 per month, with a written guarantee: if 30 qualified leads and 5 held calls aren't there at week eight, the invoice for weeks five to eight is cancelled. A single room, series or build day has a fixed fee per package plus costs billed at cost. Advisory is a fixed fee for defined deliverables.</p>
+          <p>The growth engagement is free for the first month. After that it is SEK 55,000 a month excluding VAT, and it is only invoiced for months in which 30 qualified leads and 5 held calls are reached. It runs month to month. Event costs are separate and billed at cost. A single room, series or build day has a fixed fee per package plus costs billed at cost. Advisory is a fixed fee for defined deliverables.</p>
         </details>
         <details>
           <summary>How long before we see results?</summary>
-          <p>The eight-week engagement is measured at week eight against 30 qualified leads and 5 held calls. For a single room, you see the confirmed guest list about three weeks before the date, and the report covers verified attendance, target-account coverage and follow-up meetings booked within 30 days.</p>
+          <p>Every month of the growth engagement is measured on its own against 30 qualified leads and 5 held calls, and you only pay for months that reach both. The first month is free while the first room is planned and the invitations go out. For a single room, you see the confirmed guest list about three weeks before the date, and the report covers verified attendance, target-account coverage and follow-up meetings booked within 30 days.</p>
+        </details>
+        <details>
+          <summary>Why not hire a salesperson in the region instead?</summary>
+          <p>A Nordic sales hire at the average Swedish B2B seller salary of SEK 53,200 a month costs about SEK 72,000 a month once 31.42% employer contributions and a 4.5% occupational pension are added, before commission, recruitment and travel, and you pay it whether or not meetings happen. They also have to recruit, work out a notice period, ramp up and build a network. With Alexandra Studio the first month is free, the SEK 55,000 fee excluding VAT is only invoiced in months that reach 30 qualified leads and 5 held calls, and you start with an existing network of partners, readers and members. When you do hire, that person inherits warm relationships instead of a cold list. <a href="#vs-hire">See the comparison</a>.</p>
         </details>
         <details>
           <summary>Do you only work in Stockholm?</summary>
