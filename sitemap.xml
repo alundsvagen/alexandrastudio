@@ -2,12 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://alexandrastudio.se/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://alexandrastudio.se/fintech-go-to-market.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://alexandrastudio.se/insights.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alexandrastudio.se/nordic-fintech-partner-led-go-to-market.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alexandrastudio.se/executive-roundtables-b2b-pipeline.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alexandrastudio.se/co-marketing-vs-partner-led-growth-fintech.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alexandrastudio.se/reach-senior-fintech-buyers-without-paid-ads.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://alexandrastudio.se/roi.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
@@ -17,7 +47,7 @@
   </url>
   <url>
     <loc>https://alexandrastudio.se/mission.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <priority>0.8</priority>
   </url>
   <url>

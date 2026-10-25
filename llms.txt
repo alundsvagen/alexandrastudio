@@ -5,7 +5,7 @@
 Key facts:
 
 - Founder: Alexandra Grisanti. American, moved to Sweden in 2021, lives on Södermalm in Stockholm. Master of Architecture (landscape architecture). Career since 2022: UX researcher and lead B2B white-label product designer at Zwapgrid, service designer at Monitum, then ad designer at the Stockholm agency Heijbel Growth.
-- Also runs the Operator Network (a curated community and stage for founders and executives in Stockholm) and publishes the Stockholm Growth & Fintech newsletter. These are not separate firms; clients contract with Alexandra Studio only.
+- Also runs the Operator Network (a curated community and stage for founders and executives in Stockholm, with more than 100 members in a wider network of 200+ people) and publishes the Stockholm Growth & Fintech newsletter. These are not separate firms; clients contract with Alexandra Studio only.
 - Founder-led: Alexandra personally leads every engagement. Production support is contracted per event. One client per vertical at a time.
 - Registered business: Alexandra Studio is the trading name of A. Grisanti Ventures, VAT SE930825284101, approved for F-skatt.
 - 2026 track record: eleven in-person B2B events in Stockholm, Gothenburg and Amsterdam for Heijbel Growth, Solvapay and Cardboard, including the Embedded Finance Build Day on 25 August 2026 (SEK 25,000 spent, 26 companies, 44 builders, 14 warm leads at SEK 1,785 each, no paid ads). Hosted the Nordic Fintech Highlights Stage at Nordic Fintech Summit 2026 in Helsinki. Panelist at Stockholm Fintech Week 2026.
@@ -22,7 +22,8 @@ Key facts:
 
 ## Services
 
-- [GTM for Fintech](https://alexandrastudio.se/roi.html): The growth system and the Embedded Finance Build Day case study
+- [GTM for Fintech](https://alexandrastudio.se/fintech-go-to-market.html): The core service: who it's for, the problem it solves, what's delivered, how it differs from an agency, and how to start
+- [Build Day case study](https://alexandrastudio.se/roi.html): The Embedded Finance Build Day, counted results and labelled estimates
 - [B2B Content Systems](https://alexandrastudio.se/b2bleadership.html): Thought leadership for B2B fintech founders and teams
 - [Our vision](https://alexandrastudio.se/mission.html): Why Alexandra Studio works the way it does
 - [What is B2B marketing?](https://alexandrastudio.se/whatis.html): An explainer on B2B marketing for fintech
@@ -37,6 +38,14 @@ Key facts:
 - [LinkedIn](https://www.linkedin.com/in/alexandragrisanti/): Career history
 - [Alexandra Studio on LinkedIn](https://www.linkedin.com/company/alexandrastudio): Company page
 - [The Belonging Economy](https://belongingeconomy.substack.com/): Alexandra's personal newsletter, separate from the studio
+
+## Insights
+
+- [Insights](https://alexandrastudio.se/insights.html): Index of practical guides on fintech go-to-market
+- [How Nordic fintech companies can build a partner-led go-to-market strategy](https://alexandrastudio.se/nordic-fintech-partner-led-go-to-market.html): Why Nordic buyers expect warm introductions, three kinds of partner, an eight-step method, common mistakes
+- [How to use executive roundtables for B2B pipeline development](https://alexandrastudio.se/executive-roundtables-b2b-pipeline.html): Designing from named accounts, a run of show, follow-up, and an eight-line scorecard
+- [Co-marketing vs. partner-led growth for fintech](https://alexandrastudio.se/co-marketing-vs-partner-led-growth-fintech.html): The difference, when each fits, and how to combine them
+- [How to reach senior fintech buyers without paid ads](https://alexandrastudio.se/reach-senior-fintech-buyers-without-paid-ads.html): Six channels, message templates, costs and measurement
 
 ## Optional
 
