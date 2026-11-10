@@ -21,11 +21,17 @@
 .ht-center{text-align:center}
 .ht-start{padding-top:clamp(40px,6vw,75px)}
 .ht-calls{padding-top:clamp(24px,3vw,50px)}
+/* the cutout photo ends at her waist, so it sits flush on the panel's bottom edge:
+   she rises out of the panel rather than floating above it */
 .ht-cutout{
-  display:flex;align-items:flex-end;justify-content:center;
+  position:relative;aspect-ratio:590/711;
   background:#EFEFEE url(/img/home/hero-gradient.webp) center/cover no-repeat;
 }
-.ht-cutout img{width:auto;height:auto;max-width:70%;max-height:94%;aspect-ratio:auto;object-fit:contain}
+.ht-cutout img{
+  position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  width:auto;height:90%;min-height:0;max-width:94%;max-height:none;aspect-ratio:auto;
+  object-fit:contain;object-position:center bottom;
+}
 
 /* three packages */
 .ht-packages{padding-top:clamp(40px,6vw,70px)}
@@ -46,6 +52,7 @@
 
 @media(min-width:900px){
   .ht-growth .growth-box{min-height:439px}
+  .ht-cutout{aspect-ratio:auto;min-height:711px}
   .ht-pkgs{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
   .ht-pkg:last-child .ht-pkg-body{padding-right:40px}
 }
