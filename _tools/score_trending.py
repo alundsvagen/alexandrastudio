@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scores the trending companies in the fintech database.
+"""Scores the Fintech Award Points in the fintech database.
 
   python3 _tools/score_trending.py --replies <replies.xlsx> --readers <substack-export.csv> [--today YYYY-MM-DD]
   python3 _tools/build_database.py
@@ -9,10 +9,11 @@ Reads two private exports. Keep them out of the repo:
                  (Company, Website, Category, Emails from them, Last contact)
   readers.csv    the Substack subscriber export (Email, Type, Activity = 0-5 stars)
 
-Writes _tools/data/trending.csv with company name, domain and points only. No email
-addresses, people, star counts or email counts leave this script.
+Writes _tools/data/trending.csv with company name, domain and points only, and
+_tools/data/newsletter-stats.json with whole-list totals (subscribers, work-email share,
+open rates, star mix). No email addresses, people, or per-company counts leave this script.
 
-Points. Every trending company starts at 105, then:
+Fintech Award Points. Every scored company starts at 105, then:
   +60   based outside Stockholm
   +150  replied to us in the past month
   +80   emailed us back at least 4 times
@@ -21,11 +22,11 @@ Points. Every trending company starts at 105, then:
 Only rows marked Fintech in the replies sheet count. A reader counts when their work email
 domain matches a company in the database; personal addresses (Gmail and so on) are skipped.
 """
-import argparse, collections, csv, datetime, re, sys
+import argparse, collections, csv, datetime, json, re, sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build_database import load, domain, outside_stockholm, TRENDING  # noqa: E402
+from build_database import load, domain, outside_stockholm, TRENDING, ALIASES  # noqa: E402
 
 BASE, OUTSIDE, RECENT, REPLIES_4 = 105, 60, 150, 80
 STARS = {5: 100, 4: 80, 3: 50, 2: 30, 1: 5}
@@ -33,14 +34,6 @@ STARS = {5: 100, 4: 80, 3: 50, 2: 30, 1: 5}
 FREE_MAIL = {'gmail', 'googlemail', 'hotmail', 'outlook', 'live', 'msn', 'yahoo', 'icloud', 'me', 'mac',
              'protonmail', 'proton', 'aol', 'gmx', 'web', 'telia', 'bredband', 'comhem', 'bahnhof', 'mail'}
 NOT_A_COMPANY = {'google.com', 'linkedin.com', 'facebook.com', 'instagram.com', 'alexandrastudio.se'}
-# same company, another domain
-ALIASES = {'seb.se': 'sebx.io', 'sebgroup.com': 'sebx.io', 'nordea.dk': 'nordea.com', 'nordea.se': 'nordea.com',
-           'danskebank.com': 'danskebank.dk', 'handelsbanken.com': 'handelsbanken.se', 'svea.se': 'svea.com',
-           'tieto.com': 'tietoevry.com', '11fsholdings.com': '11fs.com', 'findity.com': 'findity.se',
-           'britepayments.com': 'britepaymentgroup.com', 'sitoo.com': 'sitoo.se', 'flatpay.dk': 'flatpay.com',
-           'trustly.com': 'trustly.net', 'tryg.dk': 'tryg.com', 'northmill.se': 'northmill.com',
-           'payex.com': 'payex.se', 'silverflow.com': 'silverflow.co'}
-
 def norm_name(s):
     s = re.sub(r'\(.*?\)', ' ', s.lower())
     s = re.sub(r'\b(ab|gmbh|ltd|limited|as|a/s|oy|oü|sa|bv|inc|plc|group)\b', ' ', s)
@@ -96,17 +89,30 @@ def main():
 
     # 2. newsletter readers
     readers = collections.Counter()
+    tot = collections.Counter(); stars_mix = collections.Counter(); orgs = set()
     with open(a.readers, newline='', encoding='utf-8-sig') as f:
         for s in csv.DictReader(f):
             if s.get('Type') == 'Author':
                 continue
             dom = domain(s['Email'].strip().lower().rsplit('@', 1)[-1])
+            tot['subs'] += 1
+            tot['open6'] += int(s.get('Emails opened (6mo)') or 0) > 0
+            tot['open30'] += int(s.get('Emails opened (30d)') or 0) > 0
+            stars_mix[int(s.get('Activity') or 0)] += 1
+            if dom and dom.split('.')[0] not in FREE_MAIL:
+                tot['work'] += 1; orgs.add(dom)
             if not dom or dom.split('.')[0] in FREE_MAIL or dom in NOT_A_COMPANY:
                 continue
             stars = int(s.get('Activity') or 0)
             r = company(dom)
             if r and stars in STARS:
                 readers[id(r)] += STARS[stars]
+
+    pct = lambda k: round(tot[k] * 100 / tot['subs']) if tot['subs'] else 0
+    stats = {'date': a.today, 'subscribers': tot['subs'], 'work_email_pct': pct('work'), 'organisations': len(orgs),
+             'opened_6mo_pct': pct('open6'), 'opened_30d_pct': pct('open30'),
+             'stars': {str(k): stars_mix[k] for k in range(5, -1, -1)}}
+    (TRENDING.parent / 'newsletter-stats.json').write_text(json.dumps(stats, indent=1), encoding='utf-8')
 
     # 3. points
     out = []
@@ -126,7 +132,7 @@ def main():
         w = csv.writer(f)
         w.writerow(['name', 'domain', 'points'])
         w.writerows(out)
-    print(f'{len(out)} trending companies written to {TRENDING.relative_to(TRENDING.parents[2])}')
+    print(f'{len(out)} companies with Fintech Award Points written to {TRENDING.relative_to(TRENDING.parents[2])}')
     if missing:
         print('Not in the database, so not scored: ' + ', '.join(sorted(set(missing))))
 

@@ -214,3 +214,4 @@ main.db-page input,main.db-page select,main.db-hub input{-webkit-user-select:tex
   .db-apply{min-height:484px;border-radius:42px}
   .db-hub{padding-top:20px}
 }
+.db-legend a{text-decoration:underline;text-underline-offset:2px}

@@ -1,0 +1,99 @@
+/* Guides, the Fintech Awards page and company profiles.
+   Builds on home.css (tokens, nav, footer) and events.css (.ep article layout). */
+
+/* grid items must be allowed to shrink, or wide tables push the page sideways on phones */
+.ep-article,.ep-aside{min-width:0}
+
+/* ---------- on-page contents ---------- */
+.gd-toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.gd-toc a{
+  display:inline-block;padding:7px 13px;border-radius:999px;background:#fff;border:1px solid var(--line);
+  font-family:var(--f-sans);font-size:14px;color:var(--ink-2);text-decoration:none;
+}
+.gd-toc a:hover{border-color:#000;color:#000}
+.gd-meta{font-family:var(--f-sans);font-size:14px;color:var(--mute);margin-top:16px}
+
+/* ---------- numbers ---------- */
+.gd-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:26px;max-width:62ch}
+.gd-stat{background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px 16px 14px}
+.gd-stat b{display:block;font-family:var(--f-ui);font-weight:400;font-size:clamp(30px,3.4vw,40px);line-height:1;color:#000;font-variant-numeric:tabular-nums}
+.gd-stat span{display:block;margin-top:8px;font-family:var(--f-sans);font-size:14px;line-height:1.35;color:var(--mute)}
+
+/* ---------- tables inside an article ---------- */
+.gd-scroll{overflow-x:auto;margin-top:16px;max-width:100%;border:1px solid var(--line);border-radius:13px;background:#fff}
+.gd-table{width:100%;border-collapse:collapse;font-family:var(--f-sans);font-size:15px;line-height:1.4}
+.gd-table th{text-align:left;padding:11px 14px;background:#F2F2F2;font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.gd-table td{padding:11px 14px;border-top:1px solid var(--line);color:var(--ink-2);vertical-align:top}
+.gd-table td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.gd-table a{text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- callout ---------- */
+.gd-call{margin-top:22px;max-width:62ch;background:#fff;border:1px solid var(--line);border-left:4px solid #0088FF;border-radius:13px;padding:16px 18px}
+.ep-body .gd-call p{margin-top:0}
+.ep-body .gd-call p + p{margin-top:10px}
+
+/* ---------- company and partner cards ---------- */
+.ep-body ul.gd-cards{display:grid;gap:10px;border-top:0;max-width:none}
+.ep-body ul.gd-cards > li{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 16px}
+.gd-cards h3{font-family:var(--f-ui);font-weight:600;font-size:17px;line-height:1.3;color:#000}
+.gd-cards h3 a{text-decoration:none}
+.gd-cards h3 a:hover{text-decoration:underline}
+.gd-cards .gd-card-meta{display:block;font-family:var(--f-sans);font-size:13px;color:var(--mute);margin-top:2px}
+.ep-body .gd-cards p{margin-top:6px;font-size:15px;line-height:1.5}
+.gd-cards .db-pts{margin-left:6px;vertical-align:2px}
+
+/* ---------- keyword chips ---------- */
+.ep-body ul.pf-tags{display:flex;flex-wrap:wrap;gap:8px;border-top:0}
+.ep-body ul.pf-tags li{padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:14px;line-height:1.3}
+
+/* ---------- points card (profile aside) ---------- */
+.pf-points{background:var(--panel);border-radius:13px;padding:18px 16px;text-align:center}
+.pf-points b{display:block;font-family:var(--f-ui);font-weight:500;font-size:52px;line-height:1;color:#2D6A1F;font-variant-numeric:tabular-nums}
+.pf-points span{display:block;margin-top:8px;font-family:var(--f-sans);font-size:14px;line-height:1.4;color:var(--ink-2)}
+.pf-points .db-top{margin-top:10px}
+.pf-aside-copy{font-family:var(--f-sans);font-size:14px;line-height:1.5;color:var(--mute)}
+.pf-aside-copy a{text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- awards: podium and categories ---------- */
+.ep-body ol.aw-podium{display:grid;gap:10px;margin-top:18px;list-style:none;padding:0;max-width:none}
+.aw-podium > li{background:#fff;border:1px solid var(--line);border-radius:17px;padding:18px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:start}
+.aw-podium > li:first-child{border-color:#2D6A1F;box-shadow:inset 0 0 0 1px #2D6A1F}
+.aw-rank{grid-row:1 / span 3;font-family:var(--f-display);font-size:44px;line-height:1;color:#000;min-width:1.2em}
+.aw-podium h3{font-family:var(--f-ui);font-weight:600;font-size:20px;line-height:1.25;color:#000}
+.aw-podium h3 a{text-decoration:none}
+.aw-podium h3 a:hover{text-decoration:underline}
+.aw-podium .aw-sub{font-family:var(--f-sans);font-size:14px;color:var(--mute)}
+.ep-body .aw-podium p{margin-top:4px;font-size:15px;line-height:1.5}
+.ep-body ul.aw-cats{display:grid;gap:10px;border-top:0;max-width:none}
+.ep-body ul.aw-cats > li{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 16px}
+.aw-cats .aw-cat{display:block;font-family:var(--f-sans);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}
+.aw-cats .aw-win{display:block;margin-top:6px;font-family:var(--f-ui);font-weight:600;font-size:17px;color:#000}
+.aw-cats .aw-win a{text-decoration:none}
+.aw-cats .aw-win a:hover{text-decoration:underline}
+.aw-cats .aw-runner{display:block;margin-top:4px;font-family:var(--f-sans);font-size:14px;color:var(--mute)}
+
+/* ---------- A-Z profile index ---------- */
+.pf-index{margin-top:30px;display:grid;gap:28px}
+.pf-index h2{font-family:var(--f-serif);font-weight:400;font-size:30px;line-height:1;color:#000}
+.pf-index ul{margin-top:10px;border-top:1px solid var(--line)}
+.pf-index li{padding:10px 0;border-bottom:1px solid var(--line);font-family:var(--f-sans);font-size:15px;line-height:1.4;color:var(--mute)}
+.pf-index li a{font-family:var(--f-ui);font-weight:500;font-size:16px;color:#000;text-decoration:none;margin-right:8px}
+.pf-index li a:hover{text-decoration:underline}
+
+@media(min-width:600px){
+  .gd-stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .ep-body ul.gd-cards,.ep-body ul.aw-cats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(min-width:900px){
+  .ep-body ol.aw-podium{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .aw-podium > li{grid-template-columns:1fr}
+  .aw-rank{grid-row:auto}
+  .pf-index{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 48px}
+}
+@media print{
+  main.db-hub .pf-index{display:none}
+}
+.pf-points .db-top{display:inline-block}
+.ep-body h3{font-family:var(--f-ui);font-weight:600;font-size:19px;line-height:1.3;color:#000;margin-top:26px}
+.ep-body h3 + p{margin-top:8px}
+.ep-body .gd-cards h3,.ep-body .aw-podium h3{margin-top:0}
