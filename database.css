@@ -1,0 +1,187 @@
+/* ==========================================================================
+   Fintech database: trending.html and fintech-companies/*.html.
+   Loaded after home.css (tokens, nav, buttons, footer). No other page loads it.
+   ========================================================================== */
+
+/* ---------- Trending: hero + two columns ---------- */
+.db-page .sec-title,.db-hub .sec-title{text-transform:none}
+.db-hero{padding-top:28px;text-align:center}
+.db-main{padding-top:20px}
+.db-grid{display:grid;gap:32px}
+.db-right{display:flex;flex-direction:column;align-items:center;text-align:center;order:-1}
+.db-box{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:150px;height:72px;padding:0 20px;border:3px solid #000;
+}
+.db-box-num{
+  display:flex;align-items:center;font-family:var(--f-ui);font-weight:400;font-size:44px;line-height:1.1;
+  color:var(--ink-2);font-variant-numeric:tabular-nums;letter-spacing:-.01em;
+}
+.db-box-label{font-family:var(--f-ui);font-weight:500;font-size:18px;line-height:1.5;color:var(--ink-2);margin-top:14px}
+/* the bright blue pill buttons (#0088FF) */
+.btn-sky{background:#0088FF;color:#fff}
+.btn-sky:hover{background:#0074DB}
+.db-actions{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.db-actions .btn{min-width:200px}
+
+.db-intro{font-family:var(--f-ui);font-weight:500;font-size:17px;line-height:1.5;color:var(--ink-2);max-width:60ch}
+.db-intro b{font-weight:600;color:#000}
+
+/* ---------- filters ---------- */
+.db-filters{display:grid;grid-template-columns:1fr;gap:10px;margin-top:22px}
+.db-search input,.db-select select{
+  width:100%;height:46px;border:1px solid #CFCFCF;border-radius:999px;background:#fff;
+  font-family:var(--f-sans);font-size:15px;color:#000;padding:0 18px;
+}
+.db-search input:focus,.db-select select:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
+.db-select select{
+  appearance:none;-webkit-appearance:none;padding-right:40px;cursor:pointer;
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3C/svg%3E") right 16px center/11px no-repeat;
+}
+.db-chiprow{
+  display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 0 4px;
+  margin-inline:calc(var(--g) * -1);padding-inline:var(--g);
+}
+.db-chiprow::-webkit-scrollbar{display:none}
+.db-chip{
+  flex:none;height:36px;padding:0 15px;border-radius:999px;border:1px solid #CFCFCF;background:#fff;cursor:pointer;
+  font-family:var(--f-sans);font-weight:500;font-size:14px;color:#000;white-space:nowrap;
+  transition:background-color .2s ease,color .2s ease,border-color .2s ease;
+}
+.db-chip:hover{border-color:#000}
+.db-chip[aria-pressed="true"]{background:#000;color:#fff;border-color:#000}
+
+/* ---------- the table ---------- */
+.db-board{margin-top:20px}
+.db-count{font-family:var(--f-sans);font-size:14px;color:var(--mute);margin-bottom:10px}
+.db-count b{color:#000;font-weight:600}
+.db-table-wrap{position:relative;background:#fff;border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.db-table{width:100%;border-collapse:collapse;font-family:var(--f-sans)}
+.db-table th{
+  text-align:left;padding:13px 16px;background:#F2F2F2;
+  font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--mute);
+}
+.db-table td{padding:13px 16px;border-top:1px solid var(--line);font-size:14px;line-height:1.35;color:var(--ink-2);vertical-align:top}
+.db-name{min-width:180px}
+.db-co{display:block;font-family:var(--f-ui);font-weight:500;font-size:16px;color:#000}
+.db-co a:hover{text-decoration:underline;text-underline-offset:3px}
+.db-host{display:block;font-size:12px;color:var(--mute);margin-top:2px}
+.db-year{font-variant-numeric:tabular-nums;white-space:nowrap}
+.db-empty td{padding:40px 16px;text-align:center;color:var(--mute)}
+
+/* bottom five rows fade into a blur: "there is a lot more where this came from" */
+.db-table tr.is-blur td{user-select:none;pointer-events:none}
+.db-table tr.b1 td{filter:blur(1px);opacity:.92}
+.db-table tr.b2 td{filter:blur(2px);opacity:.8}
+.db-table tr.b3 td{filter:blur(3.5px);opacity:.66}
+.db-table tr.b4 td{filter:blur(5.5px);opacity:.5}
+.db-table tr.b5 td{filter:blur(8px);opacity:.36}
+.db-gate{
+  position:absolute;left:0;right:0;bottom:0;height:46%;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:12px;padding:0 20px 26px;text-align:center;
+  background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.7) 40%,rgba(255,255,255,.96) 75%);
+}
+.db-gate p{font-family:var(--f-ui);font-weight:500;font-size:16px;color:var(--ink-2)}
+.db-gate b{font-weight:700;color:#000}
+.db-gate[hidden]{display:none}
+.db-source{font-family:var(--f-sans);font-size:12px;line-height:1.5;color:var(--mute);margin-top:10px}
+.db-source a{text-decoration:underline;text-underline-offset:2px}
+
+/* ---------- podcast + subscribers + apply ---------- */
+.db-lower{padding-top:var(--sect)}
+.db-lower-grid{display:grid;gap:44px}
+.db-posts{margin-top:22px}
+.db-lower-right{display:flex;flex-direction:column;gap:24px}
+.db-sub{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.db-box-wide{min-width:200px}
+.db-sub-label{font-family:var(--f-ui);font-weight:500;font-size:18px;line-height:1.5;color:var(--ink-2);max-width:220px}
+.db-apply{
+  display:flex;align-items:center;justify-content:center;min-height:340px;border-radius:30px;background:#000;color:#fff;
+  padding:40px;text-align:center;transition:transform .4s var(--ease-out),background-color .3s ease;
+}
+.db-apply span{
+  font-family:var(--f-ui);font-weight:600;font-size:clamp(42px,5vw,60px);line-height:1.03;letter-spacing:-.02em;
+  text-transform:capitalize;max-width:5.3em;
+}
+.db-apply:hover{background:#111;transform:translateY(-3px)}
+
+/* ---------- browse links ---------- */
+.db-browse{padding-top:var(--sect);padding-bottom:var(--sect)}
+.db-browse-grid{display:grid;gap:28px;margin-top:22px}
+.db-browse h3{font-family:var(--f-sans);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--mute);margin:18px 0 10px}
+.db-browse h3:first-child{margin-top:0}
+.db-chips{display:flex;flex-wrap:wrap;gap:8px}
+.db-chips a,.db-chip-static{
+  display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;
+  border:1px solid #CFCFCF;background:#fff;font-family:var(--f-sans);font-weight:500;font-size:14px;color:#000;
+}
+.db-chips a:hover{border-color:#000}
+.db-chips a span,.db-chip-static span{color:var(--mute);font-weight:400;font-variant-numeric:tabular-nums}
+
+/* ---------- hub pages (fintech-companies/*) ---------- */
+.db-hub{padding-top:12px;padding-bottom:var(--sect)}
+.db-hub .ep-title{max-width:16em}
+.db-hub .ep-dek{max-width:46em}
+.db-stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.db-stat{border:3px solid #000;padding:12px 18px;min-width:150px}
+.db-stat b{display:block;font-family:var(--f-ui);font-weight:400;font-size:40px;line-height:1.1;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.db-stat span{display:block;font-family:var(--f-sans);font-size:13px;color:var(--mute);margin-top:4px;max-width:18ch}
+.db-hub > .wrap > .db-chips{margin-top:22px}
+.db-cta{
+  margin-top:32px;border-radius:17px;background:#000;color:#fff;padding:22px;
+  display:flex;flex-direction:column;gap:16px;
+}
+.db-cta p{font-family:var(--f-ui);font-weight:500;font-size:17px;line-height:1.45;color:rgba(255,255,255,.85);max-width:48ch}
+.db-cta b{color:#fff;font-weight:600}
+.db-cta-actions{display:flex;flex-wrap:wrap;gap:10px}
+.db-cta .btn-line{color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}
+.db-cta .btn-line:hover{background:rgba(255,255,255,.12);color:#fff}
+.db-list{margin-top:var(--sect)}
+.db-list-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.db-list-head .db-search{flex:1 1 260px;max-width:380px}
+.db-related{margin-top:56px}
+.db-related .db-chips{margin-top:16px}
+
+/* ---------- phones: rows become cards ---------- */
+@media(max-width:699px){
+  .db-table thead{display:none}
+  .db-table,.db-table tbody{display:block}
+  .db-table tr{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:14px 16px;border-top:1px solid var(--line)}
+  .db-table tr:first-child{border-top:0}
+  .db-table td{display:block;padding:0;border:0}
+  .db-name{grid-column:1;grid-row:1 / span 2;min-width:0}
+  .db-year{grid-column:2;grid-row:1;text-align:right;color:var(--mute)}
+  .db-sec{grid-column:1 / -1;font-size:13px;color:var(--mute)}
+  .db-loc{grid-column:1 / -1;font-size:13px;color:var(--mute)}
+  .db-gate{height:52%}
+}
+
+/* ==========================================================================
+   600px+
+   ========================================================================== */
+@media(min-width:600px){
+  .db-filters{grid-template-columns:1fr 220px}
+  .db-chiprow{grid-column:1 / -1;flex-wrap:wrap;overflow:visible;margin-inline:0;padding-inline:0}
+  .db-browse-grid{grid-template-columns:1fr 1fr;gap:40px}
+  .db-cta{flex-direction:row;align-items:center;justify-content:space-between;padding:26px 30px}
+}
+
+/* ==========================================================================
+   900px+ : the Figma layout
+   ========================================================================== */
+@media(min-width:900px){
+  .db-hero{padding-top:63px}
+  .db-main{padding-top:27px}
+  .db-grid{grid-template-columns:minmax(0,904px) minmax(0,1fr);gap:43px;align-items:start}
+  .db-right{order:0;padding-top:0}
+  .db-box{height:82px;min-width:167px}
+  .db-box-num{font-size:50px}
+  .db-box-label{font-size:20px;margin-top:28px}
+  .db-actions{flex-direction:column;align-items:center;gap:10px;margin-top:40px}
+  .db-lower-grid{grid-template-columns:minmax(0,600px) minmax(0,511px);justify-content:space-between;gap:64px}
+  .db-lower-right{gap:44px;padding-top:10px}
+  .db-box-wide{min-width:239px}
+  .db-sub-label{font-size:20px;text-align:center}
+  .db-apply{min-height:484px;border-radius:42px}
+  .db-hub{padding-top:20px}
+}
