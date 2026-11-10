@@ -1,0 +1,51 @@
+/* how-to.html (Figma "How to Hyper Grow."). Builds on home.css, which styles the
+   video box (.growth) and the numbered sections (.calls) reused here. */
+
+.ht-page{padding-bottom:var(--sect)}
+.ht-hero{text-align:center;padding-top:3px}
+.ht-title{
+  font-family:var(--f-display);font-weight:400;font-size:clamp(52px,9.4vw,100px);line-height:1.3;
+  letter-spacing:-.02em;color:#000;
+}
+
+/* the black video box: shorter than on the homepage, text centred */
+.ht-growth{padding-top:2px}
+.ht-growth .growth-box{min-height:360px;align-items:center}
+.ht-growth .growth-shade{background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.4) 50%,rgba(0,0,0,.6) 100%)}
+.ht-growth .growth-row{margin-top:26px}
+
+.ht-h2{
+  font-family:var(--f-display);font-weight:400;font-size:clamp(40px,5.6vw,60px);line-height:1.3;
+  letter-spacing:-.02em;color:#000;
+}
+.ht-center{text-align:center}
+.ht-start{padding-top:clamp(40px,6vw,75px)}
+.ht-calls{padding-top:clamp(24px,3vw,50px)}
+.ht-cutout{
+  display:flex;align-items:flex-end;justify-content:center;
+  background:#EFEFEE url(/img/home/hero-gradient.webp) center/cover no-repeat;
+}
+.ht-cutout img{width:auto;height:auto;max-width:70%;max-height:94%;aspect-ratio:auto;object-fit:contain}
+
+/* three packages */
+.ht-packages{padding-top:clamp(40px,6vw,70px)}
+.ht-sub{margin-top:24px;font-family:var(--f-ui);font-weight:500;font-size:clamp(22px,2.4vw,28px);line-height:1.36;color:#262626;text-transform:capitalize}
+.ht-lead{margin-top:8px;max-width:662px;font-family:var(--f-ui);font-weight:500;font-size:15px;line-height:20px;color:#000}
+.ht-pkgs{display:grid;gap:36px;margin-top:48px}
+.ht-card{width:100%;max-width:280px;aspect-ratio:280/336;object-fit:cover;border-radius:13px;display:block}
+.ht-pkg-body{border-top:1px solid var(--line);margin-top:20px;padding:40px 20px 40px 0}
+.ht-icon{width:24px;height:24px;color:#000;display:block}
+.ht-pkg h3{margin-top:24px;font-family:var(--f-serif);font-weight:400;font-size:18px;line-height:1;letter-spacing:-.03em;color:#000}
+.ht-pkg p,.ht-pkg li{font-family:var(--f-sans);font-size:15px;line-height:1.4;letter-spacing:-.005em;color:var(--mute)}
+.ht-pkg p{margin-top:20px}
+.ht-pkg p.ht-get{margin-top:14px}
+.ht-pkg ul{margin-top:2px}
+.ht-pkg li{position:relative;padding-left:14px}
+.ht-pkg li::before{content:"";position:absolute;left:2px;top:.62em;width:4px;height:4px;border-radius:50%;background:currentColor}
+.ht-pkg p.ht-price{margin-top:14px;color:#000;font-weight:500}
+
+@media(min-width:900px){
+  .ht-growth .growth-box{min-height:439px}
+  .ht-pkgs{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .ht-pkg:last-child .ht-pkg-body{padding-right:40px}
+}
