@@ -35,6 +35,7 @@ Key facts:
 
 - [Fintech database (Trending)](https://alexandrastudio.se/trending.html): A searchable database of 4,401 European fintech companies across 35 countries, filterable by sector and country. Green Fintech Award Points mark the 204 companies most active with Alexandra Studio, Nordic fintech buyers and partners, and newsletter readers right now, highest first. Source: the EU FinTech Map on the European Commission's EU Digital Finance Platform plus companies from the Alexandra Studio network, compiled and cleaned by Alexandra Studio, updated November 2026. Each page below lists every company with sector, city and founding year.
 - [Fintech Awards 2026](https://alexandrastudio.se/fintech-awards.html): the Fintech Award Points leaderboard, category winners and how points work.
+- [Download a list, add or remove your company](https://alexandrastudio.se/fintech-list.html): a list of 100 fintech companies matching your ICP costs 300 SEK and includes name, URL, description and location. Companies can ask to be added, or removed (removal requests need an email address on the company's own domain).
 - [Fintech company profiles](https://alexandrastudio.se/fintech-company/): 220 companies researched by the Alexandra Studio team: what each one does, what it offers, who it serves, its keywords and its Fintech Award Points.
 
 Nordics:
