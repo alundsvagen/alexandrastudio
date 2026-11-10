@@ -1,0 +1,21 @@
+/* contact.html (Figma "Contact us."). Builds on home.css, which also styles the
+   founder (.about) and Trending Topics + Podcast (.pulse) sections moved here. */
+
+.ct-page{padding-bottom:var(--sect)}
+.ct-hero{text-align:center;padding-top:3px}
+.ct-title{
+  font-family:var(--f-display);font-weight:400;font-size:clamp(52px,9.4vw,100px);line-height:1.3;
+  letter-spacing:-.02em;color:#000;
+}
+.ct-details{
+  margin-top:10px;font-style:normal;font-family:var(--f-ui);font-weight:500;font-size:clamp(17px,1.6vw,20px);
+  line-height:1.5;color:#262626;
+}
+.ct-details b{font-weight:600;color:#000}
+.ct-copy{color:var(--mute)}
+.ct-ask{margin-top:28px;font-family:var(--f-ui);font-weight:500;font-size:clamp(17px,1.6vw,20px);line-height:1.5;color:#262626}
+.ct-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px}
+.ct-actions .btn{gap:6px}
+.ct-actions .btn svg{width:8px;height:8px}
+.ct-outline{background:transparent;color:#000;box-shadow:inset 0 0 0 1.5px #000}
+.ct-outline:hover{background:#000;color:#fff}
