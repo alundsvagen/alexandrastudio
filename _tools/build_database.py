@@ -199,24 +199,6 @@ TOTAL = len(ROWS)
 COUNTRIES = [c for c, _ in collections.Counter(r['country'] for r in ROWS).most_common()]
 TOP_PTS = ROWS[0]['pts'] if ROWS and ROWS[0]['pts'] else 0
 N_TRENDING = sum(1 for r in ROWS if r['pts'])
-# Filter tags on the Trending page (the Figma tag row). Sector tags come from the source sector,
-# the others from what the company says it does.
-def _text(r):
-    p = r['profile'] or {}
-    return ' '.join([r['name'], r.get('description', ''), p.get('keywords', ''), p.get('one_liner', ''), p.get('offering', '')]).lower()
-TAGS = [
-    ('neobanks', 'Neobanks', lambda r: 'Banking' in r['tags']),
-    ('data', 'Data', lambda r: bool(re.search(r'\bdata\b|analytics|enrichment|open banking|credit (?:data|information)|scoring|insights', _text(r)))),
-    ('lending', 'Lending', lambda r: 'Lending' in r['tags']),
-    ('aml', 'AML', lambda r: bool(re.search(r'\baml\b|anti-money|\bkyc\b|\bkyb\b|sanction|transaction monitoring|financial crime', _text(r)))),
-    ('payments', 'Payments', lambda r: 'Payments' in r['tags']),
-    ('invoicing', 'Invoicing', lambda r: bool(re.search(r'invoic|billing|accounts receivable|accounts payable|e-?faktura', _text(r)))),
-    ('regtech', 'Regtech', lambda r: 'Regtech' in r['tags']),
-]
-for _r in ROWS:
-    _r['tagmask'] = sum(1 << i for i, (_, _, f) in enumerate(TAGS) if f(_r))
-COUNTRY_TAGS = [('Sweden', 'Sweden'), ('Norway', 'Norway'), ('Denmark', 'Denmark'), ('Finland', 'Finland'),
-                ('Germany', 'Germany'), ('United Kingdom', 'UK'), ('France', 'France')]
 RANKED = [r for r in ROWS if r['pts']]
 RANK = {id(r): i + 1 for i, r in enumerate(RANKED)}  # ties share the order they sort in
 PROFILED = [r for r in ROWS if r['profile']]
@@ -473,11 +455,10 @@ def build_json():
             "nordics": NORDICS,
             "hubs": {**{h['key']: hub_url(h) for h in HUBS if h['kind'] in ('country', 'region')}},
             "top": TOP_PTS,
-            "tags": [[k, lab] for k, lab, _ in TAGS],
-            # [name, sectorBitmask, countryIndex, city, year, url, fintechAwardPoints, profilePath, tagBitmask]
+            # [name, sectorBitmask, countryIndex, city, year, url, fintechAwardPoints, profilePath]
             # companies with Fintech Award Points first
             "rows": [[r['name'], sum(1 << SECTORS.index(t) for t in r['tags']), countries.index(r['country']),
-                      r['city'], r['year'], r['url'], r['pts'], r['purl'], r['tagmask']] for r in ROWS]}
+                      r['city'], r['year'], r['url'], r['pts'], r['purl']] for r in ROWS]}
     (ROOT / 'data').mkdir(exist_ok=True)
     (ROOT / 'data' / 'fintechs.json').write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
 
@@ -499,13 +480,10 @@ def build_trending():
 
     first = ROWS[:10]
     rows_html = '\n'.join('            ' + row_html(r, blur=(i - 4 if i >= 5 else 0)) for i, r in enumerate(first))
-    check = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.3l3 3 6-6.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
-    tag_btns = '\n'.join(f'            <button type="button" class="db-tag" data-tag="{k}" aria-pressed="false">{check}{E(lab)}</button>'
-                          for k, lab, _ in TAGS)
-    country_btns = '\n'.join(f'            <button type="button" class="db-tag" data-country="{E(c)}" aria-pressed="false">{check}{E(lab)}</button>'
-                              for c, lab in COUNTRY_TAGS)
-    shown = {c for c, _ in COUNTRY_TAGS}
-    opts = '\n'.join(f'                <option value="{E(c)}">{E(c)}</option>' for c in COUNTRIES if c not in shown)
+    sec_btns = '\n'.join(
+        f'            <button type="button" class="db-chip" data-sector="{i}" aria-pressed="false">{E(SECTOR_SHORT.get(s, s))}</button>'
+        for i, s in enumerate(SECTORS[:9]))
+    opts = '\n'.join(f'              <option value="{E(c)}">{E(c)}</option>' for c in COUNTRIES)
     posts = '\n'.join(f'''          <li>
             <a class="post" href="{p["url"]}" target="_blank" rel="noopener">
               <img src="https://substackcdn.com/image/fetch/{p["img"]}" alt="" width="240" height="150" loading="lazy" decoding="async" />
@@ -539,21 +517,18 @@ def build_trending():
 
         <div class="db-filters" role="search">
           <label class="db-search"><span class="sr-only">Search fintech companies</span>
-            <input type="search" id="dbSearch" placeholder="Search Company" autocomplete="off" />
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5Zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14Z"/></svg>
+            <input type="search" id="dbSearch" placeholder="Search {fmt(TOTAL)} fintechs" autocomplete="off" />
           </label>
-          <div class="db-tagrow" role="group" aria-label="Filter by sector">
-{tag_btns}
-          </div>
-          <div class="db-tagrow" role="group" aria-label="Filter by country">
-{country_btns}
-            <label class="db-tag db-tag-more"><span class="sr-only">More countries</span>
-              <select id="dbCountry">
-                <option value="">More countries</option>
-                <option value="Nordics">Nordics</option>
+          <label class="db-select"><span class="sr-only">Country</span>
+            <select id="dbCountry">
+              <option value="">All of Europe</option>
+              <option value="Nordics">Nordics</option>
 {opts}
-              </select>
-            </label>
+            </select>
+          </label>
+          <div class="db-chiprow" role="group" aria-label="Filter by sector">
+            <button type="button" class="db-chip" data-sector="" aria-pressed="true">All sectors</button>
+{sec_btns}
           </div>
         </div>
 
@@ -579,11 +554,10 @@ def build_trending():
       <aside class="db-right" aria-label="Database size">
         <div class="db-box odo-scope"><p class="db-box-num"><span class="sr-only">{fmt(TOTAL)}</span><span class="odo" data-to="{TOTAL}" aria-hidden="true">{TOTAL}</span></p></div>
         <p class="db-box-label">Fintechs in our database.</p>
-        <ul class="db-manage">
-          <li><a href="{ADD_FORM}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 7.5v9M7.5 12h9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Add your Company</a></li>
-          <li><a class="is-remove" href="{REMOVE_FORM}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M7.5 12h9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>Remove your Company</a></li>
+        <ul class="db-actions">
+          <li><a class="btn btn-sky" href="{ADD_FORM}">Add your Company</a></li>
+          <li><a class="btn btn-sky" href="{REMOVE_FORM}">Remove your Company</a></li>
         </ul>
-        <a class="btn-glass" href="{ICP_URL}">Download a List of 100 of your ICP</a>
       </aside>
     </div>
   </section>
