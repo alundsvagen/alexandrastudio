@@ -75,6 +75,9 @@
         // how many cells this column has to travel
         var place = Math.pow(10, str.length - 1 - i);
         var steps = Math.floor(target / place); // e.g. 59 → tens: 5, ones: 59
+        // Big numbers (4246) would make strips thousands of cells tall, which
+        // phones refuse to draw. Cap it: spin a couple of full turns, then land.
+        if (steps > 29) steps = 20 + Number(ch);
         var col = document.createElement('span');
         col.className = 'odo-col';
         var strip = document.createElement('span');

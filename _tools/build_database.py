@@ -89,7 +89,14 @@ def place(r): return f"{r['city']}, {r['country']}" if r['city'] else r['country
 # Shared bits
 # --------------------------------------------------------------------------
 def row_html(r, blur=0):
-    hidden = f' class="is-blur b{blur}" aria-hidden="true"' if blur else ''
+    # blur 1-5: visible but increasingly blurred; 6: in the page (for search engines) but not shown.
+    # Every gated row carries .db-locked, which the paywall structured data points at.
+    if blur == 6:
+        hidden = ' class="db-locked db-hide" aria-hidden="true"'
+    elif blur:
+        hidden = f' class="db-locked is-blur b{blur}" aria-hidden="true"'
+    else:
+        hidden = ''
     name = E(r['name'])
     if r['url'] and not blur:
         name_html = f'<a href="{E(r["url"])}" target="_blank" rel="nofollow noopener">{name}</a>'
@@ -205,6 +212,8 @@ def build_hub(h):
         {"@type": "CollectionPage", "@id": SITE + path, "url": SITE + path, "name": title, "description": desc,
          "isPartOf": {"@id": f"{SITE}/#website"}, "publisher": {"@id": f"{SITE}/#organization"}, "inLanguage": "en",
          "dateModified": "2026-11-10",
+         "isAccessibleForFree": False,
+         "hasPart": {"@type": "WebPageElement", "isAccessibleForFree": False, "cssSelector": ".db-locked"},
          "citation": {"@type": "Dataset", "name": "EU FinTech Map", "url": SOURCE_URL},
          "mainEntity": {"@type": "ItemList", "numberOfItems": n, "itemListElement": [
              {"@type": "ListItem", "position": i + 1,
@@ -212,7 +221,7 @@ def build_hub(h):
                        **({"foundingDate": str(r['year'])} if r['year'] else {}),
                        "address": {"@type": "PostalAddress", "addressCountry": r['country'],
                                    **({"addressLocality": r['city']} if r['city'] else {})}}}
-             for i, r in enumerate(rs[:100])]}},
+             for i, r in enumerate(rs[:5])]}},
         crumbs_ld(trail)]}
 
     stat3 = (f'<div class="db-stat"><b>{fmt(n)}</b><span>fintechs listed</span></div>')
@@ -239,7 +248,11 @@ def build_hub(h):
             f'<li><a href="{hub_url(HUB_BY[("country", c)])}">{E(c)} <span>{k}</span></a></li>'
             for c, k in countries.most_common() if ('country', c) in HUB_BY) + '</ul>'
 
-    rows_html = '\n'.join('          ' + row_html(r) for r in rs)
+    rows_html = '\n'.join('          ' + row_html(r, blur=(0 if i < 5 else min(i - 4, 5) if i < 11 else 6)) for i, r in enumerate(rs))
+    noun = {'country': f"{DEMONYM.get(h['key'], h['key'])} fintechs", 'region': 'Nordic fintechs',
+            'city': 'Stockholm fintechs'}.get(h['kind'], f"{SECTOR_SHORT.get(h['key'], h['key']).lower()} fintechs")
+    gate = (f'''<div class="db-gate"><p><b>{fmt(n - 5)}</b> more {E(noun)} in the database.</p>
+            <a class="btn btn-sky" href="{ICP_URL}">Download a list of 100 of your ICP</a></div>''' if n > 5 else '')
     rel = ''.join(f'<li><a href="{u}">{E(t)}</a></li>' for t, u in related_links(h))
     nordic_cta = ''
     if h['key'] in ('Sweden', 'Nordics', 'Stockholm', 'Denmark', 'Finland'):
@@ -264,18 +277,17 @@ def build_hub(h):
 
     <section class="db-list" aria-labelledby="list-title">
       <div class="db-list-head">
-        <h2 class="sec-title" id="list-title">All {fmt(n)} companies</h2>
-        <label class="db-search"><span class="sr-only">Filter this list</span>
-          <input type="search" placeholder="Filter by name, city or sector" data-hub-filter autocomplete="off" />
-        </label>
+        <h2 class="sec-title" id="list-title">{fmt(n)} companies in the database</h2>
+        <a class="db-list-link" href="/trending.html">Search and filter the database</a>
       </div>
       <div class="db-table-wrap">
         <table class="db-table">
           {table_head()}
-          <tbody data-hub-rows>
+          <tbody>
 {rows_html}
           </tbody>
         </table>
+        {gate}
       </div>
       <p class="db-source">Source: <a href="{SOURCE_URL}" target="_blank" rel="noopener">{E(SOURCE_NAME)}</a>, compiled and cleaned by Alexandra Studio. Updated {UPDATED}. Is your company missing or listed wrong? <a href="{ADD_FORM}">Add your company</a> or <a href="{REMOVE_FORM}">remove it</a>.</p>
     </section>
@@ -313,7 +325,9 @@ def build_trending():
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "CollectionPage", "@id": SITE + path, "url": SITE + path, "name": "Fintech database", "description": desc,
          "isPartOf": {"@id": f"{SITE}/#website"}, "publisher": {"@id": f"{SITE}/#organization"}, "inLanguage": "en",
-         "hasPart": [{"@type": "WebPage", "name": hub_title(h)[1], "url": SITE + hub_url(h)} for h in HUBS]},
+         "isAccessibleForFree": False,
+         "hasPart": [{"@type": "WebPageElement", "isAccessibleForFree": False, "cssSelector": ".db-locked"}]
+                    + [{"@type": "WebPage", "name": hub_title(h)[1], "url": SITE + hub_url(h)} for h in HUBS]},
         {"@type": "Dataset", "name": "Alexandra Studio fintech database", "description": desc, "url": SITE + path,
          "creator": {"@id": f"{SITE}/#organization"}, "isBasedOn": SOURCE_URL, "dateModified": "2026-11-10",
          "spatialCoverage": "Europe", "variableMeasured": ["Company", "Sector", "Country", "City", "Founding year"]},
