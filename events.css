@@ -48,6 +48,8 @@
   font-variant-numeric:tabular-nums;white-space:nowrap;
 }
 .ev-pill svg{width:14px;height:14px;flex:none}
+.ev-pill-label{font-weight:500;color:rgba(0,0,0,.6);margin-right:-2px}
+.ev-pill.is-closed{background:rgba(0,0,0,.6);color:#fff}
 .ev-tag{
   position:absolute;left:12px;top:12px;z-index:1;padding:5px 10px;border-radius:999px;
   background:rgba(0,0,0,.6);color:#fff;font-family:var(--f-sans);font-weight:500;font-size:12px;
@@ -68,6 +70,8 @@
 .ev-views{display:inline-flex;align-items:center;gap:6px;color:var(--mute);font-variant-numeric:tabular-nums}
 .ev-views svg{width:17px;height:17px;flex:none}
 .ev-views b{font-weight:500;color:var(--ink-2)}
+.ev-views.is-bump svg{animation:eye-bump .6s var(--ease-out)}
+@keyframes eye-bump{0%{transform:scale(1)}40%{transform:scale(1.28);color:var(--blue)}100%{transform:scale(1)}}
 
 /* "N went" + overlapping people icons (anonymous, in brand colours) */
 .ev-went{display:flex;align-items:center;gap:10px;font-family:var(--f-sans);font-size:14px;color:var(--ink-2)}
@@ -99,16 +103,13 @@
 .ev-about p + p{margin-top:12px}
 .ev-about .sv{color:var(--mute)}
 
-/* ---------- invite band ---------- */
-.ev-invite{
-  margin-top:var(--sect);margin-bottom:var(--sect);border-radius:17px;background:#000;color:#fff;
-  display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding:28px 24px;
+/* ---------- growth section at the bottom of the index ---------- */
+.ev-growth{padding-top:var(--sect);padding-bottom:var(--sect)}
+.ev-growth .growth-box{min-height:520px}
+.growth-copy{
+  font-family:var(--f-ui);font-weight:500;font-size:clamp(16px,1.6vw,19px);line-height:1.45;
+  color:rgba(255,255,255,.86);max-width:560px;margin:16px auto 0;
 }
-.ev-invite h2{font-family:var(--f-ui);font-weight:500;font-size:clamp(24px,2.6vw,28px);line-height:1.3;color:#fff}
-.ev-invite p{font-family:var(--f-ui);font-weight:500;font-size:15px;line-height:1.4;color:rgba(255,255,255,.8);max-width:52ch;margin-top:6px}
-.ev-invite-actions{display:flex;flex-wrap:wrap;gap:12px}
-.btn-line-white{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}
-.btn-line-white:hover{background:rgba(255,255,255,.1)}
 
 /* ---------- single event page ---------- */
 .ep{padding-top:12px}
@@ -150,6 +151,7 @@
   display:flex;flex-direction:column;gap:16px;
 }
 .ep-card .ev-thumb{border-radius:11px}
+.ep-count-label{font-family:var(--f-sans);font-weight:500;font-size:13px;color:var(--mute);margin-bottom:-8px}
 .ep-count{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .ep-count div{background:var(--panel);border-radius:10px;padding:12px 4px 10px;text-align:center}
 .ep-count b{
@@ -172,7 +174,6 @@
   .ev-grid-4{grid-template-columns:repeat(2,1fr)}
   .ev-box{grid-template-columns:156px 1px 1fr;min-height:126px}
   .ev-box-num{font-size:80px}
-  .ev-invite{flex-direction:row;align-items:center;justify-content:space-between;padding:36px 40px}
 }
 
 /* ==========================================================================

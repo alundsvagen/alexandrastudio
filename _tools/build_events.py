@@ -10,7 +10,7 @@ import html, json, pathlib, re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = 'https://alexandrastudio.se'
-LUMA_IMG = 'https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,background=white,quality=80,width={w},height={w}{path}'
+LUMA_IMG = 'https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,background=white,quality=75,width=400,height=400{path}'  # Luma's own 1:1 cover
 SPRING_COUNT = 16
 
 E = html.escape
@@ -24,7 +24,8 @@ EVENTS = [
     slug='end-of-year-tech-demo-2026', status='upcoming',
     title='End of Year Tech Demo 2026', luma='https://luma.com/5oziemqf',
     cover='/uploads/1z/9b78c58d-f6ce-4968-9129-a3383d4b9729.png',
-    start=None, end=None, reg_close=None, date_label=None,
+    start='2026-12-15', end=None, reg_close='2026-12-01T23:59:59+01:00',
+    date_label='Tuesday 15 December 2026', short_date='15 Dec 2026', reg_label='Tuesday 1 December 2026',
     venue='Stockholm. The address is shared with approved guests.',
     hosts=['Alexandra Grisanti'], presented='Operator Network', views=204,
     seo_title='End of Year Tech Demo 2026, Stockholm | Insider Events',
@@ -36,13 +37,14 @@ EVENTS = [
       ('h2', "Who it's for"),
       ('p', 'Founders and product, engineering and go-to-market leads with something live to show, and the SaaS and fintech executives, operators and investors who want to see it first. The guest list is kept small so every demo gets a real conversation afterwards.'),
       ('h2', 'How to join'),
-      ('p', 'Every seat is approved by the host, Alexandra Grisanti. Request to join on Luma. Approved guests receive the exact address in Stockholm and the details for the evening.'),
+      ('p', 'Every seat is approved by the host, Alexandra Grisanti. Request to join on Luma at least two weeks before the event; registration closes on {reg}. Approved guests receive the exact address in Stockholm and the details for the evening.'),
     ]),
   dict(
     slug='vc-founder-dinner', status='upcoming',
     title='VC Founder Dinner', luma='https://luma.com/f9cyd5yl',
     cover='/uploads/1s/f1c62d43-1a62-4766-8010-56c9157befd5.png',
-    start=None, end=None, reg_close=None, date_label=None,
+    start='2027-01-26', end=None, reg_close='2027-01-12T23:59:59+01:00',
+    date_label='Tuesday 26 January 2027', short_date='26 Jan 2027', reg_label='Tuesday 12 January 2027',
     venue='Stockholm. The address is shared with approved guests.',
     hosts=['Alexandra Grisanti'], presented='Operator Network', views=109,
     seo_title='VC Founder Dinner, Stockholm | Insider Events',
@@ -55,13 +57,14 @@ EVENTS = [
       ('p', 'Some of the most useful early backers in the Nordics are operators: people who have built, sold or scaled companies and now invest in the next ones. They bring growth advice and introductions along with the capital. The dinner is set up for that kind of conversation: what is working, what is not, and who should meet whom.'),
       ('p_sv', 'VC Founder Dinner är en liten middag i Stockholm där grundare möter investerare och operatörer. Fokus ligger på operator-led growth och investeringar i Sverige: tillväxtråd, kapital och introduktioner från människor som själva har byggt och skalat bolag.'),
       ('h2', 'How to join'),
-      ('p', 'Every seat is approved by the host, Alexandra Grisanti. Request to join on Luma. Approved guests receive the exact address in Stockholm and the details for the evening.'),
+      ('p', 'Every seat is approved by the host, Alexandra Grisanti. Request to join on Luma at least two weeks before the event; registration closes on {reg}. Approved guests receive the exact address in Stockholm and the details for the evening.'),
     ]),
   dict(
     slug='post-tech-arena-vip-dinner', status='upcoming',
     title='Post Tech Arena VIP Dinner', luma='https://luma.com/wq6ym0th',
     cover='/uploads/4m/17d4ec66-d242-4b9e-aebe-114fa7b4de17.png',
-    start=None, end=None, reg_close=None, date_label=None,
+    start='2027-02-04', end=None, reg_close='2027-01-21T23:59:59+01:00',
+    date_label='Thursday 4 February 2027', short_date='4 Feb 2027', reg_label='Thursday 21 January 2027',
     venue='Stockholm. The address is shared with approved guests.',
     hosts=['Alexandra Grisanti'], presented='Operator Network', views=157,
     seo_title='Post Tech Arena VIP Dinner, Stockholm | Insider Events',
@@ -73,7 +76,7 @@ EVENTS = [
       ('h2', 'Why a side event'),
       ('p', 'A booth buys ten-minute conversations with people who are also there to sell. A side event buys a few hours with the people you actually want to meet. We wrote about the trade-off in <a href="/how-alexandra-studio-works.html#compare">Agency, hire or booth?</a>'),
       ('h2', 'How to join'),
-      ('p', 'Every seat is approved by the host, Alexandra Grisanti. Request to join on Luma. Approved guests receive the exact address in Stockholm and the details for the evening.'),
+      ('p', 'Every seat is approved by the host, Alexandra Grisanti. Request to join on Luma at least two weeks before the event; registration closes on {reg}. Approved guests receive the exact address in Stockholm and the details for the evening.'),
     ]),
 
   # ---------------- previous ----------------
@@ -274,10 +277,9 @@ def card_title(ev):
     return ev.get('short') or ev['title']
 
 def countdown_pill(ev):
-    if ev.get('start'):
-        return (f'<span class="ev-pill" data-countdown data-start="{ev["start"]}"'
-                f'{(" data-end=" + chr(34) + ev["end"] + chr(34)) if ev.get("end") else ""} aria-hidden="true">'
-                f'{ICON_CLOCK}<span data-out>Counting down</span></span>')
+    if ev.get('reg_close'):
+        return (f'<span class="ev-pill" data-countdown data-close="{ev["reg_close"]}" aria-hidden="true">'
+                f'{ICON_CLOCK}<span class="ev-pill-label">Closes in</span><span data-out>…</span></span>')
     return f'<span class="ev-pill" aria-hidden="true">{ICON_CLOCK}<span>Date to be announced</span></span>'
 
 def reg_left(ev):
@@ -297,7 +299,7 @@ def went(ev, big=False):
     return f'<p class="{cls}">{AVATARS}<span>{E(ev.get("with_text", "Invite only"))}</span></p>'
 
 def upcoming_card(ev, heading='h3'):
-    meta = ev.get('date_label') or 'Stockholm · Date to be announced'
+    meta = (ev['short_date'] + ' · Stockholm') if ev.get('short_date') else 'Stockholm · Date to be announced'
     return f'''        <a class="ev-card" href="{url(ev)}">
           <div class="ev-thumb">
             <img src="{img(ev["cover"], 400)}" alt="Cover image for {E(ev["title"])}" width="800" height="800" loading="lazy" decoding="async" />
@@ -416,14 +418,20 @@ def build_index():
         </div>
       </div>
 
-      <div class="ev-invite">
-        <div>
-          <h2>Want a seat at the next one?</h2>
-          <p>Events are invite only. Request to join on Luma, or book a call if you want to co-host a room with your buyers in it.</p>
-        </div>
-        <div class="ev-invite-actions">
-          <a class="btn btn-blue" href="https://luma.com/user/stockholmgrowth" target="_blank" rel="noopener">See all events on Luma</a>
-          <a class="btn btn-line-white" href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener">Co-host a room</a>
+    </div>
+  </section>
+
+  <section class="growth ev-growth" aria-labelledby="ev-growth-title">
+    <div class="growth-wrap">
+      <div class="growth-box">
+        <div class="growth-video" data-yt="kiv24h_9Rbc" data-start="0" aria-hidden="true"></div>
+        <div class="growth-shade" aria-hidden="true"></div>
+        <div class="growth-body">
+          <h2 id="ev-growth-title">A growth team that understands B2B Fintech</h2>
+          <p class="growth-copy">Modern marketers are catching on: you need to host the room, own the room, be the room. We do that for you. Ready-made, audience-specific.</p>
+          <div class="growth-row">
+            <a class="btn btn-blue" href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener">Book a meeting with us</a>
+          </div>
         </div>
       </div>
     </div>
@@ -458,14 +466,20 @@ def build_event(ev):
     ld = {"@context": "https://schema.org", "@graph": graph}
 
     when = ev.get('date_label') or 'Date to be announced. Approved guests are told first.'
-    facts = [('When', E(when)), ('Where', E(ev['venue'])), ('Hosts', E(', '.join(ev['hosts']))),
-             ('Presented by', E(ev['presented'])), ('Format', 'Invite only. Every seat is approved by the host.')]
+    if upcoming and ev.get('date_label'):
+        when += '. The time is shared with approved guests.'
+    facts = [('When', E(when))]
+    if upcoming and ev.get('reg_label'):
+        facts.append(('Register by', E(ev['reg_label']) + ', two weeks before the event'))
+    facts += [('Where', E(ev['venue'])), ('Hosts', E(', '.join(ev['hosts']))),
+              ('Presented by', E(ev['presented'])), ('Format', 'Invite only. Every seat is approved by the host.')]
+    blocks = [(k, v.replace('{reg}', ev.get('reg_label', 'two weeks before the event')) if isinstance(v, str) else v) for k, v in ev['body']]
     facts_html = '\n'.join(f'            <div><dt>{k}</dt><dd>{v}</dd></div>' for k, v in facts)
 
     if upcoming:
-        if ev.get('start'):
-            end_attr = f' data-end="{ev["end"]}"' if ev.get('end') else ''
-            count = f'''          <div class="ep-count" data-countdown data-full data-start="{ev["start"]}"{end_attr} role="timer" aria-label="Time until the event">
+        if ev.get('reg_close'):
+            count = f'''          <p class="ep-count-label">Registration closes in</p>
+          <div class="ep-count" data-countdown data-full data-close="{ev["reg_close"]}" role="timer" aria-label="Time left to register">
             <div><b data-d>–</b><span>Days</span></div>
             <div><b data-h>–</b><span>Hours</span></div>
             <div><b data-m>–</b><span>Min</span></div>
@@ -506,7 +520,7 @@ def build_event(ev):
 {facts_html}
         </dl>{mobile_cta}
         <div class="ep-body">
-{body_html(ev["body"])}
+{body_html(blocks)}
         </div>
       </article>
 
