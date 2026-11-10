@@ -13,20 +13,41 @@
   }
   function fmt(n) { return n.toLocaleString('en-US'); }
 
-  /* ---------- hub pages: filter the full list in place ---------- */
-  var hubInput = document.querySelector('[data-hub-filter]');
-  if (hubInput) {
-    var hubRows = Array.prototype.slice.call(document.querySelectorAll('[data-hub-rows] tr'));
-    var idx = hubRows.map(function (tr) { return norm(tr.textContent); });
-    var t;
-    hubInput.addEventListener('input', function () {
-      clearTimeout(t);
-      t = setTimeout(function () {
-        var q = norm(hubInput.value.trim());
-        hubRows.forEach(function (tr, i) { tr.hidden = q && idx[i].indexOf(q) === -1; });
-      }, 120);
+  /* ---------- copy protection ----------
+     Stops normal visitors selecting, copying, dragging, right-clicking and
+     printing the company lists. Search fields still work as usual. */
+  (function () {
+    var scope = document.querySelector('main.db-page, main.db-hub');
+    if (!scope) return;
+    var toast, hideT;
+    function isField(el) { return el && el.closest && el.closest('input, textarea, select'); }
+    function say() {
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'db-toast';
+        toast.setAttribute('role', 'status');
+        toast.innerHTML = 'Copying is turned off for the database. <a href="/icp-list.html">Get a list of 100 of your ICP</a>';
+        document.body.appendChild(toast);
+      }
+      toast.classList.add('is-on');
+      clearTimeout(hideT);
+      hideT = setTimeout(function () { toast.classList.remove('is-on'); }, 3200);
+    }
+    ['copy', 'cut'].forEach(function (type) {
+      document.addEventListener(type, function (e) {
+        if (isField(e.target)) return;
+        e.preventDefault();
+        if (e.clipboardData) e.clipboardData.setData('text/plain', '');
+        say();
+      });
     });
-  }
+    scope.addEventListener('selectstart', function (e) { if (!isField(e.target)) e.preventDefault(); });
+    scope.addEventListener('dragstart', function (e) { if (!isField(e.target)) e.preventDefault(); });
+    scope.addEventListener('contextmenu', function (e) {
+      if (e.target.closest && e.target.closest('.db-table-wrap')) { e.preventDefault(); say(); }
+    });
+    window.addEventListener('beforeprint', say);
+  })();
 
   /* ---------- trending: the gated table ---------- */
   var tbody = document.getElementById('dbRows');
@@ -64,7 +85,7 @@
     }
     var link = url && !blur ? '<a href="' + esc(url) + '" target="_blank" rel="nofollow noopener">' + name + '</a>' : name;
     var city = r[3] ? esc(r[3]) + ', ' : '';
-    return '<tr' + (blur ? ' class="is-blur b' + blur + '" aria-hidden="true"' : '') + '>' +
+    return '<tr' + (blur ? ' class="db-locked is-blur b' + blur + '" aria-hidden="true"' : '') + '>' +
       '<td class="db-name"><span class="db-co">' + link + '</span>' + (host ? '<span class="db-host">' + esc(host) + '</span>' : '') + '</td>' +
       '<td class="db-sec">' + esc(sectorsOf(r[1])) + '</td>' +
       '<td class="db-loc">' + city + esc(data.countries[r[2]]) + '</td>' +
