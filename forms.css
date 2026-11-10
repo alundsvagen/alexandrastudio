@@ -38,3 +38,6 @@
 }
 .btn-glass:hover{background-color:#0074DB}
 .btn-glass:active{transform:translateY(1px)}
+.fl-live{min-height:0;background:transparent}
+.fl-noscript{margin-top:16px;font-family:var(--f-sans);font-size:16px}
+.fl-noscript a{text-decoration:underline;text-underline-offset:3px}

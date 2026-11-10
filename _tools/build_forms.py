@@ -12,9 +12,9 @@ from site_chrome import ROOT, SITE, E, head, header, tail
 from build_database import TOTAL, CONTACT_URL, fmt
 
 FORMS = {
-    'download': '',   # Download a list of 100 (300 SEK)
-    'add': '',        # Add a company
-    'remove': '',     # Remove your company
+    'download': '43UzY2iF8Aus',   # Download a list of 100 (300 SEK)  https://form.fillout.com/t/43UzY2iF8Aus
+    'add': '3Yj2TmqfNmus',        # Add a company                      https://form.fillout.com/t/3Yj2TmqfNmus
+    'remove': '3AJ3FT4KJ3us',     # Remove your company                https://form.fillout.com/t/3AJ3FT4KJ3us
 }
 FILLOUT_JS = 'https://server.fillout.com/embed/v1/'
 PATH = '/fintech-list.html'
@@ -34,8 +34,10 @@ SECTIONS = [
 def form_html(key, title):
     fid = FORMS.get(key, '').strip()
     if fid:
-        return (f'<div class="fl-form" data-fillout-id="{E(fid)}" data-fillout-embed-type="standard" '
-                f'data-fillout-inherit-parameters data-fillout-dynamic-resize aria-label="{E(title)} form"></div>')
+        # Fillout's standard embed: the container needs a height, which dynamic-resize then adjusts
+        return (f'<div class="fl-form fl-live" data-fillout-id="{E(fid)}" data-fillout-embed-type="standard" '
+                f'style="width:100%;height:500px;" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>'
+                f'<noscript><p class="fl-noscript"><a href="https://form.fillout.com/t/{E(fid)}">Open the {E(title.lower())} form</a></p></noscript>')
     return (f'<div class="fl-form fl-soon"><p>The {E(title.lower())} form opens here soon.</p>'
             f'<a class="btn-glass" href="{CONTACT_URL}" target="_blank" rel="noopener">Book a 15-minute call instead</a></div>')
 

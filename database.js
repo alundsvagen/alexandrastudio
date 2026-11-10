@@ -26,7 +26,7 @@
         toast = document.createElement('div');
         toast.className = 'db-toast';
         toast.setAttribute('role', 'status');
-        toast.innerHTML = 'Copying is turned off for the database. <a href="/fintech-list.html#download">Download a list of 100 of your ICP</a>';
+        toast.innerHTML = 'Copying is turned off for the database. <a href="/fintech-list.html#download">Get a list of 100 of your ICP</a>';
         document.body.appendChild(toast);
       }
       toast.classList.add('is-on');
@@ -56,21 +56,20 @@
   var SHORT = { 'Wealth Management': 'Wealth', 'Crypto and DeFi': 'Crypto & DeFi',
                 'Financial Management': 'Finance software', 'Spend Management': 'Spend' };
   var search = document.getElementById('dbSearch');
-  var country = document.getElementById('dbCountry');            // "More countries"
-  var tagBtns = Array.prototype.slice.call(document.querySelectorAll('.db-tag[data-tag]'));
-  var countryBtns = Array.prototype.slice.call(document.querySelectorAll('.db-tag[data-country]'));
+  var country = document.getElementById('dbCountry');
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.db-chip[data-sector]'));
   var countEl = document.getElementById('dbCount');
   var gate = document.getElementById('dbGate');
   var moreEl = document.getElementById('dbMore');
 
-  var state = { q: '', tag: '', country: '' };
+  var state = { q: '', sector: '', country: '' };
   var data = null, names = null;
 
-  // restore filters from the URL (?q=&tag=&country=)
+  // restore filters from the URL (?q=&sector=&country=)
   var params = new URLSearchParams(location.search);
   state.q = params.get('q') || '';
   state.country = params.get('country') || '';
-  state.tag = params.get('tag') || '';
+  state.sector = params.get('sector') || '';
   if (search) search.value = state.q;
 
   function sectorsOf(mask) {
@@ -101,9 +100,7 @@
 
   function render() {
     var q = norm(state.q.trim());
-    var ti = -1;
-    data.tags.forEach(function (t, i) { if (t[0] === state.tag) ti = i; });
-    var tagBit = ti < 0 ? 0 : (1 << ti);
+    var sectorBit = state.sector === '' ? 0 : (1 << Number(state.sector));
     var cset = null;
     if (state.country === 'Nordics') {
       cset = data.nordics.map(function (c) { return data.countries.indexOf(c); });
@@ -113,7 +110,7 @@
     var hits = [];
     for (var i = 0; i < data.rows.length; i++) {
       var r = data.rows[i];
-      if (tagBit && !(r[8] & tagBit)) continue;
+      if (sectorBit && !(r[1] & sectorBit)) continue;
       if (cset && cset.indexOf(r[2]) === -1) continue;
       if (q && names[i].indexOf(q) === -1) continue;
       hits.push(r);
@@ -124,7 +121,7 @@
       : '<tr class="db-empty"><td colspan="4">No fintechs match. Try another sector or country.</td></tr>';
 
     var where = state.country ? (state.country === 'Nordics' ? ' in the Nordics' : ' in ' + state.country) : '';
-    var sec = ti >= 0 ? ' · ' + data.tags[ti][1] : '';
+    var sec = state.sector !== '' ? ' · ' + (SHORT[data.sectors[state.sector]] || data.sectors[state.sector]) : '';
     var srch = state.q.trim() ? ' matching “' + esc(state.q.trim()) + '”' : '';
     var order = hits.length > 1 && hits[0][6] ? ', highest Fintech Award Points first' : '';
     countEl.innerHTML = 'Showing <b>' + shown.length + '</b> of <b>' + fmt(hits.length) + '</b> fintechs' + where + srch + sec + order;
@@ -141,24 +138,15 @@
     // keep the URL shareable
     var p = new URLSearchParams();
     if (state.q.trim()) p.set('q', state.q.trim());
-    if (state.tag) p.set('tag', state.tag);
+    if (state.sector !== '') p.set('sector', state.sector);
     if (state.country) p.set('country', state.country);
     var qs = p.toString();
     history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
   }
 
   function syncControls() {
-    tagBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-tag') === state.tag)); });
-    var inRow = false;
-    countryBtns.forEach(function (b) {
-      var on = b.getAttribute('data-country') === state.country;
-      if (on) inRow = true;
-      b.setAttribute('aria-pressed', String(on));
-    });
-    if (country) {
-      country.value = inRow ? '' : state.country;
-      country.parentNode.classList.toggle('is-on', !inRow && !!state.country);
-    }
+    chips.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-sector') === state.sector)); });
+    if (country) country.value = state.country;
   }
 
   fetch('/data/fintechs.json')
@@ -167,31 +155,22 @@
       data = j;
       names = data.rows.map(function (r) { return norm(r[0] + ' ' + r[3]); });
       if (state.country && state.country !== 'Nordics' && data.countries.indexOf(state.country) === -1) state.country = '';
-      if (state.tag && !data.tags.some(function (t) { return t[0] === state.tag; })) state.tag = '';
       syncControls();
-      if (state.q || state.tag || state.country) render();
+      if (state.q || state.sector !== '' || state.country) render();
 
       var t;
       if (search) search.addEventListener('input', function () {
         clearTimeout(t);
         t = setTimeout(function () { state.q = search.value; render(); }, 140);
       });
-      // a pressed tag toggles off; one sector tag and one country at a time
-      tagBtns.forEach(function (b) {
+      if (country) country.addEventListener('change', function () { state.country = country.value; render(); });
+      chips.forEach(function (b) {
         b.addEventListener('click', function () {
-          var k = b.getAttribute('data-tag');
-          state.tag = state.tag === k ? '' : k;
-          syncControls(); render();
+          state.sector = b.getAttribute('data-sector');
+          syncControls();
+          render();
         });
       });
-      countryBtns.forEach(function (b) {
-        b.addEventListener('click', function () {
-          var c = b.getAttribute('data-country');
-          state.country = state.country === c ? '' : c;
-          syncControls(); render();
-        });
-      });
-      if (country) country.addEventListener('change', function () { state.country = country.value; syncControls(); render(); });
     })
     .catch(function () { /* the server-rendered first ten rows stay */ });
 })();
