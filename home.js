@@ -55,7 +55,7 @@
      The ones column rolls through every value from 0 up to the target, the
      tens column rolls 0 → target tens, so it reads as counting up. */
   (function () {
-    var stats = Array.prototype.slice.call(document.querySelectorAll('.stat'));
+    var stats = Array.prototype.slice.call(document.querySelectorAll('.stat, .odo-scope'));
     if (!stats.length || still || !hasIO) return;
     document.documentElement.classList.add('js-odo');
 
