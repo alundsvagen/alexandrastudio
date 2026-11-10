@@ -17,8 +17,8 @@ UPDATED = 'November 2026'
 SUBSCRIBERS = 1600
 ICP_URL = '/icp-list.html'
 CONTACT_URL = 'https://calendly.com/alexandra-alexandrastudio/30min'
-ADD_FORM = '#add-company'        # TODO: Fillout form link
-REMOVE_FORM = '#remove-company'  # TODO: Fillout form link
+ADD_FORM = '/add-your-company.html'        # page to be built
+REMOVE_FORM = '/remove-your-company.html'  # page to be built
 SOURCE_NAME = 'EU FinTech Map, EU Digital Finance Platform (European Commission)'
 SOURCE_URL = 'https://digital-finance-platform.ec.europa.eu/observatory/eu-fintech-map'
 
@@ -257,7 +257,7 @@ def build_hub(h):
     <div class="db-cta">
       <p><b>Selling to these companies?</b> Get a list of 100 that match your ideal customer profile, with the people to talk to.</p>
       <div class="db-cta-actions">
-        <a class="btn btn-black" href="{ICP_URL}">Download a list of 100 of your ICP</a>
+        <a class="btn btn-sky" href="{ICP_URL}">Download a list of 100 of your ICP</a>
         {nordic_cta}
       </div>
     </div>
@@ -384,7 +384,7 @@ def build_trending():
             </table>
             <div class="db-gate" id="dbGate">
               <p><b id="dbMore">{fmt(TOTAL - 10)}</b> more fintechs in the database.</p>
-              <a class="btn btn-black" href="{ICP_URL}">Download a list of 100 of your ICP</a>
+              <a class="btn btn-sky" href="{ICP_URL}">Download a list of 100 of your ICP</a>
             </div>
           </div>
           <p class="db-source">Source: <a href="{SOURCE_URL}" target="_blank" rel="noopener">{E(SOURCE_NAME)}</a>, compiled and cleaned by Alexandra Studio. Updated {UPDATED}.</p>
@@ -395,8 +395,8 @@ def build_trending():
         <div class="db-box odo-scope"><p class="db-box-num"><span class="sr-only">{fmt(TOTAL)}</span><span class="odo" data-to="{TOTAL}" aria-hidden="true">{TOTAL}</span></p></div>
         <p class="db-box-label">Fintechs in our database.</p>
         <ul class="db-actions">
-          <li><a href="{ADD_FORM}">Add your Company</a></li>
-          <li><a class="db-remove" href="{REMOVE_FORM}">Remove your Company</a></li>
+          <li><a class="btn btn-sky" href="{ADD_FORM}">Add your Company</a></li>
+          <li><a class="btn btn-sky" href="{REMOVE_FORM}">Remove your Company</a></li>
         </ul>
       </aside>
     </div>
