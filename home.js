@@ -25,6 +25,31 @@
     });
   })();
 
+  /* ---------- hero people: rise once the cutouts are decoded ----------
+     The hidden start state only applies when <html> has .js (set in <head>),
+     so without JS the people are simply there. */
+  (function () {
+    var wrap = document.getElementById('heroPeople');
+    if (!wrap) return;
+    var started = false;
+    function go() {
+      if (started) return;
+      started = true;
+      requestAnimationFrame(function () { wrap.classList.add('is-in'); });
+    }
+    if (still) { go(); return; }
+    var imgs = Array.prototype.slice.call(wrap.querySelectorAll('img'));
+    var waits = imgs.map(function (img) {
+      if (img.decode) return img.decode().catch(function () {});
+      return new Promise(function (res) {
+        if (img.complete) return res();
+        img.addEventListener('load', res); img.addEventListener('error', res);
+      });
+    });
+    if (window.Promise) Promise.all(waits).then(go); else go();
+    setTimeout(go, 2500); // never leave them hidden on a slow connection
+  })();
+
   /* ---------- odometer counters (59 / 40 / 12) ----------
      Each digit is a vertical strip that rolls like a mechanical counter.
      The ones column rolls through every value from 0 up to the target, the

@@ -114,10 +114,17 @@ section{position:relative}
   font-size:clamp(44px,8.6vw,100px);line-height:1.12;letter-spacing:-.02em;
   text-align:center;color:#000;
 }
-.hero-band-wrap{max-width:calc(1221px + 28px);margin:28px auto 0;padding-inline:calc(var(--g) * .6)}
+/* The band and the people share one coordinate system: the Figma band is
+   1221 x 363 with the cutouts at native size. --z zooms the people row
+   (and the band height with it) on smaller screens; --off re-centres it. */
+.hero-band-wrap{
+  max-width:calc(1221px + 28px);padding-inline:calc(var(--g) * .6);
+  margin:calc(6.4% + 26px) auto 0;   /* = head-room above the band + air under the headline */
+}
+.hero-stage{position:relative;--band-r:28px;--z:1.73;--off:-27.4%}
 .hero-band{
   position:relative;overflow:hidden;isolation:isolate;
-  height:clamp(190px,28.4vw,363px);border-radius:28px;
+  aspect-ratio:1221/628;border-radius:var(--band-r);
   background:#9AB6F2;
   transform:translateZ(0); /* keeps the rounded clip on Safari while children animate */
 }
@@ -152,6 +159,32 @@ section{position:relative}
   50% {transform:translate3d(.5%,-1.5%,0) scale(1.05)}
   100%{transform:translate3d(2.5%,1%,0) scale(1.03)}
 }
+/* people standing in the band: clipped by the band's sides and rounded
+   bottom, free to rise above its top edge */
+.hero-people{
+  position:absolute;left:0;right:0;bottom:0;top:-30%;z-index:1;pointer-events:none;overflow:hidden;
+  clip-path:inset(0 round 0 0 var(--band-r) var(--band-r));
+}
+.hp-row{position:absolute;left:var(--off);bottom:0;height:100%;width:calc(var(--z) * 100%)}
+.hp{position:absolute;bottom:0;height:auto;max-width:none;user-select:none;-webkit-user-drag:none}
+.hp-1{left:2.293%;width:22.523%;z-index:2}
+.hp-2{left:17.322%;width:27.518%;z-index:4}
+.hp-3{left:36.609%;width:22.686%;z-index:3}
+.hp-4{left:50.532%;width:21.622%;z-index:1}
+.hp-5{left:66.503%;width:25.143%;z-index:3}
+.hp-1,.hp-5{display:none} /* phones show the middle three */
+/* rise out of the band, one after another, with a soft spring at the top */
+.js .hero-people:not(.is-in) .hp{transform:translate3d(0,104%,0)}
+.hero-people.is-in .hp{
+  animation:hp-rise 1.25s cubic-bezier(.22,1,.36,1) both;
+  animation-delay:calc(var(--i) * 110ms + 80ms);
+}
+@keyframes hp-rise{
+  0%  {transform:translate3d(0,104%,0)}
+  58% {transform:translate3d(0,-2.4%,0)}
+  78% {transform:translate3d(0,.6%,0)}
+  100%{transform:translate3d(0,0,0)}
+}
 @keyframes hb-b1{to{transform:translate3d(22%,14%,0) scale(1.12)}}
 @keyframes hb-b2{to{transform:translate3d(-20%,-12%,0) scale(1.08)}}
 @keyframes hb-b3{to{transform:translate3d(-26%,18%,0) scale(.9)}}
@@ -164,15 +197,14 @@ section{position:relative}
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
           mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
 }
-.marquee:last-child{margin-bottom:0}
 .marquee-track{
   display:flex;width:max-content;background:var(--bg);
-  animation:marquee 48s linear infinite;
+  animation:marquee 80s linear infinite;
 }
-.marquee-rev .marquee-track{animation-direction:reverse;animation-duration:42s}
 .marquee:hover .marquee-track{animation-play-state:paused}
 .marquee-set{display:flex;align-items:center}
-.marquee-set li{flex:none;display:flex;align-items:center;justify-content:center;width:112px;height:36px;margin-right:40px}
+.marquee-set li{flex:none;display:flex;align-items:center;justify-content:center;width:112px;height:36px;margin-right:48px}
+.marquee-set li.tall{height:50px}
 .marquee-set img{
   width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;
   filter:grayscale(1) contrast(1.05);opacity:.6;mix-blend-mode:multiply;
@@ -239,7 +271,7 @@ section{position:relative}
 .growth-wrap{padding-inline:calc(var(--g) * .6)}
 .growth-video{
   position:absolute;inset:0;z-index:-2;container-type:size;
-  background:#000 url(https://i.ytimg.com/vi/1DJbrNYM3sc/hqdefault.jpg) center/cover no-repeat;
+  background:#000 url(https://i.ytimg.com/vi/kiv24h_9Rbc/hqdefault.jpg) center/cover no-repeat;
 }
 .growth-video iframe{
   position:absolute;top:50%;left:50%;border:0;pointer-events:none;
@@ -452,7 +484,10 @@ section{position:relative}
   :root{--g:32px;--sect:88px}
   .hd-in{padding-top:20px;padding-bottom:20px}
   .logo{font-size:28px}
-  .hero-band{border-radius:36px}
+  .hero-band-wrap{margin-top:calc(4.2% + 34px)}
+  .hero-stage{--band-r:36px;--z:1.15;--off:-4%}
+  .hero-band{aspect-ratio:1221/417.5}
+  .hp-1,.hp-5{display:block}
   .growth-box{border-radius:36px;min-height:600px}
   .growth-row{flex-direction:row;justify-content:center;gap:20px}
   .lockups{
@@ -463,8 +498,7 @@ section{position:relative}
   .post h3{font-size:18px}
   .tm{flex:0 0 calc((100% - 16px)/2)}
   .about-box{grid-template-columns:1fr minmax(0,300px);align-items:start}
-  .ft-cols{grid-template-columns:1.4fr 1fr 1fr 1fr}
-  .ft-about{grid-column:auto}
+  .ft-cols{grid-template-columns:repeat(4,1fr)}
 }
 
 /* ==========================================================================
@@ -490,13 +524,16 @@ section{position:relative}
   .hd-nav a:hover::after{transform:scaleX(1)}
   .hd-nav .nav-cta{display:none}
 
-  .hero{padding-top:44px}
-  .hero-band-wrap{margin-top:52px;padding-inline:14px}
-  .hero-band{border-radius:43px}
+  .hero{padding-top:63px}               /* headline box starts at 151px, as in the Figma */
+  .hero-title{line-height:1.3}
+  .hero-band-wrap{margin-top:calc(3.7% + 36px);padding-inline:14px}
+  .hero-stage{--band-r:43px;--z:1;--off:0%}
+  .hero-band{aspect-ratio:1221/363}
 
   .network{padding-top:48px}
   .marquee{margin:26px auto 34px}
-  .marquee-set li{width:130px;height:42px;margin-right:56px}
+  .marquee-set li{width:130px;height:42px;margin-right:68px}
+  .marquee-set li.tall{height:58px}
 
   .research-grid{grid-template-columns:minmax(0,1fr) minmax(0,550px);gap:60px;align-items:start}
   .research-lead{font-size:20px;line-height:30px;padding-left:17px;padding-top:4px}
@@ -539,6 +576,8 @@ section{position:relative}
   .tm-nav{gap:24px;margin-top:24px}
 
   .ft{padding:72px 0 8px}
+  .ft-cols{grid-template-columns:1.25fr repeat(4,1fr)}
+  .ft-about{grid-column:auto}
   .ft-mark{margin-top:80px}
 }
 
@@ -556,6 +595,7 @@ section{position:relative}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .hb-base,.hb-blob{animation:none}
+  .js .hero-people:not(.is-in) .hp,.hero-people.is-in .hp{transform:none;animation:none}
   .marquee-track{animation:none;width:auto;justify-content:center;flex-wrap:wrap}
   .marquee-set{flex-wrap:wrap;justify-content:center;row-gap:16px}
   .marquee-set[aria-hidden="true"]{display:none}
