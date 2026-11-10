@@ -85,8 +85,11 @@
     }
     var link = url && !blur ? '<a href="' + esc(url) + '" target="_blank" rel="nofollow noopener">' + name + '</a>' : name;
     var city = r[3] ? esc(r[3]) + ', ' : '';
+    var pts = r[6] || 0;
+    var trend = pts ? '<span class="db-trend"><span class="db-pts" title="Trending points">+' + fmt(pts) + '</span>' +
+      (pts === data.top ? '<span class="db-top">Top trender</span>' : '') + '</span>' : '';
     return '<tr' + (blur ? ' class="db-locked is-blur b' + blur + '" aria-hidden="true"' : '') + '>' +
-      '<td class="db-name"><span class="db-co">' + link + '</span>' + (host ? '<span class="db-host">' + esc(host) + '</span>' : '') + '</td>' +
+      '<td class="db-name"><span class="db-co">' + link + '</span>' + trend + (host ? '<span class="db-host">' + esc(host) + '</span>' : '') + '</td>' +
       '<td class="db-sec">' + esc(sectorsOf(r[1])) + '</td>' +
       '<td class="db-loc">' + city + esc(data.countries[r[2]]) + '</td>' +
       '<td class="db-year">' + (r[4] || '–') + '</td></tr>';
@@ -117,7 +120,8 @@
     var where = state.country ? (state.country === 'Nordics' ? ' in the Nordics' : ' in ' + state.country) : '';
     var sec = state.sector !== '' ? ' · ' + (SHORT[data.sectors[state.sector]] || data.sectors[state.sector]) : '';
     var srch = state.q.trim() ? ' matching “' + esc(state.q.trim()) + '”' : '';
-    countEl.innerHTML = 'Showing <b>' + shown.length + '</b> of <b>' + fmt(hits.length) + '</b> fintechs' + where + srch + sec;
+    var order = hits.length > 1 && hits[0][6] ? ', trending first' : '';
+    countEl.innerHTML = 'Showing <b>' + shown.length + '</b> of <b>' + fmt(hits.length) + '</b> fintechs' + where + srch + sec + order;
 
     var more = hits.length - shown.length;
     gate.hidden = hits.length <= 5;

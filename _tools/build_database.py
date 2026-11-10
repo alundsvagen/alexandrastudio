@@ -7,12 +7,23 @@
                                       each listing every company so search engines can index them
 
 Run from the repo root:   python3 _tools/build_database.py
-Source list: _tools/data/fintech-companies.csv (cleaned; emails removed).
+Source lists: _tools/data/fintech-companies.csv (EU FinTech Map, cleaned; emails removed)
+              _tools/data/network-companies.csv (companies from our own network, added by hand)
+Trending points: _tools/data/trending.csv, written by _tools/score_trending.py.
 """
 import csv, collections, json, re, statistics
 from site_chrome import ROOT, SITE, E, head, header, tail
 
 DATA = ROOT / '_tools' / 'data' / 'fintech-companies.csv'
+NETWORK = ROOT / '_tools' / 'data' / 'network-companies.csv'
+TRENDING = ROOT / '_tools' / 'data' / 'trending.csv'
+# the source put a street address where these cities should be
+CITY_FIX = {'Klarna': 'Stockholm', 'Insurely': 'Stockholm', 'Fimento': 'Stockholm',
+            'Wise Europe': 'Brussels', 'Mifundo': 'Tallinn', 'Scalable': 'Munich'}
+# Stockholm and the municipalities around it count as Stockholm for the trending points
+STOCKHOLM_AREA = {'Stockholm', 'Solna', 'Sundbyberg', 'Nacka', 'Danderyd', 'Täby', 'Lidingö', 'Huddinge',
+                  'Segeltorp', 'Bromma', 'Kista', 'Sollentuna', 'Järfälla'}
+NO_HUB = {'United Kingdom', 'United States'}  # outside the EU source: too few rows for a page of their own
 UPDATED = 'November 2026'
 SUBSCRIBERS = 1600
 ICP_URL = '/icp-list.html'
@@ -40,7 +51,7 @@ DEMONYM = {'Germany': 'German', 'France': 'French', 'Netherlands': 'Dutch', 'Spa
            'Czechia': 'Czech', 'Cyprus': 'Cypriot', 'Luxembourg': 'Luxembourg', 'Portugal': 'Portuguese',
            'Romania': 'Romanian', 'Malta': 'Maltese', 'Latvia': 'Latvian', 'Hungary': 'Hungarian',
            'Bulgaria': 'Bulgarian', 'Slovakia': 'Slovak', 'Greece': 'Greek', 'Croatia': 'Croatian',
-           'Slovenia': 'Slovenian', 'Norway': 'Norwegian', 'Switzerland': 'Swiss'}
+           'Slovenia': 'Slovenian', 'Norway': 'Norwegian', 'Switzerland': 'Swiss', 'Iceland': 'Icelandic'}
 NORDICS = ['Sweden', 'Denmark', 'Finland', 'Norway']
 
 POSTS = [  # Stockholm Growth & Fintech, most recent first
@@ -61,8 +72,29 @@ POSTS = [  # Stockholm Growth & Fintech, most recent first
 # --------------------------------------------------------------------------
 # Data
 # --------------------------------------------------------------------------
+def domain(host):
+    """example.com from www.app.example.com; keeps two-part country suffixes like example.co.uk."""
+    p = host.lower().split('.')
+    if len(p) >= 3 and p[-2] in ('co', 'com', 'org') and len(p[-1]) == 2:
+        return '.'.join(p[-3:])
+    return '.'.join(p[-2:]) if host else ''
+
+def outside_stockholm(r):
+    """True/False, or None when we only know the company is somewhere in Sweden."""
+    if r['country'] != 'Sweden':
+        return True
+    if not r['city']:
+        return None
+    return r['city'] not in STOCKHOLM_AREA
+
+def load_trending():
+    if not TRENDING.exists():
+        return {}
+    return {(t['name'], t['domain']): int(t['points']) for t in csv.DictReader(open(TRENDING, encoding='utf-8'))}
+
 def load():
-    rows = list(csv.DictReader(open(DATA, encoding='utf-8')))
+    rows = list(csv.DictReader(open(DATA, encoding='utf-8'))) + list(csv.DictReader(open(NETWORK, encoding='utf-8')))
+    pts = load_trending()
     for r in rows:
         r['tags'] = [t for t in r['sectors'].split('|') if t] if r['sectors'] else []
         r['year'] = int(r['founded']) if r['founded'] else 0
@@ -70,16 +102,23 @@ def load():
         r['url'] = w if w.startswith('http') else ('https://' + w if w else '')
         h = r['url'].split('//', 1)[-1].split('/', 1)[0].lower() if r['url'] else ''
         r['host'] = h[4:] if h.startswith('www.') else h
+        r['domain'] = domain(r['host'])
         # the source sometimes puts a street address where the city should be
         c = re.sub(r'^\d[\d\s-]*', '', r['city']).strip()
         r['city'] = '' if (re.search(r'\d', c) or re.search(r'(str\.|straat|strasse|straße|street|road|calle|via |rue |avenue|ul\.)', c, re.I)) else c
-    # default order: complete records first (sector + city + website), newest first, then A-Z
-    rows.sort(key=lambda r: (-(bool(r['tags']) and bool(r['city']) and bool(r['url'])), -r['year'], r['name'].lower()))
+        if not r['city'] and r['name'] in CITY_FIX:
+            r['city'] = CITY_FIX[r['name']]
+        r['pts'] = pts.get((r['name'], r['domain']), 0)
+    # default order: trending companies first (most points first), then complete records
+    # (sector + city + website), newest first, then A-Z
+    rows.sort(key=lambda r: (-r['pts'], -(bool(r['tags']) and bool(r['city']) and bool(r['url'])), -r['year'], r['name'].lower()))
     return rows
 
 ROWS = load()
 TOTAL = len(ROWS)
 COUNTRIES = [c for c, _ in collections.Counter(r['country'] for r in ROWS).most_common()]
+TOP_PTS = ROWS[0]['pts'] if ROWS and ROWS[0]['pts'] else 0
+N_TRENDING = sum(1 for r in ROWS if r['pts'])
 
 def fmt(n): return f'{n:,}'
 def sector_label(r): return ', '.join(SECTOR_SHORT.get(t, t) for t in r['tags']) or 'Other fintech'
@@ -88,6 +127,20 @@ def place(r): return f"{r['city']}, {r['country']}" if r['city'] else r['country
 # --------------------------------------------------------------------------
 # Shared bits
 # --------------------------------------------------------------------------
+def trend_html(r):
+    if not r['pts']:
+        return ''
+    top = '<span class="db-top">Top trender</span>' if r['pts'] == TOP_PTS else ''
+    return f'<span class="db-trend"><span class="db-pts" title="Trending points">+{fmt(r["pts"])}</span>{top}</span>'
+
+def trend_legend(n=None):
+    n = N_TRENDING if n is None else n
+    if not n:
+        return ''
+    who = 'the company' if n == 1 else f'the {fmt(n)} companies'
+    return ('<p class="db-legend"><span class="db-pts" aria-hidden="true">+</span> '
+            f'Trending points: {who} most active with us and our readers right now, highest first.</p>')
+
 def row_html(r, blur=0):
     # blur 1-5: visible but increasingly blurred; 6: in the page (for search engines) but not shown.
     # Every gated row carries .db-locked, which the paywall structured data points at.
@@ -103,7 +156,7 @@ def row_html(r, blur=0):
     else:
         name_html = name
     host = f'<span class="db-host">{E(r["host"])}</span>' if r['host'] else ''
-    return (f'<tr{hidden}><td class="db-name"><span class="db-co">{name_html}</span>{host}</td>'
+    return (f'<tr{hidden}><td class="db-name"><span class="db-co">{name_html}</span>{trend_html(r)}{host}</td>'
             f'<td class="db-sec">{E(sector_label(r))}</td><td class="db-loc">{E(place(r))}</td>'
             f'<td class="db-year">{r["year"] or "–"}</td></tr>')
 
@@ -127,7 +180,7 @@ def crumbs_ld(items):
 HUBS = []  # (slug, kind, label, rows)
 for c in COUNTRIES:
     rs = [r for r in ROWS if r['country'] == c]
-    if len(rs) >= 10:
+    if len(rs) >= 10 and c not in NO_HUB:
         HUBS.append(dict(slug=c.lower().replace(' ', '-'), kind='country', key=c, rows=rs))
 HUBS.append(dict(slug='nordics', kind='region', key='Nordics', rows=[r for r in ROWS if r['country'] in NORDICS]))
 HUBS.append(dict(slug='stockholm', kind='city', key='Stockholm',
@@ -280,6 +333,7 @@ def build_hub(h):
         <h2 class="sec-title" id="list-title">{fmt(n)} companies in the database</h2>
         <a class="db-list-link" href="/trending.html">Search and filter the database</a>
       </div>
+      {trend_legend(sum(1 for r in rs if r['pts']))}
       <div class="db-table-wrap">
         <table class="db-table">
           {table_head()}
@@ -289,7 +343,7 @@ def build_hub(h):
         </table>
         {gate}
       </div>
-      <p class="db-source">Source: <a href="{SOURCE_URL}" target="_blank" rel="noopener">{E(SOURCE_NAME)}</a>, compiled and cleaned by Alexandra Studio. Updated {UPDATED}. Is your company missing or listed wrong? <a href="{ADD_FORM}">Add your company</a> or <a href="{REMOVE_FORM}">remove it</a>.</p>
+      <p class="db-source">Source: <a href="{SOURCE_URL}" target="_blank" rel="noopener">{E(SOURCE_NAME)}</a>, plus companies from our own network, compiled and cleaned by Alexandra Studio. Updated {UPDATED}. Is your company missing or listed wrong? <a href="{ADD_FORM}">Add your company</a> or <a href="{REMOVE_FORM}">remove it</a>.</p>
     </section>
 
     <section class="db-related" aria-labelledby="rel-title">
@@ -311,9 +365,10 @@ def build_json():
     data = {"updated": UPDATED, "total": TOTAL, "sectors": SECTORS, "countries": countries,
             "nordics": NORDICS,
             "hubs": {**{h['key']: hub_url(h) for h in HUBS if h['kind'] in ('country', 'region')}},
-            # [name, sectorBitmask, countryIndex, city, year, url]
+            "top": TOP_PTS,
+            # [name, sectorBitmask, countryIndex, city, year, url, trendingPoints]; trending first
             "rows": [[r['name'], sum(1 << SECTORS.index(t) for t in r['tags']), countries.index(r['country']),
-                      r['city'], r['year'], r['url']] for r in ROWS]}
+                      r['city'], r['year'], r['url'], r['pts']] for r in ROWS]}
     (ROOT / 'data').mkdir(exist_ok=True)
     (ROOT / 'data' / 'fintechs.json').write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
 
@@ -330,7 +385,7 @@ def build_trending():
                     + [{"@type": "WebPage", "name": hub_title(h)[1], "url": SITE + hub_url(h)} for h in HUBS]},
         {"@type": "Dataset", "name": "Alexandra Studio fintech database", "description": desc, "url": SITE + path,
          "creator": {"@id": f"{SITE}/#organization"}, "isBasedOn": SOURCE_URL, "dateModified": "2026-11-10",
-         "spatialCoverage": "Europe", "variableMeasured": ["Company", "Sector", "Country", "City", "Founding year"]},
+         "spatialCoverage": "Europe", "variableMeasured": ["Company", "Sector", "Country", "City", "Founding year", "Trending points"]},
         crumbs_ld([('Alexandra Studio', '/'), ('Fintech database', path)])]}
 
     first = ROWS[:10]
@@ -388,7 +443,8 @@ def build_trending():
         </div>
 
         <div class="db-board" aria-live="polite">
-          <p class="db-count" id="dbCount">Showing 10 of {fmt(TOTAL)} fintechs, newest first</p>
+          <p class="db-count" id="dbCount">Showing 10 of {fmt(TOTAL)} fintechs, {'trending first' if N_TRENDING else 'newest first'}</p>
+          {trend_legend()}
           <div class="db-table-wrap">
             <table class="db-table db-gated">
               {table_head()}
@@ -401,7 +457,7 @@ def build_trending():
               <a class="btn btn-sky" href="{ICP_URL}">Download a list of 100 of your ICP</a>
             </div>
           </div>
-          <p class="db-source">Source: <a href="{SOURCE_URL}" target="_blank" rel="noopener">{E(SOURCE_NAME)}</a>, compiled and cleaned by Alexandra Studio. Updated {UPDATED}.</p>
+          <p class="db-source">Source: <a href="{SOURCE_URL}" target="_blank" rel="noopener">{E(SOURCE_NAME)}</a>, plus companies from our own network, compiled and cleaned by Alexandra Studio. Updated {UPDATED}.</p>
         </div>
       </div>
 
