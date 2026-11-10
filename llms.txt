@@ -32,45 +32,46 @@ Key facts:
 
 ## Fintech database
 
-- [Fintech database (Trending)](https://alexandrastudio.se/trending.html): A searchable database of 4,246 European fintech companies across 29 countries, filterable by sector and country. Source: the EU FinTech Map on the European Commission's EU Digital Finance Platform, compiled and cleaned by Alexandra Studio, updated November 2026. Each page below lists every company with sector, city and founding year.
+- [Fintech database (Trending)](https://alexandrastudio.se/trending.html): A searchable database of 4,305 European fintech companies across 32 countries, filterable by sector and country. Green trending points mark the 155 companies most active with Alexandra Studio and its newsletter readers right now, highest first. Source: the EU FinTech Map on the European Commission's EU Digital Finance Platform plus companies from the Alexandra Studio network, compiled and cleaned by Alexandra Studio, updated November 2026. Each page below lists every company with sector, city and founding year.
 
 Nordics:
-- [Nordic fintech companies](https://alexandrastudio.se/fintech-companies/nordics.html): 554 companies
-- [Fintech companies in Stockholm](https://alexandrastudio.se/fintech-companies/stockholm.html): 207 companies
-- [Fintech companies in Sweden](https://alexandrastudio.se/fintech-companies/sweden.html): 313 companies
-- [Fintech companies in Denmark](https://alexandrastudio.se/fintech-companies/denmark.html): 143 companies
-- [Fintech companies in Finland](https://alexandrastudio.se/fintech-companies/finland.html): 91 companies
+- [Nordic fintech companies](https://alexandrastudio.se/fintech-companies/nordics.html): 581 companies
+- [Fintech companies in Stockholm](https://alexandrastudio.se/fintech-companies/stockholm.html): 221 companies
+- [Fintech companies in Sweden](https://alexandrastudio.se/fintech-companies/sweden.html): 328 companies
+- [Fintech companies in Denmark](https://alexandrastudio.se/fintech-companies/denmark.html): 149 companies
+- [Fintech companies in Finland](https://alexandrastudio.se/fintech-companies/finland.html): 94 companies
+- [Fintech companies in Norway](https://alexandrastudio.se/fintech-companies/norway.html): 10 companies
 
 By sector:
-- [Payments fintech companies in Europe](https://alexandrastudio.se/fintech-companies/payments.html): 652 companies
-- [Banking and neobank fintech companies in Europe](https://alexandrastudio.se/fintech-companies/banking.html): 362 companies
-- [Lending fintech companies in Europe](https://alexandrastudio.se/fintech-companies/lending.html): 349 companies
-- [Wealth management and wealthtech fintech companies in Europe](https://alexandrastudio.se/fintech-companies/wealth-management.html): 656 companies
+- [Payments fintech companies in Europe](https://alexandrastudio.se/fintech-companies/payments.html): 667 companies
+- [Banking and neobank fintech companies in Europe](https://alexandrastudio.se/fintech-companies/banking.html): 378 companies
+- [Lending fintech companies in Europe](https://alexandrastudio.se/fintech-companies/lending.html): 354 companies
+- [Wealth management and wealthtech fintech companies in Europe](https://alexandrastudio.se/fintech-companies/wealth-management.html): 659 companies
 - [Insurtech fintech companies in Europe](https://alexandrastudio.se/fintech-companies/insurtech.html): 388 companies
-- [Crypto and DeFi fintech companies in Europe](https://alexandrastudio.se/fintech-companies/crypto-defi.html): 332 companies
-- [Regtech fintech companies in Europe](https://alexandrastudio.se/fintech-companies/regtech.html): 95 companies
-- [Financial management software fintech companies in Europe](https://alexandrastudio.se/fintech-companies/financial-management.html): 832 companies
+- [Crypto and DeFi fintech companies in Europe](https://alexandrastudio.se/fintech-companies/crypto-defi.html): 336 companies
+- [Regtech fintech companies in Europe](https://alexandrastudio.se/fintech-companies/regtech.html): 104 companies
+- [Financial management software fintech companies in Europe](https://alexandrastudio.se/fintech-companies/financial-management.html): 834 companies
 - [Proptech and real-estate finance fintech companies in Europe](https://alexandrastudio.se/fintech-companies/proptech-real-estate.html): 45 companies
 
 By country:
-- [Fintech companies in Germany](https://alexandrastudio.se/fintech-companies/germany.html): 825 companies
-- [Fintech companies in France](https://alexandrastudio.se/fintech-companies/france.html): 580 companies
-- [Fintech companies in Netherlands](https://alexandrastudio.se/fintech-companies/netherlands.html): 394 companies
+- [Fintech companies in Germany](https://alexandrastudio.se/fintech-companies/germany.html): 829 companies
+- [Fintech companies in France](https://alexandrastudio.se/fintech-companies/france.html): 581 companies
+- [Fintech companies in Netherlands](https://alexandrastudio.se/fintech-companies/netherlands.html): 395 companies
 - [Fintech companies in Spain](https://alexandrastudio.se/fintech-companies/spain.html): 322 companies
-- [Fintech companies in Italy](https://alexandrastudio.se/fintech-companies/italy.html): 244 companies
-- [Fintech companies in Ireland](https://alexandrastudio.se/fintech-companies/ireland.html): 165 companies
+- [Fintech companies in Italy](https://alexandrastudio.se/fintech-companies/italy.html): 245 companies
+- [Fintech companies in Ireland](https://alexandrastudio.se/fintech-companies/ireland.html): 167 companies
 - [Fintech companies in Poland](https://alexandrastudio.se/fintech-companies/poland.html): 163 companies
-- [Fintech companies in Belgium](https://alexandrastudio.se/fintech-companies/belgium.html): 133 companies
-- [Fintech companies in Estonia](https://alexandrastudio.se/fintech-companies/estonia.html): 124 companies
-- [Fintech companies in Austria](https://alexandrastudio.se/fintech-companies/austria.html): 93 companies
-- [Fintech companies in Lithuania](https://alexandrastudio.se/fintech-companies/lithuania.html): 90 companies
+- [Fintech companies in Belgium](https://alexandrastudio.se/fintech-companies/belgium.html): 134 companies
+- [Fintech companies in Estonia](https://alexandrastudio.se/fintech-companies/estonia.html): 125 companies
+- [Fintech companies in Austria](https://alexandrastudio.se/fintech-companies/austria.html): 94 companies
+- [Fintech companies in Lithuania](https://alexandrastudio.se/fintech-companies/lithuania.html): 91 companies
 - [Fintech companies in Czechia](https://alexandrastudio.se/fintech-companies/czechia.html): 75 companies
 - [Fintech companies in Cyprus](https://alexandrastudio.se/fintech-companies/cyprus.html): 72 companies
 - [Fintech companies in Luxembourg](https://alexandrastudio.se/fintech-companies/luxembourg.html): 69 companies
 - [Fintech companies in Portugal](https://alexandrastudio.se/fintech-companies/portugal.html): 63 companies
-- [Fintech companies in Romania](https://alexandrastudio.se/fintech-companies/romania.html): 54 companies
+- [Fintech companies in Romania](https://alexandrastudio.se/fintech-companies/romania.html): 55 companies
 - [Fintech companies in Malta](https://alexandrastudio.se/fintech-companies/malta.html): 44 companies
-- [Fintech companies in Latvia](https://alexandrastudio.se/fintech-companies/latvia.html): 41 companies
+- [Fintech companies in Latvia](https://alexandrastudio.se/fintech-companies/latvia.html): 42 companies
 - [Fintech companies in Hungary](https://alexandrastudio.se/fintech-companies/hungary.html): 38 companies
 - [Fintech companies in Bulgaria](https://alexandrastudio.se/fintech-companies/bulgaria.html): 34 companies
 - [Fintech companies in Slovakia](https://alexandrastudio.se/fintech-companies/slovakia.html): 21 companies
