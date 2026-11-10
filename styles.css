@@ -85,12 +85,9 @@ p{font-size:1rem;line-height:1.6;color:var(--ink-soft)}
 /* ---------- header ---------- */
 .site-header{position:sticky;top:0;z-index:80;background:#fff}
 .header-inner{display:flex;align-items:center;gap:1rem;min-height:var(--nav-h);position:relative}
-.wordmark-nav{
-  font-weight:800;font-size:1.25rem;line-height:.9;letter-spacing:-.01em;
-  text-decoration:none;white-space:nowrap;margin-right:auto;
-  background:var(--grad);-webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent;
-}
+/* logo: "Alexandra Studio." (DM Sans Medium, outlined to SVG so it matches the new pages exactly) */
+.wordmark-nav{display:block;line-height:0;text-decoration:none;margin-right:auto}
+.wordmark-nav img{display:block;height:17.5px;width:auto}
 
 /* hamburger */
 .nav-toggle{
@@ -396,8 +393,8 @@ a.card:active{transform:scale(.995)}
 .foot-cols a{display:inline-block;padding:.4rem 0;font-size:.9375rem;color:rgba(255,255,255,.88);text-decoration:none}
 .foot-cols a:hover{color:#fff;text-decoration:underline}
 .foot-legal{font-size:.875rem;line-height:1.75;color:rgba(255,255,255,.8)}
-.foot-mark{display:block;text-decoration:none;color:#fff;font-weight:800;letter-spacing:-.04em;line-height:.9;font-size:2.5rem;padding:8px 0 18px}
-.foot-mark span{display:block;font-weight:400;letter-spacing:-.03em}
+.foot-mark{display:block;text-decoration:none;padding:16px 0 26px}
+.foot-mark img{display:block;width:100%;max-width:936px;height:auto}
 .foot-bottom{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:space-between;border-top:1px solid rgba(255,255,255,.3);padding-top:18px;font-size:.8125rem;color:rgba(255,255,255,.8)}
 
 /* ==========================================================================
@@ -427,7 +424,7 @@ a.card:active{transform:scale(.995)}
   .page-hero{padding:48px 32px}
   .band{padding:44px 32px}
   .foot-cols{grid-template-columns:1fr 1fr;gap:24px 32px}
-  .foot-mark{font-size:4rem}
+  .wordmark-nav img{height:20.4px}
 }
 
 /* ==========================================================================
@@ -442,7 +439,7 @@ a.card:active{transform:scale(.995)}
   .kicker{font-size:1rem}
   .lead{font-size:1.1875rem;line-height:1.45;max-width:38ch}
 
-  .wordmark-nav{font-size:1.5625rem}
+  .wordmark-nav img{height:21.9px}
   .nav-toggle{display:none}
   .nav{
     display:flex;position:static;flex-direction:row;align-items:center;gap:2.4rem;
@@ -533,7 +530,6 @@ a.card:active{transform:scale(.995)}
   .foot-cta{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;padding-bottom:36px}
   .foot-cta p{font-size:1rem}
   .foot-cols{grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;padding:40px 0}
-  .foot-mark{font-size:5.5rem}
 }
 
 /* ==========================================================================
@@ -550,7 +546,6 @@ a.card:active{transform:scale(.995)}
   .hero{height:593px;min-height:0;padding:48px}
   .split{padding:52px;grid-template-columns:1.1fr 1fr;gap:48px}
   .split-photo{min-height:400px}
-  .foot-mark{font-size:6.5rem}
 }
 
 @media(prefers-reduced-motion:reduce){
