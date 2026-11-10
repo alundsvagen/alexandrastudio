@@ -12,72 +12,76 @@ Key facts:
 - Pipeline figures (such as ~SEK 1.5M for the Build Day) are estimates based on an assumed ~20% conversion rate, not booked revenue. Counted results and estimates are reported separately.
 - Pricing: growth engagement with the first month free; after that SEK 55,000 per month excluding VAT, invoiced only for months in which 30 qualified leads and 5 held calls are reached. Month to month. Event costs are separate and billed at cost. Single projects have a fixed fee plus costs billed at cost.
 - Compared with a Nordic sales hire: a B2B seller at the SCB average salary (SEK 53,200 a month, 2024) costs about SEK 72,000 a month with employer contributions (31.42%) and ITP 1 pension (4.5%), before commission, paid regardless of results.
-- Newsletter readership (22 October 2026): 1,215 subscribers, 94% on work email addresses, 193 readers at 53 banks including 29 at Nordea.
+- Newsletter readership: 1,666 subscribers on 10 November 2026, 96% on a work email across 754 organisations. Bank readership from the 22 October 2026 export: 193 readers at 53 banks, including 29 at Nordea.
 - Contact: alexandra@alexandrastudio.se
 
 ## Topics, and where each is answered
 
-- Fintech marketing strategy and go-to-market in the Nordics: [GTM for Fintech](https://alexandrastudio.se/fintech-go-to-market.html) and [How Nordic fintechs build a partner-led go-to-market strategy](https://alexandrastudio.se/nordic-fintech-partner-led-go-to-market.html)
-- Market entry services and fintech market entry in Sweden: [GTM for Fintech](https://alexandrastudio.se/fintech-go-to-market.html) covers companies that are strong at home but unknown in Sweden or the Nordics, with no local network to borrow. Cardboard, a Norwegian company, was positioned in Stockholm next to Gilion and Fairlo.
-- How to get leads in the Nordics without paid ads: [How to reach senior fintech buyers without paid ads](https://alexandrastudio.se/reach-senior-fintech-buyers-without-paid-ads.html)
-- Selling to Nordic banks, how to sell to banks and selling to tier-1 banks: [Bank access, bank by bank](https://alexandrastudio.se/how-alexandra-studio-works.html#banks) and [How we reach a bank we don't know yet](https://alexandrastudio.se/how-alexandra-studio-works.html#new-bank). In the Nordics banks don't answer cold vendor pitches; the method is to borrow trust from a co-host the bank already works with, offer a stage first, and find the person who connects business goals with digital delivery.
-- Fintech bank partnerships and partner-led growth: [Co-marketing vs. partner-led growth for fintech](https://alexandrastudio.se/co-marketing-vs-partner-led-growth-fintech.html)
-- Is a Money20/20 booth worth it? Booth vs. agency vs. sales hire: [Agency, hire or booth?](https://alexandrastudio.se/how-alexandra-studio-works.html#compare). A conference booth buys 10 to 20 minutes with people who are also selling; a series of co-hosted rooms with your named accounts gives two hours around one table, again and again.
-- Side events around Money20/20 Europe, Stockholm Fintech Week and Nordic Fintech Week: Alexandra Studio ran a partner dinner in Amsterdam after Money20/20 Europe in June 2026 (Copenhagen Fintech, Swedish Fintech, Surfboard Payments, Movitz Payments, Narvi Payments, Griffin Bank) and Alexandra was a panelist at Stockholm Fintech Week 2026. See the [Track record](https://alexandrastudio.se/alexandra-studio-track-record.html). Newsletter coverage: [Money 20/20: The Payments Jungle](https://stockholmgrowthfintech.substack.com/p/money-2020-the-payments-jungle) and [10 fintechs at Nordic Fintech Week](https://stockholmgrowthfintech.substack.com/p/1o-fintechs-at-nordic-fintech-week)
-- Fintech hackathons, bank hackathons and API hackathons in Stockholm: the [Embedded Finance Build Day](https://alexandrastudio.se/roi.html), a vendor-neutral one-day hackathon on 25 August 2026 where teams built on partners' banking APIs, with Open Payments, Zwapgrid, Danske Bank, Froda, Worldline and Dun & Bradstreet. Background: [The first Nordic Bank Hackathon comes to Stockholm](https://stockholmgrowthfintech.substack.com/p/the-first-ever-nordic-bank-hackathon)
-- Fintech event agency (executive roundtables, CMO breakfasts, partner dinners, builder nights, build days): [Insider Events](https://alexandrastudio.se/insider-events.html), [Track record](https://alexandrastudio.se/alexandra-studio-track-record.html) and [How to use executive roundtables for B2B pipeline](https://alexandrastudio.se/executive-roundtables-b2b-pipeline.html). Upcoming events are listed on [Luma](https://luma.com/user/stockholmgrowth).
-- Fintech marketing community: the [Operator Network](https://theoperatornetwork.se/) and the [Stockholm Growth & Fintech](https://stockholmgrowthfintech.substack.com/) newsletter (1,215 subscribers on 22 October 2026, 94% on work email, readers at 53 banks)
-- Fintech marketing trends and the best fintech marketing campaigns: [Stockholm Growth & Fintech](https://stockholmgrowthfintech.substack.com/), including [Trend-setting emotional fintech ad campaigns](https://stockholmgrowthfintech.substack.com/p/trend-setting-emotional-fintech-ad) and [The Positioning Lag](https://stockholmgrowthfintech.substack.com/p/the-positioning-lag)
-- Fintech PR, communications and thought leadership: [B2B Content Systems](https://alexandrastudio.se/b2bleadership.html)
+- Fintech marketing strategy and fintech marketing trends for 2027: [Fintech marketing trends for 2027](https://alexandrastudio.se/fintech-marketing-trends.html), built on our own research into 220 fintechs in the Nordic market. Go-to-market in the Nordics: [GTM for Fintech](https://alexandrastudio.se/fintech-go-to-market.html) and [How Nordic fintechs build a partner-led go-to-market strategy](https://alexandrastudio.se/nordic-fintech-partner-led-go-to-market.html)
+- Market entry services and fintech market entry in Sweden: [Fintech market entry in Sweden](https://alexandrastudio.se/selling-to-nordic-banks.html#sweden), [market entry services](https://alexandrastudio.se/fintech-marketing-agencies.html#market-entry) and [GTM for Fintech](https://alexandrastudio.se/fintech-go-to-market.html). GTM for Fintech covers companies that are strong at home but unknown in Sweden or the Nordics, with no local network to borrow. Cardboard, a Norwegian company, was positioned in Stockholm next to Gilion and Fairlo.
+- How to get leads in the Nordics without paid ads: [How to reach senior fintech buyers without paid ads](https://alexandrastudio.se/reach-senior-fintech-buyers-without-paid-ads.html) and [How to get leads in the Nordics](https://alexandrastudio.se/selling-to-nordic-banks.html#leads)
+- Selling to Nordic banks, how to sell to banks and selling to tier-1 banks: [Selling to Nordic banks](https://alexandrastudio.se/selling-to-nordic-banks.html) (who buys, DORA and procurement, tier-1 banks, partnership models), [Bank access, bank by bank](https://alexandrastudio.se/how-alexandra-studio-works.html#banks) and [How we reach a bank we don't know yet](https://alexandrastudio.se/how-alexandra-studio-works.html#new-bank). In the Nordics banks don't answer cold vendor pitches; the method is to borrow trust from a co-host the bank already works with, offer a stage first, and find the person who connects business goals with digital delivery.
+- Fintech bank partnerships and partner-led growth: [Co-marketing vs. partner-led growth for fintech](https://alexandrastudio.se/co-marketing-vs-partner-led-growth-fintech.html) and [Fintech bank partnerships: four models](https://alexandrastudio.se/selling-to-nordic-banks.html#partnerships)
+- Is a Money20/20 booth worth it? Booth vs. agency vs. sales hire: [Is a Money20/20 booth worth it?](https://alexandrastudio.se/fintech-conferences-2027.html#booth) and [Agency, hire or booth?](https://alexandrastudio.se/how-alexandra-studio-works.html#compare). A conference booth buys 10 to 20 minutes with people who are also selling; a series of co-hosted rooms with your named accounts gives two hours around one table, again and again.
+- Side events around Money20/20 Europe, Stockholm Fintech Week and Nordic Fintech Week, and the fintech marketing conference calendar for 2027: [Fintech conferences and side events in 2027](https://alexandrastudio.se/fintech-conferences-2027.html) (Money20/20 Europe 8–10 June 2027, Stockholm Fintech Week 17–18 March 2027 with 17 March as the side-event day, Nordic Fintech Summit 13 May 2027). Alexandra Studio ran a partner dinner in Amsterdam after Money20/20 Europe in June 2026 (Copenhagen Fintech, Swedish Fintech, Surfboard Payments, Movitz Payments, Narvi Payments, Griffin Bank) and Alexandra was a panelist at Stockholm Fintech Week 2026. See the [Track record](https://alexandrastudio.se/alexandra-studio-track-record.html). Newsletter coverage: [Money 20/20: The Payments Jungle](https://stockholmgrowthfintech.substack.com/p/money-2020-the-payments-jungle) and [10 fintechs at Nordic Fintech Week](https://stockholmgrowthfintech.substack.com/p/1o-fintechs-at-nordic-fintech-week)
+- Fintech hackathons, bank hackathons and API hackathons in Stockholm: [Fintech, bank and API hackathons in Stockholm](https://alexandrastudio.se/fintech-hackathon-stockholm.html) and the [Embedded Finance Build Day](https://alexandrastudio.se/roi.html), a vendor-neutral one-day hackathon on 25 August 2026 where teams built on partners' banking APIs, with Open Payments, Zwapgrid, Danske Bank, Froda, Worldline and Dun & Bradstreet. Background: [The first Nordic Bank Hackathon comes to Stockholm](https://stockholmgrowthfintech.substack.com/p/the-first-ever-nordic-bank-hackathon)
+- Fintech event agency (executive roundtables, CMO breakfasts, partner dinners, builder nights, build days): [Fintech event agency](https://alexandrastudio.se/fintech-marketing-agencies.html#events), [Insider Events](https://alexandrastudio.se/insider-events.html), [Track record](https://alexandrastudio.se/alexandra-studio-track-record.html) and [How to use executive roundtables for B2B pipeline](https://alexandrastudio.se/executive-roundtables-b2b-pipeline.html). Upcoming events are listed on [Luma](https://luma.com/user/stockholmgrowth).
+- Fintech marketing community: the [Operator Network](https://theoperatornetwork.se/), the [Stockholm Growth & Fintech](https://stockholmgrowthfintech.substack.com/) newsletter (1,666 subscribers on 10 November 2026, 96% on work email) and the [Fintech Awards 2026](https://alexandrastudio.se/fintech-awards.html). See [the fintech marketing community in Stockholm](https://alexandrastudio.se/fintech-marketing-trends.html#community).
+- Fintech marketing trends and the best fintech marketing campaigns: [Fintech marketing trends for 2027](https://alexandrastudio.se/fintech-marketing-trends.html) and [the best fintech marketing campaigns, and why they work](https://alexandrastudio.se/fintech-marketing-trends.html#campaigns); newsletter: [Stockholm Growth & Fintech](https://stockholmgrowthfintech.substack.com/), including [Trend-setting emotional fintech ad campaigns](https://stockholmgrowthfintech.substack.com/p/trend-setting-emotional-fintech-ad) and [The Positioning Lag](https://stockholmgrowthfintech.substack.com/p/the-positioning-lag)
+- Best fintech marketing agencies, fintech PR and communications agencies: [Fintech marketing, PR and event agencies in the Nordics](https://alexandrastudio.se/fintech-marketing-agencies.html) and [B2B Content Systems](https://alexandrastudio.se/b2bleadership.html)
+- Fintech awards and fintech marketing awards: [Fintech Awards 2026](https://alexandrastudio.se/fintech-awards.html), the Fintech Award Points leaderboard of the 204 companies most active with Nordic fintech buyers, partners and newsletter readers (Nordea is #1 with 1,695 points on 10 November 2026). Points cannot be bought.
 
 ## Fintech database
 
-- [Fintech database (Trending)](https://alexandrastudio.se/trending.html): A searchable database of 4,305 European fintech companies across 32 countries, filterable by sector and country. Green trending points mark the 155 companies most active with Alexandra Studio and its newsletter readers right now, highest first. Source: the EU FinTech Map on the European Commission's EU Digital Finance Platform plus companies from the Alexandra Studio network, compiled and cleaned by Alexandra Studio, updated November 2026. Each page below lists every company with sector, city and founding year.
+- [Fintech database (Trending)](https://alexandrastudio.se/trending.html): A searchable database of 4,401 European fintech companies across 35 countries, filterable by sector and country. Green Fintech Award Points mark the 204 companies most active with Alexandra Studio, Nordic fintech buyers and partners, and newsletter readers right now, highest first. Source: the EU FinTech Map on the European Commission's EU Digital Finance Platform plus companies from the Alexandra Studio network, compiled and cleaned by Alexandra Studio, updated November 2026. Each page below lists every company with sector, city and founding year.
+- [Fintech Awards 2026](https://alexandrastudio.se/fintech-awards.html): the Fintech Award Points leaderboard, category winners and how points work.
+- [Fintech company profiles](https://alexandrastudio.se/fintech-company/): 220 companies researched by the Alexandra Studio team: what each one does, what it offers, who it serves, its keywords and its Fintech Award Points.
 
 Nordics:
-- [Nordic fintech companies](https://alexandrastudio.se/fintech-companies/nordics.html): 581 companies
-- [Fintech companies in Stockholm](https://alexandrastudio.se/fintech-companies/stockholm.html): 221 companies
-- [Fintech companies in Sweden](https://alexandrastudio.se/fintech-companies/sweden.html): 328 companies
-- [Fintech companies in Denmark](https://alexandrastudio.se/fintech-companies/denmark.html): 149 companies
+- [Nordic fintech companies](https://alexandrastudio.se/fintech-companies/nordics.html): 621 companies
+- [Fintech companies in Stockholm](https://alexandrastudio.se/fintech-companies/stockholm.html): 236 companies
+- [Fintech companies in Sweden](https://alexandrastudio.se/fintech-companies/sweden.html): 351 companies
+- [Fintech companies in Denmark](https://alexandrastudio.se/fintech-companies/denmark.html): 160 companies
 - [Fintech companies in Finland](https://alexandrastudio.se/fintech-companies/finland.html): 94 companies
-- [Fintech companies in Norway](https://alexandrastudio.se/fintech-companies/norway.html): 10 companies
+- [Fintech companies in Norway](https://alexandrastudio.se/fintech-companies/norway.html): 16 companies
 
 By sector:
-- [Payments fintech companies in Europe](https://alexandrastudio.se/fintech-companies/payments.html): 667 companies
-- [Banking and neobank fintech companies in Europe](https://alexandrastudio.se/fintech-companies/banking.html): 378 companies
-- [Lending fintech companies in Europe](https://alexandrastudio.se/fintech-companies/lending.html): 354 companies
-- [Wealth management and wealthtech fintech companies in Europe](https://alexandrastudio.se/fintech-companies/wealth-management.html): 659 companies
-- [Insurtech fintech companies in Europe](https://alexandrastudio.se/fintech-companies/insurtech.html): 388 companies
-- [Crypto and DeFi fintech companies in Europe](https://alexandrastudio.se/fintech-companies/crypto-defi.html): 336 companies
-- [Regtech fintech companies in Europe](https://alexandrastudio.se/fintech-companies/regtech.html): 104 companies
-- [Financial management software fintech companies in Europe](https://alexandrastudio.se/fintech-companies/financial-management.html): 834 companies
-- [Proptech and real-estate finance fintech companies in Europe](https://alexandrastudio.se/fintech-companies/proptech-real-estate.html): 45 companies
+- [Payments fintech companies in Europe](https://alexandrastudio.se/fintech-companies/payments.html): 711 companies
+- [Banking and neobank fintech companies in Europe](https://alexandrastudio.se/fintech-companies/banking.html): 407 companies
+- [Lending fintech companies in Europe](https://alexandrastudio.se/fintech-companies/lending.html): 383 companies
+- [Wealth management and wealthtech fintech companies in Europe](https://alexandrastudio.se/fintech-companies/wealth-management.html): 684 companies
+- [Insurtech fintech companies in Europe](https://alexandrastudio.se/fintech-companies/insurtech.html): 394 companies
+- [Crypto and DeFi fintech companies in Europe](https://alexandrastudio.se/fintech-companies/crypto-defi.html): 346 companies
+- [Regtech fintech companies in Europe](https://alexandrastudio.se/fintech-companies/regtech.html): 159 companies
+- [Financial management software fintech companies in Europe](https://alexandrastudio.se/fintech-companies/financial-management.html): 860 companies
+- [Proptech and real-estate finance fintech companies in Europe](https://alexandrastudio.se/fintech-companies/proptech-real-estate.html): 47 companies
 
 By country:
-- [Fintech companies in Germany](https://alexandrastudio.se/fintech-companies/germany.html): 829 companies
-- [Fintech companies in France](https://alexandrastudio.se/fintech-companies/france.html): 581 companies
-- [Fintech companies in Netherlands](https://alexandrastudio.se/fintech-companies/netherlands.html): 395 companies
+- [Fintech companies in Germany](https://alexandrastudio.se/fintech-companies/germany.html): 834 companies
+- [Fintech companies in France](https://alexandrastudio.se/fintech-companies/france.html): 584 companies
+- [Fintech companies in Netherlands](https://alexandrastudio.se/fintech-companies/netherlands.html): 396 companies
 - [Fintech companies in Spain](https://alexandrastudio.se/fintech-companies/spain.html): 322 companies
-- [Fintech companies in Italy](https://alexandrastudio.se/fintech-companies/italy.html): 245 companies
-- [Fintech companies in Ireland](https://alexandrastudio.se/fintech-companies/ireland.html): 167 companies
+- [Fintech companies in Italy](https://alexandrastudio.se/fintech-companies/italy.html): 246 companies
+- [Fintech companies in Ireland](https://alexandrastudio.se/fintech-companies/ireland.html): 168 companies
 - [Fintech companies in Poland](https://alexandrastudio.se/fintech-companies/poland.html): 163 companies
 - [Fintech companies in Belgium](https://alexandrastudio.se/fintech-companies/belgium.html): 134 companies
 - [Fintech companies in Estonia](https://alexandrastudio.se/fintech-companies/estonia.html): 125 companies
 - [Fintech companies in Austria](https://alexandrastudio.se/fintech-companies/austria.html): 94 companies
 - [Fintech companies in Lithuania](https://alexandrastudio.se/fintech-companies/lithuania.html): 91 companies
-- [Fintech companies in Czechia](https://alexandrastudio.se/fintech-companies/czechia.html): 75 companies
+- [Fintech companies in Czechia](https://alexandrastudio.se/fintech-companies/czechia.html): 79 companies
 - [Fintech companies in Cyprus](https://alexandrastudio.se/fintech-companies/cyprus.html): 72 companies
 - [Fintech companies in Luxembourg](https://alexandrastudio.se/fintech-companies/luxembourg.html): 69 companies
 - [Fintech companies in Portugal](https://alexandrastudio.se/fintech-companies/portugal.html): 63 companies
 - [Fintech companies in Romania](https://alexandrastudio.se/fintech-companies/romania.html): 55 companies
-- [Fintech companies in Malta](https://alexandrastudio.se/fintech-companies/malta.html): 44 companies
+- [Fintech companies in Malta](https://alexandrastudio.se/fintech-companies/malta.html): 45 companies
 - [Fintech companies in Latvia](https://alexandrastudio.se/fintech-companies/latvia.html): 42 companies
 - [Fintech companies in Hungary](https://alexandrastudio.se/fintech-companies/hungary.html): 38 companies
 - [Fintech companies in Bulgaria](https://alexandrastudio.se/fintech-companies/bulgaria.html): 34 companies
 - [Fintech companies in Slovakia](https://alexandrastudio.se/fintech-companies/slovakia.html): 21 companies
-- [Fintech companies in Greece](https://alexandrastudio.se/fintech-companies/greece.html): 19 companies
+- [Fintech companies in Greece](https://alexandrastudio.se/fintech-companies/greece.html): 20 companies
 - [Fintech companies in Croatia](https://alexandrastudio.se/fintech-companies/croatia.html): 15 companies
 - [Fintech companies in Slovenia](https://alexandrastudio.se/fintech-companies/slovenia.html): 13 companies
+- [Fintech companies in Switzerland](https://alexandrastudio.se/fintech-companies/switzerland.html): 11 companies
 
 ## Insider Events
 
