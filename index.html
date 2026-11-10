@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#FAFAF9" />
 
 <title>Alexandra Studio | B2B Growth Marketing for Fintech</title>
 
@@ -224,67 +225,6 @@
       },
       "primaryImageOfPage": "https://res.cloudinary.com/dxhph3qls/image/upload/v1784193454/Thumbnail_Image_zmvex6.png",
       "inLanguage": "en"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What does it cost, all in?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The first month is free. After that, the growth engagement is SEK 55,000 a month excluding VAT, and it is only invoiced for months in which we reach 30 qualified leads and 5 held calls. There is no ad spend on top, because the model doesn't depend on paid advertising. Event costs such as venue and food are quoted separately and approved by you before anything is booked."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What counts as a qualified lead?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A named person at a company matching your ICP who has opted in — for example by registering for an event, subscribing to your newsletter or replying to outreach — and whose contact details you keep. It is not a scraped list or an anonymous form fill."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens in a month that misses the target?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You don't pay the fee for that month. The SEK 55,000 is only invoiced when both numbers are reached: 30 qualified leads and 5 held calls. The engagement runs month to month, so you can also stop at any time, and you keep everything we've produced."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Why not just hire a salesperson in the Nordics?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A Nordic sales hire at the average Swedish B2B seller salary costs about SEK 72,000 a month once employer contributions and pension are added, before commission, and you pay it whether or not meetings happen. They also start without our network. With Alexandra Studio the first month is free, the fee is SEK 55,000 excluding VAT only in months that reach 30 qualified leads and 5 held calls, and you start with rooms, partners and readers we already have. When you do hire, that person inherits warm relationships instead of a cold list."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who is Alexandra?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Alexandra Grisanti runs Alexandra Studio from Stockholm, working exclusively with fintech companies. She also runs the Operator Network and publishes the Stockholm Growth & Fintech newsletter. Her work sits at the intersection of marketing, business development, community and the Nordic fintech ecosystem. Before consulting, she spent two years at Zwapgrid as a product designer and UX researcher."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What does B2B growth look like for a fintech company?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Fintech buying decisions often involve six to ten people across leadership, finance, product, engineering, compliance and procurement. Most of them will not be reached by a single ad. We identify the buying committee, find companies that already have relationships with them, create reasons for those people to meet, and turn those conversations into content that reaches the people who were not there. The output is relationships and a contact list you own — not impressions."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you work with competing fintechs?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. We work with one client per vertical at a time. That protects the relationships, ideas and network we build with each client, and deliberately limits how many engagements we take on."
-          }
-        }
-      ]
     }
   ]
 }
@@ -294,27 +234,37 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Hedvig+Letters+Serif&family=Rethink+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="styles.css" />
+<link rel="preload" as="image" href="img/home/hero-gradient.webp" type="image/webp" />
+<link rel="preconnect" href="https://res.cloudinary.com" />
+
+<link rel="stylesheet" href="home.css" />
 </head>
 
 <body>
 
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="wordmark-nav" href="/">ALEXANDRA<br />STUDIO</a>
+<a class="skip" href="#main">Skip to content</a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="/" aria-label="Alexandra Studio, home">Alexandra Studio.</a>
+
+    <nav class="hd-nav" id="nav" aria-label="Main">
+      <a href="#trending">Trending</a>
+      <a href="https://luma.com/user/stockholmgrowth" target="_blank" rel="noopener">Insider Events</a>
+      <a href="how-alexandra-studio-works.html">How-to</a>
+      <a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener">Contact Us</a>
+      <a class="nav-cta" href="fintech-go-to-market.html">Learn More</a>
+    </nav>
+
+    <a class="btn btn-black hd-cta" href="fintech-go-to-market.html">Learn More
+      <svg viewBox="0 0 8 8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M1.5 6.5l5-5M2.5 1.5h4v4"/></svg>
+    </a>
+
+    <button class="hd-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
       <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
     </button>
-
-    <nav class="nav" id="nav" aria-label="Main">
-      <a href="fintech-go-to-market.html">GTM for Fintech</a>
-      <a href="b2bleadership.html">B2B Content Systems</a>
-      <a href="mission.html">Our Vision</a>
-      <a class="btn btn-wide" href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener">Book a Discovery Call</a>
-    </nav>
   </div>
 </header>
 
@@ -324,162 +274,287 @@
     Alexandra Studio helps European fintech companies build relationships, reach buying committees and create measurable pipeline through ecosystem partnerships, in-person events, thought leadership and content. Based in Stockholm, Alexandra Studio works across the Nordic and European fintech ecosystem.
   </p>
 
-  <section id="hero">
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
     <div class="wrap">
-      <div class="hero" style="background-image:url('https://res.cloudinary.com/dxhph3qls/image/upload/v1788172076/ANS00137_1_tyg8sd.png')">
-        <div class="hero-body">
-          <h1>How do you actually grow a fintech?</h1>
-          <a class="btn" href="whatis.html">See How It Works</a>
+      <h1 class="hero-title" id="hero-title">Hyper-Growth for Fintech</h1>
+    </div>
+    <div class="hero-band-wrap">
+      <div class="hero-band" aria-hidden="true">
+        <span class="hb-base"></span>
+        <span class="hb-blob hb-b1"></span>
+        <span class="hb-blob hb-b2"></span>
+        <span class="hb-blob hb-b3"></span>
+        <span class="hb-noise"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Network: logo marquees -->
+  <section class="network" aria-label="Our network">
+    <div class="wrap">
+      <p class="eyebrow">In our Network: the fintech ecosystem we're connected to</p>
+    </div>
+    <div class="marquee">
+      <div class="marquee-track">
+        <ul class="marquee-set">
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/klarna-black_cyy1zp.svg" alt="Klarna" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/Visa_Inc._logo__2014_2021_g5bc53.svg" alt="Visa" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/Worldline-Mint-Vertical_xldsyk.png" alt="Worldline" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/Spotify_logo_with_text.svg_pheg50.webp" alt="Spotify" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809999/Natural_Cycles_r6ismi.jpg" alt="Natural Cycles" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/Mindler_Logo_Tagline_Dark_g2mpu7.png" alt="Mindler" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/tink_wordmark_black-lax_nes1g0.png" alt="Tink" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/69dd08c636c9062449e7a28b_Legora-Logo-Color_tgmm49.svg" alt="Legora" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/images_uwdosy.png" alt="Froda" loading="lazy" /></li>
+        </ul>
+        <ul class="marquee-set" aria-hidden="true">
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/klarna-black_cyy1zp.svg" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/Visa_Inc._logo__2014_2021_g5bc53.svg" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/Worldline-Mint-Vertical_xldsyk.png" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/Spotify_logo_with_text.svg_pheg50.webp" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809999/Natural_Cycles_r6ismi.jpg" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/Mindler_Logo_Tagline_Dark_g2mpu7.png" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/tink_wordmark_black-lax_nes1g0.png" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/69dd08c636c9062449e7a28b_Legora-Logo-Color_tgmm49.svg" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/images_uwdosy.png" alt="" loading="lazy" /></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <p class="eyebrow">Companies we've built with, worked with, or brought into the room</p>
+    </div>
+    <div class="marquee marquee-rev">
+      <div class="marquee-track">
+        <ul class="marquee-set">
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080968/zwapgrip-logo_nmbe6a.webp" alt="Zwapgrid" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1786024855/LOGO_PSA_2022_COLOUR_BLACK_SMALL-1_do74vo.png" alt="PSA Solutions" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080968/64edcd7f7c2a913505d627a0_Beige_-_Darkblue-1000w_p26mrw.png" alt="Client logo" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080967/images_oguyij.png" alt="Client logo" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080957/dPHg1IGArtMHUYLmHAWQ1GcARP4_gjhscr.avif" alt="Client logo" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1786024791/logo-black.999e174a84d1_dt9yde.svg" alt="Client logo" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080968/zwapgrip-logo_nmbe6a.webp" alt="" aria-hidden="true" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1786024855/LOGO_PSA_2022_COLOUR_BLACK_SMALL-1_do74vo.png" alt="" aria-hidden="true" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080968/64edcd7f7c2a913505d627a0_Beige_-_Darkblue-1000w_p26mrw.png" alt="" aria-hidden="true" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080967/images_oguyij.png" alt="" aria-hidden="true" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080957/dPHg1IGArtMHUYLmHAWQ1GcARP4_gjhscr.avif" alt="" aria-hidden="true" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1786024791/logo-black.999e174a84d1_dt9yde.svg" alt="" aria-hidden="true" loading="lazy" /></li>
+        </ul>
+        <ul class="marquee-set" aria-hidden="true">
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080968/zwapgrip-logo_nmbe6a.webp" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1786024855/LOGO_PSA_2022_COLOUR_BLACK_SMALL-1_do74vo.png" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080968/64edcd7f7c2a913505d627a0_Beige_-_Darkblue-1000w_p26mrw.png" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080967/images_oguyij.png" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080957/dPHg1IGArtMHUYLmHAWQ1GcARP4_gjhscr.avif" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1786024791/logo-black.999e174a84d1_dt9yde.svg" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080968/zwapgrip-logo_nmbe6a.webp" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1786024855/LOGO_PSA_2022_COLOUR_BLACK_SMALL-1_do74vo.png" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080968/64edcd7f7c2a913505d627a0_Beige_-_Darkblue-1000w_p26mrw.png" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080967/images_oguyij.png" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080957/dPHg1IGArtMHUYLmHAWQ1GcARP4_gjhscr.avif" alt="" loading="lazy" /></li>
+          <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1786024791/logo-black.999e174a84d1_dt9yde.svg" alt="" loading="lazy" /></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research + counters -->
+  <section class="research" aria-label="Why the market is moving">
+    <div class="wrap research-grid">
+      <p class="research-lead">Alexandra Studio is working with fintech thought leaders and companies to accelerate their growth journeys. The research is in and shows why our approach is the path to visibility, growth and hyper scaling in 2027.</p>
+
+      <div class="stats">
+        <div class="stat">
+          <p class="stat-num"><span class="sr-only">59%</span><span class="odo" data-to="59" aria-hidden="true">59</span><span class="pct" aria-hidden="true">%</span></p>
+          <p class="stat-copy">Of marketers plan to run more small, hosted events. (Forrester’s 2026 Survey)</p>
+        </div>
+        <div class="stat">
+          <p class="stat-num"><span class="sr-only">40%</span><span class="odo" data-to="40" aria-hidden="true">40</span><span class="pct" aria-hidden="true">%</span></p>
+          <p class="stat-copy">Acquisition costs have climbed more than 40 percent since 2023. Fintechs need cheaper ways to reach buyers.</p>
+        </div>
+        <div class="stat">
+          <p class="stat-num"><span class="sr-only">12%</span><span class="odo" data-to="12" aria-hidden="true">12</span><span class="pct" aria-hidden="true">%</span></p>
+          <p class="stat-copy">Planning for large-scale events dropped 12% since 2025.</p>
+        </div>
+        <p class="stats-note">B2B marketers describe a move toward smaller, more intentional formats: curated dinners, invite-only sessions, or private events where the guest list matters more than the foot traffic. We did the work already. <a href="alexandra-studio-track-record.html">See Events</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Growth team: YouTube video behind -->
+  <section class="growth" aria-labelledby="growth-title">
+    <div class="growth-wrap">
+      <div class="growth-box">
+        <div class="growth-video" data-yt="1DJbrNYM3sc" data-start="388" aria-hidden="true"></div>
+        <div class="growth-shade" aria-hidden="true"></div>
+        <div class="growth-body">
+          <h2 id="growth-title">A growth team that understands B2B Fintech</h2>
+          <div class="growth-row">
+            <p>For exceptional teams ready to scale</p>
+            <a class="btn btn-blue" href="https://luma.com/user/stockholmgrowth" target="_blank" rel="noopener">See our Spring 2027 Schedule</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="clients">
+  <!-- Traction plates -->
+  <section class="traction" aria-labelledby="traction-title">
     <div class="wrap">
-      <div class="rail">
-        <p class="label">Companies we've built with, worked with, or brought into the room:</p>
-
-        <div class="marquee-mask">
-          <div class="marquee-track">
-
-            <ul class="marquee-set">
-              <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080968/zwapgrip-logo_nmbe6a.webp" alt="Zwapgrid" /></li>
-              <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1786024855/LOGO_PSA_2022_COLOUR_BLACK_SMALL-1_do74vo.png" alt="PSA Solutions" /></li>
-              <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080968/64edcd7f7c2a913505d627a0_Beige_-_Darkblue-1000w_p26mrw.png" alt="Client logo" /></li>
-              <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080967/images_oguyij.png" alt="Client logo" /></li>
-              <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080957/dPHg1IGArtMHUYLmHAWQ1GcARP4_gjhscr.avif" alt="Client logo" /></li>
-              <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1786024791/logo-black.999e174a84d1_dt9yde.svg" alt="Client logo" /></li>
-            </ul>
-
-            <ul class="marquee-set" aria-hidden="true">
-              <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080968/zwapgrip-logo_nmbe6a.webp" alt="" aria-hidden="true" /></li>
-              <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1786024855/LOGO_PSA_2022_COLOUR_BLACK_SMALL-1_do74vo.png" alt="" aria-hidden="true" /></li>
-              <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080968/64edcd7f7c2a913505d627a0_Beige_-_Darkblue-1000w_p26mrw.png" alt="" aria-hidden="true" /></li>
-              <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080967/images_oguyij.png" alt="" aria-hidden="true" /></li>
-              <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1783080957/dPHg1IGArtMHUYLmHAWQ1GcARP4_gjhscr.avif" alt="" aria-hidden="true" /></li>
-              <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1786024791/logo-black.999e174a84d1_dt9yde.svg" alt="" aria-hidden="true" /></li>
-            </ul>
-
-          </div>
-        </div>
+      <h2 class="sec-title" id="traction-title">For Fintechs Ready for Hyper Traction:</h2>
+      <div class="plates">
+        <a class="plate" href="alexandra-studio-track-record.html"><span>In Real Life Network</span></a>
+        <a class="plate" href="whatis.html"><span>On Stage Thought Leadership</span></a>
+        <a class="plate" href="reach-senior-fintech-buyers-without-paid-ads.html"><span>Channel Coverage and Viral Systems</span></a>
+        <a class="plate" href="co-marketing-vs-partner-led-growth-fintech.html"><span>Warm Introductions</span></a>
       </div>
     </div>
   </section>
 
-  <section id="why">
+  <!-- Getting seen: four illustrated lockups -->
+  <section class="seen" aria-labelledby="seen-title">
     <div class="wrap">
+      <h2 class="sec-title" id="seen-title">Getting Seen Is Getting Tougher.</h2>
+      <p class="sec-lead">Fintech buyers are buried in ads, AI-written posts and cold sequences. What still cuts through is what always did: being in the right room, being introduced by someone they trust, and showing up where they already pay attention.</p>
 
-      <div class="props">
-
-        <div class="prop">
-          <span class="prop-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10M.146 8.354a.5.5 0 0 1 0-.708l2-2a.5.5 0 1 1 .708.708L1.707 7.5H5.5a.5.5 0 0 1 0 1H1.707l1.147 1.146a.5.5 0 0 1-.708.708zM10 8a.5.5 0 0 1 .5-.5h3.793l-1.147-1.146a.5.5 0 0 1 .708-.708l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L14.293 8.5H10.5A.5.5 0 0 1 10 8"/>
-            </svg>
-          </span>
-
-          <div class="prop-body">
-            <h4>Get Into the Right Fintech Rooms</h4>
-            <p>We connect you with banks, fintechs and adjacent companies that already have relationships with your buyers. The goal isn't more contacts. It's the right conversations.</p>
+      <div class="lockups">
+        <a class="lockup" href="b2bleadership.html">
+          <img class="lockup-img" src="img/home/card-1.webp" alt="" width="556" height="668" loading="lazy" decoding="async" />
+          <div class="lockup-body">
+            <svg class="lockup-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 5V4c0-.55-.45-1-1-1h-2c-.55 0-1 .45-1 1v1h-1v4c0 .55.45 1 1 1h1v7c0 1.1-.9 2-2 2s-2-.9-2-2V7c0-2.21-1.79-4-4-4S5 4.79 5 7v7H4c-.55 0-1 .45-1 1v4h1v1c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-1h1v-4c0-.55-.45-1-1-1H7V7c0-1.1.9-2 2-2s2 .9 2 2v10c0 2.21 1.79 4 4 4s4-1.79 4-4v-7h1c.55 0 1-.45 1-1V5h-1z"/></svg>
+            <h3>Brand Visibility</h3>
+            <p>Your team's point of view, published where your buyers already read, so your name is familiar long before the first sales call.</p>
           </div>
-        </div>
-
-        <div class="prop">
-          <span class="prop-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-              <path d="M4 9.42h1.063C5.4 12.323 7.317 14 10.34 14c.622 0 1.167-.068 1.659-.185v-1.3c-.484.119-1.045.17-1.659.17-2.1 0-3.455-1.198-3.775-3.264h4.017v-.928H6.497v-.936q-.002-.165.008-.329h4.078v-.927H6.618c.388-1.898 1.719-2.985 3.723-2.985.614 0 1.175.05 1.659.177V2.194A6.6 6.6 0 0 0 10.341 2c-2.928 0-4.82 1.569-5.244 4.3H4v.928h1.01v1.265H4v.928z"/>
-            </svg>
-          </span>
-
-          <div class="prop-body">
-            <h4>Build a Point of View in Fintech</h4>
-            <p>We turn what your team knows into thought leadership people actually want to read, share and discuss — grounded in the market, not generic marketing advice.</p>
-          </div>
-        </div>
-
-        <div class="prop">
-          <span class="prop-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-              <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/>
-              <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
-            </svg>
-          </span>
-
-          <div class="prop-body">
-            <h4>Know What the Work Is Worth</h4>
-            <p>We connect activity to outcomes: the companies reached, people engaged, conversations created and opportunities generated. Over time, the goal is a growth system that compounds — not another campaign that disappears when the budget stops.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="work">
-    <div class="wrap">
-
-      <div class="bento">
-
-        <a class="card card-dark" href="roi.html">
-          <div>
-            <h3>ROI on Growth</h3>
-            <p>We build growth systems around relationships, events, content and distribution — then measure what they produce at every stage of the funnel.</p>
-          </div>
-          <span class="btn btn-sm">See Case Studies</span>
         </a>
 
-        <a class="card card-photo" href="claudesystem.html" style="background-image:url('https://res.cloudinary.com/dxhph3qls/image/upload/v1788172080/31-DSC00039_1_jymuhw.png')">
-          <div>
-            <h3>Claude Brand Systems</h3>
-            <p>A practical system for producing distinctive content faster — without making everything your brand publishes look the same.</p>
+        <a class="lockup" href="nordic-fintech-partner-led-go-to-market.html">
+          <img class="lockup-img" src="img/home/card-2.webp" alt="" width="544" height="666" loading="lazy" decoding="async" />
+          <div class="lockup-body">
+            <svg class="lockup-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <h3>Warm Introductions to the Right Contacts</h3>
+            <p>We reach your buying committee through banks, fintechs and partners they already trust. A peer introduction beats a hundred cold emails.</p>
           </div>
-          <span class="btn btn-sm">See the System</span>
         </a>
 
-        <div class="bento-row">
+        <a class="lockup" href="executive-roundtables-b2b-pipeline.html">
+          <img class="lockup-img" src="img/home/card-3.webp" alt="" width="554" height="668" loading="lazy" decoding="async" />
+          <div class="lockup-body">
+            <svg class="lockup-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 13c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm7.76-9.64l-1.68 1.69c.84 1.18.84 2.71 0 3.89l1.68 1.69c2.02-2.02 2.02-5.07 0-7.27zM20.07 2l-1.63 1.63c2.77 3.02 2.77 7.56 0 10.74L20.07 16c3.9-3.89 3.91-9.95 0-14z"/></svg>
+            <h3>Stage Time / Audience</h3>
+            <p>Panels, roundtables and build days in Stockholm, where your people speak to a hand-picked room of buyers and partners.</p>
+          </div>
+        </a>
 
-          <a class="card card-photo" href="b2bleadership.html" style="background-image:url('https://res.cloudinary.com/dxhph3qls/image/upload/v1788172238/DSCF2152_1_wwmyke.png')">
-            <div>
-              <h3>Thought Leadership for B2B Fintech</h3>
-              <p>A practical content system for founders, product leaders and fintech teams who have something worth saying — but don't have time to become full-time creators.</p>
-            </div>
-            <span class="btn btn-sm">See Thought Leadership</span>
-          </a>
-
-          <a class="card card-blue" href="agenticmarketing.html">
-            <div>
-              <h3>Agentic Marketing: How?</h3>
-              <p>Where AI genuinely saves your team time — and where automation starts to damage trust. We use AI for production, with a human in the loop where judgment and authenticity matter.</p>
-            </div>
-            <span class="btn btn-sm btn-white">See How</span>
-          </a>
-
-          <a class="card" href="mission.html">
-            <div>
-              <h3>Why Us? How We Deliver Differently.</h3>
-              <p>One client per vertical. You keep the relationships and assets we build. And we agree on clear outcomes before we start.</p>
-            </div>
-            <span class="btn btn-sm">Why Alexandra Studio</span>
-          </a>
-
-        </div>
+        <a class="lockup" href="claudesystem.html">
+          <img class="lockup-img" src="img/home/card-4.webp" alt="" width="534" height="668" loading="lazy" decoding="async" />
+          <div class="lockup-body">
+            <svg class="lockup-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg>
+            <h3>Content Systems for Growth</h3>
+            <p>Every event and conversation becomes clips, posts and articles, so your reach keeps compounding long after the room empties.</p>
+          </div>
+        </a>
       </div>
     </div>
   </section>
 
-  <section id="testimonials">
+  <!-- Booking your day with sales calls -->
+  <section class="calls" aria-labelledby="calls-title">
+    <div class="wrap calls-grid">
+      <div class="calls-text">
+        <h2 class="calls-title" id="calls-title">Booking your day with Sales Calls.</h2>
+        <p class="calls-lead">One repeatable system that turns rooms into relationships, and relationships into sales calls in your calendar, week after week.</p>
+        <ol class="calls-list">
+          <li><span class="n">01</span><p>IRL Meetings: Curated dinners and roundtables with the buyers you want to reach.</p></li>
+          <li><span class="n">02</span><p>Podcast and Content Recordings: Your team on mic and on camera, captured while the room is still warm.</p></li>
+          <li><span class="n">03</span><p>Joint Organic Reach: Posted on social with your guests and partners, so it lands in their feeds too.</p></li>
+          <li><span class="n">04</span><p>Follow-Ups From the Room: Every conversation picked up within days and turned into a booked sales call.</p></li>
+        </ol>
+        <a class="btn btn-green" href="how-alexandra-studio-works.html">Discover More</a>
+      </div>
+      <figure class="calls-media">
+        <img src="img/home/podium.webp" alt="" width="1180" height="1422" loading="lazy" decoding="async" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- Trending topics (Stockholm Growth & Fintech, top posts) + podcast -->
+  <section class="pulse" id="trending" aria-label="Trending topics and podcast">
     <div class="wrap">
-      <div class="section-head">
-        <p class="kicker">Testimonials</p>
-        <h2>What People Say About Working With Us</h2>
+      <div class="pulse-grid">
+        <div class="trending">
+          <div class="trending-head">
+            <h2>Trending Topics</h2>
+            <a href="https://stockholmgrowthfintech.substack.com/archive?sort=top" target="_blank" rel="noopener">All articles ↗</a>
+          </div>
+          <ul class="posts">
+            <li>
+              <a class="post" href="https://stockholmgrowthfintech.substack.com/p/why-are-visa-and-klarna-creating" target="_blank" rel="noopener">
+                <img src="https://substackcdn.com/image/fetch/$s_!wzkr!,w_480,h_300,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a4449af-9e1b-4318-a815-1c6ac3966ac0_1810x886.png" alt="" width="240" height="150" loading="lazy" decoding="async" />
+                <div>
+                  <p class="post-meta">Stockholm Growth &amp; Fintech · <time datetime="2026-08-09">9 Aug 2026</time></p>
+                  <h3>Why are Visa &amp; Klarna creating Stablecoins?</h3>
+                  <p class="post-dek">The settlement layer is being rebuilt. Are you in it or under it?</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="post" href="https://stockholmgrowthfintech.substack.com/p/the-positioning-lag" target="_blank" rel="noopener">
+                <img src="https://substackcdn.com/image/fetch/$s_!G0LF!,w_480,h_300,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2ad39825-16a5-4cab-8eb9-ce852f20ccbc_1080x1080.png" alt="" width="240" height="150" loading="lazy" decoding="async" />
+                <div>
+                  <p class="post-meta">Stockholm Growth &amp; Fintech · <time datetime="2026-09-13">13 Sep 2026</time></p>
+                  <h3>The Positioning Lag</h3>
+                  <p class="post-dek">Why fast-growing fintechs end up with websites that describe a company they used to be.</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="post" href="https://stockholmgrowthfintech.substack.com/p/opportunities-in-regulation-the-swedish" target="_blank" rel="noopener">
+                <img src="https://substackcdn.com/image/fetch/$s_!jWmh!,w_480,h_300,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa3079e6a-66ca-498d-8452-2643475e8575_794x1000.png" alt="" width="240" height="150" loading="lazy" decoding="async" />
+                <div>
+                  <p class="post-meta">Stockholm Growth &amp; Fintech · <time datetime="2026-10-25">25 Oct 2026</time></p>
+                  <h3>Opportunities in Regulation: The Swedish Regulation Cheat Sheet</h3>
+                  <p class="post-dek">Swedish fintech regulations 101, written in simple language to make the dry stuff digestible.</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <a class="podcast" href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener">
+          <img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1788172080/31-DSC00039_1_jymuhw.png" alt="" loading="lazy" decoding="async" />
+          <span class="podcast-tag">Podcast</span>
+          <div>
+            <p class="podcast-kicker">Featuring Leaders in Fintech</p>
+            <h2>Join our podcast and meet others in the industry.</h2>
+          </div>
+        </a>
       </div>
     </div>
+  </section>
 
+  <!-- About Alexandra -->
+  <section class="about" aria-labelledby="about-title">
     <div class="wrap">
-      <div class="carousel-track" id="quoteTrack" tabindex="0" role="group" aria-label="Client testimonials, scrollable">
+      <div class="about-box">
+        <div class="about-text">
+          <h2 id="about-title">Hi, I’m Alexandra the founder of Alexandra Studio.</h2>
+          <p>Before starting Alexandra Studio in March 2026, I worked for a Performance Marketing Agency in Stockholm and before that, I was a White Label product designer for B2B Fintech.</p>
+          <p>One trend is clear. Digital channels are past exhausted and AI content is making it even noisier. In B2B Fintech our real leverage is Our Network, to Organic Post and create natural reasons for Meetings NOT paid ads. We work with our clients to accelerate their growth journey and have been loving that process since 2022.</p>
+          <a class="btn btn-green" href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener">Book a Call</a>
+        </div>
+        <img class="about-photo" src="https://res.cloudinary.com/dxhph3qls/image/upload/v1788176088/ANS00799_1_lxwsnw.png" alt="Alexandra Grisanti, founder of Alexandra Studio, at a fintech event in Stockholm" width="334" height="406" loading="lazy" decoding="async" />
+      </div>
+    </div>
+  </section>
 
-        <figure class="quote">
+  <!-- Testimonials -->
+  <section class="testimonials" aria-labelledby="tm-title">
+    <div class="wrap">
+      <h2 class="sec-title" id="tm-title">Testimonials</h2>
+
+      <div class="tm-track" id="quoteTrack" tabindex="0" role="group" aria-label="Client testimonials, scrollable">
+        <figure class="tm">
           <blockquote>Alexandra adjusts the outcomes and communicates in advance. She is fair in how she treats her clients.</blockquote>
           <figcaption>
             <span class="stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
@@ -487,8 +562,7 @@
             <span class="who"><cite>Vidhi</cite><span class="role">Cardboard inc.</span></span>
           </figcaption>
         </figure>
-
-        <figure class="quote">
+        <figure class="tm">
           <blockquote>Working with Alexandra is always fantastic, I love her brain.</blockquote>
           <figcaption>
             <span class="stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
@@ -496,8 +570,7 @@
             <span class="who"><cite>Leo</cite><span class="role">Zwapgrid</span></span>
           </figcaption>
         </figure>
-
-        <figure class="quote">
+        <figure class="tm">
           <blockquote>The trial went better than we expected, we were surprisingly pleased with the results.</blockquote>
           <figcaption>
             <span class="stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="off"></i></span>
@@ -505,281 +578,45 @@
             <span class="who"><cite>Esbjörn</cite><span class="role">Open Payments</span></span>
           </figcaption>
         </figure>
-
-        <figure class="quote">
+        <figure class="tm">
           <blockquote>I had the pleasure of working with Alexandra on a SaaS product website project. Alexandra brings energy, creativity and diligence, and is very collaborative and easy to work with.</blockquote>
           <figcaption>
             <span class="who"><cite>Stefan Kim</cite><span class="role">CSO at PSA · Legal Tech</span></span>
           </figcaption>
         </figure>
-
-        <figure class="quote">
+        <figure class="tm">
           <blockquote>It's been a blast to work with Alexandra! She brings a ton of energy and can-do mentality, coupled with a great business mindset and ability to structure abstract ideas. She has been involved in all parts of our product development, from the strategy to the nitty gritty design, and has done a brilliant job all over!</blockquote>
           <figcaption>
             <span class="who"><cite>Thomas Järvstrand</cite><span class="role">Softie Developer</span></span>
           </figcaption>
         </figure>
-
-        <figure class="quote">
+        <figure class="tm">
           <blockquote>I love working with Alexandra at Djungo. She is self-motivated, outcome-driven and cares deeply about our mission, the team and our users.</blockquote>
           <figcaption>
             <span class="who"><cite>Agnes Hillered</cite><span class="role">Service Designer at TPXimpact</span></span>
           </figcaption>
         </figure>
-
       </div>
 
-      <div class="carousel-nav">
-        <button type="button" class="c-arrow" data-dir="-1" aria-label="Previous testimonial" aria-controls="quoteTrack">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-          </svg>
+      <div class="tm-nav">
+        <button type="button" class="tm-arrow" data-dir="-1" aria-label="Previous testimonial" aria-controls="quoteTrack">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
         </button>
-
-        <button type="button" class="c-arrow" data-dir="1" aria-label="Next testimonial" aria-controls="quoteTrack">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
+        <button type="button" class="tm-arrow" data-dir="1" aria-label="Next testimonial" aria-controls="quoteTrack">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
       </div>
     </div>
   </section>
-
-  <section id="system">
-    <div class="wrap">
-
-      <div class="split">
-
-        <div
-          class="split-photo"
-          style="background-image:url('https://res.cloudinary.com/dxhph3qls/image/upload/v1788172083/ANS00201_1_o2lc5h.png')"
-          role="img"
-          aria-label="Alexandra hosting a fintech event in Stockholm">
-        </div>
-
-        <div>
-          <h2>A B2B fintech growth system built around how your market actually buys.</h2>
-
-          <p>For technical products, we build developer mindshare through useful content, community and real-world product experiences.</p>
-
-          <p>For relationship-led businesses, we build a path from first introduction to trusted relationship — through the people, partners and rooms that matter.</p>
-
-          <p class="split-cta">
-            <a class="btn" href="fintech-go-to-market.html">See How It Works</a>
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="rooms">
-    <div class="wrap">
-      <p class="banner-label">The fintech ecosystem we're connected to:</p>
-
-      <div class="marquee-mask marquee-lg">
-        <div class="marquee-track">
-
-          <ul class="marquee-set">
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/klarna-black_cyy1zp.svg" alt="Klarna" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/Visa_Inc._logo__2014_2021_g5bc53.svg" alt="Visa" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/Worldline-Mint-Vertical_xldsyk.png" alt="Worldline" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/Spotify_logo_with_text.svg_pheg50.webp" alt="Spotify" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809999/Natural_Cycles_r6ismi.jpg" alt="Natural Cycles" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/Mindler_Logo_Tagline_Dark_g2mpu7.png" alt="Mindler" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/tink_wordmark_black-lax_nes1g0.png" alt="Tink" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/69dd08c636c9062449e7a28b_Legora-Logo-Color_tgmm49.svg" alt="Legora" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/images_uwdosy.png" alt="Froda" /></li>
-          </ul>
-
-          <ul class="marquee-set" aria-hidden="true">
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/klarna-black_cyy1zp.svg" alt="" aria-hidden="true" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/Visa_Inc._logo__2014_2021_g5bc53.svg" alt="" aria-hidden="true" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/Worldline-Mint-Vertical_xldsyk.png" alt="" aria-hidden="true" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/Spotify_logo_with_text.svg_pheg50.webp" alt="" aria-hidden="true" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809999/Natural_Cycles_r6ismi.jpg" alt="" aria-hidden="true" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/Mindler_Logo_Tagline_Dark_g2mpu7.png" alt="" aria-hidden="true" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/tink_wordmark_black-lax_nes1g0.png" alt="" aria-hidden="true" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809998/69dd08c636c9062449e7a28b_Legora-Logo-Color_tgmm49.svg" alt="" aria-hidden="true" /></li>
-            <li><img src="https://res.cloudinary.com/dxhph3qls/image/upload/v1782809997/images_uwdosy.png" alt="" aria-hidden="true" /></li>
-          </ul>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="verticals">
-    <div class="wrap">
-
-      <div class="section-head center">
-        <p class="kicker">WHERE WE WORK</p>
-        <h2>Fintech is not one market.</h2>
-      </div>
-
-      <div class="verticals">
-
-        <a class="vertical" href="fintech-go-to-market.html">
-          <h3>Embedded Finance Infrastructure</h3>
-          <p>Long sales cycles, technical buyers and a buying committee that includes engineering.</p>
-        </a>
-
-        <a class="vertical" href="fintech-go-to-market.html">
-          <h3>SME Lending</h3>
-          <p>Trust-led buying, regional partnerships and distribution that often lives inside someone else's product.</p>
-        </a>
-
-        <a class="vertical" href="fintech-go-to-market.html">
-          <h3>Payments &amp; Invoicing Technology</h3>
-          <p>Crowded categories, similar claims and decisions made across finance, IT and operations.</p>
-        </a>
-
-      </div>
-
-      <div class="center-cta">
-        <a class="btn btn-wide" href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener">Book a Discovery Call</a>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="insights">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="kicker">INSIGHTS</p>
-        <h2>How fintech go-to-market works when ads don't.</h2>
-      </div>
-      <div class="grid-2">
-        <a class="tile" href="nordic-fintech-partner-led-go-to-market.html"><h4>How Nordic fintech companies can build a partner-led go-to-market strategy</h4><p>Borrow trust from partners who already sell to your buyers.</p></a>
-        <a class="tile" href="executive-roundtables-b2b-pipeline.html"><h4>How to use executive roundtables for B2B pipeline development</h4><p>Design from named accounts, let peers lead, follow up fast.</p></a>
-        <a class="tile" href="co-marketing-vs-partner-led-growth-fintech.html"><h4>Co-marketing vs. partner-led growth: which works best for fintech?</h4><p>Borrowing an audience versus borrowing trust.</p></a>
-        <a class="tile" href="reach-senior-fintech-buyers-without-paid-ads.html"><h4>How to reach senior fintech buyers without relying on paid ads</h4><p>Six channels, message templates and a weekly rhythm.</p></a>
-      </div>
-      <div class="center-cta">
-        <a class="btn btn-line btn-wide" href="insights.html">All insights</a>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-
-      <div class="section-head">
-        <h2>What does working with Alexandra Studio actually look like?</h2>
-      </div>
-
-      <div class="faq">
-
-        <details>
-          <summary>What does it cost, all in?</summary>
-          <p>The first month is free. After that, the growth engagement is SEK 55,000 a month excluding VAT, and it is only invoiced for months in which we reach 30 qualified leads and 5 held calls. There is no ad spend on top, because the model doesn't depend on paid advertising. Event costs such as venue and food are quoted separately and approved by you before anything is booked.</p>
-        </details>
-
-        <details>
-          <summary>What counts as a qualified lead?</summary>
-          <p>A named person at a company matching your ICP who has opted in — for example by registering for an event, subscribing to your newsletter or replying to outreach — and whose contact details you keep. It is not a scraped list or an anonymous form fill.</p>
-        </details>
-
-        <details>
-          <summary>What happens in a month that misses the target?</summary>
-          <p>You don't pay the fee for that month. The SEK 55,000 is only invoiced when both numbers are reached: 30 qualified leads and 5 held calls. The engagement runs month to month, so you can also stop at any time, and you keep everything we've produced.</p>
-        </details>
-
-        <details>
-          <summary>Why not just hire a salesperson in the Nordics?</summary>
-          <p>A Nordic sales hire at the average Swedish B2B seller salary costs about SEK 72,000 a month once employer contributions and pension are added, before commission, and you pay it whether or not meetings happen. They also start without our network. With Alexandra Studio the first month is free, the fee is SEK 55,000 excluding VAT only in months that reach 30 qualified leads and 5 held calls, and you start with rooms, partners and readers we already have. When you do hire, that person inherits warm relationships instead of a cold list. <a href="fintech-go-to-market.html#vs-hire">See the comparison</a>.</p>
-        </details>
-
-        <details>
-          <summary>Who is Alexandra?</summary>
-          <p><a href="who-is-alexandra-grisanti.html">Alexandra Grisanti</a> runs Alexandra Studio from Stockholm, working exclusively with fintech companies. She also runs the Operator Network and publishes the Stockholm Growth &amp; Fintech newsletter. Her work sits at the intersection of marketing, business development, community and the Nordic fintech ecosystem. Before consulting, she spent two years at Zwapgrid as a product designer and UX researcher.</p>
-        </details>
-
-        <details>
-          <summary>What does B2B growth look like for a fintech company?</summary>
-          <p>Fintech buying decisions often involve six to ten people across leadership, finance, product, engineering, compliance and procurement. Most of them will not be reached by a single ad. We identify the buying committee, find companies that already have relationships with them, create reasons for those people to meet, and turn those conversations into content that reaches the people who were not there. The output is relationships and a contact list you own — not impressions.</p>
-        </details>
-
-        <details>
-          <summary>Do you work with competing fintechs?</summary>
-          <p>No. We work with one client per vertical at a time. That protects the relationships, ideas and network we build with each client, and deliberately limits how many engagements we take on.</p>
-        </details>
-
-      </div>
-    </div>
-  </section>
-
-  <script>
-    (function () {
-      var track = document.getElementById('quoteTrack');
-      if (!track) return;
-      var cards  = Array.prototype.slice.call(track.querySelectorAll('.quote'));
-      var arrows = Array.prototype.slice.call(document.querySelectorAll('.c-arrow'));
-      var still  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      // Progressive enhancement: without JS every card stays sharp and readable.
-      if (!still) track.classList.add('has-focus');
-
-      function step() {
-        var card = cards[0];
-        return card ? card.offsetWidth + 20 : track.clientWidth;
-      }
-
-      arrows.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          track.scrollBy({ left: step() * Number(btn.dataset.dir), behavior: still ? 'auto' : 'smooth' });
-        });
-      });
-
-      function sync() {
-        var box = track.getBoundingClientRect();
-        var mid = box.left + box.width / 2;
-        var best = null, bestDist = Infinity;
-        cards.forEach(function (card) {
-          var r = card.getBoundingClientRect();
-          var d = Math.abs((r.left + r.width / 2) - mid);
-          if (d < bestDist) { bestDist = d; best = card; }
-        });
-        cards.forEach(function (card) { card.classList.toggle('is-focus', card === best); });
-
-        var max = track.scrollWidth - track.clientWidth - 2;
-        arrows.forEach(function (btn) {
-          btn.disabled = Number(btn.dataset.dir) < 0 ? track.scrollLeft <= 2 : track.scrollLeft >= max;
-        });
-      }
-
-      var ticking = false;
-      track.addEventListener('scroll', function () {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(function () { sync(); ticking = false; });
-      }, { passive: true });
-      window.addEventListener('resize', sync);
-      sync();
-    })();
-  </script>
 
 </main>
 
-<footer class="site-footer">
+<footer class="ft">
   <div class="wrap">
-    <div class="foot-cta">
-      <div>
-        <h2>Fifteen minutes, no deck.</h2>
-        <p>Tell me who you sell to. I'll tell you whether there is a room worth building in Stockholm — and if there isn't, I'll say so.</p>
-      </div>
-      <a class="btn btn-white btn-wide" href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener">Book a Discovery Call</a>
-    </div>
-
-    <div class="foot-cols">
-      <div>
+    <div class="ft-cols">
+      <div class="ft-about">
         <h3>Alexandra Studio</h3>
-        <p class="foot-legal">
-          B2B growth marketing for fintechs.<br />
-          Stockholm, Sweden.<br /><br />
-          A. Grisanti Ventures · VAT SE930825284101<br />
-          Approved for F-skatt.
-        </p>
+        <p class="ft-legal">B2B growth marketing for fintechs.<br />Stockholm, Sweden.<br />A. Grisanti Ventures · VAT SE930825284101<br />Approved for F-skatt.<br />© 2026 Alexandra Studio. All rights reserved.</p>
       </div>
       <div>
         <h3>Services</h3>
@@ -800,12 +637,12 @@
           <li><a href="who-is-alexandra-grisanti.html">About Alexandra</a></li>
           <li><a href="alexandra-studio-track-record.html">Track record</a></li>
           <li><a href="how-alexandra-studio-works.html">How we work</a></li>
-          <li><a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener">Stockholm Growth &amp; Fintech</a></li>
         </ul>
       </div>
       <div>
         <h3>Community</h3>
         <ul>
+          <li><a href="https://stockholmgrowthfintech.substack.com/" target="_blank" rel="noopener">Stockholm Growth &amp; Fintech</a></li>
           <li><a href="https://theoperatornetwork.se/" target="_blank" rel="noopener">Operator Network</a></li>
           <li><a href="https://luma.com/user/stockholmgrowth" target="_blank" rel="noopener">Events on Luma</a></li>
           <li><a href="https://www.linkedin.com/in/alexandragrisanti/" target="_blank" rel="noopener">LinkedIn</a></li>
@@ -814,36 +651,11 @@
       </div>
     </div>
 
-    <a class="foot-mark" href="/" aria-label="Alexandra Studio">ALEXANDRA<span>studio</span></a>
-
-    <div class="foot-bottom">
-      <p>© 2026 Alexandra Studio. All rights reserved.</p>
-      <p>Stockholm, Sweden</p>
-    </div>
+    <a class="ft-mark" href="/" aria-label="Alexandra Studio, back to top">Alexandra Studio.</a>
   </div>
 </footer>
 
-<script>
-  (function () {
-    var btn = document.querySelector('.nav-toggle');
-    var nav = document.getElementById('nav');
-    if (!btn || !nav) return;
-    function setOpen(open) {
-      nav.classList.toggle('open', open);
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    }
-    btn.addEventListener('click', function () {
-      setOpen(!nav.classList.contains('open'));
-    });
-    nav.addEventListener('click', function (e) {
-      if (e.target.closest('a')) setOpen(false);
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && nav.classList.contains('open')) { setOpen(false); btn.focus(); }
-    });
-  })();
-</script>
+<script src="home.js" defer></script>
 
 </body>
 </html>
