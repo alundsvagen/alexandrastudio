@@ -67,6 +67,8 @@ section{position:relative}
 .btn-black:hover{background:#262626}
 .btn-blue{background:var(--blue);color:#fff}
 .btn-blue:hover{background:#3F78EA}
+.btn-sky{background:#0088FF;color:#fff}           /* bright blue pill */
+.btn-sky:hover{background:#0074DB}
 .btn-green{background:var(--green);color:#000}
 .btn-green:hover{background:#D1E3AF}
 .btn svg{width:8px;height:8px;flex:none}

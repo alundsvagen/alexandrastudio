@@ -351,10 +351,36 @@ def event_ld(ev):
 # --------------------------------------------------------------------------
 # Index page
 # --------------------------------------------------------------------------
+FAQ = [
+  ('What is the Ready-Made Growth Circuit?',
+   'A calendar of invite-only, industry-specific rooms in Stockholm: executive dinners, demo nights, CMO and CEO + CFO breakfasts, build days and side events, run by Alexandra Studio with the Operator Network. Instead of building an audience from scratch, our clients step into rooms where their buyers already are, as hosts, speakers or partners.'),
+  ('Who comes to Insider Events?',
+   'Founders, executives, operators and investors from fintech and SaaS. Recent rooms brought together CMOs from Mindler and Natural Cycles, CEOs and CFOs with Gilion and Fairlo, and builders and jury members from Danske Bank, Froda, Worldline, Open Payments and Zwapgrid. Every guest list is built by hand for the industry of the room.'),
+  ('How do I get an invite?',
+   'Request to join the event on Luma at least two weeks before it takes place. Every seat is approved by the host, and approved guests receive the exact address and the details for the day. Capacity is limited, so not every request gets a seat.'),
+  ('Can my company host or speak at an event?',
+   'Yes. That is what our clients get: deep access to hosting, speaking and visibility. Your company is the host on the invitation, your people open the conversation or take the stage, and the room is filled with the accounts you name. <a href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener">Book a meeting</a> and we will show you which rooms fit your buyers.'),
+  ('Will my company be called a sponsor?',
+   'No. The client is the host. The invitation reads as the client together with its co-host, Alexandra Studio is the producer, and the Operator Network appears only as “in partnership with”. The brand order is agreed in writing at kickoff.'),
+  ('How much time does hosting take from my team?',
+   'For a single room: three 30-minute calls, one guest-list review and the day itself. You name 30 to 50 target accounts at the start and follow up with the people you meet afterwards. Alexandra Studio does the rest, from co-host and invitations to production and the follow-up report.'),
+  ('What does hosting cost?',
+   'Attending is by invitation. Hosting is part of a growth engagement: the first month is free, then SEK 55,000 a month excluding VAT, invoiced only in months that reach 30 qualified leads and 5 held calls. A single room, a series of rooms or a build day can also be quoted as a fixed fee, with venue, food and travel billed at cost. <a href="/how-alexandra-studio-works.html#pricing">See pricing</a>.'),
+  ('Where do the events take place?',
+   'Mostly in Stockholm. In 2026 we also ran rooms in Gothenburg and Amsterdam, including a partner dinner after Money20/20 Europe. The exact address is shared with approved guests.'),
+  ('How big are the rooms?',
+   'Small on purpose. A CEO + CFO breakfast has sixteen seats, and dinners are kept to one conversation around the table. Build days are bigger: the Embedded Finance Build Day had 72 approved places and 44 builders.'),
+  ('Why host a room instead of buying a conference booth?',
+   'A booth buys ten to twenty minutes with people who are also there to sell. A series of rooms with your named accounts, co-hosted with a brand they trust, gives two hours around one table, again and again. <a href="/how-alexandra-studio-works.html#compare">Compare the options</a>.'),
+]
+
+def strip_tags(t):
+    return re.sub(r'<[^>]+>', '', t)
+
 def build_index():
-    title = 'Insider Events: SaaS Executive Network, Stockholm | Alexandra Studio'
-    desc = ('Invite-only dinners, demo nights, breakfasts and build days for a SaaS and fintech executive network in Stockholm. '
-            'Operator-led growth and investment in Sweden, in the room.')
+    title = 'Insider Events: Fintech & SaaS Executive Network in Stockholm | Alexandra Studio'
+    desc = ('A ready-made growth circuit of invite-only, industry-specific rooms in Stockholm. Host, speak and get seen by '
+            'fintech and SaaS executives, operators and investors.')
     canonical = f'{SITE}/insider-events.html'
     graph = [
         {"@type": "CollectionPage", "@id": canonical, "url": canonical, "name": "Insider Events", "description": desc,
@@ -364,11 +390,17 @@ def build_index():
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Alexandra Studio", "item": f"{SITE}/"},
             {"@type": "ListItem", "position": 2, "name": "Insider Events", "item": canonical}]},
+        {"@type": "FAQPage", "@id": canonical + "#faq", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": strip_tags(a)}} for q, a in FAQ]},
     ] + [event_ld(e) for e in PAST + [u for u in UPCOMING if u.get('start')]]
     ld = {"@context": "https://schema.org", "@graph": graph}
     og = img(UPCOMING[0]['cover'], 600)
 
     up_cards = '\n'.join(upcoming_card(e) for e in UPCOMING)
+    faq_html = '\n'.join(f'''        <details>
+          <summary>{E(q)}</summary>
+          <p>{a}</p>
+        </details>''' for q, a in FAQ)
     past_cards = '\n'.join(past_card(e) for e in PAST)
     page = head(title, desc, canonical, og, ld) + f'''
 <main id="main">
@@ -379,6 +411,37 @@ def build_index():
       <div class="ev-box odo-scope">
         <p class="ev-box-num"><span class="sr-only">{SPRING_COUNT}</span><span class="odo" data-to="{SPRING_COUNT}" aria-hidden="true">{SPRING_COUNT}</span></p>
         <p class="ev-box-copy">Events coming for Spring 2027. Invite only and limited capacity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ev-circuit" aria-labelledby="circuit-title">
+    <div class="wrap">
+      <div class="ev-circuit-head">
+        <h2 class="ev-circuit-kicker" id="circuit-title">Ready-Made Growth Circuit</h2>
+        <p class="ev-circuit-big">The audience is there. The question is who is hosting the room.</p>
+        <p class="ev-circuit-lead">Our clients get deep access to hosting, speaking and visibility in industry-specific, highly curated rooms. No audience to build, no venue to book, no guest list to chase: the rooms already run, the right people already come, and your company takes the host's chair.</p>
+      </div>
+      <ol class="ev-pillars">
+        <li>
+          <span class="ev-pillar-n">01</span>
+          <h3>Host the room</h3>
+          <p>Your brand on the invitation. We bring the guest list: founders, executives and buyers from your industry, hand-picked and approved one by one.</p>
+        </li>
+        <li>
+          <span class="ev-pillar-n">02</span>
+          <h3>Take the stage</h3>
+          <p>Open the conversation, sit on the panel or demo your product to a room that came to listen, not a conference hall full of people who came to sell.</p>
+        </li>
+        <li>
+          <span class="ev-pillar-n">03</span>
+          <h3>Get seen after</h3>
+          <p>Every room becomes clips, posts, newsletter features and warm introductions, so the people who weren't there hear about it too.</p>
+        </li>
+      </ol>
+      <div class="ev-circuit-actions">
+        <a class="btn btn-sky" href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener">Host a room with us</a>
+        <a class="ev-circuit-link" href="#upcoming">See the upcoming rooms</a>
       </div>
     </div>
   </section>
@@ -418,6 +481,15 @@ def build_index():
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <section class="ev-section ev-faq" id="faq" aria-labelledby="faq-title">
+    <div class="wrap ev-faq-grid">
+      <h2 id="faq-title">Questions about Insider Events</h2>
+      <div class="ev-faq-list">
+{faq_html}
+      </div>
     </div>
   </section>
 
