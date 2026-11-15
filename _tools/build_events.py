@@ -345,7 +345,10 @@ def event_ld(ev):
                       + [{"@type": "Person", "name": h} for h in ev['hosts']],
          "sameAs": ev['luma']}
     if ev.get('start'): d['startDate'] = ev['start']
+    # Google wants an endDate. Every room is a single day, so when no end time has been
+    # published the event ends on its start date.
     if ev.get('end'): d['endDate'] = ev['end']
+    elif ev.get('start'): d['endDate'] = ev['start'][:10]
     return d
 
 # --------------------------------------------------------------------------
