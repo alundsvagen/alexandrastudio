@@ -356,7 +356,10 @@ def build_hub(h):
          "dateModified": "2026-11-10",
          "isAccessibleForFree": False,
          "hasPart": {"@type": "WebPageElement", "isAccessibleForFree": False, "cssSelector": ".db-locked"},
-         "citation": {"@type": "Dataset", "name": "EU FinTech Map", "url": SOURCE_URL},
+         # The EU FinTech Map is our cited source, not a dataset we publish: typed as a
+         # Dataset, Google validated it as one of ours (Search Console: missing description).
+         "citation": {"@type": "CreativeWork", "name": "EU FinTech Map", "url": SOURCE_URL,
+                      "publisher": {"@type": "Organization", "name": "European Commission"}},
          "mainEntity": {"@type": "ItemList", "numberOfItems": n, "itemListElement": [
              {"@type": "ListItem", "position": i + 1,
               "item": {"@type": "Organization", "name": r['name'], **({"url": r['url']} if r['url'] else {}),
@@ -474,7 +477,8 @@ def build_trending():
          "hasPart": [{"@type": "WebPageElement", "isAccessibleForFree": False, "cssSelector": ".db-locked"}]
                     + [{"@type": "WebPage", "name": hub_title(h)[1], "url": SITE + hub_url(h)} for h in HUBS]},
         {"@type": "Dataset", "name": "Alexandra Studio fintech database", "description": desc, "url": SITE + path,
-         "creator": {"@id": f"{SITE}/#organization"}, "isBasedOn": SOURCE_URL, "dateModified": "2026-11-10",
+         "creator": {"@type": "Organization", "@id": f"{SITE}/#organization", "name": "Alexandra Studio", "url": f"{SITE}/"},
+         "isBasedOn": SOURCE_URL, "dateModified": "2026-11-10",
          "spatialCoverage": "Europe", "variableMeasured": ["Company", "Sector", "Country", "City", "Founding year", "Fintech Award Points"]},
         crumbs_ld([('Alexandra Studio', '/'), ('Fintech database', path)])]}
 
