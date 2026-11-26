@@ -108,7 +108,7 @@ Previous:
 
 ## Services
 
-- [GTM for Fintech](https://alexandrastudio.se/fintech-go-to-market.html): The core service: who it's for, the problem it solves, what's delivered, how it differs from an agency, and how to start
+- [Build Your Audience: results and pricing](https://alexandrastudio.se/fintech-go-to-market.html): Our results (+1,200 subscribers in fintech thought leadership, +600 in marketing and sales thought leadership, +650,000 SEK revenue earned, +12 agentic employees on the team) and the packages: Premium Package (IRL brand association visibility) at 95,000 SEK a month, Feature Package (hands-on help to start your own newsletter and podcast) at 75,000 SEK a month, or single items (a feature on our podcast, ICP matching, brand or design help) priced on request
 - [Build Day case study](https://alexandrastudio.se/roi.html): The Embedded Finance Build Day, counted results and labelled estimates
 - [B2B Content Systems](https://alexandrastudio.se/b2bleadership.html): Thought leadership for B2B fintech founders and teams
 - [Our vision](https://alexandrastudio.se/mission.html): Why Alexandra Studio works the way it does
