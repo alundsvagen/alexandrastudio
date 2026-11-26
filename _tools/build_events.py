@@ -422,7 +422,7 @@ def build_index():
     <div class="wrap">
       <div class="ev-circuit-head">
         <h2 class="ev-circuit-kicker" id="circuit-title">Ready-Made Growth Circuit</h2>
-        <p class="ev-circuit-big">The audience is there. The question is who is hosting the room.</p>
+        <p class="ev-circuit-big"><span>The audience is here.</span> <span>Are you ready to host the room?</span></p>
         <p class="ev-circuit-lead">Our clients get deep access to hosting, speaking and visibility in industry-specific, highly curated rooms. No audience to build, no venue to book, no guest list to chase: the rooms already run, the right people already come, and your company takes the host's chair.</p>
       </div>
       <ol class="ev-pillars">
@@ -502,7 +502,7 @@ def build_index():
         <div class="growth-video" data-yt="kiv24h_9Rbc" data-start="0" aria-hidden="true"></div>
         <div class="growth-shade" aria-hidden="true"></div>
         <div class="growth-body">
-          <h2 id="ev-growth-title">A growth team that understands B2B Fintech</h2>
+          <h2 id="ev-growth-title">A growth team that understands B2B Compliance Buyers</h2>
           <p class="growth-copy">Modern marketers are catching on: you need to host the room, own the room, be the room. We do that for you. Ready-made, audience-specific.</p>
           <div class="growth-row">
             <a class="btn btn-blue" href="https://calendly.com/alexandra-alexandrastudio/30min" target="_blank" rel="noopener">Book a meeting with us</a>
