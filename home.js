@@ -68,10 +68,17 @@
       var target = parseInt(odo.getAttribute('data-to'), 10);
       if (isNaN(target)) return;
       var str = String(target);
+      var sep = odo.getAttribute('data-sep'); // e.g. "," → 650,000
       odo.textContent = '';
       odo.setAttribute('aria-hidden', 'true');
 
       str.split('').forEach(function (ch, i) {
+        if (sep && i > 0 && (str.length - i) % 3 === 0) {
+          var s = document.createElement('span');
+          s.className = 'odo-sep';
+          s.textContent = sep;
+          odo.appendChild(s);
+        }
         // how many cells this column has to travel
         var place = Math.pow(10, str.length - 1 - i);
         var steps = Math.floor(target / place); // e.g. 59 → tens: 5, ones: 59
