@@ -7,6 +7,7 @@ stays private. To add dates later, fill in start / end (and reg_close if
 registration closes before the event starts) and run it again.
 """
 import html, json, pathlib, re
+from pricing import PREMIUM, FEATURE, PRICING_URL, sek
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = 'https://alexandrastudio.se'
@@ -368,7 +369,10 @@ FAQ = [
   ('How much time does hosting take from my team?',
    'For a single room: three 30-minute calls, one guest-list review and the day itself. You name 30 to 50 target accounts at the start and follow up with the people you meet afterwards. Alexandra Studio does the rest, from co-host and invitations to production and the follow-up report.'),
   ('What does hosting cost?',
-   'Attending is by invitation. Hosting is part of a growth engagement: the first month is free, then SEK 55,000 a month excluding VAT, invoiced only in months that reach 30 qualified leads and 5 held calls. A single room, a series of rooms or a build day can also be quoted as a fixed fee, with venue, food and travel billed at cost. <a href="/how-alexandra-studio-works.html#pricing">See pricing</a>.'),
+   'Attending is by invitation. Hosting is part of our Build Your Audience packages: the Premium Package, '
+   f'{sek(PREMIUM["price"])} a month, includes special invites to exclusive network events and hosting parties '
+   f'with other brands; the Feature Package is {sek(FEATURE["price"])} a month; single items are priced on request '
+   f'per client. <a href="{PRICING_URL}">See pricing</a>.'),
   ('Where do the events take place?',
    'Mostly in Stockholm. In 2026 we also ran rooms in Gothenburg and Amsterdam, including a partner dinner after Money20/20 Europe. The exact address is shared with approved guests.'),
   ('How big are the rooms?',

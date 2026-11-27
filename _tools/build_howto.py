@@ -6,6 +6,7 @@ the video box, Start Now, the three growth packages with prices, and how growth 
 
 Reuses the homepage's video box (.growth) and numbered-list section (.calls) from home.css.
 """
+from pricing import PREMIUM, FEATURE, SINGLE_ITEMS, SINGLE_PRICE, sek, offers as price_offers
 from site_chrome import ROOT, SITE, E, head, header, tail
 
 PATH = '/how-to.html'
@@ -17,29 +18,17 @@ ICONS = {  # 24px line icons: cable, earth, chart
     'chart': '<path d="M2 18l6-6 4 4 9-9"/><path d="M15 7h6v6"/>',
 }
 
+# The three cards: the two packages and the single items. Prices come from pricing.py.
 PACKAGES = [
-    dict(key='visibility', icon='cable', img='/img/home/card-1.webp', w=556, h=668,
-         title='Market Visibility',
-         text='Host a series of network events: your logo, your concepts. We work with you to co-host these events, '
-              'reducing event costs and increasing visibility.',
-         get=['Viral organic content', 'Newsletter coverage', 'In-person meetings with your target customer', 'Stage time'],
-         price='100K SEK for a three-part series over six months.', amount=100000, unit=None),
-    dict(key='pay-per-lead', icon='earth', img='/img/home/card-2.webp', w=544, h=666,
-         title='Pay per Lead Package',
-         text='Pay only for meetings booked: we book meetings and get you warm, relevant leads. 30 warm leads and '
-              '5 meetings a month with a targeted list, or you don’t pay. Requires an ICP list of at least 200 '
-              'companies for this price; shorter ICP lists increase the price.',
-         get=['SEO content to attract leads', 'Lead magnets', 'Lists of potentials',
-              'Booked meetings and podcasts with your target customer'],
-         price='55K SEK per month.', amount=55000, unit='MON'),
-    dict(key='hyper-growth', icon='chart', img='/img/home/card-3.webp', w=554, h=668,
-         title='Hyper Growth Package.',
-         text='Get the entire growth package: newsletter, podcast and a content system in a loop, plus events. '
-              'Hyper grow your own audience and platform in 3 months. We build the structures, make it easy to '
-              'run, and you own 100% of it.',
-         get=['Your own newsletter', 'Your own podcast series with guests', 'Automated high-engagement content sequences',
-              'Booked meetings and podcasts with potential distribution partners'],
-         price='300K SEK and requires 3 months.', amount=300000, unit=None),
+    dict(key=PREMIUM['id'], icon='chart', img='/img/home/card-1.webp', w=556, h=668,
+         title=PREMIUM['name'], text=PREMIUM['title'] + '.', get_label='You get:', get=PREMIUM['items'],
+         price=sek(PREMIUM['price']) + ' a month.'),
+    dict(key=FEATURE['id'], icon='cable', img='/img/home/card-2.webp', w=544, h=668,
+         title=FEATURE['name'], text=FEATURE['title'] + ' ' + FEATURE['lead'], get_label='', get=FEATURE['items'],
+         price=sek(FEATURE['price']) + ' a month.'),
+    dict(key='items', icon='earth', img='/img/home/card-3.webp', w=554, h=668,
+         title='Just the Items You Need', text='Pick only what you need.', get_label='Choose from:',
+         get=[i.rstrip('.') for i in SINGLE_ITEMS], price=SINGLE_PRICE),
 ]
 
 def svg(name):
@@ -51,20 +40,15 @@ def numbered(items):
         f'<li><span class="n">{i:02d}</span><p>{t}</p></li>' for i, t in enumerate(items, 1)) + '</ol>'
 
 def build():
-    title = 'How to Hyper Grow: Fintech Growth Packages and Pricing | Alexandra Studio'
-    desc = ('How to hyper grow a B2B fintech: three growth packages from Alexandra Studio. Market Visibility '
-            '(100K SEK), Pay per Lead (55K SEK a month) and the Hyper Growth Package (300K SEK), measured in '
-            'booked meetings, not impressions.')
-    offers = []
-    for p in PACKAGES:
-        price = {"@type": "UnitPriceSpecification", "price": str(p['amount']), "priceCurrency": "SEK",
-                 **({"unitCode": p['unit']} if p['unit'] else {})}
-        offers.append({"@type": "Offer", "name": p['title'].rstrip('.'), "description": p['text'],
-                       "priceSpecification": price, "url": SITE + PATH + '#' + p['key']})
+    title = 'How to Hyper Grow: Growth Packages and Pricing | Alexandra Studio'
+    desc = ('How to hyper grow a B2B company with Alexandra Studio: the Premium Package (' + sek(PREMIUM['price']) +
+            ' a month), the Feature Package (' + sek(FEATURE['price']) + ' a month), or single items priced on '
+            'request per client.')
+    offers = price_offers(SITE)
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "WebPage", "@id": SITE + PATH, "url": SITE + PATH, "name": title, "description": desc,
          "isPartOf": {"@id": f"{SITE}/#website"}, "about": {"@id": f"{SITE}/#organization"}, "inLanguage": "en"},
-        {"@type": "Service", "name": "Fintech growth packages", "provider": {"@id": f"{SITE}/#organization"},
+        {"@type": "Service", "name": "Growth packages", "provider": {"@id": f"{SITE}/#organization"},
          "areaServed": "Nordics", "audience": {"@type": "BusinessAudience", "audienceType": "B2B fintech companies"},
          "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Growth packages", "itemListElement": offers}},
         {"@type": "BreadcrumbList", "itemListElement": [
@@ -78,8 +62,8 @@ def build():
               {svg(p['icon'])}
               <h3>{E(p['title'])}</h3>
               <p>{E(p['text'])}</p>
-              <p class="ht-get">You get:</p>
-              <ul>{''.join(f'<li>{E(x)}</li>' for x in p['get'])}</ul>
+              {f'<p class="ht-get">{E(p["get_label"])}</p>' if p['get'] else ''}
+              {('<ul>' + ''.join(f'<li>{E(x)}</li>' for x in p['get']) + '</ul>') if p['get'] else ''}
               <p class="ht-price">{E(p['price'])}</p>
             </div>
           </article>''' for p in PACKAGES)
@@ -125,7 +109,7 @@ def build():
   <section class="ht-packages" aria-labelledby="packages-title">
     <div class="wrap">
       <h2 class="ht-h2" id="packages-title">When you’re serious about Growth.</h2>
-      <p class="ht-sub">We Offer Three Growth Packages.</p>
+      <p class="ht-sub">Two Packages, or Just the Items You Need.</p>
       <p class="ht-lead">Our growth packages are tailored to our clients’ needs, always ICP focused, so your buyer is engaging with you, showing up, talking with you and getting into your network.</p>
       <div class="ht-pkgs">{pkgs}
       </div>
