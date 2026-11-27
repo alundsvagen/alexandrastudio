@@ -13,6 +13,7 @@ Run after build_database.py:   cd _tools && python3 build_guides.py
 """
 import collections, json, re
 from site_chrome import ROOT, SITE, E, head, header, tail
+from pricing import SUMMARY
 from build_database import (ROWS, PROFILED, RANKED, RANK, N_TRENDING, TOTAL, AWARDS_URL, CONTACT_URL, PROFILE_CSS,
                             DATE_ISO, DATE_LABEL, fmt, place, sector_label, card_li, name_link, crumbs, crumbs_ld,
                             load_research, split_list)
@@ -351,7 +352,7 @@ agencies = dict(
         ('What market entry services exist for the Nordics?',
          'Public agencies such as Business Sweden and Invest Stockholm, fintech hubs and associations, the regulator Finansinspektionen for licensing, and go-to-market partners who already have rooms with your buyers.'),
         ('Is Alexandra Studio a fintech marketing agency?',
-         'Alexandra Studio is a Stockholm B2B growth studio that works only with fintechs, as a fintech marketing and event agency. The growth engagement is free for the first month, then SEK 55,000 a month excluding VAT, invoiced only for months that reach 30 qualified leads and 5 held calls.'),
+         'Alexandra Studio is a Stockholm B2B growth studio that works only with fintechs, as a fintech marketing and event agency. ' + SUMMARY),
     ],
     related=related(L_AGENCIES, ('How Alexandra Studio works', '/how-alexandra-studio-works.html')),
     cta_head='Looking for a fintech event agency?',
